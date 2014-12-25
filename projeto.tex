@@ -5,12 +5,14 @@
 \usepackage{csquotes}
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{enumitem}
-\usepackage{fmtcount}
+\usepackage{xcolor,graphicx}
 \usepackage[all,defaultlines=2]{nowidow}
 \usepackage[multiple]{footmisc}
-\usepackage{xcolor,graphicx}
+\usepackage{enumitem}
+\usepackage{fmtcount}
+\usepackage{multirow}
 \usepackage[backend=bibtex,backref=true]{biblatex}
+\bibliography{projeto}
 \hypersetup{
 	colorlinks=true,
 	urlcolor=blue,
@@ -18,17 +20,32 @@
 	citecolor=red
 }
 
-\bibliography{projeto}
 
-\author{Igor~Santos}
-\title{Projeto~de~TCC - BitCongresso}
+\author{Igor~Santos\\
+	Universidade Est\'acio de S\'a\\
+	Rio de Janeiro, RJ\\
+	\texttt{igorsantos07+conf@gmail.com}
+}
+\title{Projeto~de~TCC\\BitCongresso}
 
 \makeindex
 \begin{document}
+\pagenumbering{gobble}
 \maketitle
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INICIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INICIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\chapter*{Prefácio}
+\section*{Definições usadas neste documento}
+Para fins de comunicação, as seguintes palavras são tidas como sinônimo, exceto quando especificado o contrário - na seção \ref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
+\begin{itemize}
+	\item Conferência
+	\item Congresso
+	\item Evento
+\end{itemize}
+\newpage
+
+\pagenumbering{arabic}
 \tableofcontents
 
 \chapter{Proposta do Projeto de TCC}
@@ -36,17 +53,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{O Projeto}
 
+É notável a dificuldade que conferencistas possuem, muitas das vezes, em obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento.\footnotemark Muitas das vezes o evento possui informações 
+
+\footnotetext{Informação a ser confirmada com pesquisas, mas já analisada inicialmente a partir de conversas informais com usuários em potencial.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Opções de nome}
+
+Seguem aqui alguns componentes que podem ser utilizados de inspiração para o nome do aplicativo:\\
+
+\begin{tabular}{rl|c|c}
+\multicolumn{2}{c|}{\textbf{Afixos}} & \textbf{Substantivos} & \textbf{Sugestões} \\\hline
+Bit		& Data	& Congresso		& \multirow{6}{5cm}{\textit{EvenTime, BitConf, Dataconf, QuickConf, ClickConf, HandyConf~/~Conferência~à~mão}} \\\cline{1-3}
+Time	& App	& Conferência	& \\\cline{1-3}
+Quick	& Fast	& Conf			& \\\cline{1-3}
+Rápido	& Veloz	& Evento		& \\\cline{1-3}
+Click	& Lite	& Event			& \\\cline{1-3}
+\multicolumn{2}{l|}{Handy / à mão}	& hahahaha		& \\
+\end{tabular}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Método de Trabalho}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Previsão de Alocação de Recursos}
-
-\subsection*{Recursos Humanos}
-
-\subsection*{Recursos Materiais}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,6 +87,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mercado Consumidor}
+
+\subsection{Os tipos de eventos científicos e tecnológicos}
+\label{sec:eventos}
+blabla
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Concorrência}
