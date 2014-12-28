@@ -68,13 +68,14 @@ Seguem aqui alguns componentes que podem ser utilizados de inspiração para o n
 
 \begin{tabular}{rl|c|c}
 \multicolumn{2}{c|}{\textbf{Afixos}} & \textbf{Substantivos} & \textbf{Sugestões} \\\hline
-Bit		& Data	& Congresso		& \multirow{6}{5cm}{\emph{EvenTime, BitConf, Dataconf, QuickConf, ClickConf, HandyConf~/~Conferência~à~mão}} \\\cline{1-3}
+Bit		& Data	& Congresso		& \multirow{6}{6cm}{EvenTime \footnotemark, BitConf, Dataconf, QuickConf, ClickConf, HandyConf} \\\cline{1-3}
 Time	& App	& Conferência	& \\\cline{1-3}
 Quick	& Fast	& Conf			& \\\cline{1-3}
 Rápido	& Veloz	& Evento		& \\\cline{1-3}
 Click	& Lite	& Event			& \\\cline{1-3}
-\multicolumn{2}{l|}{Handy / à mão}	& hahahaha		& \\
+\multicolumn{2}{c|}{Handy}	& 		& \\
 \end{tabular}
+\footnotetext{EvenTime pode soar como \emph{Even+Time}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,23 +123,29 @@ blabla
 \subsection{Situação Desejada}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{O Sistema Proposto}
+\chapter{Proposta Preliminar de Sistema}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Requisitos do Sistema}
+\section{Requisitos do sistema}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pagebreak
-\section{Casos de Uso}
+\section{Método de monetização}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Diagrama de Topologia}
+\section{Tecnologias utilizadas}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Modelo Conceitual de Classes}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Modelo Conceitual de Dados}
+
+\subsection{Topologia}
+Conforme citado acima, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.8\linewidth]{diagramas/topologia-parse.eps}
+	\caption{Diagrama de topologia simples, indicando o uso central dos serviços do Parse}
+	\label{fig:topologia-parse}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography
