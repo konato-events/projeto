@@ -5,14 +5,16 @@
 \usepackage{csquotes}
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
+\usepackage{pifont}
 \usepackage{xcolor,graphicx}
+\usepackage{sidecap}
 \usepackage[all,defaultlines=2]{nowidow}
 \usepackage[multiple]{footmisc}
 \usepackage{enumitem}
 \usepackage{fmtcount}
 \usepackage{multirow}
 \usepackage[backend=bibtex,backref=true]{biblatex}
-\bibliography{projeto}
+\bibliography{projeto.bib}
 \hypersetup{
 	colorlinks=true,
 	urlcolor=blue,
@@ -22,7 +24,7 @@
 
 
 \author{Igor~Santos\\
-	Universidade Est\'acio de S\'a\\
+	Universidade Estácio de Sá\\
 	Rio de Janeiro, RJ\\
 	\texttt{igorsantos07+conf@gmail.com}
 }
@@ -64,16 +66,16 @@ Partindo destas premissas, o objetivo do Projeto é criar um aplicativo móvel q
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Opções de nome}
 
-Seguem aqui alguns componentes que podem ser utilizados de inspiração para o nome do sistema:\\
+Seguem aqui alguns componentes que podem ser utilizados de inspiração, e algumas sugestões já pensadas para o nome do sistema:\\
 
 \begin{tabular}{rl|c|c}
 \multicolumn{2}{c|}{\textbf{Afixos}} & \textbf{Substantivos} & \textbf{Sugestões} \\\hline
-Bit		& Data	& Congresso		& \multirow{6}{6cm}{EvenTime \footnotemark, BitConf, Dataconf, QuickConf, ClickConf, HandyConf} \\\cline{1-3}
+Bit		& Data	& Congresso		& \multirow{6}{6cm}{EvenTime \footnotemark, BitConf, Dataconf, QuickConf, ClickConf, HandyConf, The Event, The Conf} \\\cline{1-3}
 Time	& App	& Conferência	& \\\cline{1-3}
 Quick	& Fast	& Conf			& \\\cline{1-3}
 Rápido	& Veloz	& Evento		& \\\cline{1-3}
 Click	& Lite	& Event			& \\\cline{1-3}
-\multicolumn{2}{c|}{Handy}	& 		& \\
+Handy	& The	& 				& \\
 \end{tabular}
 \footnotetext{EvenTime pode soar como \emph{Even+Time}}
 
@@ -93,15 +95,14 @@ Click	& Lite	& Event			& \\\cline{1-3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mercado Consumidor}
 
-\subsection{Os tipos de eventos científicos e tecnológicos}
-\label{sec:eventos}
-blabla
+\subsection{Os tipos de eventos científicos e tecnológicos} \label{sec:eventos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Concorrência}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Premissas e Restrições ao Projeto}
+% Acredito que aqui vai ser preciso falar das pesquisas que vamos rodar pra avaliar todas as hipoteses, e quais sao elas e como as pesquisas ajudariam a valida-las
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Os Sistemas Atuais}
@@ -109,12 +110,12 @@ blabla
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Principais Concorrentes}
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Outros Sistemas}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivações para o Novo Sistema}
+% falar sobre a vantagem de usar um aplicativo com dados offline num ambiente com wifi e 3g saturados
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Problemas dos Sistemas Atuais}
@@ -124,26 +125,104 @@ blabla
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposta Preliminar de Sistema}
+% Aqui talvez devêssemos explicar que o sistema deve ser um aplicativo móvel com interface administrativa web, e demonstrar o porque disso. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Requisitos do sistema}
+
+\subsection{Requisitos funcionais}
+
+Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema. Elas não estão organizadas de forma alguma, e também nem todas serão implementadas no decorrer deste projeto. No entanto, esta lista serve como referência de consulta para as pesquisas com os usuários potenciais, na identificação de quais \emph{features} são mais importantes ou se alguma seria pouco relevante. Após esta fase, com base nos resultados, será possível aferir a prioridade de cada uma das funcionalidades.
+
+
+\subsubsection*{Programação do evento}
+\begin{itemize}
+	\item Deve ser possível visualizar os diversos \emph{time slots}:
+		\begin{itemize}
+			\item Eles devem ser vistos, preferencialmente, categorizados (como keynotes e palestras, lightning talks, mesas-redondas, etc);
+			\item Também pode ser interessante haver uma visualização de grade, onde o usuário possa visualizar rapidamente os conflitos de horário dos slots;
+		\end{itemize}
+	\item Informações detalhadas sobre os slots, como:
+		\begin{itemize}
+			\item descrição;
+			\item tópicos de interesse;
+			\item subcategoria - como trilhas de palestras distintas;
+			\item dados de contato do(s) palestrante(s) / responsável(is) (opcionais);
+			\item localização, para os casos em que o evento possua mais de um ambiente.
+		\end{itemize}
+	\item Algumas destas informações, como subcategoria, palestrante e tópicos, podem ser utilizados para destacar ou filtrar a lista ou grade de slots;
+	\item Notificações sobre lançamento das grades ou modificações nas mesmas;
+\end{itemize}
+
+\subsubsection*{Trabalhos apresentados e exposição de patrocinadores}
+\begin{itemize}
+	\item Para os casos em que haja exposição de patrocinadores ou trabalhos, pode ser interessante setorizar o salão de exposições e permitir a localização daqueles pelo sistema:
+		\begin{itemize}
+			\item Os expositores e/ou projetos podem ser buscados por palavras-chave ou por tópicos;
+			\item Eles teriam um setor ou box específico do salão, e o usuário poderia facilmente localizá-lo a partir de um mapa no aplicativo ou nas entradas da área;
+		\end{itemize}
+	\item Auxiliar o processo de avaliação e premiação dos trabalhos apresentados:
+		\begin{enumerate}
+			\item Isso pode ser feito disponibilizando tablets aos avaliadores que não possuírem smartphones, ou não desejarem/puderem instalar o aplicativo;
+			\item Os avaliadores lançam as notas e comentários no aplicativo conforme vêem os trabalhos;
+			\item Os comentários podem ser vistos em tempo real pelos participantes do projeto avaliado;
+			\item As notas são contabilizadas também em tempo real pela organização e/ou congressistas.
+		\end{enumerate}
+\end{itemize}
+
+\subsubsection*{Informações gerais sobre o evento}
+\begin{itemize}
+	\item Localização do evento:
+		\begin{itemize}
+			\item com facilidade para identificar o trajeto via aplicativo de mapas;
+			\item com indicações textuais sobre as linhas de transporte público próximas e trajetos comuns da rodoviária e aeroporto (o que pode ser útil em caso de falta de plano de dados para visualizar o trajeto ao vivo).
+		\end{itemize}
+	\item Indicação de locais nos arredores para:
+		\begin{itemize}
+			\item alimentação: uma possibilidade é integrar com o FourSquare para recomendações de lugares realmente próximos, e talvez adicionar comentários ou preferência dos organizadores sobre as opções;
+			\item pontos turísticos a visitar: similar à ideia acima;
+			\item hospedagem: novamente, similar às ideias acima, mas nesse caso integrando com o TripAdvisor;
+		\end{itemize}
+	\item Informações e alertas sobre o início da venda de ingressos e as datas de mudanças de lotes. O usuário deve ser avisado, por exemplo, quando faltarem determinados dias para a troca de lote;
+	\item Exibição de feed de notícias do evento. Os organizadores devem poder lançar notas e blocos de texto maiores, sobre os quais os usuários podem ser notificados -- útil para anunciar mudanças futuras na grade, criar material de agitação entre os congressistas ou divulgações do evento em geral. 
+	\item Talvez seja possível replicar a funcionalidade gerada por QR-Codes de Rede Wi-Fi e criar um link ou botão que leve o usuário a se conectar automaticamente às redes do evento, mesmo que elas possuam senha. Isso pode ser usado, inclusive, para criar redes específicas para os usuários do sistema. Veja a Figura \ref{fig:qr-wifi} como um exemplo.
+\end{itemize}
+
+\begin{SCfigure}[2.5][hb]
+	\centering
+	\includegraphics[width=0.25\linewidth]{imagens/qr-wifi}
+	\protect\caption[QR-Code com dados da rede Wi-Fi]{Este QR-Code possui os dados necessários para que um aplicativo leitor possa automaticamente conectar o dispositivo à rede indicada. Neste exemplo, o formato do código se lê: "\texttt{WIFI:S:<<nome da rede>>;T:<<criptografia>>;P:<<senha>>;;}". Ele foi gerado pelo aplicativo InstaWifi\cite{instawifi}, e lido com sucesso com o BarCode Scanner\cite{barcode}, ambos para Android.}
+	\label{fig:qr-wifi}
+\end{SCfigure}
+
+\subsubsection*{Redução das burocracias comuns de eventos}
+\emph{Estes tópicos são principalmente secundários, pois já existem sistemas que cumprem estes papéis, pelo menos até certo nível, ou porque não encaixam muito no ambiente móvel.}
+\begin{itemize}
+	\item Controlar o credenciamento de congressistas. Aqueles que possuírem o aplicativo podem participar de uma fila especial que consistiria da leitura de um código na tela do aparelho para identificação automática do mesmo;
+	\item Disponibilização de certificados de participação aos interessados, com informações sobre os trabalhos apresentados, por exemplo;
+	\item Organização de patrocinadores, empresas parceiras, despesas e contratos de serviços.
+\end{itemize}
+
+\subsubsection*{Liberação da API para uso de terceiros}
+Pode ser interessante haver um tipo de serviço diferenciado onde algumas partes da API ficam disponíveis para os organizadores. Isso é útil para o caso de criarem um hotsite do evento, por exemplo. Dessa forma, a página pode se tornar mais dinâmica e integrada com o aplicativo, exibindo as mesmas notícias que são divulgadas no sistema, atualizando a grade de palestras de forma automática, e etc.
+Outra vertente da ideia é possuir um gerador de site automatizado, que conteria todos os dados sobre o evento, assim como o aplicativo. Mas nesse caso pecaríamos em personalização, num ambiente muito mais customizável e visual como a web.
+
+\subsection{Requisitos não-funcionais}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Método de monetização}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Tecnologias utilizadas}
+\section{Tecnologias utilizadas} \label{sec:tecnologias}
 
 
-
-\subsection{Topologia}
-Conforme citado acima, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
+\section{Topologia}
+Conforme citado em \ref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
 
 \begin{figure}[h!]
 \centering
 	\includegraphics[width=0.8\linewidth]{diagramas/topologia-parse.eps}
 	\caption{Diagrama de topologia simples, indicando o uso central dos serviços do Parse}
-	\label{fig:topologia-parse}
 \end{figure}
 
 
