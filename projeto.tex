@@ -28,7 +28,7 @@
 	Rio de Janeiro, RJ\\
 	\texttt{igorsantos07+conf@gmail.com}
 }
-\title{Projeto~de~TCC\\BitCongresso}
+\title{Projeto~de~TCC\\TheConf}
 
 \makeindex
 \begin{document}
@@ -93,16 +93,53 @@ Handy	& The	& 				& \\
 \section{Histórico}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Mercado Consumidor}
+\section{\emph{Business Model Canvas} - Um Modelo de Negócios provisório}
+% Explicar porque o BMC é uma boa estratégia para o projeto/empresa
 
-\subsection{Os tipos de eventos científicos e tecnológicos} \label{sec:eventos}
+% detalhar em subseções cada um dos nove pontos do BMC
+
+\subsection{Os tipos de eventos científicos e tecnológicos} \label{sec:eventos} % injetar isso em algum ponto do BMC
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Concorrência}
+Não foi encontrada nenhuma empresa que preste serviços diretamente relacionados ao espectro do mercado que pretendemos cobrir com nosso projeto. No entanto, há algumas empresas relacionadas à organização de eventos ou venda de ingressos, que são dignas de nota.
+
+\subsection{Interevent}
+A \textbf{Interevent} foi indicada por uma usuária do ramo de Ciências Biológicas, quando consultada sobre a ideia geral do projeto.
+A empresa possui uma solução aparentemente completa para a organização e gerenciamento de congressos. Eles cobrem áreas como:
+\begin{itemize}[itemsep=-1ex]
+	\item Áreas de exposição, controle, prospecção e comunicação com patrocinadores;
+	\item Recebimento de inscrições e credenciamento;
+	\item Envio de newsletters;
+	\item Planejamento financeiro e suporte na conciliação bancária;
+	\item Auxílio na criação da identidade visual do evento e contratação de assessoria de imprensa;
+	\item Auxílio no planejamento do evento, como definição de local e cronograma, reuniões, indicação de fornecedores e hotéis confiáveis;
+	\item Administração de palestrantes e suas reservas, passagens, etc, e organização da grade de palestras;
+	\item Geração de hotsite com atualizações, inscrições e envio de trabalhos;
+	\item Gerenciamento completo no decorrer do evento, com staff próprio, logística, e programação especial pré, pós-evento, e durante o mesmo para os acompanhantes dos congressistas.
+\end{itemize}
+
+Em sua home page\cite{interevent}, eles exibem 21 eventos. Cerca de somente nove deles são do ano de 2014.
+
+Analisando o material disponível publicamente e a entrevista com a usuária citada, foram identificadas as seguintes deficiências:
+\begin{itemize}
+	\item Muitas atividades ainda são manuais, como por exemplo a homepage de divulgação dos eventos -- há links para hotsites com erro no endereço (exemplo: \emph{interevent.\underline{com..br}/evento/sbdof2015}) --, certificados com nomes distintos dos usados na inscrição, dentre outros;
+	\item Os hotsites dos congressos é de difícil acesso, pois depende de parâmetros na URL que são variáveis e difíceis de gravar. A usuária citou ser frustrante (e constante) ir no Google para precisar buscar o site do evento, e acidentalmente clicar no site oficial da associação ou sociedade, ao invés da página desejada. Isso poderia ser facilmente resolvido com uma URL amigável, indicando o ano/nome do evento no subdomínio ou \emph{path};
+	\item Foram encontrados diversos problemas de desenvolvimento em produção, como: erros de \emph{JavaScript} que impossibilitam a interface de funcionar corretamente; uma página em branco, somente com uma mensagem de erro de \emph{query} do \emph{MySQL}; além da reclamação por parte da usuária sobre encontrar dificuldades técnicas diversas vezes ao acessar a página de emissão de certificado.
+\end{itemize}
+
+Há a necessidade de entrevistar outros usuários e/ou organizadores de eventos clientes da Interevent a fim de coletar feedbacks positivos e de outros pontos de vista. No entanto, inicialmente a empresa é tida como concorrência distante visto que não objetivamos atuar na mesma área, e nas áreas em que poderíamos concorrer diretamente ela possui deficiências técnicas graves - como o hotsite, por exemplo.
+
+\subsection{Sympla}
+
+\subsection{Eventbrite}
+
+\subsection{Eventick}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Premissas e Restrições ao Projeto}
-% Acredito que aqui vai ser preciso falar das pesquisas que vamos rodar pra avaliar todas as hipoteses, e quais sao elas e como as pesquisas ajudariam a valida-las
+% Acredito que aqui vai ser preciso falar das pesquisas que vamos rodar pra avaliar todas as hipoteses, e quais sao elas e como as pesquisas ajudariam a valida-las. Talvez isso seja encaixável no BMC também por causa da necessidade de descrever as hipóteses e os testes sobre ele
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Os Sistemas Atuais}
@@ -146,12 +183,14 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 		\begin{itemize}
 			\item descrição;
 			\item tópicos de interesse;
+			\item palestrante(s);
 			\item subcategoria - como trilhas de palestras distintas;
-			\item dados de contato do(s) palestrante(s) / responsável(is) (opcionais);
-			\item localização, para os casos em que o evento possua mais de um ambiente.
+			\item localização, para os casos em que o evento possua mais de um ambiente;
+			\item slides, quando disponíveis.
 		\end{itemize}
+	\item Listar todos os palestrantes e os detalhes dos mesmos, como informações de contato, mini-currículo, fotos e qual(is) slot(s) irá participar;
 	\item Algumas destas informações, como subcategoria, palestrante e tópicos, podem ser utilizados para destacar ou filtrar a lista ou grade de slots;
-	\item Notificações sobre lançamento das grades ou modificações nas mesmas;
+	\item Notificações sobre lançamento das grades ou modificações nas mesmas, lançamento de slides e vídeos das palestras, dentre outros;
 \end{itemize}
 
 \subsubsection*{Trabalhos apresentados e exposição de patrocinadores}
@@ -183,7 +222,12 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 			\item pontos turísticos a visitar: similar à ideia acima;
 			\item hospedagem: novamente, similar às ideias acima, mas nesse caso integrando com o TripAdvisor;
 		\end{itemize}
-	\item Informações e alertas sobre o início da venda de ingressos e as datas de mudanças de lotes. O usuário deve ser avisado, por exemplo, quando faltarem determinados dias para a troca de lote;
+	\item Ingressos:
+	\begin{itemize}
+		\item Informações a venda de ingressos e as datas de mudanças de lotes;
+		\item Informações detalhadas dos possíveis tipos de ingressos disponíveis;
+		\item Alertas sobre o início das vendas e a mudança de lotes -- avisar, por exemplo, quando faltarem determinados dias para a troca de lote.
+	\end{itemize}
 	\item Exibição de feed de notícias do evento. Os organizadores devem poder lançar notas e blocos de texto maiores, sobre os quais os usuários podem ser notificados -- útil para anunciar mudanças futuras na grade, criar material de agitação entre os congressistas ou divulgações do evento em geral. 
 	\item Talvez seja possível replicar a funcionalidade gerada por QR-Codes de Rede Wi-Fi e criar um link ou botão que leve o usuário a se conectar automaticamente às redes do evento, mesmo que elas possuam senha. Isso pode ser usado, inclusive, para criar redes específicas para os usuários do sistema. Veja a Figura \ref{fig:qr-wifi} como um exemplo.
 \end{itemize}
@@ -198,6 +242,7 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 \subsubsection*{Redução das burocracias comuns de eventos}
 \emph{Estes tópicos são principalmente secundários, pois já existem sistemas que cumprem estes papéis, pelo menos até certo nível, ou porque não encaixam muito no ambiente móvel.}
 \begin{itemize}
+	\item Distribuição de pesquisas de opinião pós-evento;
 	\item Controlar o credenciamento de congressistas. Aqueles que possuírem o aplicativo podem participar de uma fila especial que consistiria da leitura de um código na tela do aparelho para identificação automática do mesmo;
 	\item Disponibilização de certificados de participação aos interessados, com informações sobre os trabalhos apresentados, por exemplo;
 	\item Organização de patrocinadores, empresas parceiras, despesas e contratos de serviços.
@@ -208,6 +253,9 @@ Pode ser interessante haver um tipo de serviço diferenciado onde algumas partes
 Outra vertente da ideia é possuir um gerador de site automatizado, que conteria todos os dados sobre o evento, assim como o aplicativo. Mas nesse caso pecaríamos em personalização, num ambiente muito mais customizável e visual como a web.
 
 \subsection{Requisitos não-funcionais}
+\begin{itemize}
+	\item 
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Método de monetização}
