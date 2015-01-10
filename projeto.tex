@@ -82,12 +82,34 @@ Handy	& The	& 				& \\
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Método de Trabalho}
+O objetivo principal deste projeto é produzir um sistema de mercado, confiável e que possa ser usado por congressistas e organizadores de eventos para melhoria da comunicação. Para que tenhamos sucesso, é essencial ter um procedimento sólido para o entendimento do projeto e do que deve ser feito, e uma metodologia eficiente de desenvolvimento.
 
+\subsection{Metodologia de análise e avaliação das premissas do projeto}
+Para tanto, considerando o fator inovador da ideia, foi decidido adotar a metodologia da Startup Enxuta, ou \emph{Lean Startup} como é mais conhecida. O conceito principal por trás dela é o \emph{Customer Discovery}\cite{manual-startup}, cujo objetivo é pesquisar o mercado e identificar suas características. Esse processo consiste de pesquisas e análises de mercado, enquetes e entrevistas com possíveis clientes, a fim de avaliar a viabilidade do projeto e comparar as hipóteses iniciais com os anseios e problemas reais dos clientes.
+
+A principal vantagem do \emph{Customer Discovery} é a tranquilidade de construir uma empresa baseada em fatos reais e sólidos, ao invés de trabalhar em cima de premissas incertas e que podem ser falhas. É essencial saber em que terreno estamos pisando, de forma a gerar o máximo de valor para o cliente, e assim obter feedback sincero sobre o progresso do sistema. A partir desse feedback é possível re-desenhar o projeto, de forma a atingir as expectativas dos usuários e obter melhor aceitação no mercado.
+
+\subsection{Metodologia de desenvolvimento}
+Seguindo as ideias do Movimento Agile, que em parte também inspiraram a \emph{Lean Startup}, o desenvolvimento do projeto consistirá principalmente de diversas iterações curtas entre criação, testes e apresentação aos usuários, para que o feedback seja recebido rapidamente e inserido no próximo ciclo de iterações.
+
+Para organizar o desenvolvimento, as tarefas serão geridas a partir da área de \emph{Issues} do \emph{BitBucket}. Lá é possível criar tarefas, categorizar e priorizar, delegar e ordenar. O andamento do projeto será acompanhado a partir de \emph{milestones} configurados na mesma área, todos com claras datas de finalização.
+
+O \emph{BitBucket}, além de possuir um subsistema de tarefas, serve principalmente para armazenar na \emph{cloud} um servidor centralizado de \emph{git}. Desta forma temos também um sistema eficiente de backup de código. Ele também participa do ambiente da companhia, auxiliando a entender o histórico de desenvolvimento no decorrer do tempo. Sistemas de versionamento como o \emph{git} armazenam todas as alterações de código que foram feitas, nos ajudando a analisar a produtividade e encontrar, de forma simples, os responsáveis por determinadas partes do sistema.
+
+Por fim, para organizar o fluxo de código, será utilizado o \emph{GitFlow}\cite{gitflow} uma metodologia de versionamento que organiza as \emph{tags} de um repositório de forma clara e lógica. A organização eficaz desse sistema nos permite criar um ciclo contínuo de \emph{deploys}, e futuramente implementar um sistema de Integração Contínua\footnotemark{} que irá se adaptar facilmente ao gerenciamento que já teremos.
+
+\footnotetext{Integração contínua é o nome de um ciclo ininterrupto de desenvolvimento que visa a entrega fixa de pequenos pacotes. Novas funcionalidades ou correções e alterações são sempre acompanhadas de testes automatizados, que, quando tem resultado positivo, possibilitam a atualização do sistema em produção ou outras tarefas cotidianas do projeto, tudo de forma automatizada.}
+
+\begin{figure}[!hb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagens/gitflow.png}
+	\caption{Exemplo de como \emph{GitFlow} funciona, exibindo os diversos \emph{branches} da metodologia.}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{A Empresa e o Negócio}
-
+% Aqui precisamos falar sobre o historico e atividade da empresa (aka quem é o cara por trás da empresa, já que ela ainda não existe), o mercado, a concorrencia e escalabilidade do negocio. Boa parte disso aparece no BMC mas nem tudo, então tem que ficar de olho
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Histórico}
