@@ -114,8 +114,71 @@ Por fim, para organizar o fluxo de código, será utilizado o \emph{GitFlow}\cit
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Histórico}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Descrição do Negócio}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{O mercado de eventos}
+
+O mercado em que desejamos atuar pode ser dividido em duas macro-categorias, consideradas a partir do objetivo-fim de sua(s) atividade(s). Nesta divisão, o tamanho do público presente não é relevante. %TODO: buscar referências sobre os tipos de eventos
+
+\begin{description}
+	\item[Entretenimento e cultura em geral]
+	Este grupo engloba atividades diversas, como: espetáculos teatrais, performáticos ou musicais; eventos beneficentes e de arrecadação de fundos; atividades esportivas, sejam competitivas ou recreativas. Estes eventos normalmente tem entrada controlada e paga, apesar de muitos (especialmente os beneficentes) também serem gratuitos, e algumas vezes, de entrada livre. Eles tendem a ter uma programação única e de interesse geral, apesar de alguns eventos musicais serem compostos de diversos palcos, cada um com atividades diferenciadas.
+
+	\item[Compartilhamento e construção de conhecimento]
+	Aqui ficam categorizados eventos cujo objetivo é transmitir, divulgar e/ou debater novas informações dentro de um tópico, seja ele amplo ou específico. São representados por este grupo atividades de cunho tecnológico, científico, corporativo ou religioso. Em geral, as reuniões possuem uma programação mais elaborada, podendo ser composta por atividades simultâneas, que podem ser reunidas em torno de interesses distintos dentro do campo abordado. Podem ser pagos ou gratuitos mas, em geral, possuem entrada controlada. De todos os eventos, deste e do outro grupo, os únicos que normalmente não possuem ampla divulgação são os corporativos -- por definição, estes são de interesse somente dos participantes de uma empresa ou entidade específica, e portanto recebem somente divulgação interna.
+\end{description}
+
+A partir desta divisão, podemos indicar o segundo grupo como sendo o foco deste projeto.\\
+Por um lado, o mercado do primeiro grupamento se encontra saturado de empresas oferecendo serviços como venda de ingressos, controle de bilheteria e atividades similares. É um mercado que movimenta mais de 70 bilhões ao ano somente no Brasil\cite{pegn-mercado-eventos}, e portanto, foi abocanhado por diversas companhias, algumas já consolidadas no setor, e outras mais novas, tentando ter sua fatia, usando de recursos inovadores.\\ Nestes eventos a programação, quando é diversificada, é facilmente assimilada pelos participantes, quando necessário.
+Por outro lado, para os outros eventos há algumas empresas que fornecem serviços de organização e gerenciamento, mas em geral é um mercado com menor diversificação de serviços. Há também uma necessidade maior de divulgação das atividades no congresso, visto que muitas das vezes nem todo mundo estará interessado no que estará sendo ministrado ou discutido em determinado momento. Em eventos maiores, muitas das vezes, há distintos grupos de discussões ocorrendo simultaneamente, o que também demanda que os participantes estejam informados dos assuntos e a localização das atividades.
+
+O foco deste projeto é o último grupo, nas necessidades citadas acima. As tarefas de comunicação e divulgação do evento para os interessados é tradicionalmente feita a partir de publicações em mídia especializada e na internet, e dentro dos eventos, a partir de panfletos, quadros informativos e mídia impressa em geral.
+Nosso objetivo é transformar os eventos de programação instrutiva uma atividade mais interativa, dinâmica e coesa, evitando os problemas comuns da desinformação, como:
+\begin{itemize}[itemsep=-1ex]
+	\item atrasos e desencontros na programação;
+	\item perda de atividades relevantes para o participante;
+	\item problemas em localizar trabalhos e atividades de interesse;
+	\item dificuldade em fazer \emph{networking}, reencontrando colegas ou fazendo novos contatos;
+	\item complicações para encontrar locais agradáveis para alimentação durante o evento, e atividades de lazer antes e/ou após o mesmo, bem como de serviços de hotelaria além daqueles recomendados ou que fizeram parceria com a organização;
+	\item desencontros quanto \`a distribuição e lotes dos ingressos, aumentando o custo de participação -- culminando até mesmo na desistência de alguns interessados.
+\end{itemize}
+
+\subsubsection*{Os tipos de eventos científicos e tecnológicos} \label{sec:eventos}
+De acordo com as atividades de transmissão e e criação de conhecimento, conforme citadas acima, há algumas dinâmicas distintas de eventos, que possuem objetivos um pouco distintos e trabalham em torno destes. Os tipos mais comuns de eventos são\cite{tipos-manager}\cite{tipos-parlante}\cite{dicionario}:
+
+\begin{description}
+	\item[Congresso] Tem objetivos e atividades mais diversificados, visando ao debate de assuntos de um segmento específico, com atualização de conceitos do mercado, bem como exposição e divulgação de novidades. Normalmente é organizado por entidades associativas de foro nacional, regional ou internacional, e o público-alvo é o grupo participantes destas entidades -- sendo, portanto, composto por pessoas com conhecimento dos temas. Possui uma programação diversa, normalmente sendo composto por mesas-redondas, conferências, simpósios, palestras, painéis, cursos e workshops. É interessante para manter e criar novos contatos, e ficar atualizado sobre o que ocorre no setor. Pela variedade e quantidade de atividades, estes duram de alguns dias a várias semanas, consumindo de 4 a 8 horas por dia.
+	
+	\item[Conferência] Uma reunião informativa composta por palestras formais. As atividades consistem de exposições de resultados por autoridades no assunto, e os questionamentos do auditório ocorrem somente no final, normalmente por escrito. O público já está familiarizado com o tópico do evento, e tem como objetivo a expansão ou atualização dos conhecimentos que já possuem. Também envolve networking, que em geral é bem proveitoso visto que os participantes em geral tem conhecimento sobre o tema abordado. %todo: pesquisar na internet a programacao de conferencias famosas e conferir se bate com o que ta escrito aqui
+							
+	\item[Convenção] Normalmente é promovida por entidades corporativas ou políticas. O maior objetivo das convenções é a integração e networking entre as pessoas daquela organização, gerando estímulos coletivos \`a interação do público. São apresentados temas diversos, mas sempre relacionados \`aquele grupo, levando os participantes a entender melhor o trabalho desenvolvido e, também, para que estes possam agir melhor em favor da instituição no futuro.
+	
+	\item[Seminário] O objetivo deste é a exposição de novos conceitos para um público interessado mas menos informado no tema. Tende a ser mais parcial que os outros pois não há elementos de discussão dos tópicos abordados, e a fonte de informação normalmente é única -- o orador ou expositor do seminário, que usualmente é um expert do mercado. A atividade também pode ser presidida por mais de uma pessoa, num caso em que ambas as personalidades são complementares no assunto abordado. %todo há eventos chamados "seminarios"? Se sim, qual a programacao?
+					
+	\item[Simpósio] Um evento ou atividade aberto, objetivando o intercambio de informações e pontos de vista. A partir de um tema ou tópico específico, são desenvolvidos questionamentos e discussões entre os expositores e os próprios participantes, apresentando aspectos diferentes sobre o assunto -- que geralmente é científico e não é um amplo consenso no mercado. %todo ficou meio vago. Qual é a programaçao de um simposio e como eles sao englobados em eventos maiores (sao)?
+	
+	\item[Fórum] Tipo de evento no qual há a participação de um público numeroso, com programação mais abrangente e diversificada. A ideia é sensibilizar a opinião publica ou divulgar ao público assuntos de interesse geral, seja de setores específicos, da economia, ou sobre temas sociais ou políticos. Possui atividades mais gerais e abertas, para atrair e educar todo espectro de público.
+\end{description}
+		
+Os eventos descritos acima \`as vezes são compostos por diferentes atividades. Em específico, simpósios, seminários e \`as vezes conferências também podem estar englobados em eventos de maior porte, como grandes conferências, congressos ou fóruns. Além destes, seguem aqui os componentes mais comuns dos eventos:
+\begin{description}
+	\item[Palestra] Apresentação por alguém mais inteirado num assunto a um público que tem interesse em se aprofundar no tópico. Pode ter diversos objetivos, como atualização curricular, discriminação de resultados, descrição de casos de sucesso, fins motivacionais, dentre outros. Dependendo da informalidade da atividade, questionamentos podem ser feitos durante -- de modo a não perder o foco em determinado tópico -- ou ao final -- para que o palestrante não perca seu próprio foco. Tende a durar cerca de uma hora, podendo se alongar. 
+
+	\item[Mesa-redonda] Uma reunião presidida por um coordenador, que organiza e fomenta uma discussão sobre determinado assunto. Há uma apresentação inicial de pontos por cada um dos expositores (que podem ou não ser especialistas da área), e depois acontece um debate sobre os tópicos -- que, em geral, não são consolidados e levantam questionamentos --, em busca de algum tipo de deliberação. Auxilia os expectadores a se manterem informados e pensantes sobre o tema, de modo a gerar mais conhecimento e melhor entendimento sobre o que ocorre. Da mesa-redonda derivou o simpósio, que é uma versão mais ampla dessa atividade, e por vezes, mais extensa.
+
+	\item[Painel de debates] Outro tipo de atividade similar \`a mesa-redonda. O foco maior é na discussão, pressupondo expectadores com mais conhecimento sobre o tema apresentado. A conversa tende a ser de mais alto nível, pois os participantes são especialistas, buscando gerar maior entendimento sobre os tópicos abordados.
+
+	\item[Briefing] Um tipo de palestra dada por alguém de renome na área, com o objetivo de introduzir algum assunto específico mais avançado, ou aprofundar as discussões que já aconteceram. Tende a acompanhar uma conferência, permitindo aos participantes obter maior entendimento do que será ou foi abordado nela.
+
+	\item[Curso] Detalhamento de determinado assunto ou conjunto de assuntos com o objetivo de treinamento. Normalmente é ministrado por uma ou mais pessoas de formação acadêmica, e centrado na teoria -- apesar de também poder conter partes práticas. O público principal é composto por pessoas de pouco ou nenhum entendimento do tema, apesar de também existirem cursos de especialização, cujo foco é aprimorar os conhecimentos já existentes.
+
+	\item[Workshop] Similar ao curso, mas tem um funcionamento mais focado na prática. É mais dinâmico e interativo, levando os participantes a assimilar os conteúdos por meio de discussões e atividades práticas. Muitas vezes é parte de conferências também, objetivando fixar melhor algum conteúdo apresentado na mesma.
+\end{description}
+
 % Explicar porque o Business Model Canvas é uma boa estratégia para o projeto/empresa
 % Explicar porque o canvas usado será o Lean Canvas, e não o tradicional
 
@@ -142,12 +205,6 @@ Por fim, para organizar o fluxo de código, será utilizado o \emph{GitFlow}\cit
 %e ai sim, tendo eventos, eu consigo divulgar pros usuarios e dizer "ei, os eventos mais interessantes e modernos tao aqui! vem ver, instala aí"
 %e dps disso, tendo mais usuarios, eu consigo convencer mais organizadores a colocar seus eventos no app, e por ai vai
 
-
-
-
-% Aqui indicam que o mercado de eventos movimenta 70bi/ano no Brasil: http://revistapegn.globo.com/Revista/Common/0,,EMI330736-17180,00.html
-
-\subsection{Os tipos de eventos científicos e tecnológicos} \label{sec:eventos} % injetar isso em algum ponto do BMC
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Concorrência}
@@ -270,7 +327,7 @@ A empresa possui como objetivo cobrir todos os aspectos do processo de vendas e 
 	\item Integração com mídias sociais, permitindo o compartilhamento do evento após a compra -- segundo suas pesquisas, isso aumenta consideravelmente o alcance do evento;
 	\item Possibilidade de coletar dados diversos dos participantes, como título, site, ou campos personalizados -- útil para preenchimento de identificações de conferências;
 	\item Relatórios robustos sobre os participantes, como dados de contato, informações gerais e engajamento, e informações financeiras do evento;
-	\item Suporte 24h por dia, 7 dias por semana para os organizadores e participantes;
+	\item Suporte 24 horas por dia, 7 dias por semana para os organizadores e participantes;
 	\item Plataforma Neon: venda de ingressos no local do evento com impressora de mercado (conhecida como \emph{BOCA}), e credenciamento a partir de aplicativo próprio, com pessoal próprio também;
 	\item Sistema de coleta de doações para eventos políticos ou de arrecadação de fundos.
 \end{itemize}
@@ -430,10 +487,10 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 			\item Os comentários podem ser vistos em tempo real pelos participantes do projeto avaliado;
 			\item As notas são contabilizadas também em tempo real pela organização e/ou congressistas.
 		\end{enumerate}
-	\item Facilitar a troca de contatos nos momentos de \emph{networking} (similar ao \emph{SocialTagg}\cite{socialtagg}):
+	\item Facilitar a troca de contatos nos momentos de \emph{networking} (similar ao sistema da \emph{SocialTagg}\cite{socialtagg}):
 		\begin{itemize}
 			\item Exibir os dados dos congressistas presentes;
-			\item Permitir que contatos sejam favoritados e recebam notas;
+			\item Permitir que contatos sejam favoritados e recebam anotações;
 			\item Possivelmente, permitir o download offline da base de congressistas, a partir de bases de distribuição \emph{Bluetooth} no local do evento (tecnologia conhecida como \emph{Bluetooth Marketing}).
 		\end{itemize}
 \end{itemize}
@@ -463,8 +520,8 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 
 \begin{SCfigure}[2.5][hb]
 	\centering
-	\includegraphics[width=0.25\linewidth]{imagens/qr-wifi}
-	\protect\caption[QR-Code com dados da rede Wi-Fi]{Este QR-Code possui os dados necessários para que um aplicativo leitor possa automaticamente conectar o dispositivo à rede indicada. Neste exemplo, o formato do código se lê: "\texttt{WIFI:S:<<nome da rede>>;T:<<criptografia>>;P:<<senha>>;;}". Ele foi gerado pelo aplicativo InstaWifi\cite{instawifi}, e lido com sucesso com o BarCode Scanner\cite{barcode}, ambos para Android.}
+	\includegraphics[width=0.27\linewidth]{imagens/qr-wifi}
+	\protect\caption[QR-Code com dados da rede Wi-Fi]{Este QR-Code possui os dados necessários para que um aplicativo leitor possa automaticamente conectar o dispositivo à rede indicada. Neste exemplo, o formato do código se lê: "\texttt{WIFI:S:<<nome da rede>>;T:<<criptografia>>;P:<<senha>>;;}". Ele foi gerado pelo aplicativo InstaWifi\cite{instawifi}, e lido com sucesso com o BarCode Scanner\cite{barcode}, ambos para Android. Segundo testes efetuados, a performance de leitura e entendimento do código varia em outras plataformas, de acordo com o aplicativo usado.}
 	\label{fig:qr-wifi}
 \end{SCfigure}
 
