@@ -179,8 +179,54 @@ Os eventos descritos acima \`as vezes são compostos por diferentes atividades. 
 	\item[Workshop] Similar ao curso, mas tem um funcionamento mais focado na prática. É mais dinâmico e interativo, levando os participantes a assimilar os conteúdos por meio de discussões e atividades práticas. Muitas vezes é parte de conferências também, objetivando fixar melhor algum conteúdo apresentado na mesma.
 \end{description}
 
-% Explicar porque o Business Model Canvas é uma boa estratégia para o projeto/empresa
-% Explicar porque o canvas usado será o Lean Canvas, e não o tradicional
+\section{Um modelo de Negócios simplificado - \emph{Lean Canvas}}
+
+Segundo Blank \& Dorf \cite{manual-startup} (pg 83), frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o Lean Canvas para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
+
+Originalmente, Alex Osterwalder criou o Business Model Canvas, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, e facilmente alterado e corrigido. Posteriormente, Ash Maurya criou o Lean Canvas, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (mais arriscadas) e mutáveis de uma startup.\cite{lean-canvas}
+
+Uma consequência inerente da natureza mutante do canvas é que ele dificilmente será ``gravado em pedra''; durante o trabalho na definição deste projeto ideias novas surgirão e hipóteses serão criadas, aperfeiçoadas ou descartadas, e portanto, o canvas deverá ser atualizado. Nesta seção vamos exibir somente a versão atual do canvas, e seu histórico poderá ser conferido em XXXX. %todo: colocar o link do canvas aqui
+Também descreveremos em uma síntese maiores detalhes de cada bloco dos dois tipos de canvas, por julgarmos que, mesmo que não sejam muito mutáveis, os blocos removidos no Lean Canvas também são dignos de uma discussão inicial, ao menos. 
+
+%todo: inserir aqui a imagem do último lean canvas
+
+\subsection{Bloco Zero: Tamanho do mercado}
+Ao descrever o processo de \textit{Customer Discovery} (Descoberta do Consumidor) no livro Manual da Startup\cite{manual-startup}, Blank \& Dorf sugerem criar um resumo inicial sobre o tamanho do mercado antes de iniciar as sínteses de cada parte do Business Model Canvas.
+
+Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas: por um lado, estaremos atendendo os organizadores de eventos, que objetivam se comunicar com seus participantes; por outro, estaremos atendendo os participantes, que desejam obter as informações que os organizadores disponibilizarão sobre os eventos que os interessam. Portanto, é importante notar que, apesar do mercado ser um só, há dois tipos distintos de consumidores a se considerar neste mercado.
+
+\textbf{Para os fins deste documento, estaremos considerando como ``clientes'' os organizadores de eventos, e ``usuários'' os participantes (usuários do aplicativo).}
+
+Dito isso, nosso \underline{mercado disponível} é o segmento de eventos técnicos e científicos.\\
+Desse grupo, o \underline{mercado disponível para negócios} é o grupo de usuários que possuam um smartphone ou tablet com um dos sistemas operacionais nos quais focaremos o desenvolvimento, conforme a seção \ref{sec:tecnologias}. Adicionalmente, focaremos no início nos países lusófonos e anglófonos, com versões do aplicativo em português e inglês. O mercado disponível de clientes é definido pelos mesmos requisitos de linguagem, mas o requisito técnico passa a ser o uso confortável de um computador com Internet, ao invés de necessariamente um dispositivo móvel.\\
+Por fim, nosso \underline{mercados-alvo} será o grupo de organizadores que já pensaram em criar, ou já criaram, um aplicativo móvel para seus eventos, ou ainda, que desejem melhorar a comunicação com seus participantes, melhorando a fidelização e aumentando a venda de ingressos. Há também o grupo de congressistas, cujo alvo principal será aqueles que já se sentiram frustrados pela falta de informações ou confusos quanto às atividades de um evento, ou que se sentem curiosos e interessados numa forma mais eficiente e móvel de obter detalhes sobre o evento, tanto antes do mesmo quanto no instante.
+
+%todo calcular estimativas numéricas dos mercados
+
+Vale citar também que os nossos alvos iniciais serão o mercado de eventos tecnológicos open source, com os quais temos contato direto; e grupos de interesse científico universitários, onde executaremos pesquisas e trabalhos de divulgação iniciais.
+
+\subsubsection*{Hipóteses}
+\begin{description}[itemsep=-1ex]
+	\item[Mercado] organizadores (\textit{clientes}) e participantes (\textit{usuários}) de eventos técnicos e científicos.
+	\item[Mercado disponível] clientes com computadores com acesso à Internet; usuários com dispositivos móveis; ambos falantes de português ou inglês.
+	\item[Mercado-alvo] clientes com interesse direto ou indireto num aplicativo para comunicação com participantes; usuários com interesse direto ou indireto em informações mais eficientes sobre o evento de interesse.
+	\item[Mercado-alvo inicial] eventos de tecnologia open source; eventos científicos de origem universitária.
+\end{description}
+
+
+\subsection{Proposta de valor} % O produto, benefícios e MVP
+\subsection{Segmentos de consumidores}
+\subsection{Canais de distribuição}
+\subsection{Relacionamento com o consumidor}
+\subsection{Fonte de receita}
+\subsection{Recursos-chave}
+\subsection{Parceiros-chave}
+\subsection{Atividades-chave} % Hipóteses de mercado e diferenças competitivas
+\subsection{Estrutura de custos}
+
+
+
+
 
 % detalhar em subseções cada um dos nove pontos do BMC, mesmo assim, além dos pontos extras do Lean Canvas
 
@@ -552,6 +598,7 @@ Outra vertente da ideia é possuir um gerador de site automatizado, que conteria
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tecnologias utilizadas} \label{sec:tecnologias}
 
+% Discutir aqui a tecnologia de backend (Parse), de frontend admin e frontend mobile (Titanium+Ember ou Ionic+Angular)
 
 \section{Topologia}
 Conforme citado em \ref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
