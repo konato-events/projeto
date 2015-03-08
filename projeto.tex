@@ -22,7 +22,7 @@
 	linkcolor=black,
 	citecolor=red
 }
-
+\hyphenation{Javelin}
 
 \author{Igor~Santos\\
 	Universidade Estácio de Sá\\
@@ -122,7 +122,6 @@ Por fim, para organizar o fluxo de código, será utilizado o \emph{GitFlow}\cit
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{O mercado de eventos}
-
 O mercado em que desejamos atuar pode ser dividido em duas macro-categorias, consideradas a partir do objetivo-fim de sua(s) atividade(s). Nesta divisão, o tamanho do público presente não é relevante. %TODO: buscar referências sobre os tipos de eventos
 
 \begin{description}
@@ -180,6 +179,33 @@ Os eventos descritos acima \`as vezes são compostos por diferentes atividades. 
 	\item[Workshop] Similar ao curso, mas tem um funcionamento mais focado na prática. É mais dinâmico e interativo, levando os participantes a assimilar os conteúdos por meio de discussões e atividades práticas. Muitas vezes é parte de conferências também, objetivando fixar melhor algum conteúdo apresentado na mesma.
 \end{description}
 
+\subsection{Hipóteses gerais a serem pesquisadas - \emph{Experiment Board}}
+Considerando que uma startup é baseada em hipóteses não testadas, é necessário que tenhamos um roteiro e uma forma padronizada de seleção seleção e listagem de hipóteses. Estas, posteriormente, devem ser verificadas ou refutadas a partir de experimentos diversos, como pesquisas, entrevistas, ou análises.
+
+\begin{quotation}
+	{\small
+	%Customer development é um processo baseado em hipóteses para entender: quem são seus consumidores; quais problemas e necessidades eles tem; como eles se comportam atualmente; por quais soluções eles pagariam (mesmo que o produto ainda não esteja feito ou completo); como fornecer soluções de uma forma que combine com a forma que seus consumidores decidem, adquirem, compram e usam.
+	
+	Você provavelmente tem idéias e intuições sobre [todas essas hipóteses]. Vamos identificar o que elas realmente são: chutes. Vamos fazê-las soar um pouco melhor e chamá-las \emph{hipóteses}. Essas hipóteses podem ser sobre formar uma nova empresa, criar um novo produto, ou mesmo adicionar novas funcionalidades ou capacidades a um produto existente.
+	
+	\emph{Tudo que você faz durante [essa fase] é centrado em torno de testar hipóteses.}
+	
+	{\raggedright (ALVAREZ; Cindy. Lean Customer Development. 2014.\cite{lean-customer-development} Cap. 1. Grifo do autor, tradução nossa.)}
+	}
+\end{quotation}
+
+Tendo isso em mente, decidimos usar o \emph{Experiment Board} (criado por uma empresa chamada Javelin\cite{experiment-board-javelin}) para definir as hipóteses relevantes do nosso produto, e a melhor forma de testá-las. Muitas hipóteses são indicadas na descrição do Lean Canvas, posteriormente, mas aquelas descritas nesta seção são de cunho mais amplo, cobrindo um espectro mais diverso do projeto. Nosso objetivo é indicar as hipóteses gerais do sistema de uma forma que seja fácil de testar -- pois na maior parte das vezes, as ideias são tão grandes que é necessário fragmentá-las para torná-las testáveis\cite{experiment-board-post}.
+
+O \emph{Experiment Board} funciona listando todos os tipos de Clientes, seus Problemas, possíveis Soluções e Riscos potenciais. Depois disso, cruzamos estes quatro elementos e formulamos uma hipótese. Devemos decidir o método de teste e o critério que definirá se a hipótese foi confirmada ou refutada. Ao final do teste, indicamos o resultado e o que foi aprendido com o teste. No caso de a hipótese ter sido refutada, seus elementos devem ser revistos e novos testes, feitos -- numa ação conhecida como ``pivotar'', onde os elementos principais são mantidos mas a direção da ideia é alterada, de forma a ter uma nova visão sobre a questão.
+
+Usaremos neste projeto uma versão modificada do quadro, fornecida no Workshop de Criação de Startups do Circuito Startup\cite{workshop-startup}. As principais diferenças são: a remoção dos blocos de texto de ajuda; a quebra das áreas de Cliente e Problema em duas (o que nos facilita, visto que nosso mercado é multi-facetado [ver seção \ref{sec:lean:mercado}]); e o fato de que a principal hipótese não deve possuir solução pronta -- por ser o principal motor do produto, a solução seria ele mesmo.
+
+%todo adicionar aqui uma foto do experimental board mais preenchido
+
+%todo listar aqui as hipóteses encontradas, métodos e critérios
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Um modelo de Negócios simplificado - \emph{Lean Canvas}}
 
 Segundo Blank \& Dorf \cite{manual-startup} (pg 83), frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o Lean Canvas para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
@@ -196,12 +222,12 @@ Por fim, ainda de acordo com Ash Maurya\cite{lean-canvas}, é importante criar u
 \begin{framed}
 	Nesta seção do documento descreveremos muitos conceitos que são hipotéticos. Todos eles precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.\\
 	Para facilitar a identificação destes conceitos, usaremos um marcador de Hipótese \hip{} ou um de Confirmação \conf{} no início de cada afirmação relevante: o primeiro para aquelas que não foram testadas, e o segundo para as quais já verificamos serem procedentes -- as que não forem confirmadas serão removidas do documento, simplesmente.
-	%todo: marcar todas as hipóteses
 \end{framed}
 
-%todo: inserir aqui a imagem dos últimos canvas
+%todo: inserir aqui as imagens dos últimos canvas
 
 \subsection{Bloco Zero: Pesquisa de mercado}
+\label{sec:lean:mercado}
 Ao descrever o processo de \textit{Customer Discovery} (Descoberta do Consumidor) no livro Manual da Startup\cite{manual-startup}, Blank \& Dorf sugerem criar um resumo inicial sobre o tamanho do mercado antes de iniciar as sínteses de cada parte do Business Model Canvas.
 
 Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas: por um lado, estaremos atendendo os organizadores de eventos, que objetivam se comunicar com seus participantes; por outro, estaremos atendendo os participantes, que desejam obter as informações que os organizadores disponibilizarão sobre os eventos que os interessam. Portanto, é importante notar que, apesar do mercado ser um só, há dois tipos distintos de consumidores a se considerar neste mercado.
@@ -272,8 +298,7 @@ Os segmentos de usuários que pretendemos atingir são os seguintes:
 	\item[\hip{} Congressista de Humanas] Similar aos usuários de Ciências, mas com uma variedade um pouco diferente de atividades nos eventos, por muitas vezes tratarem de assuntos mais abstratos.
 \end{description}
 
-\subparagraph*{O usuário inicial - \emph{early adopter}, ou \emph{earlyvangelist}}
-.\\ %TODO fixme: hack pra quebrar a linha
+\subparagraph*{O usuário inicial - \emph{early adopter}, ou \emph{earlyvangelist}} ~\\
 É essencial que possamos definir quem é o típico \emph{early adopter} do nosso produto. Um \emph{early adopter} é aquele usuário que se identifica muito com o problema que nos propomos a resolver, e percebe na nossa empresa a chance de ter aquilo solucionado. Este personagem é uma peça chave no desenvolvimento e no futuro do projeto. No início, ele auxilia com testes precisos e sugestões diversas, sendo um correspondente ideal dos anseios dos usuários, por vir diretamente do grupo deles. Por ser o usuário mais ferrenho, o \emph{early adopter} tende a ter necessidades mais amplas, trazendo a bordo novas ideias e a chance de cobrir cada vez melhor os requisitos dos usuários comuns também. Devido à sua avidez, eles também podem ser chamados de \emph{earlyvangelists}, pois quando percebem que o produto os satisfaz, ficam felizes em divulgar gratuitamente a seus canais sociais -- o que traz ao produto marketing sem custos, e do melhor tipo possível: a indicação direta. No longo prazo a tarefa de evangelização se mantém, enquanto suas necessidades devem continuar sendo ouvidas para que não percamos os usuários de vista e continuemos a atendê-los satisfatoriamente.
 
 Dito isso, podemos identificar que um \emph{early adopter} típico do nosso produto será:
