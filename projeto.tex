@@ -6,7 +6,8 @@
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{pifont}
-\usepackage{xcolor,graphicx}
+\usepackage[usenames,dvipsnames,svgnames]{xcolor}
+\usepackage{graphicx}
 \usepackage{sidecap}
 \usepackage[all,defaultlines=2]{nowidow}
 \usepackage[multiple]{footmisc}
@@ -190,6 +191,14 @@ Também descreveremos em uma síntese maiores detalhes de cada bloco dos dois ti
 
 Por fim, ainda de acordo com Ash Maurya\cite{lean-canvas}, é importante criar uma versão do canvas para cada grupo de clientes da companhia. No nosso caso, com um produto multifacetado, por um lado precisaremos servir e atrair os organizadores de eventos, que pagarão pelo serviço e desejam melhorar a comunicação com seus congressistas. Por outro, os congressistas precisam se sentir confortáveis na aplicação e com vontade de saber mais sobre ela nas divulgações, interessados em utilizá-la. Essa dualidade reflete os dois lados do sistema, onde precisamos satisfazer dois tipos distintos de clientes, com necessidades e objetivos diferentes. Portanto, teremos dois canvas que evoluirão em sintonia, cada um indicando os planos para cada tipo de \emph{persona}.
 
+\newcommand{\hip} {{\color{BlueViolet}\framebox[1.1\width]{HIP}}}
+\newcommand{\conf}{{\color{OliveGreen}\framebox[1.1\width]{CONF}}}
+\begin{framed}
+	Nesta seção do documento descreveremos muitos conceitos que são hipotéticos. Todos eles precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.\\
+	Para facilitar a identificação destes conceitos, usaremos um marcador de Hipótese \hip{} ou um de Confirmação \conf{} no início de cada afirmação relevante: o primeiro para aquelas que não foram testadas, e o segundo para as quais já verificamos serem procedentes -- as que não forem confirmadas serão removidas do documento, simplesmente.
+	%todo: marcar todas as hipóteses
+\end{framed}
+
 %todo: inserir aqui a imagem dos últimos canvas
 
 \subsection{Bloco Zero: Pesquisa de mercado}
@@ -254,9 +263,28 @@ Um dos grandes objetivos de eventos técnicos e científicos é a concretizaçã
 \end{description}
 
 \paragraph*{2 - Segmentos de consumidores}
-%todo: qual a diferença disso pra descriçao do mercado? Lá em cima precisamos subdividir o mercado para calcular seu tamanho, mas como fazer isso sem descrever os segmentos de consumidores?
+Os segmentos de usuários que pretendemos atingir são os seguintes:
+\begin{description}
+	\item[Congressista de TI] Este usuário frequenta eventos que, em geral, possuem palestras, \emph{lightning talks}, às vezes workshops e keynotes. Também ocorrem exposições de patrocinadores. Estes eventos dificilmente (se é que) tem divulgação de pesquisas, mesas-redondas e outras atividades. Eles também não costumam durar mais de 2 ou 3 dias, e há muitos que duram um dia só.
+
+	\item[Congressista de Ciências] Este tipo de usuário costuma ir a eventos mais longos e com mais variedade de atividades. Eles possuem, comumente, menos aptidão tecnológica e dispositivos menos modernos são comuns também.
+
+	\item[Congressista de Humanas] Similar aos usuários de Ciências, mas com uma variedade um pouco diferente de atividades nos eventos, por muitas vezes tratarem de assuntos mais abstratos.
+\end{description}
 
 \subparagraph*{O usuário inicial - \emph{early adopter}, ou \emph{earlyvangelist}}
+.\\ %todo: hack pra quebrar a linha
+É essencial que possamos definir quem é o típico \emph{early adopter} do nosso produto. Um \emph{early adopter} é aquele usuário que se identifica muito com o problema que nos propomos a resolver, e percebe na nossa empresa a chance de ter aquilo solucionado. Este personagem é uma peça chave no desenvolvimento e no futuro do projeto. No início, ele auxilia com testes precisos e sugestões diversas, sendo um correspondente ideal dos anseios dos usuários, por vir diretamente do grupo deles. Por ser o usuário mais ferrenho, o \emph{early adopter} tende a ter necessidades mais amplas, trazendo a bordo novas ideias e a chance de cobrir cada vez melhor os requisitos dos usuários comuns também. Devido à sua avidez, eles também podem ser chamados de \emph{earlyvangelists}, pois quando percebem que o produto os satisfaz, ficam felizes em divulgar gratuitamente a seus canais sociais -- o que traz ao produto marketing sem custos, e do melhor tipo possível: a indicação direta. No longo prazo a tarefa de evangelização se mantém, enquanto suas necessidades devem continuar sendo ouvidas para que não percamos os usuários de vista e continuemos a atendê-los satisfatoriamente.
+
+Dito isso, podemos identificar que um \emph{early adopter} típico do nosso produto será:
+
+\begin{description}[itemsep=-1ex]
+	\item[Jovem, de de 18$\sim$30 anos] potencialmente mais conectado e ativo, física e socialmente, e com mais facilidade para utilizar tecnologia;
+	\item[Dono de um smartphone recente (não necessariamente de última geração)] não terá impasses em baixar, instalar e utilizar todas as funcionalidades do aplicativo;
+	\item[Da área de TI] há mais diversidade de eventos durante o ano, e menor variedade de atividades -- o que significa mais foco no que importa durante os passos iniciais do aplicativo;
+	\item[Morador de metrópoles] há maior concentração de eventos, tanto no mercado nacional quanto internacional; %todo: devemos focar mais no mercado nacional dada a concorrência do Bizzabo, ou focar em todos os mercados para gerar concorrência desde o princípio?
+	\item[Frequentador assíduo de eventos] que frequente eventos de médio/grande porte (pela variedade de conteúdos) pelo menos 2x ao ano, além de encontros mais informais de desenvolvedores e palestras.
+\end{description} 
 % descrever porque é importante saber quem é o early adopter e porque ele é importante para a startup, e daí descrever quem será o nosso
 
 \paragraph*{3 - A Solução}
