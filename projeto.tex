@@ -24,12 +24,17 @@
 }
 \hyphenation{Javelin}
 
-\author{Igor~Santos\\
+\author{\textbf{Igor~Santos}\\
 	Universidade Estácio de Sá\\
 	Rio de Janeiro, RJ\\
-	\texttt{igorsantos07+conf@gmail.com}
+	\texttt{conf@igorsantos.com.br}
+	\\\\
+	\textit{Co-participação de:}\\
+	\textit{Eduardo Ferreira}\\
+	\textit{Letícia Oliveira}
 }
-\title{Projeto~de~TCC\\TheConf}
+
+\title{Projeto~de~TCC\\\textbf{TheConf}}
 
 \makeindex
 \begin{document}
@@ -40,12 +45,17 @@
 
 \chapter*{Prefácio}
 \section*{Definições usadas neste documento}
-Para fins de comunicação, as seguintes palavras são tidas como sinônimo, exceto quando especificado o contrário -- na seção \ref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
+Para fins de comunicação, as seguintes palavras e seus atores são tidas como sinônimas, exceto quando especificado o contrário -- na seção \ref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
 \begin{itemize}
-	\item Conferência
-	\item Congresso
-	\item Evento
+	\item Evento / participante
+	\item Conferência / conferencista
+	\item Congresso / congressista
 \end{itemize}
+
+\section*{Co-participações e histórico do projeto}
+No mundo real, a ideia deste projeto tomou a forma de uma startup. Inicialmente era um plano solitário, posto à prova por inúmeras conversas e questionamentos com diversos amigos e novos colegas, encontrados a partir de eventos de networking.
+
+No decorrer do tempo, no entanto, conheci duas pessoas que vieram a integrar a equipe da startup, o Eduardo Ferreira (Graduando em Administração de Empresas pela UNIRIO) e a Letícia Oliveira (graduanda em Administração de Empresas pela UERJ). Seguindo as normas desta instituição, todo o desenvolvimento do sistema foi feito exclusivamente pelo aluno autor; as contribuições dos outros membros à startup se deram somente no âmbito de Negócios e ideias.
 \newpage
 
 \pagenumbering{arabic}
@@ -56,13 +66,16 @@ Para fins de comunicação, as seguintes palavras são tidas como sinônimo, exc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{O Projeto}
 
-É notável a dificuldade que conferencistas possuem, muitas das vezes, em obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento. Esta opinião foi compartilhada por diversas pessoas informalmente consultadas.
+É notável a dificuldade que os congressistas possuem, frequentemente, em obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento. Muitas vezes é difícil ficar sabendo sobre novos eventos das suas áreas de interesse, também. Esses fatos foram notados por experiência própria e durante 
 
-Por exemplo, muitas vezes são entregues panfletos ou cartões com a programação, mas esse tipo de objeto frequentemente se perde ou se danifica no decorrer do dia. Sem contar as possíveis alterações de última hora, o que torna a grade distribuída alvo de rabiscos e anotações. Invariavelmente, \emph{slots} de programação indefinida (comum em mesas-redondas ou \emph{lightning talks}\footnotemark) levam o conferencista a se deslocar até o lugar para descobrir se valerá a pena assistir ou não -- ou simplesmente não atender ao \emph{slot}.
+Por exemplo, muitas vezes são entregues panfletos ou cartões com a programação, mas esse tipo de objeto frequentemente se perde ou se danifica no decorrer do dia. Sem contar as possíveis alterações de última hora, o que torna a grade distribuída alvo de rabiscos e anotações. Invariavelmente, \emph{slots} de programação indefinida (comum em mesas-redondas ou \emph{lightning talks}\footnotemark) levam o conferencista a se deslocar até a atividade para descobrir se valerá a pena assistir ou não. Também acontece de diversas vezes haver informação desencontrada sobre o evento, como conflitos entre os dados no Facebook, na página da organização, no site e no material impresso.
 
-Partindo destas premissas, o objetivo do Projeto é criar um aplicativo móvel que permita aos usuários obterem as diversas informações referentes ao evento do qual participam, em tempo real. Informações como: a liberação da grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Este aplicativo teria um backend facilmente acessível, onde os organizadores poderiam inserir tais informações.
+Para eventos de menor porte, o que mais sofre é a divulgação; com o orçamento de marketing reduzido, muitas vezes a divulgação impressa é curta e cobre somente regiões de grande apelo - como corredores de alto fluxo nas maiores instituições de ensino (áreas, aliás, disputadas por diversos outros cartazes e filipetas). Materiais impressos dificilmente carrega detalhes sobre o evento, obrigando o usuário a buscar mais detalhes na internet, por exemplo. Esses também tendem a ficar defasados facilmente, caso alguma alteração na programação ocorra. Por fim, a divulgação tradicional também depende de recursos humanos para fazê-la.\\
+Já a divulgação online tende a ser pouco eficiente e, portanto, é muitas vezes colocada em segundo plano: é difícil atingir mercados de nicho sem publicidade direcionada -- e, normalmente, bem paga.
 
-\footnotetext{Série de palestras de curta duração, dadas pelos próprios conferencistas}
+Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos e obter as informações referentes ao evento do qual participam, em tempo real, ou desejam participar. Informações como: a liberação da grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes e envio de pergunntas; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Este sistema teria um backend facilmente acessível, onde os organizadores poderiam inserir tais informações.
+
+\footnotetext{Série de palestras de curta duração (5~10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection*{Opções de nome}
