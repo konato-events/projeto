@@ -70,10 +70,10 @@ No decorrer do tempo, no entanto, conheci duas pessoas que vieram a integrar a e
 
 Por exemplo, muitas vezes são entregues panfletos ou cartões com a programação, mas esse tipo de objeto frequentemente se perde ou se danifica no decorrer do dia. Sem contar as possíveis alterações de última hora, o que torna a grade distribuída alvo de rabiscos e anotações. Invariavelmente, \emph{slots} de programação indefinida (comum em mesas-redondas ou \emph{lightning talks}\footnotemark) levam o conferencista a se deslocar até a atividade para descobrir se valerá a pena assistir ou não. Também acontece de diversas vezes haver informação desencontrada sobre o evento, como conflitos entre os dados no Facebook, na página da organização, no site e no material impresso.
 
-Para eventos de menor porte, o que mais sofre é a divulgação; com o orçamento de marketing reduzido, muitas vezes a divulgação impressa é curta e cobre somente regiões de grande apelo - como corredores de alto fluxo nas maiores instituições de ensino (áreas, aliás, disputadas por diversos outros cartazes e filipetas). Materiais impressos dificilmente carrega detalhes sobre o evento, obrigando o usuário a buscar mais detalhes na internet, por exemplo. Esses também tendem a ficar defasados facilmente, caso alguma alteração na programação ocorra. Por fim, a divulgação tradicional também depende de recursos humanos para fazê-la.\\
-Já a divulgação online tende a ser pouco eficiente e, portanto, é muitas vezes colocada em segundo plano: é difícil atingir mercados de nicho sem publicidade direcionada -- e, normalmente, bem paga.
+Para eventos de menor porte, o que mais sofre é a divulgação; com o orçamento de marketing reduzido, muitas vezes a divulgação impressa é curta e cobre somente regiões de grande apelo - como corredores de alto fluxo nas maiores instituições de ensino (áreas, aliás, disputadas por diversos outros cartazes e filipetas). Materiais impressos dificilmente carrega detalhes sobre o evento, obrigando o usuário a buscar mais detalhes na internet, por exemplo. Esses também tendem a ficar defasados facilmente, caso alguma alteração na programação ocorra. Por fim, a divulgação tradicional também depende de recursos humanos para fazê-la, que em todos os casos são escassos.\\
+Já a divulgação online tende a ser pouco eficiente e, portanto, é muitas vezes colocada em segundo plano, ou sub-utilizada: é difícil atingir mercados de nicho sem publicidade direcionada -- e, normalmente, bem paga.
 
-Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos e obter as informações referentes ao evento do qual participam, em tempo real, ou desejam participar. Informações como: a liberação da grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes e envio de pergunntas; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Este sistema teria um backend facilmente acessível, onde os organizadores poderiam inserir tais informações.
+Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: a liberação da grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes e envio de perguntas; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Este sistema teria um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
 
 \footnotetext{Série de palestras de curta duração (5~10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
 
@@ -82,29 +82,41 @@ Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digi
 
 Seguem aqui alguns componentes que podem ser utilizados de inspiração, e algumas sugestões já pensadas para o nome do sistema. Tais ideias também foram lançadas num aplicativo web chamado NameStorm (http://namestorm.niicho.com/ac659), que facilita encontrar domínios e perfis sociais com os nomes indicados, bem como angariar votos para decidir a preferência da equipe.\\
 
-\begin{tabular}{rl|c|c}
-\multicolumn{2}{c|}{\textbf{Afixos}} & \textbf{Substantivos} & \textbf{Sugestões} \\\hline
-Bit		& Data	& Congresso		& \multirow{6}{6cm}{EvenTime \footnotemark, BitConf, Dataconf, QuickConf, ClickConf, HandyConf, The Event, The Conf} \\\cline{1-3}
-Time	& App	& Conferência	& \\\cline{1-3}
-Quick	& Fast	& Conf			& \\\cline{1-3}
-Rápido	& Veloz	& Evento		& \\\cline{1-3}
-Click	& Lite	& Event			& \\\cline{1-3}
-Handy	& The	& 				& \\
+\begin{tabular}{rcl|c|c}
+\multicolumn{3}{c|}{\textbf{Afixos}} 	& \textbf{Principais} & \textbf{Sugestões} \\\hline
+Bit			& Time		& Data		& Congresso		& \multirow{6}{7.5cm}{
+	EvenTime: \emph{pode soar como Even+Time};\\
+	BitConf, Dataconf, QuickConf, HandyConf, TheConf: \emph{referências a conferências são boas mas focadas só num tipo de mercado}\\
+	The Event, Click Event, Link Event: \emph{pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick ou InEvent por ex.)};\\
+	Events To Be Disclosed (TDB), Disclose Events;\\
+	Informoi, Paroloi, Konato, Lekto, Efekto: \emph{esperanto};
+}\\\cline{1-3}
+Quick		& Fast		& App		& Conferência	& \\\cline{1-3}
+Skill		& Link		& Fact		& Schedule		& \\\cline{1-3}
+Rápido		& Veloz		& Click 	& Evento		& \\\cline{1-3}
+Profissional& Detalhes	& Lite		& Event			& \\\cline{1-3}
+Organização	& Esperto	& Online	& Know			& \\\cline{1-3}
+Inteligência& Expert	& Develop	& Knowledge		& \\\cline{1-3}
+Atualização	& Achieve	& Prático	& Lore			& \\\cline{1-3}
+Progresso	& Spread	& Action	& Destaque		& \\\cline{1-3}
+Interação	& One		& Zen		& Palco			& \\\cline{1-3}
+Handy		& The		& VIP		& Stage			&
 \end{tabular}
+
 \footnotetext{EvenTime pode soar como \emph{Even+Time}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Método de Trabalho}
-O objetivo principal deste projeto é produzir um sistema de mercado, confiável e que possa ser usado por congressistas e organizadores de eventos para melhoria da comunicação. Para que tenhamos sucesso, é essencial ter um procedimento sólido para o entendimento do projeto e do que deve ser feito, e uma metodologia eficiente de desenvolvimento.
+O objetivo principal deste projeto é produzir um sistema de mercado, confiável e que possa ser usado por congressistas e organizadores de eventos para melhoria da comunicação. Para que tenhamos sucesso, é essencial ter um procedimento sólido para o entendimento do projeto e do que deve ser feito, e uma metodologia eficiente de desenvolvimento da ideia e do projeto em si.
 
 \subsection{Metodologia de análise e avaliação das premissas do projeto}
-Para tanto, considerando o fator inovador da ideia, foi decidido adotar a metodologia da Startup Enxuta, ou \emph{Lean Startup} como é mais conhecida. O conceito principal por trás dela é o \emph{Customer Discovery}\cite{manual-startup}, cujo objetivo é pesquisar o mercado e identificar suas características. Esse processo consiste de pesquisas e análises de mercado, enquetes e entrevistas com possíveis clientes, a fim de avaliar a viabilidade do projeto e comparar as hipóteses iniciais com os anseios e problemas reais dos clientes.
+Para tanto, considerando o fator inovador da ideia, foi decidido adotar a metodologia da Startup Enxuta, ou \emph{Lean Startup} como é mais conhecida. O conceito principal por trás dela é o \emph{Customer Discovery}\cite{manual-startup}, cujo objetivo é pesquisar o mercado e identificar suas características. Esse processo consiste em pesquisas e análises de mercado, enquetes e entrevistas com possíveis clientes, a fim de avaliar a viabilidade do projeto e comparar as hipóteses iniciais com os anseios e problemas reais dos clientes.
 
-A principal vantagem do \emph{Customer Discovery} é a tranquilidade de construir uma empresa baseada em fatos reais e sólidos, ao invés de trabalhar em cima de premissas incertas e que podem ser falhas. É essencial saber em que terreno estamos pisando, de forma a gerar o máximo de valor para o cliente, e assim obter feedback sincero sobre o progresso do sistema. A partir desse feedback é possível re-desenhar o projeto, de forma a atingir as expectativas dos usuários e obter melhor aceitação no mercado.
+A principal vantagem do \emph{Customer Discovery} é a tranquilidade de construir uma empresa baseada em fatos reais e sólidos, ao invés de trabalhar em cima de premissas incertas e que podem ser falhas -- fatos que nem sempre são óbvios para aqueles com ``boas ideias''. É essencial saber em que terreno estamos pisando, de forma a gerar o máximo de valor para o cliente, e assim obter feedback sincero sobre o progresso do sistema. A partir desse feedback é possível re-desenhar o projeto, de forma a atingir as expectativas dos usuários e obter melhor aceitação no mercado.
 
 \subsection{Metodologia de desenvolvimento}
-Seguindo as ideias do Movimento Agile, que em parte também inspiraram a \emph{Lean Startup}, o desenvolvimento do projeto consistirá principalmente de diversas iterações curtas entre criação, testes e apresentação aos usuários, para que o feedback seja recebido rapidamente e inserido no próximo ciclo de iterações.
+Seguindo as ideias do Movimento Agile\cite{agile}, que em parte também inspiraram a \emph{Lean Startup}, o desenvolvimento do projeto consistirá principalmente de diversas iterações curtas entre criação, testes e apresentação aos usuários, para que o feedback seja recebido rapidamente e inserido no próximo ciclo de iterações.
 
 Para organizar o desenvolvimento, as tarefas serão geridas a partir da área de \emph{Issues} do \emph{BitBucket}. Lá é possível criar tarefas, categorizar e priorizar, delegar e ordenar. O andamento do projeto será acompanhado a partir de \emph{milestones} configurados na mesma área, todos com claras datas de finalização.
 
