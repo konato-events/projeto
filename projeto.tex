@@ -247,7 +247,7 @@ Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de
 
 \begin{figure}[!bp]
 	\centering
-	\includegraphics[width=1\linewidth]{imagens/canvas-usuarios-2.png}
+	\includegraphics[width=1\linewidth]{imagens/canvas-usuarios.png}
 	\caption{Lean Canvas do usuário. 16/ago/2015}
 	%todo: avaliar legibilidade do diagrama quando impresso em A4
 \end{figure}
@@ -699,10 +699,70 @@ No último trimestre de 2013, o primeiro ano da empresa, foi reportado um fatura
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Requisitos do sistema}
 
-\subsection{Requisitos funcionais}
+
+%todo refiltrar isso aqui e colocar só o que for util
+\subsection{Requisitos funcionais do MVP}
 
 Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema. Elas não estão organizadas com algum critério específico, e nem todas serão implementadas no período deste projeto. No entanto, a lista serve como referência de consulta para as pesquisas com os potenciais usuários; auxiliará na identificação de quais \emph{features} são mais importantes, ou se alguma seria pouco relevante, por exemplo. Após esta fase, com base nos resultados, será possível aferir a prioridade de cada uma das funcionalidades.
 
+\subsubsection*{Entrada na Plataforma}
+\begin{itemize}
+\item Deve ser possivel cadastrar no sistema a partir de:
+	\begin{itemize} %todo verificar como funciona para receber atualizações sobre os follows/unfollows do usuário
+		\item Um \textbf{e-mail} convencional, preenchendo manualmente os dados do perfil profissional
+		\item \textbf{Twitter}, trazendo dados como nome, usuário, colegas, e pedindo permissão para posts sociais %todo verificar se o twitter permite posts automáticos
+		\item \textbf{Facebook}, trazendo dados pessoais, estudantis (para sugerir seguir grupos universitários e de estudo), profissionais (para sugerir seguir grupos profissionais e tópicos), colegas, e pedindo permissão para posts sociais %todo verficar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
+		\item \textbf{LinkedIn}, com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e login.
+		\item \textbf{Slideshare} \textit{(opcional)}, que pode trazer dados pessoais e integrar as apresentações do palestrante à plataforma; também pode notificar seus seguidores de sua entrada.
+	\end{itemize}
+\item Utilizar as contas sociais para pedir que o usuário poste sobre seu novo cadastro na rede
+\item Sugerir a associação a outras contas sociais após o cadastro, para aumentar a quantidade de informação do cadastro e fomentar a lista de colegas
+\end{itemize}
+
+\subsubsection*{Descoberta de eventos}
+\begin{itemize}
+	\item Permitir busca manual de eventos, a partir de palavras-chave, mesmo não estando \textit{logado};
+	\item As buscas devem ser filtráveis por localização: cidade atual, estado, país e região;
+	\item Notificar o usuário automaticamente (passível de \textit{opt-out}\footnotemark[1])sobre novos eventos de interesse, baseados em:
+		\begin{itemize}
+			\item interesses do usuário;
+			\item grupos de atividade (universidades, grupos profissionais);
+		\end{itemize}
+	\item As notificações devem ocorrer somente para eventos de determinada configuração de interesse (inicialmente, todos os portes na cidade; médio/grande porte dentro do país; grande porte fora do país). Esta opção deve ser facilmente configurável e visível na notificação;
+	\item As notificações devem ocorrer primariamente por e-mail. Futuramente, também deve ser possível visualizar as sugestões de eventos dentro da plataforma e a partir de notificações móveis;
+	\item Permitir marcação de interesse no evento;
+	\item Sugerir posts em redes sociais sobre o interesse num evento;
+	\item Notificar o usuário de tempos em tempos sobre novos amigos que indicaram interesse num evento;
+	\item Permitir deixar de seguir pessoas em que há interesse em manter na rede de contatos mas não há necessidade em saber sobre os eventos de seu interesse;
+\end{itemize}
+
+\subsubsection*{Pré-evento}
+\begin{itemize}
+	\item Notificar o usuário (passível de \textit{opt-out}\footnotemark[1]) quando o lote de ingressos do evento estiver para mudar;
+	\item Notificar o usuário uma semana antes do evento, com resumo e dados do local;
+	\item Notificar o usuário no dia anterior, com dados do local e da programação;
+\end{itemize}
+%todo informar por fora dessas listas que todas as notificações são passíveis de opt-out
+%todo adicionar caso de uso do administrador do sistema
+%todo cronograma: 14/12 - backup; 07/12 - apresentação para a banca; 30/11 - apresentação para o professor; 23/11 - enviar documentação final para os professores da banca (documento do TCC, manual do usuário - nao sao necessariamente manuais entregues para o usuario, mas indicando o passo a passo dos casos de uso; manual de operacao: INSTALL.md)
+%todo adicionar obs explicando a formatacao do documento
+\footnotetext[1]{Quando o usuário tem a opção de não receber mensagens sobre determinado assunto}
+
+\subsubsection*{Pós-evento}
+\begin{itemize}
+	\item Enviar para o usuário estatísticas do evento, dados dos palestrantes e onde encontrar os materiais disponibilizados;
+	\item Permitir aos organizadores enviar pesquisas de opinião para os usuários;
+\end{itemize}
+
+\subsubsection*{Cadastro de eventos}
+\begin{itemize}
+	\item Usuários com dados de identificação pública verificada (como um CPF/CNPJ e e-mail) podem cadastrar novos eventos na plataforma;
+	\item Para novos eventos, é necessário informar dados referentes que sejam críveis e passíveis de avaliação (verificar como é o processo de cadastro de eventos do Lanyrd);
+	\item \textit{(opcional/futuro)} Configurar um subsistema automatizado para monitoramento de redes sociais (nomeadamente, o Twitter, que possui dados publicamente disponíveis) para identificação de novos eventos. Tais informações devem ser disponibilizadas para os administradores do sistema; a partir daí, eles podem efetuar o cadastro manual do evento na plataforma ou entrar em contato sugerindo o sistema.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Requisitos funcionais da Plataforma como um todo}
 
 \subsubsection*{Programação do evento}
 \begin{itemize}
