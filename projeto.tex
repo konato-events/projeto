@@ -1,5 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CABECALHO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[a4paper]{abntex2}
+%%% DOC abnTeX2: http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf
+\documentclass[12pt,a4paper,twoside,brazil]{abntex2}
 
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
@@ -14,12 +15,16 @@
 \usepackage{enumitem}
 \usepackage{fmtcount}
 \usepackage{multirow}
+\usepackage{indentfirst}
 
 \usepackage[num]{abntex2cite}
 \bibliographystyle{abnt-num}
+\usepackage[brazilian,hyperpageref]{backref}
 \usepackage[backend=bibtex,backref=true]{biblatex}
 \bibliography{projeto.bib}
 \hypersetup{
+%	pdftitle={\@title},
+%	pdfauthor={Igor~Santos},
 	colorlinks=true,
 	urlcolor=blue,
 	linkcolor=black,
@@ -30,31 +35,35 @@
 \newcommand{\hip}{{\color{BlueViolet}\framebox[1.1\width]{HIP}}}
 \newcommand{\conf}{{\color{OliveGreen}\framebox[1.1\width]{CNF}}}
 
-\author{\textbf{Igor~Santos}\\
-	Universidade Estácio de Sá\\
-	Rio de Janeiro, RJ\\
-	\texttt{conf@igorsantos.com.br}
-	\\\\
-	\textit{Co-participação de:}\\
-	\textit{Eduardo Ferreira}\\
-	\textit{Letícia Oliveira}
-}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% META-DADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{
-	Projeto~de~TCC\\
-	\textbf{TheConf}\\
+%	Projeto~de~TCC\\
+	\textbf{Konato}\\
 	\textit{PXI-2015.2-013}
 }
 
+\author{\textbf{Igor~Santos}\\
+	\texttt{conf@igorsantos.com.br}\\
+	{\small Co-participação de: \textit{Eduardo Ferreira \and Letícia Oliveira}}
+}
+\instituicao{Universidade Estácio de Sá}
+\local{Rio de Janeiro, RJ}
+\tipotrabalho{Projeto de Conclusão de Curso}
+
 \makeindex
-\begin{document}
-\pagenumbering{gobble}
-\maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INICIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\imprimircapa %\maketitle
+\imprimirfolhaderosto*
 
-% Adicionar pagenumbering aqui faz com que a folha de rosto também tenha numeração no rodapé...
-%\pagenumbering{roman}
+%todo: avaliar necessidade; verificar uso dos comandos abaixo na doc do abnTeX2
+%\begin{fichacatalografica} \end{fichacatalografica}
+%\begin{folhadeaprovacao} \end{folhadeaprovacao} ou \includepdf{aprovacao_final.pdf}
+%\begin{resumo} \end{resumo}
+
+\begin{KeepFromToc}
+\tableofcontents
 
 \chapter*{Prefácio}
 \section*{Definições usadas neste documento}
@@ -72,14 +81,13 @@ No decorrer do tempo, no entanto, conheci duas pessoas que vieram a integrar a e
 
 \section*{Formatação deste documento}
 A documentação desse projeto foi construída em \LaTeX, uma linguagem de marcação voltada para documentos científicos e técnicos. Seu histórico de versões está disponível em Git, no endereço \url{https://bitbucket.org/congresso-app/projeto/}. Esta decisão foi tomada pela habilidade que uma linguagem de texto puro possui para suportar versionamento complexo, e mesclagem de versões concomitantes entre dispositivos diferentes. Além disso, outro fator essencial do \LaTeX é a disponibilização de um pacote de formatação pré-configurado, nas normas da ABNT, o abn\TeX{}2\cite{abntex2}\cite{abntex2-slides}. Este pacote configura o compilador automaticamente com os requisitos das normas da Associação Brasileira de Normas Técnicas, permitindo ao autor redigir o documento pensando exclusivamente em seu conteúdo e estrutura hierárquica.
+\end{KeepFromToc}
 
-\newpage
-\pagenumbering{arabic}
-\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textual
 
 \chapter{Proposta do Projeto de TCC}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{O Projeto}
 
 É notável a dificuldade que os congressistas possuem, frequentemente, em obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento. Muitas vezes é difícil ficar sabendo sobre novos eventos das suas áreas de interesse, também. Esses fatos foram notados por experiência própria e durante 
@@ -91,33 +99,38 @@ Já a divulgação online tende a ser pouco eficiente e, portanto, é muitas vez
 
 Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: a liberação da grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes e envio de perguntas; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Este sistema teria um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
 
-\footnotetext{Série de palestras de curta duração (5~10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
+\footnotetext{Série de palestras de curta duração (5 a 10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Opções de nome}
+\subsection{A escolha do nome}
 
 Seguem aqui alguns componentes que podem ser utilizados de inspiração, e algumas sugestões já pensadas para o nome do sistema. Tais ideias também foram lançadas num aplicativo web chamado NameStorm (http://namestorm.niicho.com/ac659), que facilita encontrar domínios e perfis sociais com os nomes indicados, bem como angariar votos para decidir a preferência da equipe.\\
 
-\begin{tabular}{rcl|c|c}
-\multicolumn{3}{c|}{\textbf{Afixos}} 	& \textbf{Principais} & \textbf{Sugestões} \\\hline
-Bit			& Time		& Data		& Congresso		& \multirow{6}{7.5cm}{
-	EvenTime: \emph{pode soar como Even+Time};\\
-	BitConf, Dataconf, QuickConf, HandyConf, TheConf: \emph{referências a conferências são boas mas focadas só num tipo de mercado}\\
-	The Event, Click Event, Link Event: \emph{pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick ou InEvent por ex.)};\\
-	Events To Be Disclosed (TDB), Disclose Events;\\
-	Informoi, Paroloi, Konato, Lekto, Efekto: \emph{esperanto};
-}\\\cline{1-3}
-Quick		& Fast		& App		& Conferência	& \\\cline{1-3}
-Skill		& Link		& Fact		& Schedule		& \\\cline{1-3}
-Rápido		& Veloz		& Click 	& Evento		& \\\cline{1-3}
-Profissional& Detalhes	& Lite		& Event			& \\\cline{1-3}
-Organização	& Esperto	& Online	& Know			& \\\cline{1-3}
-Inteligência& Expert	& Develop	& Knowledge		& \\\cline{1-3}
-Atualização	& Achieve	& Prático	& Lore			& \\\cline{1-3}
-Progresso	& Spread	& Action	& Destaque		& \\\cline{1-3}
-Interação	& One		& Zen		& Palco			& \\\cline{1-3}
-Handy		& The		& VIP		& Stage			&
+\begin{tabular}{rcl|c}
+\multicolumn{3}{c|}{\textbf{Afixos}}& \textbf{Principais} \\\hline
+Bit			& Time		& Data		& Congresso		 \\\cline{1-3}
+Quick		& Fast		& App		& Conferência	 \\\cline{1-3}
+Skill		& Link		& Fact		& Schedule		 \\\cline{1-3}
+Rápido		& Veloz		& Click 	& Evento		 \\\cline{1-3}
+Profissional& Detalhes	& Lite		& Event			 \\\cline{1-3}
+Organização	& Esperto	& Online	& Know			 \\\cline{1-3}
+Inteligência& Expert	& Develop	& Knowledge		 \\\cline{1-3}
+Atualização	& Achieve	& Prático	& Lore			 \\\cline{1-3}
+Progresso	& Spread	& Action	& Destaque		 \\\cline{1-3}
+Interação	& One		& Zen		& Palco			 \\\cline{1-3}
+Handy		& The		& VIP		& Stage			
 \end{tabular}
+
+\subsubsection*{Sugestões já pensadas}
+\begin{description}
+	\item[EvenTime] pode soar como Even+Time
+	\item[BitConf, Dataconf, QuickConf, HandyConf, TheConf] referências a conferências podem ter boa sonoridade, mas focar o nome do produto só num tipo de mercado pode ser prejudicial
+	\item[The Event, Click Event, Link Event] pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick ou InEvent por exemplo
+	\item[Events To Be Disclosed (TDB), Disclose Events] Tem um significado próximo à ideia de divulgação que a plataforma trás, mas podem ter uso complexo no português
+	\item[Informoi, Paroloi, \emph{Konato}, Efekto] originárias do esperanto; significam, respectivamente: \emph{Informações, Palestras, Conhecido (pessoa), Efeito}.
+\end{description}
+
+\textbf{Konato} foi o nome escolhido por estar próxima tanto do objetivo principal do projeto (gerar conhecimento, \emph{koni}; \emph{konato} é o particípio presente do verbo ``conhecer''), quanto por também remeter à ideia de \emph{networking}, por gerar novas pessoas conhecidas para seus círculos. Tem fácil pronúncia no português e é de pouca confusão no inglês também, além de ter uma grafia destacada e de fácil memorização.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
