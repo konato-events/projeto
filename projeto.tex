@@ -844,6 +844,27 @@ Outra vertente da ideia é possuir um gerador de site automatizado, que conteria
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tecnologias utilizadas} \label{sec:tecnologias}
 
+O objetivo do projeto é ter um passo veloz e portável, permitindo construção rápida e instalação em qualquer plataforma de desenvolvimento. Para tanto, as seguintes tecnologias foram selecionadas:
+
+\subsection{Banco de Dados}
+Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- 
+
+\subsection{Backend}
+
+\subsection{Frontend}
+% Protótipos: https://marvelapp.com/project/301556/
+
+\subsection{Plataforma}
+\subsubsection*{Desenvolvimento}
+Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no BitBucket (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com novas funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório git do sistema web fica em \url{http://bitbucket.org/konato/web}.
+Também para facilitar a portabilidade do ambiente, utilizaremos uma máquina virtual do Virtualbox a partir do Vagrant\footnotemark. Ela isola o computador do desenvolvedor do ambiente em que a aplicação é executada, permitindo maior liberdade de uso ao mesmo tempo que cria um mantém uma similaridade maior com os ambientes de homologação e produção.
+\footnotetext{Sistema de linha de comando que permite compartilhamento fácil de máquinas e controle via linha de comando.}
+
+\subsubsection*{Homologação e produção}
+Ambos os ambientes serão hospedados no Heroku, uma plataforma de desenvolvimento pronta, como serviço (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando o sistema também é quase zero. Por fim, quando a aplicação crescer, é fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente -- permitindo inclusive escalonamento automático. %todo avaliar se o heroku tem mesmo isso
+O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem proibitivos durante o escalonamento inicial, é possível migrar a aplicação facilmente para outras plataformas, como os serviços de cloud da Amazon ou mesmo um VPS -- atividade facilitada devido à portabilidade do ambiente de desenvolvimento, descrita acima.
+
+
 % Discutir aqui a tecnologia de backend (Parse), de frontend admin e frontend mobile (Titanium+Ember ou Ionic+Angular)
 
 \section{Topologia}
