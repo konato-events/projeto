@@ -1,5 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CABECALHO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[a4paper]{abntex2}
+%%% DOC abnTeX2: http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf
+\documentclass[12pt,a4paper,twoside,brazil]{abntex2}
 
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
@@ -14,9 +15,16 @@
 \usepackage{enumitem}
 \usepackage{fmtcount}
 \usepackage{multirow}
+\usepackage{indentfirst}
+
+\usepackage[num]{abntex2cite}
+\bibliographystyle{abnt-num}
+\usepackage[brazilian,hyperpageref]{backref}
 \usepackage[backend=bibtex,backref=true]{biblatex}
 \bibliography{projeto.bib}
 \hypersetup{
+%	pdftitle={\@title},
+%	pdfauthor={Igor~Santos},
 	colorlinks=true,
 	urlcolor=blue,
 	linkcolor=black,
@@ -24,28 +32,42 @@
 }
 \hyphenation{Javelin}
 
-\author{\textbf{Igor~Santos}\\
-	Universidade Estácio de Sá\\
-	Rio de Janeiro, RJ\\
-	\texttt{conf@igorsantos.com.br}
-	\\\\
-	\textit{Co-participação de:}\\
-	\textit{Eduardo Ferreira}\\
-	\textit{Letícia Oliveira}
+\newcommand{\hip}{{\color{BlueViolet}\framebox[1.1\width]{HIP}}}
+\newcommand{\conf}{{\color{OliveGreen}\framebox[1.1\width]{CNF}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% META-DADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{
+%	Projeto~de~TCC\\
+	\textbf{Konato}\\
+	\textit{PXI-2015.2-013}
 }
 
-\title{Projeto~de~TCC\\\textbf{TheConf}}
+\author{\textbf{Igor~Santos}\\
+	\texttt{conf@igorsantos.com.br}\\
+	{\small Co-participação de: \textit{Eduardo Ferreira \and Letícia Oliveira}}
+}
+\instituicao{Universidade Estácio de Sá}
+\local{Rio de Janeiro, RJ}
+\tipotrabalho{Projeto de Conclusão de Curso}
 
 \makeindex
-\begin{document}
-\pagenumbering{gobble}
-\maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INICIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\imprimircapa %\maketitle
+\imprimirfolhaderosto*
+
+%todo: avaliar necessidade; verificar uso dos comandos abaixo na doc do abnTeX2
+%\begin{fichacatalografica} \end{fichacatalografica}
+%\begin{folhadeaprovacao} \end{folhadeaprovacao} ou \includepdf{aprovacao_final.pdf}
+%\begin{resumo} \end{resumo}
+
+\begin{KeepFromToc}
+\tableofcontents
 
 \chapter*{Prefácio}
 \section*{Definições usadas neste documento}
-Para fins de comunicação, as seguintes palavras e seus atores são tidas como sinônimas, exceto quando especificado o contrário -- na seção \ref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
+Para fins de comunicação, as seguintes palavras e seus atores são tidas como sinônimas, exceto quando especificado o contrário -- na \autoref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
 \begin{itemize}
 	\item Evento / participante
 	\item Conferência / conferencista
@@ -56,14 +78,16 @@ Para fins de comunicação, as seguintes palavras e seus atores são tidas como 
 No mundo real, a ideia deste projeto tomou a forma de uma startup. Inicialmente era um plano solitário, posto à prova por inúmeras conversas e questionamentos com diversos amigos e novos colegas, encontrados a partir de eventos de networking.
 
 No decorrer do tempo, no entanto, conheci duas pessoas que vieram a integrar a equipe da startup, o Eduardo Ferreira (Graduando em Administração de Empresas pela UNIRIO) e a Letícia Oliveira (graduanda em Administração de Empresas pela UERJ). Seguindo as normas desta instituição, todo o desenvolvimento do sistema foi feito exclusivamente pelo aluno autor; as contribuições dos outros membros à startup se deram somente no âmbito de Negócios e ideias.
-\newpage
 
-\pagenumbering{arabic}
-\tableofcontents
+\section*{Formatação deste documento}
+A documentação desse projeto foi construída em \LaTeX, uma linguagem de marcação voltada para documentos científicos e técnicos. Seu histórico de versões está disponível em Git, no endereço \url{https://bitbucket.org/congresso-app/projeto/}. Esta decisão foi tomada pela habilidade que uma linguagem de texto puro possui para suportar versionamento complexo, e mesclagem de versões concomitantes entre dispositivos diferentes. Além disso, outro fator essencial do \LaTeX é a disponibilização de um pacote de formatação pré-configurado, nas normas da ABNT, o abn\TeX{}2\cite{abntex2}\cite{abntex2-slides}. Este pacote configura o compilador automaticamente com os requisitos das normas da Associação Brasileira de Normas Técnicas, permitindo ao autor redigir o documento pensando exclusivamente em seu conteúdo e estrutura hierárquica.
+\end{KeepFromToc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textual
 
 \chapter{Proposta do Projeto de TCC}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{O Projeto}
 
 É notável a dificuldade que os congressistas possuem, frequentemente, em obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento. Muitas vezes é difícil ficar sabendo sobre novos eventos das suas áreas de interesse, também. Esses fatos foram notados por experiência própria e durante 
@@ -75,33 +99,38 @@ Já a divulgação online tende a ser pouco eficiente e, portanto, é muitas vez
 
 Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: a liberação da grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes e envio de perguntas; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Este sistema teria um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
 
-\footnotetext{Série de palestras de curta duração (5~10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
+\footnotetext{Série de palestras de curta duração (5 a 10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection*{Opções de nome}
+\subsection{A escolha do nome}
 
 Seguem aqui alguns componentes que podem ser utilizados de inspiração, e algumas sugestões já pensadas para o nome do sistema. Tais ideias também foram lançadas num aplicativo web chamado NameStorm (http://namestorm.niicho.com/ac659), que facilita encontrar domínios e perfis sociais com os nomes indicados, bem como angariar votos para decidir a preferência da equipe.\\
 
-\begin{tabular}{rcl|c|c}
-\multicolumn{3}{c|}{\textbf{Afixos}} 	& \textbf{Principais} & \textbf{Sugestões} \\\hline
-Bit			& Time		& Data		& Congresso		& \multirow{6}{7.5cm}{
-	EvenTime: \emph{pode soar como Even+Time};\\
-	BitConf, Dataconf, QuickConf, HandyConf, TheConf: \emph{referências a conferências são boas mas focadas só num tipo de mercado}\\
-	The Event, Click Event, Link Event: \emph{pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick ou InEvent por ex.)};\\
-	Events To Be Disclosed (TDB), Disclose Events;\\
-	Informoi, Paroloi, Konato, Lekto, Efekto: \emph{esperanto};
-}\\\cline{1-3}
-Quick		& Fast		& App		& Conferência	& \\\cline{1-3}
-Skill		& Link		& Fact		& Schedule		& \\\cline{1-3}
-Rápido		& Veloz		& Click 	& Evento		& \\\cline{1-3}
-Profissional& Detalhes	& Lite		& Event			& \\\cline{1-3}
-Organização	& Esperto	& Online	& Know			& \\\cline{1-3}
-Inteligência& Expert	& Develop	& Knowledge		& \\\cline{1-3}
-Atualização	& Achieve	& Prático	& Lore			& \\\cline{1-3}
-Progresso	& Spread	& Action	& Destaque		& \\\cline{1-3}
-Interação	& One		& Zen		& Palco			& \\\cline{1-3}
-Handy		& The		& VIP		& Stage			&
+\begin{tabular}{rcl|c}
+\multicolumn{3}{c|}{\textbf{Afixos}}& \textbf{Principais} \\\hline
+Bit			& Time		& Data		& Congresso		 \\\cline{1-3}
+Quick		& Fast		& App		& Conferência	 \\\cline{1-3}
+Skill		& Link		& Fact		& Schedule		 \\\cline{1-3}
+Rápido		& Veloz		& Click 	& Evento		 \\\cline{1-3}
+Profissional& Detalhes	& Lite		& Event			 \\\cline{1-3}
+Organização	& Esperto	& Online	& Know			 \\\cline{1-3}
+Inteligência& Expert	& Develop	& Knowledge		 \\\cline{1-3}
+Atualização	& Achieve	& Prático	& Lore			 \\\cline{1-3}
+Progresso	& Spread	& Action	& Destaque		 \\\cline{1-3}
+Interação	& One		& Zen		& Palco			 \\\cline{1-3}
+Handy		& The		& VIP		& Stage			
 \end{tabular}
+
+\subsubsection*{Sugestões já pensadas}
+\begin{description}
+	\item[EvenTime] pode soar como Even+Time
+	\item[BitConf, Dataconf, QuickConf, HandyConf, TheConf] referências a conferências podem ter boa sonoridade, mas focar o nome do produto só num tipo de mercado pode ser prejudicial
+	\item[The Event, Click Event, Link Event] pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick ou InEvent por exemplo
+	\item[Events To Be Disclosed (TDB), Disclose Events] Tem um significado próximo à ideia de divulgação que a plataforma trás, mas podem ter uso complexo no português
+	\item[Informoi, Paroloi, \emph{Konato}, Efekto] originárias do esperanto; significam, respectivamente: \emph{Informações, Palestras, Conhecido (pessoa), Efeito}.
+\end{description}
+
+\textbf{Konato} foi o nome escolhido por estar próxima tanto do objetivo principal do projeto (gerar conhecimento, \emph{koni}; \emph{konato} é o particípio presente do verbo ``conhecer''), quanto por também remeter à ideia de \emph{networking}, por gerar novas pessoas conhecidas para seus círculos. Tem fácil pronúncia no português e é de pouca confusão no inglês também, além de ter uma grafia destacada e de fácil memorização.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,7 +200,7 @@ Nosso objetivo é transformar os eventos em atividades mais interativas, dinâmi
 	\item desencontros quanto \`a distribuição e lotes dos ingressos, aumentando o custo de participação -- culminando até mesmo na desistência de alguns interessados.
 \end{itemize}
 
-\subsection{Os tipos de eventos alvo} \label{sec:eventos}
+\subsection{Os tipos de eventos-alvo} \label{sec:eventos}
 De acordo com as atividades de divulgação ou criação de conhecimento, conforme citadas acima, há algumas dinâmicas distintas de eventos, que possuem objetivos um pouco distintos e trabalham em torno destes. Os tipos mais comuns de eventos são\cite{tipos-manager}\cite{tipos-parlante}\cite{dicionario}\cite{dicas-feira-de-negocios}:
 
 \begin{description}
@@ -181,13 +210,30 @@ De acordo com as atividades de divulgação ou criação de conhecimento, confor
 							
 	\item[Convenção] Normalmente é promovida por entidades corporativas ou políticas. O maior objetivo das convenções é a integração e networking entre as pessoas daquela organização, gerando estímulos coletivos \`a interação do público. São apresentados temas diversos, mas sempre relacionados \`aquele grupo, levando os participantes a entender melhor o trabalho desenvolvido e, também, para que estes possam agir melhor em favor da instituição no futuro.
 	
-	\item[Seminário] O objetivo deste é a exposição de novos conceitos para um público interessado mas menos informado no tema. Tende a ser mais parcial que os outros pois não há elementos de discussão dos tópicos abordados, e a fonte de informação normalmente é única -- o orador ou expositor do seminário, que usualmente é um expert do mercado. A atividade também pode ser presidida por mais de uma pessoa, num caso em que ambas as personalidades são complementares no assunto abordado. %todo há eventos chamados "seminarios"? Se sim, qual a programacao?
+	\item[Seminário] O objetivo deste é a exposição de novos conceitos para um público interessado mas menos informado no tema. Tende a ser mais parcial que os outros pois não há elementos de discussão dos tópicos abordados, e a fonte de informação normalmente é única -- o orador ou expositor do seminário, que usualmente é um expert do mercado. A atividade também pode ser presidida por mais de uma pessoa, num caso em que ambas as personalidades são complementares no assunto abordado. A programação de seminários normalmente é composta por uma ou algumas palestras, nos moldes citados.
 					
 	\item[Simpósio] Um evento ou atividade aberto, objetivando o intercambio de informações e pontos de vista. A partir de um tema ou tópico específico, são desenvolvidos questionamentos e discussões entre os expositores e os próprios participantes, apresentando aspectos diferentes sobre o assunto -- que geralmente é científico e não é um amplo consenso no mercado. %todo ficou meio vago. Qual é a programaçao de um simposio e como eles sao englobados em eventos maiores (sao)?
 	
 	\item[Fórum] Tipo de evento no qual há a participação de um público numeroso, com programação mais abrangente e diversificada. A ideia é sensibilizar a opinião publica ou divulgar ao público assuntos de interesse geral, seja de setores específicos, da economia, ou sobre temas sociais ou políticos. Possui atividades mais gerais e abertas, para atrair e educar todo espectro de público.
 	
 	\item[Feira Comercial] Um tipo de exposição com foco em criação de novos contatos, descoberta de novos fornecedores, e vendas. O principal elemento das feiras são os standes das companhias participantes, que expõe seu rol de produtos e os novos lançamentos para o mercado. Em torno desses lançamentos eventualmente podem ocorrer apresentações com horário determinado, para que o público interessado venha a conhecer mais a fundo os detalhes dos produtos ou técnicas. Estas atividades comerciais também podem acontecer em menor escala, ou mescladas, na grade de programação de congressos -- demonstrando, por exemplo, novos produtos e tecnologias da área médica, que são de interesse dos profissionais presentes.
+\end{description}
+
+\subsubsection*{Eventos universitários}
+
+Além dos diversos eventos de entretenimento e interação estudantil que acontecem todos os semestres nas instituições de ensino, há uma gama de eventos para graduandos e graduados dentro das universidades brasileiras. O foco vai desde o fomento à pesquisa ou empreendedorismo até atividades de cunho mais educativo, como versões reduzidas e mais leves dos congressos nacionais.
+
+\begin{description}
+	\item[Jornada de Iniciação Científica] Evento obrigatório para os alunos participantes de programas de Iniciação Científica (IC), que ocorre separadamente para cada curso da instituição. É similar à apresentação de resultados de pesquisa em congressos, onde há a opção de divulgar os resultados -- parciais ou finais -- em pôsteres ou apresentações. No caso do pôster, o estudante expõe e deve estar disponível no decorrer de um dia específico (há um rodízio de trabalhos) para perguntas de pessoas interessadas e, posteriormente, da comissão julgadora. Quando ele opta pela apresentação, há um slot de tempo em que ele estará apresentando por meio oral e visual os resultados para uma plateia, composta também pela banca de jurados. Há uma premiação final dos trabalhos mais bem apresentados, inovadores, e afins. A decisão entre os tipos de divulgação varia entre cursos: pode ficar nas mãos do grupo de alunos ou dos coordenadores. Há a participação ocasional de curiosos de outros cursos e também de familiares dos alunos.
+
+	\item["Semana" ou Encontro Regional] Um evento mais geral, que engloba diversas atividades para promoção da formação acadêmica dos participantes. Também é temática por curso. Em geral envolve diversas palestras no decorrer da programação; alguns cursos e workshops para fomentar a especialização em assuntos mais profundos; mesas-redondas para desenvolver tópicos mais complexos; alguns cursos também envolvem saídas de campo, para experimentos e atividades práticas. As "semanas" também podem envolver diversos cursos similares, gerando atividades multidisciplinares e integrando estudantes de profissões afins.\\
+	A diferença entre estes eventos e os Encontros Regionais se dá na participação: o último inclui diversas instituições de uma área geográfica específica, normalmente delimitada por um órgão nacional ou regional, e promove a troca entre estudantes que muitas vezes possuem experiências de ensino distintas.
+		
+	\item[Encontro de Empresas Juniores] Os Encontros de EJ's costumam integrar grupos de empreendedorismo de uma instituição ou região específica, unindo as diversas especialidades. O evento funciona de forma similar a um congresso, com palestras e mesas-redondas em torno do assunto e workshops. O networking entre as empresas normalmente se dá durante os intervalos e refeições (bem pontuadas na programação diária\cite{enej15}), ou nos workshops, que são muitas vezes voltados para esse fim.
+	
+	\item[Ciclo de palestras] Grupo de apresentações de cases e palestras, que não costuma tomar um dia inteiro, mas pode durar alguns dias. Normalmente gira em torno de um assunto mais específico dentro de um curso, ou pode englobar tópicos mais gerais e multidisciplinares, e integrar cursos distintos. Ocasionalmente também pode incluir workshops na programação.
+		
+	\item[Seminário] Semelhantes aos seminários comuns, mas voltados para um público mais iniciante.
 \end{description}
 
 \subsection{Atividades mais comuns}
@@ -199,7 +245,7 @@ Os eventos descritos acima \`as vezes são compostos por diferentes atividades. 
 
 	\item[Painel de debates] Outro tipo de atividade similar \`a mesa-redonda. O foco maior é na discussão, pressupondo expectadores com mais conhecimento sobre o tema apresentado. A conversa tende a ser de mais alto nível, pois os participantes são especialistas, buscando gerar maior entendimento sobre os tópicos abordados.
 
-	\item[Briefing] Um tipo de palestra dada por alguém de renome na área, com o objetivo de introduzir algum assunto específico mais avançado, ou aprofundar as discussões que já aconteceram. Tende a acompanhar uma conferência, permitindo aos participantes obter maior entendimento do que será ou foi abordado nela.
+	\item[Briefing/Keynote] Um tipo de palestra dada por alguém de renome na área, com o objetivo de introduzir algum assunto específico mais avançado, ou aprofundar as discussões que já aconteceram. Tende a acompanhar uma conferência, permitindo aos participantes obter maior entendimento do que será ou foi abordado nela.
 
 	\item[Curso] Detalhamento de determinado assunto ou conjunto de assuntos com o objetivo de treinamento. Normalmente é ministrado por uma ou mais pessoas de formação acadêmica, e centrado na teoria -- apesar de também poder conter partes práticas. O público principal é composto por pessoas de pouco ou nenhum entendimento do tema, apesar de também existirem cursos de especialização, cujo foco é aprimorar os conhecimentos já existentes.
 
@@ -210,14 +256,12 @@ Os eventos descritos acima \`as vezes são compostos por diferentes atividades. 
 
 \section{A modelagem de negócios da Lean Startup}
 
-\newcommand{\hip}{{\color{BlueViolet}\framebox[1.1\width]{HIP}}}
-\newcommand{\conf}{{\color{OliveGreen}\framebox[1.1\width]{CNF}}}
 Nesta seção do documento descreveremos muitos conceitos que são hipotéticos, relacionados a um projeto ainda em fase de concretização de ideias. Todos estes conceitos precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.\\
 Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de Confirmação \conf{} no início de cada afirmação relevante: o primeiro para aquelas que não foram testadas, e o segundo para as quais já verificamos serem procedentes -- aqueles que não foram validados não estão incluídos aqui.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\emph{Mapa de Empatia} - Personas de nossos clientes e usuários}
+\subsection{\emph{Mapa de Empatia} - \emph{Personas} de nossos clientes e usuários}
 %todo descrever aqui o que é o mapa de empatia e listar as principais personas, com suas características
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -226,16 +270,24 @@ Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de
 %todo descobrir uma forma de criar ligações gráficas no latex, ou então criar os diagramas no pc e importar como imagem. Adicionar pelo menos uns dois diagramas, com as principais tretas
 
 \subsection{\emph{Lean Canvas} - Um modelo de negócios iterável}
-Segundo Blank \& Dorf \cite{manual-startup} (pg 83), frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o Lean Canvas para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
 
-Originalmente, Alex Osterwalder criou o Business Model Canvas, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, e facilmente alterado e  corrigido. Posteriormente, Ash Maurya criou o Lean Canvas, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (mais arriscadas) e mutáveis de uma startup.\cite{why-lean-canvas}
+\begin{figure}[!bp]
+	\centering
+	\includegraphics[width=1\linewidth]{imagens/canvas-usuarios.png}
+	\caption{Lean Canvas do usuário. 16/ago/2015}
+	%todo: avaliar legibilidade do diagrama quando impresso em A4
+\end{figure}
 
-Uma consequência inerente da natureza mutante do canvas é que ele dificilmente será ``gravado em pedra''; durante o trabalho na definição deste projeto ideias novas surgirão e hipóteses serão criadas, aperfeiçoadas ou descartadas, e portanto, o canvas deverá ser atualizado. Nesta seção vamos exibir somente a versão atual do canvas, e seu histórico poderá ser conferido em XXXX. %todo: colocar o link dos canvas aqui
-Também descreveremos em uma síntese maiores detalhes de cada bloco dos dois tipos de canvas, por julgarmos que, mesmo que não sejam muito mutáveis, os blocos removidos no Lean Canvas também são dignos de uma discussão inicial, ao menos. 
+Segundo Blank \& Dorf \cite[p.~83]{manual-startup}, frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o \emph{Lean Canvas} para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
 
-Por fim, ainda de acordo com Ash Maurya\cite{lean-canvas}, é importante criar uma versão do canvas para cada grupo de clientes da companhia. No nosso caso, com um produto multifacetado, por um lado precisaremos servir e atrair os organizadores de eventos, que pagarão pelo serviço e desejam melhorar a comunicação com seus congressistas. Por outro, os congressistas precisam se sentir confortáveis na aplicação e com vontade de saber mais sobre ela nas divulgações, interessados em utilizá-la. Essa dualidade reflete os dois lados do sistema, onde precisamos satisfazer dois tipos distintos de clientes, com necessidades e objetivos diferentes. Portanto, teremos dois canvas que evoluirão em sintonia, cada um indicando os planos para cada tipo de \emph{persona}.
+Originalmente, Alex Osterwalder criou o \emph{Business Model Canvas}, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, e facilmente alterado e  corrigido. Posteriormente, Ash Maurya criou o Lean Canvas, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (arriscadas) e mutáveis de uma startup.\cite{why-lean-canvas}
 
-%todo: inserir aqui as imagens dos últimos canvas
+Ainda de acordo com Ash Maurya\cite{lean-canvas}, é importante criar uma versão do \emph{canvas} para cada grupo de clientes da companhia. No nosso caso, com um produto multifacetado, por um lado precisaremos servir e atrair os organizadores de eventos, que pagarão pelo serviço e desejam melhorar a comunicação com seus congressistas; por outro, os participantes precisam se sentir confortáveis dentro da plataforma e com vontade de saber mais sobre ela nas divulgações, interessados em utilizá-la, e vendo proveito no decorrer do uso. Essa dualidade reflete os dois lados do sistema, onde precisamos satisfazer tipos distintos de \emph{personas}\footnotemark, com necessidades e objetivos diferentes. Portanto, o sistema terá dois \emph{canvas} que evoluirão em sintonia. No entanto, para o escopo deste projeto, focaremos nossos esforços no usuário final; os motivos serão esclarecidos oportunamente.
+\footnotetext{Personagem genérico com características em comum; a personificação de um grupo social}
+
+Uma consequência da natureza mutante do \emph{canvas} é que ele dificilmente será ``gravado em pedra''; durante o trabalho na definição deste projeto, ideias novas surgirão e hipóteses serão criadas, aperfeiçoadas ou descartadas -- e a cada novo passo, os \emph{canvas} deverão ser atualizados. Nesta seção vamos exibir somente a versão atual do documento, e o histórico poderá ser conferido online, no endereço \mbox{\url{https://canvanizer.com/canvas/2MM3fHvw8Lo}}.
+
+Também descreveremos em síntese os blocos adicionais do \emph{Business Model Canvas}. Estes não são tão mutáveis, mas também são dignos de uma discussão inicial, por fazerem parte da criação da companhia.
 
 \subsubsection*{Bloco Zero: Pesquisa de mercado}
 \label{sec:lean:mercado}
@@ -246,7 +298,7 @@ Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas:
 \textbf{Para os fins deste documento, estaremos considerando como ``clientes'' os organizadores de eventos, e ``usuários'' os participantes (usuários do aplicativo).}
 
 Dito isso, nosso \underline{mercado disponível} é o segmento de eventos técnicos e científicos.\\
-Desse grupo, o \underline{mercado disponível para negócios} é o grupo de usuários que possuam um smartphone ou tablet com um dos sistemas operacionais nos quais focaremos o desenvolvimento, conforme a seção \ref{sec:tecnologias}. Adicionalmente, focaremos no início nos países lusófonos e anglófonos, com versões do aplicativo em português e inglês. O mercado disponível de clientes é definido pelos mesmos requisitos de linguagem, mas o requisito técnico passa a ser o uso confortável de um computador com Internet, ao invés de necessariamente um dispositivo móvel.\\
+Desse grupo, o \underline{mercado disponível para negócios} é o grupo de usuários que possuam um smartphone ou tablet com um dos sistemas operacionais nos quais focaremos o desenvolvimento, conforme a \autoref{sec:tecnologias}. Adicionalmente, focaremos no início nos países lusófonos e anglófonos, com versões do aplicativo em português e inglês. O mercado disponível de clientes é definido pelos mesmos requisitos de linguagem, mas o requisito técnico passa a ser o uso confortável de um computador com Internet, ao invés de necessariamente um dispositivo móvel.\\
 Por fim, nosso \underline{mercados-alvo} será o grupo de organizadores que já pensaram em criar, ou já criaram, um aplicativo móvel para seus eventos, ou ainda, que desejem melhorar a comunicação com seus participantes, melhorando a fidelização e aumentando a venda de ingressos. Há também o grupo de congressistas, cujo alvo principal será aqueles que já se sentiram frustrados pela falta de informações ou confusos quanto às atividades de um evento, ou que se sentem curiosos e interessados numa forma mais eficiente e móvel de obter detalhes sobre o evento, tanto antes do mesmo quanto no instante.
 
 %todo calcular estimativas numéricas dos mercados
@@ -288,15 +340,15 @@ Um dos grandes objetivos de eventos técnicos e científicos é a concretizaçã
 
 \subparagraph*{Alternativas existentes}
 \begin{description}
-\item[\conf{} Bizzabo] Startup israelense que está entrando no mercado brasileiro, com direção de pessoas influentes no mercado de startups nacionais. O primeiro uso conhecido no país foi o CASE 2014, a conferência da Associação Brasileira de Startups. Mais detalhes sobre a empresa e seu sistema podem ser vistos nas seções \ref{sec:concorrencia:bizzabo} e \ref{sec:sistemas:bizzabo};
+\item[\conf{} Bizzabo] Startup israelense que está entrando no mercado brasileiro, com direção de pessoas influentes no mercado de startups nacionais. O primeiro uso conhecido no país foi o CASE 2014, a conferência da Associação Brasileira de Startups. Mais detalhes sobre a empresa e seu sistema podem ser vistos na \autoref{sec:concorrencia:bizzabo} e na \autoref{sec:sistemas:bizzabo};
 
-\item[\hip{} Aplicativos próprios] Alguns eventos possuem aplicativos próprios (\ref{sec:sistemas:apps_privados}), que em geral são considerados pelos participantes como ineficientes, fracos, e com poucas funcionalidades -- e, eventualmente, nem são considerados funcionais;
+\item[\hip{} Aplicativos próprios] Alguns eventos possuem aplicativos próprios (\autoref{sec:sistemas:apps_privados}), que em geral são considerados pelos participantes como ineficientes, fracos, e com poucas funcionalidades -- e, eventualmente, nem são considerados funcionais;
 
-\item[\hip{} Site do evento] Normalmente há informações divulgadas no site do evento. No entanto, estas dificilmente são úteis na data, pois nem sempre estão atualizadas e é comum a conexão falha no local. Detalhes na seção \ref{sec:sistemas:divulgacao};
+\item[\hip{} Site do evento] Normalmente há informações divulgadas no site do evento. No entanto, estas dificilmente são úteis na data, pois nem sempre estão atualizadas e é comum a conexão falha no local. Detalhes na \autoref{sec:sistemas:divulgacao};
 
-\item[\hip{} Comunicação impressa no local] Por fim, há diversas formas de sinalização gráfica, como panfletos, cadernos, cartazes e folhas com a programação, dados de localização interna, dentre outros. No entanto, estes materiais tendem a se deteriorar ou se perder com o decorrer do evento. Mais informações na seção \ref{sec:sistemas:outros};
+\item[\hip{} Comunicação impressa no local] Por fim, há diversas formas de sinalização gráfica, como panfletos, cadernos, cartazes e folhas com a programação, dados de localização interna, dentre outros. No entanto, estes materiais tendem a se deteriorar ou se perder com o decorrer do evento. Mais informações na \autoref{sec:sistemas:outros};
 
-\item[\hip{} Sistemas paralelos] Há também empresas que não apresentam concorrência direta num primeiro momento, como sistemas de organização e gerenciamento de eventos, ou de venda de entradas (\ref{sec:concorrencia:organizacao_venda}, \ref{sec:sistemas:gerenciamento} e \ref{sec:sistemas:venda}).
+\item[\hip{} Sistemas paralelos] Há também empresas que não apresentam concorrência direta num primeiro momento, como sistemas de organização e gerenciamento de eventos, ou de venda de entradas (\autoref{sec:concorrencia:organizacao_venda} e seções \ref{sec:sistemas:gerenciamento} e \ref{sec:sistemas:venda}).
 \end{description}
 
 \paragraph*{2 - Segmentos de consumidores}
@@ -370,8 +422,7 @@ Dito isso, podemos identificar que um \emph{early adopter} típico do nosso prod
 \subsection{\emph{Experiment Board} - Hipóteses a serem avaliadas}
 Considerando que uma startup é baseada em hipóteses não testadas, é necessário que tenhamos um roteiro e uma forma padronizada de seleção e listagem de hipóteses. Estas, posteriormente, devem ser verificadas ou refutadas a partir de experimentos diversos, como pesquisas, entrevistas, ou análises.
 
-\begin{quotation}
-	{\small
+\begin{citacao}
 	%Customer development é um processo baseado em hipóteses para entender: quem são seus consumidores; quais problemas e necessidades eles tem; como eles se comportam atualmente; por quais soluções eles pagariam (mesmo que o produto ainda não esteja feito ou completo); como fornecer soluções de uma forma que combine com a forma que seus consumidores decidem, adquirem, compram e usam.
 	
 	Você provavelmente tem idéias e intuições sobre [todas essas hipóteses]. Vamos identificar o que elas realmente são: chutes. Vamos fazê-las soar um pouco melhor e chamá-las \emph{hipóteses}. Essas hipóteses podem ser sobre formar uma nova empresa, criar um novo produto, ou mesmo adicionar novas funcionalidades ou capacidades a um produto existente.
@@ -379,14 +430,13 @@ Considerando que uma startup é baseada em hipóteses não testadas, é necessá
 	\emph{Tudo que você faz durante [essa fase] é centrado em torno de testar hipóteses.}
 	
 	{\raggedright (ALVAREZ; Cindy. Lean Customer Development. 2014.\cite{lean-customer-development} Cap. 1. Grifo do autor, tradução nossa.)}
-	}
-\end{quotation}
+\end{citacao}
 
 Tendo isso em mente, decidimos usar o \emph{Experiment Board} (criado por uma empresa chamada Javelin\cite{experiment-board-javelin}) para definir as hipóteses relevantes do nosso produto, e a melhor forma de testá-las. Muitas hipóteses são indicadas na descrição do Lean Canvas, posteriormente, mas aquelas descritas nesta seção são de cunho mais amplo, cobrindo um espectro mais diverso do projeto. Nosso objetivo é indicar as hipóteses gerais do sistema de uma forma que seja fácil de testar -- pois na maior parte das vezes, as ideias são tão grandes que é necessário fragmentá-las para torná-las testáveis\cite{experiment-board-post}.
 
 O \emph{Experiment Board} funciona listando todos os tipos de Clientes, seus Problemas, possíveis Soluções e Riscos potenciais. Depois disso, cruzamos estes quatro elementos e formulamos uma hipótese. Devemos decidir o método de teste e o critério que definirá se a hipótese foi confirmada ou refutada. Ao final do teste, indicamos o resultado e o que foi aprendido com o teste. No caso de a hipótese ter sido refutada, seus elementos devem ser revistos e novos testes, feitos -- numa ação conhecida como ``pivotar'', onde os elementos principais são mantidos mas a direção da ideia é alterada, de forma a ter uma nova visão sobre a questão.
 
-Usaremos neste projeto uma versão modificada do quadro, fornecida no Workshop de Criação de Startups do Circuito Startup\cite{workshop-startup}. As principais diferenças são: a remoção dos blocos de texto de ajuda; a quebra das áreas de Cliente e Problema em duas (o que nos facilita, visto que nosso mercado é multi-facetado [ver seção \ref{sec:lean:mercado}]); e o fato de que a principal hipótese não deve possuir solução pronta -- por ser o principal motor do produto, a solução seria ele mesmo.
+Usaremos neste projeto uma versão modificada do quadro, fornecida no Workshop de Criação de Startups do Circuito Startup\cite{workshop-startup}. As principais diferenças são: a remoção dos blocos de texto de ajuda; a quebra das áreas de Cliente e Problema em duas (o que nos facilita, visto que nosso mercado é multi-facetado [ver \autoref{sec:lean:mercado}]); e o fato de que a principal hipótese não deve possuir solução pronta -- por ser o principal motor do produto, a solução seria ele mesmo.
 
 %todo adicionar aqui uma foto do experimental board mais preenchido
 
@@ -644,7 +694,7 @@ As \emph{features} são similares ao restante do mercado. Por ser uma empresa no
 	\item Aplicativos para os clientes, com busca de eventos e compra dos ingressos, e para os organizadores agilizarem o credenciamento;
 	\item Otimização das páginas dos eventos para sites de busca, e divulgação via newsletters e redes sociais;
 	\item Variedade nos meios de pagamento e nos métodos de recebimento para os organizadores;
-	\item API para integrar o sistema de forma transparente a uma estrutura de divulgação própria -- similar ao que é possível na Show de Ingresso (\ref{sec:show-de-ingresso}), mas com foco no organizador direto e não numa promotora de eventos;
+	\item API para integrar o sistema de forma transparente a uma estrutura de divulgação própria -- similar ao que é possível na Show de Ingresso (\autoref{sec:show-de-ingresso}), mas com foco no organizador direto e não numa promotora de eventos;
 	\item \emph{Dashboard} com análise dos dados de venda e público do evento.
 \end{itemize}
 
@@ -674,19 +724,21 @@ No último trimestre de 2013, o primeiro ano da empresa, foi reportado um fatura
 \section{Requisitos do sistema}
 
 
-%todo refiltrar isso aqui e colocar só o que for util
 \subsection{Requisitos funcionais do MVP}
 
+%todo revisar esse texto e explicar a diferença de features entre o MVP e a plataforma final
 Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema. Elas não estão organizadas com algum critério específico, e nem todas serão implementadas no período deste projeto. No entanto, a lista serve como referência de consulta para as pesquisas com os potenciais usuários; auxiliará na identificação de quais \emph{features} são mais importantes, ou se alguma seria pouco relevante, por exemplo. Após esta fase, com base nos resultados, será possível aferir a prioridade de cada uma das funcionalidades.
+
+\textit{Nota: todas as notificações citadas nesta seção são passíveis de opt-out -- quando usuário explicitamente declara não estar interessado em mensagens de determinado assunto.}
 
 \subsubsection*{Entrada na Plataforma}
 \begin{itemize}
-\item Deve ser possivel cadastrar no sistema a partir de:
+\item Deve ser possível cadastrar no sistema a partir de:
 	\begin{itemize} %todo verificar como funciona para receber atualizações sobre os follows/unfollows do usuário
 		\item Um \textbf{e-mail} convencional, preenchendo manualmente os dados do perfil profissional
 		\item \textbf{Twitter}, trazendo dados como nome, usuário, colegas, e pedindo permissão para posts sociais %todo verificar se o twitter permite posts automáticos
-		\item \textbf{Facebook}, trazendo dados pessoais, estudantis (para sugerir seguir grupos universitários e de estudo), profissionais (para sugerir seguir grupos profissionais e tópicos), colegas, e pedindo permissão para posts sociais %todo verficar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
-		\item \textbf{LinkedIn}, com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e login.
+		\item \textbf{Facebook}, trazendo dados pessoais, estudantis e profissionais (para sugerir seguir grupos universitários, de estudo, profissionais e tópicos relacionados), colegas, e pedindo permissão para \emph{posts} sociais %todo verficar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
+		\item \textbf{LinkedIn}, com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e \emph{login}.
 		\item \textbf{Slideshare} \textit{(opcional)}, que pode trazer dados pessoais e integrar as apresentações do palestrante à plataforma; também pode notificar seus seguidores de sua entrada.
 	\end{itemize}
 \item Utilizar as contas sociais para pedir que o usuário poste sobre seu novo cadastro na rede
@@ -697,10 +749,10 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 \begin{itemize}
 	\item Permitir busca manual de eventos, a partir de palavras-chave, mesmo não estando \textit{logado};
 	\item As buscas devem ser filtráveis por localização: cidade atual, estado, país e região;
-	\item Notificar o usuário automaticamente (passível de \textit{opt-out}\footnotemark[1])sobre novos eventos de interesse, baseados em:
+	\item Notificar o usuário automaticamente sobre novos eventos de interesse, baseados em:
 		\begin{itemize}
 			\item interesses do usuário;
-			\item grupos de atividade (universidades, grupos profissionais);
+			\item grupos de atividade (universidades ou organizações profissionais);
 		\end{itemize}
 	\item As notificações devem ocorrer somente para eventos de determinada configuração de interesse (inicialmente, todos os portes na cidade; médio/grande porte dentro do país; grande porte fora do país). Esta opção deve ser facilmente configurável e visível na notificação;
 	\item As notificações devem ocorrer primariamente por e-mail. Futuramente, também deve ser possível visualizar as sugestões de eventos dentro da plataforma e a partir de notificações móveis;
@@ -712,19 +764,15 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 
 \subsubsection*{Pré-evento}
 \begin{itemize}
-	\item Notificar o usuário (passível de \textit{opt-out}\footnotemark[1]) quando o lote de ingressos do evento estiver para mudar;
+	\item Notificar o usuário quando o lote de ingressos do evento estiver para mudar;
 	\item Notificar o usuário uma semana antes do evento, com resumo e dados do local;
 	\item Notificar o usuário no dia anterior, com dados do local e da programação;
 \end{itemize}
-%todo informar por fora dessas listas que todas as notificações são passíveis de opt-out
-%todo adicionar caso de uso do administrador do sistema
-%todo cronograma: 14/12 - backup; 07/12 - apresentação para a banca; 30/11 - apresentação para o professor; 23/11 - enviar documentação final para os professores da banca (documento do TCC, manual do usuário - nao sao necessariamente manuais entregues para o usuario, mas indicando o passo a passo dos casos de uso; manual de operacao: INSTALL.md)
 %todo adicionar obs explicando a formatacao do documento
-\footnotetext[1]{Quando o usuário tem a opção de não receber mensagens sobre determinado assunto}
 
 \subsubsection*{Pós-evento}
 \begin{itemize}
-	\item Enviar para o usuário estatísticas do evento, dados dos palestrantes e onde encontrar os materiais disponibilizados;
+	\item Conforme disponibilização pela organização, enviar para o usuário as estatísticas do evento, os dados dos palestrantes e onde encontrar os materiais disponibilizados;
 	\item Permitir aos organizadores enviar pesquisas de opinião para os usuários;
 \end{itemize}
 
@@ -807,7 +855,7 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 		\item Alertas sobre o início das vendas e a mudança de lotes -- avisar, por exemplo, quando faltarem determinados dias para a troca de lote.
 	\end{itemize}
 	\item Exibição de feed de notícias do evento. Os organizadores devem poder lançar notas e blocos de texto maiores, sobre os quais os usuários podem ser notificados -- útil para anunciar mudanças futuras na grade, criar material de agitação entre os congressistas ou divulgações do evento em geral. 
-	\item Talvez seja possível replicar a funcionalidade gerada por QR-Codes de Rede Wi-Fi e criar um link ou botão que leve o usuário a se conectar automaticamente às redes do evento, mesmo que elas possuam senha. Isso pode ser usado, inclusive, para criar redes específicas para os usuários do sistema. Veja a Figura \ref{fig:qr-wifi} como um exemplo.
+	\item Talvez seja possível replicar a funcionalidade gerada por QR-Codes de Rede Wi-Fi e criar um link ou botão que leve o usuário a se conectar automaticamente às redes do evento, mesmo que elas possuam senha. Isso pode ser usado, inclusive, para criar redes específicas para os usuários do sistema. Veja a \autoref{fig:qr-wifi} como um exemplo.
 \end{itemize}
 
 \begin{SCfigure}[2.5][hb]
@@ -868,7 +916,7 @@ O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem pro
 % Discutir aqui a tecnologia de backend (Parse), de frontend admin e frontend mobile (Titanium+Ember ou Ionic+Angular)
 
 \section{Topologia}
-Conforme citado em \ref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
+Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
 
 \begin{figure}[h!]
 \centering
@@ -885,6 +933,10 @@ Conforme citado em \ref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e 
 \subsection{Protótipos de telas}
 
 \subsection{Casos de Uso}
+
+\subsubsection*{Usuário - participante}
+\subsubsection*{Cliente - organizador}
+\subsubsection*{Admin - moderador}
 
 \subsection{Diagramas de Classes} % como representar os objetos JS?
 
