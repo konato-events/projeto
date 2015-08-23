@@ -15,11 +15,11 @@
 \usepackage{enumitem}
 \usepackage{fmtcount}
 \usepackage{multirow}
+\usepackage{framed} % http://pt.slideshare.net/linjaaho/how-to-make-boxed-text-with-latex
 \usepackage{indentfirst}
 
 \usepackage[num]{abntex2cite}
 \bibliographystyle{abnt-num}
-\usepackage[brazilian,hyperpageref]{backref}
 \usepackage[backend=bibtex,backref=true]{biblatex}
 \bibliography{projeto.bib}
 \hypersetup{
@@ -54,8 +54,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INICIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-\imprimircapa %\maketitle
-\imprimirfolhaderosto*
+
+%todo: usar o imprimircapa e folhaderosto quando necessário, visto que ele está funcionando mas causa erro na compilação
+%\imprimircapa
+%\maketitle
+%\imprimirfolhaderosto
 
 %todo: avaliar necessidade; verificar uso dos comandos abaixo na doc do abnTeX2
 %\begin{fichacatalografica} \end{fichacatalografica}
@@ -749,6 +752,7 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 \begin{itemize}
 	\item Permitir busca manual de eventos, a partir de palavras-chave, mesmo não estando \textit{logado};
 	\item As buscas devem ser filtráveis por localização: cidade atual, estado, país e região;
+	\item {opcional} Num dispositivo móvel (talvez no desktop também) o usuário deve poder permitir acesso à sua localização, para facilitar o sistema de busca e cadastro;
 	\item Notificar o usuário automaticamente sobre novos eventos de interesse, baseados em:
 		\begin{itemize}
 			\item interesses do usuário;
@@ -768,7 +772,6 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 	\item Notificar o usuário uma semana antes do evento, com resumo e dados do local;
 	\item Notificar o usuário no dia anterior, com dados do local e da programação;
 \end{itemize}
-%todo adicionar obs explicando a formatacao do documento
 
 \subsubsection*{Pós-evento}
 \begin{itemize}
@@ -884,7 +887,7 @@ Também é interessante disponibilizar uma integração com os eventos do Facebo
 Pode ser interessante haver um tipo de serviço diferenciado onde algumas partes da API ficam disponíveis para os organizadores. Isso é útil para o caso de criarem um hotsite do evento, por exemplo. Dessa forma, a página pode se tornar mais dinâmica e integrada com o aplicativo, exibindo as mesmas notícias que são divulgadas no sistema, atualizando a grade de palestras de forma automática, e etc.
 Outra vertente da ideia é possuir um gerador de site automatizado, que conteria todos os dados sobre o evento, assim como o aplicativo. Mas nesse caso pecaríamos em personalização, num ambiente muito mais customizável e visual como a web.
 
-\subsection{Requisitos não-funcionais}
+\subsection{Requisitos não-funcionais} %todo preencher essa bagaça
 \begin{itemize}
 	\item 
 \end{itemize}
@@ -895,25 +898,39 @@ Outra vertente da ideia é possuir um gerador de site automatizado, que conteria
 O objetivo do projeto é ter um passo veloz e portável, permitindo construção rápida e instalação em qualquer plataforma de desenvolvimento. Para tanto, as seguintes tecnologias foram selecionadas:
 
 \subsection{Banco de Dados}
-Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- 
+Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- foi decidido utilizar um sistema de armazenamento de dados baseado em API REST\footnote{Tipo de webservice que utiliza as funcionalidades do protocolo HTTP para simplificar sua implementação.}. Dentre as opções do mercado, a escolha inicial foi pelo \textbf{Parse} (às vezes também chamado de \emph{Parse.com}, pelo nome extremamente comum no idioma inglês), um sistema de Backend como Serviço (\textit{BaaS}) adquirido pelo Facebook\cite{facebook-buys-parse} que fornece uma API robusta com controle de acesso por usuários e execução de código customizado, sistema integrado de login social e funcionalidades de notificações móveis. O Parse possui um plano gratuito que engloba até 30 requisições à API por segundo; caso esse volume seja estourado facilmente, podemos optar por migrar progressivamente os serviços para uma plataforma própria, baseada no Restler -- uma biblioteca PHP de desenvolvimento de APIs RESTful\footnote{API que segue todos os princípios REST.} de uso muito simples.
 
 \subsection{Backend}
+Considerando o estilo tradicional da aplicação -- que pode ser citada como um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JS (também conhecidas como \emph{Single-page app}), mas o tempo que seria despendido com o aprendizado desse tipo de tecnologia ainda em processo de maturação seria desnecessário, visto que a natureza do sistema não exige alto nível de interatividade.
 
-\subsection{Frontend}
-% Protótipos: https://marvelapp.com/project/301556/
+O framework escolhido foi o Laravel, que 
+
+\subsection{Frontend e design}
+Para definição de protótipos iniciais e experimentação de design antes do desenvolvimento, utilizaremos o \textbf{Moqups}; nossos materiais estão disponíveis em \url{https://moqups.com/igorsantos07/3jyAGeSX/}.
+
+Para a interface do sistema, utilizaremos tecnologias já tradicionais e estabelecidas no mercado de desenvolvimento web: \textbf{jQuery} -- para facilitar interações JavaScript -- e \textbf{Bootstrap} -- otimizando o tempo gasto com inicialização do \emph{design}.
+
+Por fim, foi decidido usar a paleta de cores a seguir, visto que o amarelo e o laranja evocam sensações de energia, positivismo, criatividade e vitalidade: sentimentos interessantes para um congressista num ambiente de aprendizado, novas descobertas e novos contatos. Por outro lado, as cores complementares azuladas clamam por calma, segurança e confiabilidade, fatores importantes para um evento de sucesso. A paleta pode ser visualizada e manipulada online em \url{http://paletton.com/#uid=70v0u0ko6vwa2N5i9BF-AlOuSs6}.\cite{colors-marketo}\cite{colors-creative}
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.6\linewidth]{imagens/paleta.png}
+	\caption{Paleta de cores escolhida, variando entre o laranja, amarelo, azul e ciano.}
+\end{figure}
 
 \subsection{Plataforma}
 \subsubsection*{Desenvolvimento}
-Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no BitBucket (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com novas funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório git do sistema web fica em \url{http://bitbucket.org/konato/web}.
-Também para facilitar a portabilidade do ambiente, utilizaremos uma máquina virtual do Virtualbox a partir do Vagrant\footnotemark. Ela isola o computador do desenvolvedor do ambiente em que a aplicação é executada, permitindo maior liberdade de uso ao mesmo tempo que cria um mantém uma similaridade maior com os ambientes de homologação e produção.
-\footnotetext{Sistema de linha de comando que permite compartilhamento fácil de máquinas e controle via linha de comando.}
+Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no \textbf{BitBucket} (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com novas funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório git do sistema web fica em {\url{http://bitbucket.org/konato/web}.
+Também para facilitar a portabilidade do ambiente, utilizaremos uma box do \textbf{Docker}\footnotemark. Isso dará maior liberdade de uso ao mesmo tempo que permite manter uma alta similaridade com os ambientes de homologação e produção.
+\footnotetext{Sistema de linha de comando que aproveita o conceito de \emph{containers UNIX} para isolar uma aplicação do ambiente em que ela é executada, permitindo eficiência e flexibilidade na troca de componentes.}
 
 \subsubsection*{Homologação e produção}
-Ambos os ambientes serão hospedados no Heroku, uma plataforma de desenvolvimento pronta, como serviço (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando o sistema também é quase zero. Por fim, quando a aplicação crescer, é fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente -- permitindo inclusive escalonamento automático. %todo avaliar se o heroku tem mesmo isso
-O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem proibitivos durante o escalonamento inicial, é possível migrar a aplicação facilmente para outras plataformas, como os serviços de cloud da Amazon ou mesmo um VPS -- atividade facilitada devido à portabilidade do ambiente de desenvolvimento, descrita acima.
+Ambos os ambientes serão hospedados no \textbf{Heroku}, uma plataforma de desenvolvimento pronta, como serviço (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando o sistema também é quase zero. Por fim, quando a aplicação crescer, é fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente -- permitindo inclusive escalonamento automático. %todo avaliar se o heroku tem mesmo isso
+O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem proibitivos durante o escalonamento inicial, é possível migrar a aplicação facilmente para outras plataformas, como os serviços de cloud da \textbf{Amazon} ou mesmo um \textbf{VPS} -- atividade facilitada devido à portabilidade do ambiente de desenvolvimento, descrita acima.
 
-
-% Discutir aqui a tecnologia de backend (Parse), de frontend admin e frontend mobile (Titanium+Ember ou Ionic+Angular)
+\begin{framed}
+	\textit{Nota:} Docker também é o tipo de tecnologia utilizada para isolar aplicações no ambiente do Heroku. A partir daí, foi lançada uma integração entre os dois, para simplificar o desenvolvimento de sistemas, utilizando os mesmo contêineres em desenvolvimento e produção.\cite{heroku-docker} No entanto, até o momento não há imagens para PHP no Docker Hub\cite{heroku-dockerhub}.
+\end{framed}
 
 \section{Topologia}
 Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.

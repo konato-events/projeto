@@ -27,6 +27,6 @@ Segue aqui o passo-a-passo de instalação do TeX e dos pacotes necessários no 
 6. Desabilitar instalação de documentação e sources, clicando no "Toggle" dos respectivos "Install font/macro doc tree" e "Install font/macro source tree".
 7. Habilitar a opção "Create symlinks in system directories", clicando no botão "Change" e marcando a checkbox do diálogo que aparecer - os valores que aparecerem nas caixas de texto podem ser deixados conforme o default.
 8. Verifique a necessidade de atualizar o gerenciador de pacotes do TeX antes de prosseguir: `sudo tlmgr update --self`
-9. Agora, prossiga instalando os seguintes pacotes restantes: `sudo tlmgr install abntex2 enumitem csquotes etoolbox sidecap nowidow footmisc fmtcount multirow biblatex logreq`
+9. Agora, prossiga instalando os seguintes pacotes restantes: `sudo tlmgr install abntex2 enumitem csquotes etoolbox sidecap nowidow footmisc fmtcount multirow biblatex logreq framed`
 
 Pronto! O LaTeX e todos os pacotes necessários estão instalados. Recomendo a utilização do TeX Studio ou Texmaker para edição do projeto.
