@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CABECALHO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% DOC abnTeX2: http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf
-\documentclass[12pt,a4paper,twoside,brazil]{abntex2}
+\documentclass[12pt,a4paper,twoside,hyphens,brazil]{abntex2}
 
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
@@ -18,10 +18,22 @@
 \usepackage{framed} % http://pt.slideshare.net/linjaaho/how-to-make-boxed-text-with-latex
 \usepackage{indentfirst}
 
-\usepackage[num]{abntex2cite}
-\bibliographystyle{abnt-num}
-\usepackage[backend=bibtex,backref=true]{biblatex}
-\bibliography{projeto.bib}
+%%%%% Bibiografia
+\usepackage[num,abnt-full-initials=yes,abnt-repeated-author-omit=yes]{abntex2cite}
+%\renewcommand{\leftovercite}{[}
+%\renewcommand{\rightovercite}{]}
+\usepackage[brazilian,hyperpageref]{backref}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Sem citação no texto.%
+	\or
+		Ver pág. #2.%
+	\else
+		Ver págs. #2.%
+	\fi}%
+
+%%%%% Outras configurações
 \hypersetup{
 %	pdftitle={\@title},
 %	pdfauthor={Igor~Santos},
@@ -32,17 +44,18 @@
 }
 \hyphenation{Javelin}
 
+%%%%% Comandos novos
 \newcommand{\hip}{{\color{BlueViolet}\framebox[1.1\width]{HIP}}}
 \newcommand{\conf}{{\color{OliveGreen}\framebox[1.1\width]{CNF}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% META-DADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{
+\titulo{
 %	Projeto~de~TCC\\
 	\textbf{Konato}\\
 	\textit{PXI-2015.2-013}
 }
 
-\author{\textbf{Igor~Santos}\\
+\autor{\textbf{Igor~Santos}\\
 	\texttt{conf@igorsantos.com.br}\\
 	{\small Co-participação de: \textit{Eduardo Ferreira \and Letícia Oliveira}}
 }
@@ -54,6 +67,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INICIO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+
+\frenchspacing % remove o espaço extra entre frases
 
 %todo: usar o imprimircapa e folhaderosto quando necessário, visto que ele está funcionando mas causa erro na compilação
 %\imprimircapa
@@ -281,7 +296,7 @@ Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de
 	%todo: avaliar legibilidade do diagrama quando impresso em A4
 \end{figure}
 
-Segundo Blank \& Dorf \cite[p.~83]{manual-startup}, frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o \emph{Lean Canvas} para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
+Segundo \citeauthor{manual-startup} (p.~83), frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o \emph{Lean Canvas} para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
 
 Originalmente, Alex Osterwalder criou o \emph{Business Model Canvas}, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, e facilmente alterado e  corrigido. Posteriormente, Ash Maurya criou o Lean Canvas, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (arriscadas) e mutáveis de uma startup.\cite{why-lean-canvas}
 
@@ -294,7 +309,7 @@ Também descreveremos em síntese os blocos adicionais do \emph{Business Model C
 
 \subsubsection*{Bloco Zero: Pesquisa de mercado}
 \label{sec:lean:mercado}
-Ao descrever o processo de \textit{Customer Discovery} (Descoberta do Consumidor) no livro Manual da Startup\cite{manual-startup}, Blank \& Dorf sugerem criar um resumo inicial sobre o tamanho do mercado antes de iniciar as sínteses de cada parte do Business Model Canvas.
+Ao descrever o processo de \textit{Customer Discovery} (Descoberta do Consumidor) no livro Manual da Startup\cite{manual-startup}, \citeauthoronline{manual-startup} sugerem criar um resumo inicial sobre o tamanho do mercado antes de iniciar as sínteses de cada parte do Business Model Canvas.
 
 Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas: por um lado, estaremos atendendo os organizadores de eventos, que objetivam se comunicar com seus participantes; por outro, estaremos atendendo os participantes, que desejam obter as informações que os organizadores disponibilizarão sobre os eventos que os interessam. Portanto, é importante notar que, apesar do mercado ser um só, há dois tipos distintos de consumidores a se considerar neste mercado.
 
@@ -432,10 +447,10 @@ Considerando que uma startup é baseada em hipóteses não testadas, é necessá
 	
 	\emph{Tudo que você faz durante [essa fase] é centrado em torno de testar hipóteses.}
 	
-	{\raggedright (ALVAREZ; Cindy. Lean Customer Development. 2014.\cite{lean-customer-development} Cap. 1. Grifo do autor, tradução nossa.)}
+	{\raggedright (\citetext{lean-customer-development} Cap. 1. Grifo do autor, tradução nossa.)}
 \end{citacao}
 
-Tendo isso em mente, decidimos usar o \emph{Experiment Board} (criado por uma empresa chamada Javelin\cite{experiment-board-javelin}) para definir as hipóteses relevantes do nosso produto, e a melhor forma de testá-las. Muitas hipóteses são indicadas na descrição do Lean Canvas, posteriormente, mas aquelas descritas nesta seção são de cunho mais amplo, cobrindo um espectro mais diverso do projeto. Nosso objetivo é indicar as hipóteses gerais do sistema de uma forma que seja fácil de testar -- pois na maior parte das vezes, as ideias são tão grandes que é necessário fragmentá-las para torná-las testáveis\cite{experiment-board-post}.
+Tendo isso em mente, decidimos usar o \emph{Experiment Board} (criado por uma empresa chamada \citeauthoronline{experiment-board-javelin}) para definir as hipóteses relevantes do nosso produto, e a melhor forma de testá-las. Muitas hipóteses são indicadas na descrição do Lean Canvas, posteriormente, mas aquelas descritas nesta seção são de cunho mais amplo, cobrindo um espectro mais diverso do projeto. Nosso objetivo é indicar as hipóteses gerais do sistema de uma forma que seja fácil de testar -- pois na maior parte das vezes, as ideias são tão grandes que é necessário fragmentá-las para torná-las testáveis\cite{experiment-board-post}.
 
 O \emph{Experiment Board} funciona listando todos os tipos de Clientes, seus Problemas, possíveis Soluções e Riscos potenciais. Depois disso, cruzamos estes quatro elementos e formulamos uma hipótese. Devemos decidir o método de teste e o critério que definirá se a hipótese foi confirmada ou refutada. Ao final do teste, indicamos o resultado e o que foi aprendido com o teste. No caso de a hipótese ter sido refutada, seus elementos devem ser revistos e novos testes, feitos -- numa ação conhecida como ``pivotar'', onde os elementos principais são mantidos mas a direção da ideia é alterada, de forma a ter uma nova visão sobre a questão.
 
@@ -898,12 +913,12 @@ Outra vertente da ideia é possuir um gerador de site automatizado, que conteria
 O objetivo do projeto é ter um passo veloz e portável, permitindo construção rápida e instalação em qualquer plataforma de desenvolvimento. Para tanto, as seguintes tecnologias foram selecionadas:
 
 \subsection{Banco de Dados}
-Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- foi decidido utilizar um sistema de armazenamento de dados baseado em API REST\footnote{Tipo de webservice que utiliza as funcionalidades do protocolo HTTP para simplificar sua implementação.}. Dentre as opções do mercado, a escolha inicial foi pelo \textbf{Parse} (às vezes também chamado de \emph{Parse.com}, pelo nome extremamente comum no idioma inglês), um sistema de Backend como Serviço (\textit{BaaS}) adquirido pelo Facebook\cite{facebook-buys-parse} que fornece uma API robusta com controle de acesso por usuários e execução de código customizado, sistema integrado de login social e funcionalidades de notificações móveis. O Parse possui um plano gratuito que engloba até 30 requisições à API por segundo; caso esse volume seja estourado facilmente, podemos optar por migrar progressivamente os serviços para uma plataforma própria, baseada no Restler -- uma biblioteca PHP de desenvolvimento de APIs RESTful\footnote{API que segue todos os princípios REST.} de uso muito simples.
+Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- foi decidido utilizar um sistema de armazenamento de dados baseado em API REST\footnote{Tipo de webservice que utiliza as funcionalidades do protocolo HTTP para simplificar sua implementação.}. Dentre as opções do mercado, a escolha inicial foi pelo \textbf{Parse} (às vezes também chamado de \emph{Parse.com}, pelo nome extremamente comum no idioma inglês), um sistema de Backend como Serviço (\textit{BaaS}) adquirido pelo Facebook\cite{facebook-buys-parse} que fornece uma API robusta com controle de acesso por usuários e execução de código customizado, sistema integrado de login social e funcionalidades de notificações móveis. O Parse possui um plano gratuito que engloba até 30 requisições à API por segundo; caso esse volume seja estourado facilmente, podemos optar por migrar progressivamente os serviços para uma plataforma própria, baseada no \emph{Restler} -- uma biblioteca PHP de desenvolvimento de APIs RESTful\footnote{API que segue todos os princípios REST.} de uso muito simples.
 
 \subsection{Backend}
-Considerando o estilo tradicional da aplicação -- que pode ser citada como um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JS (também conhecidas como \emph{Single-page app}), mas o tempo que seria despendido com o aprendizado desse tipo de tecnologia ainda em processo de maturação seria desnecessário, visto que a natureza do sistema não exige alto nível de interatividade.
+Considerando o estilo tradicional da aplicação -- que pode ser citada como um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JS (também conhecidas como \emph{Single-page app / SPA}), mas o tempo que seria despendido com o aprendizado desse tipo de tecnologia ainda em processo de maturação seria desnecessário, visto que a natureza do sistema não exige alto nível de interatividade.
 
-O framework escolhido foi o Laravel, que 
+O framework escolhido foi o Laravel, que %todo finalizar
 
 \subsection{Frontend e design}
 Para definição de protótipos iniciais e experimentação de design antes do desenvolvimento, utilizaremos o \textbf{Moqups}; nossos materiais estão disponíveis em \url{https://moqups.com/igorsantos07/3jyAGeSX/}.
@@ -963,6 +978,6 @@ Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficient
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\printbibliography
+\bibliography{projeto}
 
 \end{document}
