@@ -934,13 +934,13 @@ Por fim, foi decidido usar a paleta de cores a seguir, visto que o amarelo e o l
 \end{figure}
 
 \subsection{Plataforma}
-\subsubsection*{Desenvolvimento}
-Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no \textbf{BitBucket} (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com novas funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório git do sistema web fica em {\url{http://bitbucket.org/konato/web}.
-Também para facilitar a portabilidade do ambiente, utilizaremos uma box do \textbf{Docker}\footnotemark. Ele dará maior liberdade de manuseio das configurações do ambiente, ao mesmo tempo que permite manter uma alta similaridade com as versões de homologação e produção, ao isolar o sistema de desktop do desenvolvedor de onde a aplicação é executada.\cite{docker-presentation}
+Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no \textbf{BitBucket} (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório Git do projeto fica em {\url{http://bitbucket.org/konato/web}.
+
+Para facilitar a portabilidade do ambiente, utilizaremos contêineres do \textbf{Docker}\footnotemark. Ele dará maior liberdade de manuseio das configurações do ambiente, ao mesmo tempo que permite manter uma alta similaridade com as versões de homologação e produção, ao isolar o sistema de desktop do desenvolvedor de onde a aplicação é executada.\cite{docker-presentation} Foi criada uma conta no repositório oficial de imagens, para conter tanto a versão pura do Sistema Operacional com a linguagem e servidor HTTP (\texttt{konato/php7-beta}), quanto imagens do projeto de fácil instalação e utilização (\texttt{konato/project}): \url{https://hub.docker.com/r/konato/}.
 \footnotetext{Sistema que aproveita o conceito de contêineres \emph{UNIX} para isolar uma aplicação do ambiente em que ela é executada, permitindo alta eficiência e flexibilidade na troca de componentes -- sendo muito mais veloz que opções tradicionais de virtualização de máquinas. Também habilita o compartilhamento público ou privado das imagens geradas, bem como o versionamento das configurações.\cite{docker-presentation}}
 
 \subsubsection*{Homologação e produção}
-Ambos os ambientes serão hospedados no \textbf{Heroku}, uma plataforma de desenvolvimento pronta, como serviço (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando o sistema também é quase zero. Por fim, quando a aplicação crescer, é fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente -- permitindo inclusive escalonamento automático. %todo avaliar se o heroku tem mesmo isso
+Ambos os ambientes serão hospedados no \textbf{Heroku}, um serviço de plataforma pronta para execução de sistemas (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando o sistema também é quase zero. Por fim, quando a aplicação crescer, é fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente -- permitindo inclusive escalonamento automático. %todo avaliar se o heroku tem mesmo isso
 O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem proibitivos durante o escalonamento inicial, é possível migrar a aplicação facilmente para outras plataformas, como os serviços de cloud da \textbf{Amazon} ou mesmo um \textbf{VPS} -- atividade facilitada devido à portabilidade do ambiente de desenvolvimento, descrita acima.
 
 \begin{framed}
@@ -948,6 +948,7 @@ O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem pro
 \end{framed}
 
 \section{Topologia}
+%TODO: ATUALIZAR O DIAGRAMA DE TOPOLOGIA!!!!
 Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
 
 \begin{figure}[h!]
