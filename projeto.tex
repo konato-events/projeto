@@ -1,6 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CABECALHO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% DOC abnTeX2: http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2.pdf
-\documentclass[12pt,a4paper,twoside,hyphens,brazil]{abntex2}
+%%% DOC abnTeX2cite: http://linorg.usp.br/CTAN/macros/latex/contrib/abntex2/doc/abntex2cite.pdf
+%%% Exemplo: https://github.com/abntex/abntex2/blob/master/doc/latex/abntex2/examples/abntex2-modelo-trabalho-academico.tex
+\documentclass[12pt,a4paper,twoside,hyphens,english,brazil]{abntex2}
 
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
@@ -17,11 +19,13 @@
 \usepackage{multirow}
 \usepackage{framed} % http://pt.slideshare.net/linjaaho/how-to-make-boxed-text-with-latex
 \usepackage{indentfirst}
+\usepackage{microtype}
 
-%%%%% Bibiografia
-\usepackage[num,abnt-full-initials=yes,abnt-repeated-author-omit=yes]{abntex2cite}
-%\renewcommand{\leftovercite}{[}
-%\renewcommand{\rightovercite}{]}
+\hyphenation{Javelin}
+
+%%%%%%%%%% Bibiografia
+\usepackage[num,overcite,abnt-full-initials=yes,abnt-repeated-author-omit=yes]{abntex2cite}
+\citebrackets[] % fica no lugar do \renewcommand{\leftovercite}{[}
 \usepackage[brazilian,hyperpageref]{backref}
 \renewcommand{\backref}{}
 \renewcommand*{\backrefalt}[4]{
@@ -33,35 +37,35 @@
 		Ver págs. #2.%
 	\fi}%
 
-%%%%% Outras configurações
-\hypersetup{
-%	pdftitle={\@title},
-%	pdfauthor={Igor~Santos},
-	colorlinks=true,
-	urlcolor=blue,
-	linkcolor=black,
-	citecolor=red
-}
-\hyphenation{Javelin}
-
-%%%%% Comandos novos
+%%%%%%%%%% Comandos novos
 \newcommand{\hip}{{\color{BlueViolet}\framebox[1.1\width]{HIP}}}
 \newcommand{\conf}{{\color{OliveGreen}\framebox[1.1\width]{CNF}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% META-DADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\titulo{
-%	Projeto~de~TCC\\
-	\textbf{Konato}\\
-	\textit{PXI-2015.2-013}
-}
-
+\titulo{Konato} % pra adicionar «guillemets» mais legais no título, use $\ll$ e $\gg$
+\data{PXI~-~2015.2~-~013}
 \autor{\textbf{Igor~Santos}\\
 	\texttt{conf@igorsantos.com.br}\\
 	{\small Co-participação de: \textit{Eduardo Ferreira \and Letícia Oliveira}}
 }
-\instituicao{Universidade Estácio de Sá}
 \local{Rio de Janeiro, RJ}
+\instituicao{Universidade Estácio de Sá\par Campus Praça XI} % FIXME: porque \\ não funciona no \instituicao?
 \tipotrabalho{Projeto de Conclusão de Curso}
+\preambulo{\imprimirtipotrabalho, que descreve a criação de um sistema de divulgação de eventos acadêmicos e técnicos, baseado em um modelo de desenvolvimento de startup.}
+
+\makeatletter % libera o uso do arroba nos comandos abaixo (http://tex.stackexchange.com/questions/8351)
+\hypersetup{
+	pdftitle={\@title - \imprimirtipotrabalho},
+	pdfauthor={Igor~Santos},
+	pdfsubject={\imprimirpreambulo},
+	pdfcreator={LaTeX with abnTeX2 on TeXStudio},
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=black,
+	citecolor=red,
+	bookmarksdepth=4
+}
+\makeatother % arroba volta pro uso original
 
 \makeindex
 
@@ -70,12 +74,10 @@
 
 \frenchspacing % remove o espaço extra entre frases
 
-%todo: usar o imprimircapa e folhaderosto quando necessário, visto que ele está funcionando mas causa erro na compilação
-%\imprimircapa
-%\maketitle
-%\imprimirfolhaderosto
+\imprimircapa
+\imprimirfolhaderosto
 
-%todo: avaliar necessidade; verificar uso dos comandos abaixo na doc do abnTeX2
+%todo: avaliar necessidade; verificar uso dos comandos abaixo na doc do abnTeX2 e no exemplo que estão no cabeçalho comentado
 %\begin{fichacatalografica} \end{fichacatalografica}
 %\begin{folhadeaprovacao} \end{folhadeaprovacao} ou \includepdf{aprovacao_final.pdf}
 %\begin{resumo} \end{resumo}
@@ -971,7 +973,7 @@ Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficient
 \subsubsection*{Cliente - organizador}
 \subsubsection*{Admin - moderador}
 
-\subsection{Diagramas de Classes} % como representar os objetos JS?
+\subsection{Diagramas de Classes}
 
 \subsection{Diagramas de Estado} % vai ser necessário?
 
@@ -979,6 +981,7 @@ Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficient
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\postextual
 \bibliography{projeto}
 
 \end{document}
