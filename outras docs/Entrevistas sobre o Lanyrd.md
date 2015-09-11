@@ -26,3 +26,9 @@
 - há a diferença entre o envio de **Resumos, Resumos Expandidos e Artigos**
 - muitos trabalhos submetidos são apresentados em **posteres**, mas alguns são selecionados para **apresentação oral**
 - uma ferramenta que **facilite a avaliação e premiação dos trabalhos pode ser importante** - vale lembrar que muitos eventos possuem premiações exclusivas: por exemplo, caso a Petrobras esteja premiando trabalhos na área de biodiesel num evento sobre Catálise, além dos prêmios tradicionais do congresso
+
+### [Epidemio] Felipe Moraes
+- fator importante pra considerar ir num congresso por conta propria: pessoas que sao referencia que vao, e quantidade de pessoas da sua area que vao ao congresso. isso traz confiabilidade, visto que tem bastante gente indo (efeito de manada)
+- palestrantes sao pouco importantes, mas acontece
+- networking para ajudar vc a fazer um trabalho (e dai, entrar na lista de co-autores) e pra unir forças
+- fez cadastro na ISPOR pra receber newsletter pra ficar sabendo de submissoes e novidades do evento e algumas novidades sobre o mercado também
