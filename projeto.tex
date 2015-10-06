@@ -124,29 +124,35 @@ Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{A escolha do nome}
 
-Seguem aqui alguns componentes que podem ser utilizados de inspiração, e algumas sugestões já pensadas para o nome do sistema. Tais ideias também foram lançadas num aplicativo web chamado NameStorm (http://namestorm.niicho.com/ac659), que facilita encontrar domínios e perfis sociais com os nomes indicados, bem como angariar votos para decidir a preferência da equipe.\\
+A decisão do nome de um novo projeto pode ser um processo tedioso e demorado. Foram gastas algumas horas em reuniões, e pouco resultado se obteve. Numa segunda fase, para otimizar o trabalho, foi decidido utilizar as opções que havia disponíveis de nomes e afixos e trabalhar com outros idiomas. No final daquele dia seria escolhido um nome entre as opções apresentadas, e o assunto seria arquivado. No futuro, com um produto mais sólido, poderíamos voltar aqui e rever com mais substância um nome mais representativo.
 
-\begin{tabular}{rcl|c}
-\multicolumn{3}{c|}{\textbf{Afixos}}& \textbf{Principais} \\\hline
-Bit			& Time		& Data		& Congresso		 \\\cline{1-3}
-Quick		& Fast		& App		& Conferência	 \\\cline{1-3}
-Skill		& Link		& Fact		& Schedule		 \\\cline{1-3}
-Rápido		& Veloz		& Click 	& Evento		 \\\cline{1-3}
-Profissional& Detalhes	& Lite		& Event			 \\\cline{1-3}
-Organização	& Esperto	& Online	& Know			 \\\cline{1-3}
-Inteligência& Expert	& Develop	& Knowledge		 \\\cline{1-3}
-Atualização	& Achieve	& Prático	& Lore			 \\\cline{1-3}
-Progresso	& Spread	& Action	& Destaque		 \\\cline{1-3}
-Interação	& One		& Zen		& Palco			 \\\cline{1-3}
-Handy		& The		& VIP		& Stage			
-\end{tabular}
+Os componentes pensados são indicados na \autoref{tab:nomes}, e as sugestões puderam ser testadas num aplicativo web chamado NameStorm (\url{http://namestorm.niicho.com/ac659}), que facilita encontrar domínios e perfis sociais com os nomes indicados, bem como angariar votos para decidir a preferência da equipe.\\
+
+\begin{table}[h]
+	\caption{Resultado inicial do brainstorm de nome do projeto}
+	\centering
+	\begin{tabular}{rcl|c}
+		\multicolumn{3}{c|}{\textbf{Afixos}}& \textbf{Principais} \\\hline
+		Bit			& Time		& Data		& Congresso		 \\\cline{1-3}
+		Quick		& Fast		& App		& Conferência	 \\\cline{1-3}
+		Skill		& Link		& Fact		& Schedule		 \\\cline{1-3}
+		Rápido		& Veloz		& Click 	& Evento		 \\\cline{1-3}
+		Profissional& Detalhes	& Lite		& Event			 \\\cline{1-3}
+		Organização	& Esperto	& Online	& Know			 \\\cline{1-3}
+		Inteligência& Expert	& Develop	& Knowledge		 \\\cline{1-3}
+		Atualização	& Achieve	& Prático	& Lore			 \\\cline{1-3}
+		Progresso	& Spread	& Action	& Destaque		 \\\cline{1-3}
+		Interação	& One		& Zen		& Palco			 \\\cline{1-3}
+		Handy		& The		& VIP		& Stage			
+	\end{tabular}
+	\label{tab:nomes}
+\end{table}
 
 \subsubsection*{Sugestões já pensadas}
 \begin{description}
-	\item[EvenTime] pode soar como Even+Time
-	\item[BitConf, Dataconf, QuickConf, HandyConf, TheConf] referências a conferências podem ter boa sonoridade, mas focar o nome do produto só num tipo de mercado pode ser prejudicial
-	\item[The Event, Click Event, Link Event] pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick ou InEvent por exemplo
-	\item[Events To Be Disclosed (TDB), Disclose Events] Tem um significado próximo à ideia de divulgação que a plataforma trás, mas podem ter uso complexo no português
+	\item[BitConf, Dataconf, QuickConf, HandyConf, TheConf] referências a conferências podem ter boa sonoridade, mas focar o nome do produto num só tipo de mercado pode ser prejudicial para o entendimento do produto.
+	\item[The Event, Click Event, Link Event, EvenTime] pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick, Eventbrite ou InEvent, por exemplo). A última opção ainda pode soar como \emph{even time}, fugindo da proposta do projeto.
+	\item[Events To Be Disclosed (TDB), Disclose Events] Tem um significado próximo à ideia de divulgação que a plataforma trás, mas podem ter uso complexo no português.
 	\item[Informoi, Paroloi, \emph{Konato}, Efekto] originárias do esperanto; significam, respectivamente: \emph{Informações, Palestras, Conhecido (pessoa), Efeito}.
 \end{description}
 
@@ -742,6 +748,7 @@ No último trimestre de 2013, o primeiro ano da empresa, foi reportado um fatura
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Requisitos do sistema}
+\label{sec:requisitos}
 
 
 \subsection{Requisitos funcionais do MVP}
@@ -914,27 +921,6 @@ Outra vertente da ideia é possuir um gerador de site automatizado, que conteria
 
 O objetivo do projeto é ter um passo veloz e portável, permitindo construção rápida e instalação em qualquer plataforma de desenvolvimento. Para tanto, as seguintes tecnologias foram selecionadas:
 
-\subsection{Banco de Dados}
-Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- foi decidido utilizar um sistema de armazenamento de dados baseado em API REST\footnote{Tipo de webservice que utiliza as funcionalidades do protocolo HTTP para simplificar sua implementação.}. Dentre as opções do mercado, a escolha inicial foi pelo \textbf{Parse} (às vezes também chamado de \emph{Parse.com}, pelo nome extremamente comum no idioma inglês), um sistema de Backend como Serviço (\textit{BaaS}) adquirido pelo Facebook\cite{facebook-buys-parse} que fornece uma API robusta com controle de acesso por usuários e execução de código customizado, sistema integrado de login social e funcionalidades de notificações móveis. O Parse possui um plano gratuito que engloba até 30 requisições à API por segundo; caso esse volume seja estourado facilmente, podemos optar por migrar progressivamente os serviços para uma plataforma própria, baseada no \emph{Restler} -- uma biblioteca PHP de desenvolvimento de APIs RESTful\footnote{API que segue todos os princípios REST.} de uso muito simples.
-
-\subsection{Backend}
-Considerando o estilo tradicional da aplicação -- que pode ser citada como um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JS (também conhecidas como \emph{Single-page app / SPA}), mas o tempo que seria despendido com o aprendizado desse tipo de tecnologia ainda em processo de maturação seria desnecessário, visto que a natureza do sistema não exige alto nível de interatividade.
-
-O framework escolhido foi o Laravel, que %todo finalizar
-
-\subsection{Frontend e design}
-Para definição de protótipos iniciais e experimentação de design antes do desenvolvimento, utilizaremos o \textbf{Moqups}; nossos materiais estão disponíveis em \url{https://moqups.com/igorsantos07/3jyAGeSX/}.
-
-Para a interface do sistema, utilizaremos tecnologias já tradicionais e estabelecidas no mercado de desenvolvimento web: \textbf{jQuery} -- para facilitar interações JavaScript -- e o \textbf{Semantic UI} -- otimizando o tempo gasto com inicialização do \emph{design}, com diversos componentes já prontos e de ótima qualidade visual.
-
-Por fim, foi decidido usar a paleta de cores a seguir, visto que o amarelo e o laranja evocam sensações de energia, positivismo, criatividade e vitalidade: sentimentos interessantes para um congressista num ambiente de aprendizado, novas descobertas e novos contatos. Por outro lado, as cores complementares azuladas clamam por calma, segurança e confiabilidade, fatores importantes para um evento de sucesso. A paleta pode ser visualizada e manipulada online em \url{http://paletton.com/#uid=70v0u0ko6vwa2N5i9BF-AlOuSs6}.\cite{colors-marketo}\cite{colors-creative}
-
-\begin{figure}[h!]
-\centering
-	\includegraphics[width=0.6\linewidth]{imagens/paleta.png}
-	\caption{Paleta de cores escolhida, variando entre o laranja, amarelo, azul e ciano.}
-\end{figure}
-
 \subsection{Plataforma}
 Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no \textbf{BitBucket} (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório Git do projeto fica em {\url{http://bitbucket.org/konato/web}.
 
@@ -948,6 +934,62 @@ O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem pro
 \begin{framed}
 	\textit{Nota:} Docker também é o tipo de tecnologia utilizada para isolar aplicações no ambiente do Heroku. A partir daí, foi lançada uma integração entre os dois, para simplificar o desenvolvimento de sistemas, utilizando os mesmo contêineres em desenvolvimento e produção.\cite{heroku-docker} No entanto, até o momento não há imagens para PHP no Docker Hub\cite{heroku-dockerhub}.
 \end{framed}
+
+\subsection{Infraestrutura de Dados e armazenamento}
+Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- foi decidido utilizar um sistema de armazenamento de dados baseado em API REST\footnote{Tipo de webservice que utiliza as funcionalidades do protocolo HTTP para simplificar sua implementação.}. Dentre as opções do mercado, a escolha inicial foi pelo \textbf{Parse} (às vezes também chamado de \emph{Parse.com}, pelo nome extremamente comum no idioma inglês), um sistema de Backend como Serviço (\textit{BaaS}) adquirido pelo Facebook\cite{facebook-buys-parse}. Ele fornece uma API robusta, com controle de acesso por usuários e execução de código customizado, sistema integrado de login social, armazenamento de arquivos e funcionalidades de notificações móveis.
+
+O Parse possui um plano gratuito que engloba até 30 requisições à API por segundo\cite{parse-plans}; caso esse volume seja estourado facilmente, podemos optar por migrar progressivamente os serviços para uma plataforma própria, baseada no \emph{Restler} -- uma biblioteca PHP de desenvolvimento de APIs RESTful\footnote{API que segue todos os princípios REST.} de uso muito simples. Outra opção de migração é usar o mesmo framework que será usado no backend, conforme será descrito abaixo. O maior ponto negativo da migração será a transferência de dados e a necessidade de monitoramento, para manter a base com performance similar. Por outro lado, a estrutura de dados do Parse prevê um formato NoSQL híbrido, que contém indicações claras de relacionamentos -- isso permitirá uma migração menos penosa para uma estrutura relacional formal, se for necessária. Já usaremos desde o começo o monitoramento do \textbf{NewRelic} para controlar a performance geral do sistema.
+
+Desejando aproveitar ao máximo o potencial do Parse, aliado à natureza estática do projeto, serão utilizados serviços de cache de forma a balancear requisições por novos dados e a utilização de informações já capturadas antes. Para tanto, inicialmente uniremos dois serviços de cache em memória disponíveis no Heroku, o \textbf{Memcached Cloud} e \textbf{Memcachier}. No futuro, necessitando de mais, poderemos escolher o serviço mais competitivo entre os dois. Também manteremos \emph{headers} de cache HTTP adequados, pra potencializar o tempo de carregamento para o usuário. Infelizmente, devido à própria natureza do Parse, não é possível controlar o cache das requisições feitas à sua API REST.
+
+Por fim, o Parse também fornece no pacote gratuito o uso de 20GB para armazenamento de arquivos e 2TB de transferência mensal\cite{parse-plans}. Este espaço será utilizado para guardar imagens referentes aos eventos e participantes. Há também o espaço de 20GB para o banco de dados propriamente dito.
+
+\subsection{Backend}
+Considerando o estilo tradicional da aplicação -- que pode ser citada como um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JavaScript (também conhecidas como \emph{Single-page app / SPA}\cite{single-page-apps}), mas o tempo que seria gasto com o aprendizado desse tipo de tecnologia (que ainda está em processo de maturação no mercado) seria desnecessário, visto que a natureza do sistema não exige alto nível de interatividade.
+
+O framework escolhido foi o Laravel, que tem se tornado um grande expoente das tecnologias modernas do PHP. Diferente dos outros (como Zend, Yii ou Symfony), que se mantém mais conservadores e presos ao seu formato original, o Laravel tem desenvolvimento ágil e acompanha as novidades da linguagem, permitindo um sistema mais robusto e leve -- as últimas funcionalidades do PHP são bem poderosas nesse sentido. Atualmente na versão 5, ele possui suporte a diversas tecnologias, como fila de tarefas, diferentes sistemas de armazenamento e \emph{cacheamento} de dados e arquivos, aplicações de linha de comando, autenticação e autorização de usuários, encriptação de informações, dentre outros.\cite{laravel}
+
+\subsubsection*{Envio de notificações}
+De acordo com o que foi indicado nos requisitos (\autoref{sec:requisitos}), uma funcionalidade importante do sistema será a parte de notificações sobre novos eventos. Tais notificações acontecerão durante o uso da plataforma pelo usuário, mas também serão utilizadas como meio de retenção do usuário, de forma a fazê-lo retornar com frequência às nossas páginas.
+
+Há duas formas principais de enviar novidades ao usuário de forma pró-ativa: via e-mail e notificações \emph{push}\footnote{Notificações recebidas no celular, a partir de um aplicativo instalado nele.}. Inicialmente, considerando a natureza web do projeto, trabalharemos somente com o envio de e-mails. Em breve, com o lançamento de um aplicativo móvel, será essencial flexibilizar estas notificações utilizando também os avisos no celular -- e o Parse oferece um milhão de notificações gratuitas mensalmente. Essa liberdade de escolha nos permitirá reduzir o volume de envios de e-mails, reduzindo os custos que podemos ter.
+
+Outra opção seria o envio de SMS, que poderia ser feito ainda com o sistema somente web. No entanto, não há serviço gratuito para tal, e acreditamos que o engajamento inicial seria baixo, sem um aplicativo para suportar o uso pelo celular.
+
+Para controlar o envio de mensagens em lote -- que será útil para alertar um grupo grande de usuários sobre um novo evento cadastrado -- podemos utilizar um sistema de fila de trabalhos em segundo-plano (\emph{background jobs}). O Parse permite a utilização de um processo em segundo-plano, no qual poderemos enfileirar o envio dos e-mails e retirar a carga desta tarefa longa do nosso servidor web.
+
+\begin{table}[h]
+	\caption[Comparação de preços para envio de e-mail no Heroku]{Comparação de preços para envio de e-mail no Heroku, selecionados por valor competitivo e ordenados por volume. Outros serviços não foram incluídos pelos preços acima da média ou requisitos técnicos fora do que propomos.}
+	\centering
+	\begin{tabular}{|l|r|c|c|}
+		\hline \textbf{Serviço}	& \textbf{Valor} & \textbf{Envios/mês} (x1000) & \textbf{Valor/1000} \\ 
+		\hline SendGrid/Mailgun	& \$    0,00 &     12 &     --- \\ 
+		\hline SendGrid			& \$    9,95 &     40 & \$ 0,25 \\ 
+		\hline Mailgun			& \$   19,00 &     50 & \$ 0,38 \\ 
+		\hline Mandrill			& \$   29,98 &    100 & \$ 0,30 \\ 
+		\hline Mailgun			& \$   55,00 &    120 & \$ 0,46 \\ 
+		\hline Mandrill			& \$   79,95 &    300 & \$ 0,27 \\ 
+		\hline Mandrill			& \$  179,95 &    800 & \$ 0,22 \\ 
+		\hline Mandrill			& \$  379,95 &  2.000 & \$ 0,19 \\ 
+		\hline Mailgun			& \$  823,50 &  3.000 & \$ 0,27 \\ 
+		\hline Mandrill			& \$  879,95 &  5.000 & \$ 0,18 \\ 
+		\hline Mandrill			& \$ 1499,95 & 10.000 & \$ 0,15 \\ 
+		\hline 
+	\end{tabular} 
+\end{table}
+
+\subsection{Frontend e design}
+Para definição de protótipos iniciais e experimentação de design antes do desenvolvimento, utilizaremos o \textbf{Moqups}; nossos materiais estão disponíveis em \url{https://moqups.com/igorsantos07/3jyAGeSX/}.
+
+Para a interface do sistema, utilizaremos tecnologias já tradicionais e estabelecidas no mercado de desenvolvimento web: \textbf{jQuery} -- para facilitar interações JavaScript -- e o \textbf{Semantic UI} -- otimizando o tempo gasto com inicialização do \emph{design}, com diversos componentes já prontos e de ótima qualidade visual.
+
+Por fim, foi decidido usar a paleta de cores a seguir, visto que o amarelo e o laranja evocam sensações de energia, positivismo, criatividade e vitalidade: sentimentos interessantes para um congressista num ambiente de aprendizado, novas descobertas e novos contatos. Por outro lado, as cores complementares azuladas clamam por calma, segurança e confiabilidade, fatores importantes para um evento de sucesso. A paleta pode ser visualizada e manipulada online em \url{http://paletton.com/#uid=70v0u0ko6vwa2N5i9BF-AlOuSs6}.\cite{colors-marketo}\cite{colors-creative}
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.6\linewidth]{imagens/paleta.png}
+	\caption{Paleta de cores escolhida, variando entre o laranja, amarelo, azul e ciano.}
+\end{figure}
 
 \section{Topologia}
 %TODO: ATUALIZAR O DIAGRAMA DE TOPOLOGIA!!!!
