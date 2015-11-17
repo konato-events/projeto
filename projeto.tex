@@ -46,7 +46,6 @@
 \data{PXI~-~2015.2~-~013}
 \autor{\textbf{Igor~Santos}\\
 	\texttt{conf@igorsantos.com.br}\\
-	{\small Co-participação de: \textit{Eduardo Ferreira \and Letícia Oliveira}}
 }
 \local{Rio de Janeiro, RJ}
 \instituicao{Universidade Estácio de Sá\par Campus Praça XI} % FIXME: porque \\ não funciona no \instituicao?
@@ -87,20 +86,28 @@
 
 \chapter*{Prefácio}
 \section*{Definições usadas neste documento}
-Para fins de comunicação, as seguintes palavras e seus atores são tidas como sinônimas, exceto quando especificado o contrário -- na \autoref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
+Para fins de comunicação, as seguintes palavras e seus atores serão tomadas como sinônimas, exceto quando especificado o contrário -- na \autoref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
 \begin{itemize}
 	\item Evento / participante
 	\item Conferência / conferencista
 	\item Congresso / congressista
 \end{itemize}
 
-\section*{Co-participações e histórico do projeto}
-No mundo real, a ideia deste projeto tomou a forma de uma startup. Inicialmente era um plano solitário, posto à prova por inúmeras conversas e questionamentos com diversos amigos e novos colegas, encontrados a partir de eventos de networking.
+%todo: há necessidade de alguma explicação sobre a diferença entre uma palestra e uma apresentação (oral) científica?
 
-No decorrer do tempo, no entanto, conheci duas pessoas que vieram a integrar a equipe da startup, o Eduardo Ferreira (Graduando em Administração de Empresas pela UNIRIO) e a Letícia Oliveira (graduanda em Administração de Empresas pela UERJ). Seguindo as normas desta instituição, todo o desenvolvimento do sistema foi feito exclusivamente pelo aluno autor; as contribuições dos outros membros à startup se deram somente no âmbito de Negócios e ideias.
+\section*{Breve histórico do projeto}
+Desde a concepção da ideia, o objetivo desde projeto era ir além da apresentação acadêmica, lançando o sistema no mercado, para uso geral. Com isso, mesmo solitária, a ideia tomou a forma de uma startup, e foi posta à prova por inúmeras conversas e questionamentos com diversos amigos e novos colegas, encontrados a partir de eventos de networking.
+
+Durante um destes eventos, conheci duas pessoas que vieram a integrar a equipe: Eduardo Godinho (graduando em Administração de Empresas pela UNIRIO) e Letícia Oliveira (graduanda em Administração de Empresas pela UERJ). Ambos contribuíram com algumas ideias e questões conceituais. No entanto, com o decorrer do tempo, tomei outros rumos e me separei da equipe inicial. Algumas ideias vindas daquele grupo foram mescladas ao projeto original. A principal contribuição foi a definição do escopo, que foi baseado no MVP\footnotemark daquela startup.
+
+\footnotetext{MVP: \emph{Minimum Viable Product}, ou Produto Mínimo Viável. Conceito de \emph{Lean Startup} que consiste em definir a menor quantidade possível de funcionalidades que o produto inicial deve ter, de forma que ainda resolva o principal ponto de dor do cliente. Em poucas palavras: um produto simples mas útil, que pode ser usado para validações mais aprofundadas na prática.}
+
+Durante todo o tempo de execução deste TCC, seguindo as normas desta instituição, o desenvolvimento do sistema foi feito exclusivamente pelo aluno autor; as contribuições dos outros membros se deram somente no âmbito de negócios, funcionalidades e ideias gerais.
 
 \section*{Formatação deste documento}
-A documentação desse projeto foi construída em \LaTeX, uma linguagem de marcação voltada para documentos científicos e técnicos. Seu histórico de versões está disponível em Git, no endereço \url{https://bitbucket.org/congresso-app/projeto/}. Esta decisão foi tomada pela habilidade que uma linguagem de texto puro possui para suportar versionamento complexo, e mesclagem de versões concomitantes entre dispositivos diferentes. Além disso, outro fator essencial do \LaTeX é a disponibilização de um pacote de formatação pré-configurado, nas normas da ABNT, o abn\TeX{}2\cite{abntex2}\cite{abntex2-slides}. Este pacote configura o compilador automaticamente com os requisitos das normas da Associação Brasileira de Normas Técnicas, permitindo ao autor redigir o documento pensando exclusivamente em seu conteúdo e estrutura hierárquica.
+A documentação desse projeto foi construída em \LaTeX, uma linguagem de marcação voltada para documentos científicos e técnicos. O histórico de versões deste foi armazenado no Git, no endereço \url{https://bitbucket.org/congresso-app/projeto/}.
+
+Esta decisão foi tomada pela habilidade que uma linguagem de texto puro possui para suportar versionamento complexo, e mesclagem de versões concomitantes entre dispositivos diferentes. Além disso, outro fator essencial do \LaTeX{} é a disponibilização de um pacote de formatação pré-configurado, nas normas da ABNT, o abn\TeX{}2\cite{abntex2}\cite{abntex2-slides}. Este pacote configura o compilador automaticamente com os requisitos das normas da Associação Brasileira de Normas Técnicas, permitindo ao autor redigir o documento pensando exclusivamente em seu conteúdo e estrutura hierárquica, sem perder o foco ou tempo com a reformatação recorrente do conteúdo.
 \end{KeepFromToc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,16 +115,20 @@ A documentação desse projeto foi construída em \LaTeX, uma linguagem de marca
 
 \chapter{Proposta do Projeto de TCC}
 
-\section{O Projeto}
+\section{Motivação}
 
-É notável a dificuldade que os congressistas possuem, frequentemente, em obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento. Muitas vezes é difícil ficar sabendo sobre novos eventos das suas áreas de interesse, também. Esses fatos foram notados por experiência própria e durante 
+É notável a dificuldade que os congressistas possuem, frequentemente, em obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento. Muitas vezes é difícil ficar sabendo sobre novos eventos das suas áreas de interesse, também. Tais fatos foram notados por experiência própria e durante entrevistas informais com o público alvo.
 
-Por exemplo, muitas vezes são entregues panfletos ou cartões com a programação, mas esse tipo de objeto frequentemente se perde ou se danifica no decorrer do dia. Sem contar as possíveis alterações de última hora, o que torna a grade distribuída alvo de rabiscos e anotações. Invariavelmente, \emph{slots} de programação indefinida (comum em mesas-redondas ou \emph{lightning talks}\footnotemark) levam o conferencista a se deslocar até a atividade para descobrir se valerá a pena assistir ou não. Também acontece de diversas vezes haver informação desencontrada sobre o evento, como conflitos entre os dados no Facebook, na página da organização, no site e no material impresso.
+Por exemplo, muitas vezes são entregues panfletos ou cartões com a programação, mas esse tipo de objeto frequentemente é perdido ou danificado no decorrer do dia. Além disso, podem ocorrer alterações de última hora, o que torna a grade distribuída alvo de rabiscos e anotações. Invariavelmente, \emph{slots} de programação indefinida (comum em mesas-redondas ou \emph{lightning talks}\footnotemark) levam o conferencista a se deslocar até a atividade para descobrir se valerá a pena assistir ou não. Também acontece de diversas vezes haver informação desencontrada sobre o evento, como conflitos entre os dados no Facebook, na página da organização, no site e no material impresso.
 
-Para eventos de menor porte, o que mais sofre é a divulgação; com o orçamento de marketing reduzido, muitas vezes a divulgação impressa é curta e cobre somente regiões de grande apelo - como corredores de alto fluxo nas maiores instituições de ensino (áreas, aliás, disputadas por diversos outros cartazes e filipetas). Materiais impressos dificilmente carrega detalhes sobre o evento, obrigando o usuário a buscar mais detalhes na internet, por exemplo. Esses também tendem a ficar defasados facilmente, caso alguma alteração na programação ocorra. Por fim, a divulgação tradicional também depende de recursos humanos para fazê-la, que em todos os casos são escassos.\\
+Para eventos de menor porte, a parte que mais sofre é a divulgação; com o orçamento de marketing reduzido, muitas vezes a divulgação impressa é curta e cobre somente regiões de grande apelo -- como corredores de alto fluxo nas grandes instituições de ensino (áreas disputadas por muitos outros cartazes e filipetas). O material impresso dificilmente carrega detalhes sobre o evento, obrigando o usuário a buscar mais informações na internet, por exemplo. Além disso, eles também tendem a ficar defasados facilmente, caso alguma alteração na programação ocorra. Por fim, a divulgação tradicional também depende de recursos humanos para fazê-la, que são sempre muito escassos.\\
 Já a divulgação online tende a ser pouco eficiente e, portanto, é muitas vezes colocada em segundo plano, ou sub-utilizada: é difícil atingir mercados de nicho sem publicidade direcionada -- e, normalmente, bem paga.
 
-Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: a liberação da grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes e envio de perguntas; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Este sistema teria um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
+\section{O Projeto}
+
+Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos -- a partir de áreas de interesse --- e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; contato e descoberta de outros participantes e interessados. Este sistema necessitaria de um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
+
+%features retiradas do projeto inicial, quando da definição do MVP: notificações sobre a grade de programação; envio de perguntas aos palestrantes; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Foram adicionados: features sociais.
 
 \footnotetext{Série de palestras de curta duração (5 a 10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
 
