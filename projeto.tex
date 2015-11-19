@@ -303,18 +303,78 @@ Os eventos descritos acima, por vezes, são compostos por diferentes atividades.
 
 \section{A modelagem de negócios da Lean Startup}
 
-Nesta seção do documento descreveremos muitos conceitos haha que são hipotéticos, relacionados a um projeto ainda em fase de concretização de ideias. Todos estes conceitos precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.\\
-Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de Confirmação \conf{} no início de cada afirmação relevante: o primeiro para aquelas que não foram testadas, e o segundo para as quais já verificamos serem procedentes -- aqueles que não foram validados não estão incluídos aqui.
+Nesta seção do documento descreveremos muitos conceitos que são hipotéticos, relacionados a um projeto ainda em fase de concretização de ideias. Todos estes conceitos precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.\\
+Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de Confirmação \conf{} no início de cada afirmação relevante: o primeiro para aquelas que não foram testadas, e o segundo para as quais já verificamos serem procedentes -- aqueles que foram invalidados não estão incluídos aqui.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\emph{Mapa de Empatia} - \emph{Personas} de nossos clientes e usuários}
-%todo descrever aqui o que é o mapa de empatia e listar as principais personas, com suas características
+O Mapa de Empatia\cite{mapa-de-empatia} é um diagrama simplificado que otimiza a identificação dos diferentes tipos de usuários e clientes. Seu principal conceito é a divisão de características comuns de seres humanos em diferentes blocos. Isto facilita a identificação de similaridades entre as pessoas que desejamos atender, e possibilita o desenvolvimento de um produto mais centrado no usuário. Tendo mais conhecimento sobre o tipo de pessoa que imaginamos resolver seu problema, podemos ir a campo encontrá-las e conversar sobre seus anseios e vontades, de forma que possamos entender exatamente como elas são e se o problema que identificamos existe de fato no mundo real.
+
+Será possível notar, o tempo todo, como o conceito da \emph{Lean Startup} tem sempre como foco principal o(s) cliente(s) final(is): o objetivo é gerar algo que seja desejável e onde possa-se ouvir ``gostei! quero comprar agora!'', evitando o problema recorrente de se ter uma ideia mas não ter clientes para ela.
+
+A \emph{persona}\footnotemark que descrevemos no diagrama \ref{diag:empatia} é uma estudante jovem, insegura e pouco preparada para o mercado. Suas características representam a união de sentimentos que temos e já tivemos em nossas carreiras, bem como impressões que coletamos ao conversarmos com outros universitários. Durante estas conversas, identificamos os principais ``pontos de dor'' neste tipo de usuário, quando falamos sobre o tópico ``eventos'':
+\footnotetext{Personagem genérico com características em comum; a personificação de um grupo social}
+
+\begin{itemize}[itemsep=-1ex]
+	\item \conf{} a importância que os diversos eventos, dentro e fora da sua universidade, tem para sua formação extra-curricular;
+	\item \conf{} o incentivo que alguns professores dão para a participação em atividades práticas, de campo ou de integração;
+	\item \conf{} como algumas oportunidades foram perdidas por ineficiência de comunicação -- seja por terem perdido um anúncio em especial na instituição ou não terem contato com ``a pessoa certa'', que indicou determinado evento para um amigo mas não para ela, por exemplo.
+\end{itemize}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/mapa-de-empatia.png}
+	\caption{Mapa de Empatia de estudante. 1/jul/2015}
+	\label{diag:empatia}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\emph{Árvore de problemas} - Visualização das principais dores}
-%todo descobrir uma forma de criar ligações gráficas no latex, ou então criar os diagramas no pc e importar como imagem. Adicionar pelo menos uns dois diagramas, com as principais tretas
+De forma a entender melhor o outro lado do problema, a partir de um \emph{brainstorm} desenvolvemos outro diagrama, chamado de Árvore de Problemas. Ele é formado por um bloco central, que indica o problema básico que estamos investigando, e ramificações de causas e consequências do mesmo.\cite{arvore-de-problemas-portal-educacao}
+
+Muitas vezes o que nos é relatado é só a ``ponta do iceberg'', a parte mais superficial da questão. Para resolvê-la, no entanto, pode ser necessário ir mais a fundo de modo a evitar que o problema ocorra novamente. Com a Árvore, é possível entender de forma clara quais são as origens do \emph{pain point} do cliente.
+
+O desenvolvimento da Árvore de Problemas é um exercício mental de abstração e pensamento fora da caixa, que nos força à introspecção enquanto tentamos desvendar os problemas que o cliente citou durante as entrevistas. Uma das técnicas para desenvolvê-la é a dos Cinco Porquês\cite{five-whys} (ou três\cite{three-whys}\cite{three-whys-semler}, dependendo do autor e do nível de especificação que desejamos), que visa se aprofundar numa questão inicial para chegar às suas raízes.
+
+\begin{citacao}
+	Quando confrontado com um problema, você já tentou alguma vez parar e perguntar ``por que'' cinco vezes? É difícil de fazer mesmo que soe fácil. Por exemplo, suponha que uma máquina tenha parado de funcionar:
+	
+		1. Por que a máquina parou? \emph{Houve uma sobrecarga e o fusível estourou.}\\
+		2. Por que houve a sobrecarga? \emph{O rolamento não estava lubrificado o suficiente.}\\
+		3. E por que não havia lubrificação suficiente? \emph{A bomba de lubrificante não estava bombeando o suficiente.}\\
+		4. Por que não bombeava o suficiente? \emph{O eixo da bomba estava gasto e chacoalhando.}\\
+		5. E por que ele estava gasto assim? \emph{Não havia nenhum filtro na bomba e partículas de metal entraram.}
+		
+	Repetir ``por que'' cinco vezes, dessa forma, pode nos ajudar a desencavar a raiz do problema e corrigi-lo. Se este procedimento não fosse tomado, alguém poderia simplesmente ter trocado o fusível ou o eixo da bomba. Nesse caso, o problema aconteceria novamente em alguns meses. O sistema de produção da Toyota foi construído a partir da prática e evolução deste método científico. Ao perguntar e responder o porquê cinco vezes, nós podemos chegar à real causa do problema, que muitas vezes está escondida embaixo de sintomas mais óbvios.
+	
+	{\raggedright (\citetext{five-whys} Tradução nossa.)}
+\end{citacao}
+
+\begin{citacao}
+	\textbf{O jeito ``por que''}
+	
+	O segredo? Se nós temos uma estratégia cardinal que forma a pedra de fundação de todas as nossas \emph{[da Semler]} práticas, pode ser isso:\\
+	Perguntar por que.\\
+	Perguntar isso todas as vezes, perguntar isso qualquer dia, todos os dias, e sempre perguntar isso três vezes seguidas.
+	
+	Isso não vem naturalmente. Pessoas estão condicionadas a evitar perguntar demais. Primeiro, isso pode soar rude. Segundo, pode ser perigoso, implicando que somos ignorantes ou desinformados. Terceiro, significa que tudo que nós pensamos que sabemos pode se tornar incorreto ou incompleto. [...] Isso significa colocar de lado todas as respostas rotineiras e pacificadoras \emph{[rote and pat answers]} [...], aquele estado da mente onde as ideias se tornaram tão endurecidas que elas não tem mais uso nenhum. [...] E uma empresa precisa ser flexível o suficiente para ouvir estas respostas. Esses hábitos são a chave para a longevidade, crescimento, e lucro.
+	
+	{\raggedright (\citetext{three-whys-semler} Tradução nossa.)}
+\end{citacao}
+
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/arvore-problemas-divulgacao.png}
+	\caption{Árvore de Problemas - Divulgação Externa. 3/jul/2015}
+	\label{diag:arvore}
+\end{figure}
+
+O problema que desenvolvemos no diagrama \ref{diag:arvore} é referente à dificuldade de divulgação de eventos abertos ao público além da própria organização -- aqui chamados de ``eventos externos'', em contraste com eventos internos da organização, em que todos os participantes recebem convites expressamente. Esta situação é causada pelo problema em alcançar o público-alvo e por usar de canais ineficientes. Por sua vez, ela leva a uma falha na proposta do evento, seja devido à frustração do palestrante ou do público, por dar a impressão de que o evento foi ``fraco''; a frustração do participante pode ser tomada como uma consequência à parte, visto que divulgação ineficiente, atrasada ou com informações desencontradas pode levá-lo a problemas de planejamento para participar das atividades.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\emph{Lean Canvas} - Um modelo de negócios iterável}
 
@@ -327,10 +387,9 @@ Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de
 
 Segundo \citeauthor{manual-startup} (p.~83), frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o \emph{Lean Canvas} para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
 
-Originalmente, Alex Osterwalder criou o \emph{Business Model Canvas}, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, e facilmente alterado e  corrigido. Posteriormente, Ash Maurya criou o Lean Canvas, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (arriscadas) e mutáveis de uma startup.\cite{why-lean-canvas}
+Originalmente, Alex Osterwalder criou o \emph{Business Model Canvas}, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, e facilmente alterado e  corrigido. Posteriormente, Ash Maurya criou o \emph{Lean Canvas}, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (arriscadas) e mutáveis de uma startup.\cite{why-lean-canvas}
 
-Ainda de acordo com Ash Maurya\cite{lean-canvas}, é importante criar uma versão do \emph{canvas} para cada grupo de clientes da companhia. No nosso caso, com um produto multifacetado, por um lado precisaremos servir e atrair os organizadores de eventos, que pagarão pelo serviço e desejam melhorar a comunicação com seus congressistas; por outro, os participantes precisam se sentir confortáveis dentro da plataforma e com vontade de saber mais sobre ela nas divulgações, interessados em utilizá-la, e vendo proveito no decorrer do uso. Essa dualidade reflete os dois lados do sistema, onde precisamos satisfazer tipos distintos de \emph{personas}\footnotemark, com necessidades e objetivos diferentes. Portanto, o sistema terá dois \emph{canvas} que evoluirão em sintonia. No entanto, para o escopo deste projeto, focaremos nossos esforços no usuário final; os motivos serão esclarecidos oportunamente.
-\footnotetext{Personagem genérico com características em comum; a personificação de um grupo social}
+Ainda de acordo com \citeauthor{lean-canvas}, é importante criar uma versão do \emph{canvas} para cada grupo de clientes da companhia. No nosso caso, com um produto multifacetado, por um lado precisaremos servir e atrair os organizadores de eventos, que pagarão pelo serviço e desejam melhorar a comunicação com seus congressistas; por outro, os participantes precisam se sentir confortáveis dentro da plataforma e com vontade de saber mais sobre ela nas divulgações, interessados em utilizá-la, e vendo proveito no decorrer do uso. Essa dualidade reflete os dois lados do sistema, onde precisamos satisfazer tipos distintos de \emph{personas}, com necessidades e objetivos diferentes. Portanto, o sistema terá dois \emph{canvas} que evoluirão em sintonia. No entanto, para o escopo deste projeto, focaremos nossos esforços no usuário final; os motivos serão esclarecidos oportunamente. %todo: verificar se foram esclarecidos!
 
 Uma consequência da natureza mutante do \emph{canvas} é que ele dificilmente será ``gravado em pedra''; durante o trabalho na definição deste projeto, ideias novas surgirão e hipóteses serão criadas, aperfeiçoadas ou descartadas -- e a cada novo passo, os \emph{canvas} deverão ser atualizados. Nesta seção vamos exibir somente a versão atual do documento, e o histórico poderá ser conferido online, no endereço \mbox{\url{https://canvanizer.com/canvas/2MM3fHvw8Lo}}.
 
@@ -340,13 +399,15 @@ Também descreveremos em síntese os blocos adicionais do \emph{Business Model C
 \label{sec:lean:mercado}
 Ao descrever o processo de \textit{Customer Discovery} (Descoberta do Consumidor) no livro Manual da Startup\cite{manual-startup}, \citeauthoronline{manual-startup} sugerem criar um resumo inicial sobre o tamanho do mercado antes de iniciar as sínteses de cada parte do Business Model Canvas.
 
-Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas: por um lado, estaremos atendendo os organizadores de eventos, que objetivam se comunicar com seus participantes; por outro, estaremos atendendo os participantes, que desejam obter as informações que os organizadores disponibilizarão sobre os eventos que os interessam. Portanto, é importante notar que, apesar do mercado ser um só, há dois tipos distintos de consumidores a se considerar neste mercado.
+Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas: por um lado, estaremos atendendo os organizadores de eventos, que objetivam se comunicar com seus participantes; por outro, estaremos atendendo os próprios participantes, que desejam obter as informações que os organizadores disponibilizarão sobre os eventos que os interessam. Portanto, é importante notar que, apesar do mercado ser um só, há dois tipos distintos de consumidores a se considerar neste ramo.
 
-\textbf{Para os fins deste documento, estaremos considerando como ``clientes'' os organizadores de eventos, e ``usuários'' os participantes (usuários do aplicativo).}
+\textbf{Para os fins deste documento, estaremos considerando como ``clientes'' os organizadores de eventos, e ``usuários'' os participantes (os consumidores finais do sistema).}
 
-Dito isso, nosso \underline{mercado disponível} é o segmento de eventos técnicos e científicos.\\
-Desse grupo, o \underline{mercado disponível para negócios} é o grupo de usuários que possuam um smartphone ou tablet com um dos sistemas operacionais nos quais focaremos o desenvolvimento, conforme a \autoref{sec:tecnologias}. Adicionalmente, focaremos no início nos países lusófonos e anglófonos, com versões do aplicativo em português e inglês. O mercado disponível de clientes é definido pelos mesmos requisitos de linguagem, mas o requisito técnico passa a ser o uso confortável de um computador com Internet, ao invés de necessariamente um dispositivo móvel.\\
-Por fim, nosso \underline{mercados-alvo} será o grupo de organizadores que já pensaram em criar, ou já criaram, um aplicativo móvel para seus eventos, ou ainda, que desejem melhorar a comunicação com seus participantes, melhorando a fidelização e aumentando a venda de ingressos. Há também o grupo de congressistas, cujo alvo principal será aqueles que já se sentiram frustrados pela falta de informações ou confusos quanto às atividades de um evento, ou que se sentem curiosos e interessados numa forma mais eficiente e móvel de obter detalhes sobre o evento, tanto antes do mesmo quanto no instante.
+Dito isso, nosso \underline{mercado disponível} é o segmento de eventos acadêmicos, científicos e técnicos.
+
+Desse grupo, o \underline{mercado disponível para negócios} é o grupo de usuários que possuam um smartphone, tablet ou computador com conexão à Internet, conforme a \autoref{sec:tecnologias}. Além disso, inicialmente focaremos nos países lusófonos e anglófonos, com versões do sistema em português e inglês. O mercado disponível de clientes é definido pelos mesmos requisitos de linguagem, mas o requisito técnico passa a ser o uso confortável de um computador com Internet, visto que no início as atividades de atualização de informações são mais práticas de serem executadas num dispositivo como esse, dada a quantidade de informações que precisarão ser inseridas e analisadas.
+
+Por fim, nosso \underline{mercado-alvo} será o grupo de organizadores que sentem dificuldade em divulgar e espalhar informações sobre seus eventos, ou, ainda, que desejem melhorar a comunicação com seus participantes, melhorando a fidelização e aumentando a venda de ingressos. Há também o grupo de congressistas, cujo alvo principal será aqueles que já se sentiram frustrados pela falta de informações ou confusos quanto às atividades de um evento; que tem interesse em descobrir novos eventos ou explorar novos mercados; ou que se sentem curiosos por forma mais eficiente e instantânea (móvel) de obter detalhes sobre o evento, tanto antes do mesmo quanto no instante.
 
 %todo calcular estimativas numéricas dos mercados
 
@@ -354,9 +415,9 @@ Vale citar também que os nossos alvos iniciais serão o mercado de eventos tecn
 
 \paragraph*{\protect\hip{} A partir da descrição do mercado, podemos tirar as seguintes hipóteses:}
 \begin{description}[itemsep=-1ex]
-	\item[Mercado] organizadores (\textit{clientes}) e participantes (\textit{usuários}) de eventos técnicos e científicos.
-	\item[Mercado disponível] clientes com computadores com acesso à Internet; usuários com dispositivos móveis; ambos falantes de português ou inglês.
-	\item[Mercado-alvo] clientes com interesse direto ou indireto num aplicativo para comunicação com participantes; usuários com interesse direto ou indireto em informações mais eficientes sobre o evento de interesse.
+	\item[Mercado] organizadores (\textit{clientes}) e participantes (\textit{usuários}) de eventos acadêmicos, científicos e técnicos.
+	\item[Mercado disponível] clientes com computadores com acesso à Internet; usuários com computadores ou dispositivos móveis com acesso à Internet; ambos falantes de português ou inglês.
+	\item[Mercado-alvo] clientes com dificuldade de divulgação ou que já experimentaram problemas na comunicação com os participantes; usuários com interesse direto ou indireto em informações mais eficientes sobre um evento específico, ou com interesse em descobrir novos eventos.
 	\item[Mercado-alvo primário] eventos de tecnologia open source; eventos científicos de origem universitária.
 \end{description}
 
