@@ -301,7 +301,7 @@ Os eventos descritos acima, por vezes, são compostos por diferentes atividades.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{A modelagem de negócios da Lean Startup}
+\section{A modelagem de negócios da Lean Startup} \label{sec:modelagem-negocios}
 
 Nesta seção do documento descreveremos muitos conceitos que são hipotéticos, relacionados a um projeto ainda em fase de concretização de ideias. Todos estes conceitos precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.\\
 %Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de Confirmação \conf{} no início de cada afirmação relevante: o primeiro para aquelas que não foram testadas, e o segundo para as quais já verificamos serem procedentes -- aqueles que foram invalidados não estão incluídos aqui.
@@ -574,6 +574,8 @@ Um dos seus mentores após a participação no \emph{Y Combinator} foi Andy Baio
 
 \subsection{Sistemas com foco em outros mercados} \label{sec:concorrencia:outros-mercados}
 
+%todo avaliar também o EVENTFUL
+
 \subsubsection*{Upcoming.org}
 Originalmente lançado em 2003, o Upcoming era um calendário colaborativo de atividades urbanas, como concertos musicais, exposições de arte e conferências.\cite{upcoming-tnw} Aproximadamente dois anos depois a plataforma foi comprada pela Yahoo!. Em 2013 a gigante da Internet anunciou o fechamento de diversos projetos para corte de gastos, e o Upcoming foi um dos sistemas descontinuados.\cite{upcoming-fechado}
 
@@ -640,8 +642,18 @@ Devido à sua gama de funcionalidades diferenciada, entramos em contato com a eq
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Premissas e Restrições ao Projeto}
-%todo Acredito que aqui vai ser preciso falar das pesquisas que vamos rodar pra avaliar todas as hipoteses, e quais sao elas e como as pesquisas ajudariam a valida-las. Talvez isso seja encaixável no BMC também por causa da necessidade de descrever as hipóteses e os testes sobre ele
+\section{Premissas e Restrições ao Projeto} \label{sec:premissas}
+
+Durante a execução deste projeto, estamos assumindo o risco de construir um sistema baseado em poucas opiniões de usuários. Como citado anteriormente, o contato com os clientes é essencial antes do desenvolvimento de um novo produto, para que haja \emph{product-market fit} e \emph{problem-solution fit}: para que o produto criado e a solução desejada estejam de acordo com o mercado e o problema observados.\cite{bootstrapping}
+
+A ideia surgiu de uma dor pessoal do autor, e foi desenvolvida a partir de sentimentos similares de outras pessoas. No entanto, nenhuma entrevista ``formal'' foi feita, além da coleta de informações sobre eventos universitários e apresentação de alguns conceitos para pré-validação. O mais correto, nessas situações, é que o problema seja investigado de forma tangencial, para que as respostas não sejam influenciadas em favor daquele assunto, fazendo-o surgir espontaneamente. Isto ocorreu em alguns casos, mas não em quantidade suficiente do ponto de vista estatístico para ser relevante.
+
+A decisão de seguir em frente com o projeto foi tomada pois, além de tais pesquisas estarem fora do escopo deste TCC, foram observadas tentativas de projetos similares que foram abandonadas pelo mesmo motivo: compra e posterior cancelamento pelo novo dono (Lanyrd na \autoref{sec:concorrencia:lanyrd} e Upcoming na \autoref{sec:concorrencia:outros-mercados}).
+
+No entanto, faz-se necessária uma validação \emph{a posteriori} das ideias do projeto, para que seu andamento não saia completamente dos trilhos e deixe de atender o seu público. Será necessário tomar cuidado extra, visto que é bem maior a chance de que a ideia seja apresentada precocemente e influencie as respostas. Isto ocorre pois a mente do entrevistador estará saturada do próprio projeto, influenciando naturalmente suas perguntas -- bem como a análise posterior das respostas encontradas.
+
+Tal pesquisa pode ser executada elaborando os materiais descritos na \autoref{sec:modelagem-negocios}: criando Mapas de Empatia para outros públicos de usuários, gerando outras Árvores de Problemas baseadas em outras hipóteses imaginadas, criando um \emph{Experiment Board}\footnotemark\cite{experiment-board-post}\cite{experiment-board-javelin} para organizar a criação e validação destas hipóteses, e por fim organizando um \emph{Lean Canvas} que possa descrever precisamente o projeto. Com estas informações será possível efetuar mudanças confiáveis no sistema, que nos trarão maior chance de sucesso e expansão no mercado. Estes testes poderão ocasionar a descoberta de novas funcionalidades essenciais para os usuários, o abandono de alguma parte não-interessante ao público, ou mesmo o encontro de novas formas de monetização, que poderão viabilizar o prosseguimento do projeto a médio e longo prazo.
+\footnotetext{\emph{Experiment Board}: metodologia de criação e organização de hipóteses. Um quadro onde se organizam blocos descrevendo os possíveis clientes, problemas e riscos, e são definidas hipóteses e métodos de validação das mesmas.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Os Sistemas Atuais}
