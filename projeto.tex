@@ -692,7 +692,7 @@ Conforme descrito na introdução deste capítulo, faz-se necessário analisar o
 
 Vale notar que alguns dos projetos descritos aqui também já foram citados na \autoref{sec:empresa:concorrencia}. No entanto, o foco daquela seção era descrever as grandes empresas do mercado, enquanto aqui teremos uma visão mais técnica dos sistemas que mais se destacam em seus campos, por características tecnológicas e funcionalidades.
 
-\subsection{Lanyrd}
+\subsection{Lanyrd} \label{sec:concorrencia:lanyrd:tec}
 Uma startup de origem londrina, e um dos sistemas de maior sucesso no mercado de TI para divulgação de conferências. Após a compra pela Eventbrite em 2013, parece ter entrado num estado letárgico de desenvolvimento, visto que o último post no \emph{blog} da empresa data do início de 2014 e, antes disso, setembro de 2013 -- anunciando a venda. Informações mais detalhadas sobre a empresa podem ser verificadas na \autoref{sec:concorrencia:lanyrd}.
 
 \subsubsection*{Tecnologia e serviços oferecidos}
@@ -715,7 +715,7 @@ Devido às estratégias da empresa, a grande maioria dos eventos cadastrados no 
 
 Além disso, visto que o sistema só é oferecido em inglês, há pouca adesão em regiões deficientes no idioma, como América Latina, Rússia, África e partes da Ásia. Por outro lado, há grande concentração de eventos na América do Norte, Austrália e Nova Zelândia, boa parte da Europa e alguns países do Oriente Médio (como Emirados Árabes Unidos) e da Ásia (principalmente os que possuem forte ligação com a indústria tecnológica).
 
-\subsection{Upcoming.org}
+\subsection{Upcoming.org}  \label{sec:concorrencia:upcoming:tec}
 Foi um projeto muito promissor na década passada. Dois anos após o lançamento, foi vendido para a Yahoo!, que decidiu descontinuar o projeto oito anos após a compra, devido a um corte de gastos e alteração no foco da empresa. No entanto, no ano passado foi lançada uma campanha de investimento social pelo criador original da plataforma, planejando o relançamento do projeto. O novo Upcoming.org integrará tecnologias novas, ao invés de simplesmente ressuscitar a versão antiga do site\cite{upcoming-90-min}. Mais informações sobre o histórico do projeto podem ser encontradas na referência do Upcoming.org, na \autoref{sec:concorrencia:outros-mercados}.
 
 \subsubsection*{Tecnologia e serviços oferecidos}
@@ -741,7 +741,7 @@ Boa parte do público do site se localizava na América do Norte, devido à barr
 	{\raggedright (\citetext{upcoming-archive} Tradução nossa.)}
 \end{citacao}
 
-\subsection{Meetup}
+\subsection{Meetup} \label{sec:concorrencia:meetup:tec}
 Este site possui mais de 13 anos de existência, facilitando o encontro de pessoas no mundo real a partir de pequenos eventos sociais, agrupadas em torno de um assunto em comum.
 
 \subsubsection*{Tecnologia e serviços oferecidos}
@@ -800,7 +800,7 @@ Analisando o material disponível publicamente e a entrevista com a usuária cit
 Há a necessidade de entrevistar outros usuários e/ou organizadores de eventos clientes da Interevent a fim de coletar feedbacks positivos e de outros pontos de vista. No entanto, inicialmente a empresa é tida como concorrência distante visto que não objetivamos atuar na mesma área, e nas áreas em que poderíamos concorrer diretamente ela possui deficiências técnicas graves - como o hotsite, por exemplo.
 \fi
 
-\subsection{Doity}
+\subsection{Doity} \label{sec:concorrencia:doity:tec}
 Uma startup brasileira ainda pequena, mas com potencial tecnológico à frente de concorrentes similares. Presta uma gama de serviços mais genérica, focada em congressos e eventos em geral, mas também possibilitando tarefas administrativas da organização ou a venda de ingressos.\cite{doity-como-funciona} O sistema dela é baseado na plataforma da Show de Ingressos, descrita abaixo (\autoref{sec:concorrencia:sdi}).
 
 \subsubsection*{Tecnologia e serviços oferecidos}
@@ -962,17 +962,50 @@ As \emph{features} são similares ao restante do mercado. Por ser uma empresa no
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Motivações para o Novo Sistema}
-% falar sobre a vantagem de usar um aplicativo com dados offline num ambiente com wifi e 3g saturados
+A ideia germinadora deste projeto surgiu a partir da observação de necessidades do próprio autor e de seu círculo social, no que tange a participação de eventos técnicos. Após conversar com alguns colegas da área e participar do corpo técnico da organização do PHP'n Rio 2011, a ideia tomou forma e foi arquivada com detalhes, para execução posterior.
+
+Durante eventos de networking outros problemas foram ficando claros, e os principais \emph{pain points} dos participantes de eventos são listados a seguir:
+
+\begin{itemize}
+	\item Frustração ao perder um evento que considerava importante mas não ficou sabendo por conta da divulgação precária. Sentimento similar ocorre quando se descobre a conferência tardiamente e o valor de entrada já está demasiadamente alto;
+	\item Dificuldade de socialização durante o evento, quando não há conhecidos em vista ou se desconhece a presença dos mesmos;
+	\item Problemas ao organizar um evento e ter poucos participantes -- o que pode levar o evento a ter uma imagem de fraco, ou complicações com os palestrantes e patrocinadores;
+	\item Frustração quando se descobre que as informações divulgadas anteriormente não são mais válidas, e o participante não ficou sabendo sobre as mudanças em tempo hábil -- seja na grade de programação, participações ou local. O problema se agrava quando dois canais distintos sobre o mesmo evento exibem informações diferentes, por descuido da organização;
+	\item Complicações para obter informações durante a ocasião:
+		\begin{itemize}
+			\item a Internet frequentemente fica congestionada -- seja o Wi-fi do local, seja a conexão celular --, dificultando o acesso às informações online;
+			\item às vezes, as informações impressas ficam desatualizadas, quando imprevistos ocorrem;
+			\item os impressos também podem ser perdidos ou danificados, levando o participante a recorrer à Internet ou precisar buscar outros membros ou alguém do \emph{staff} para a obtenção de novos materiais.
+		\end{itemize} 
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Problemas dos Sistemas Atuais}
+Dos projetos em funcionamento atualmente, o único que se esforça para resolver a maioria destas questões é o \underline{Lanyrd} (\autoref{sec:concorrencia:lanyrd}, \autoref{sec:concorrencia:lanyrd:tec}). No entanto, ele perdeu o passo por falta de atualizações, possui uma interface tida como confusa ou poluída por alguns usuários, e não possui tradução para outras línguas. A falta de um aplicativo móvel de qualidade também restringe um pouco seu uso durante o evento.
+
+Outro projeto que está próximo do \emph{feature-set} pretendido é o \underline{Doity} (\autoref{sec:concorrencia:doity:tec}). No entanto, a ferramenta de pesquisa fica ``escondida'' num link do rodapé do site, e é muito simplificada. Dessa forma, ele não auxilia pessoas interessadas a realmente descobrir novos eventos; a divulgação tem que ser feita por conta da própria organização. Por outro lado, o Doity agrupa diversas funções interessantes para o corpo organizador, de forma similar ao Lanyrd, e diferente das outras plataformas de venda de ingressos.
+
+Por fim, o \underline{Meetup} (\autoref{sec:concorrencia:outros-mercados}, \autoref{sec:concorrencia:meetup:tec}) foi citado em algumas entrevistas como uma plataforma similar. Apesar disso, o foco é diferente: o objetivo dele é agrupar pessoas com assuntos em comum para encontros pequenos e socialização. Tal característica é muito bem trabalhada na plataforma, mas dificulta o uso da mesma para a promoção e organização de eventos acadêmicos -- que tendem a ser mais formais e elaborados -- ou de maior porte. Este caso é similar ao do \underline{Upcoming.org} (\autoref{sec:concorrencia:outros-mercados}, \autoref{sec:concorrencia:upcoming:tec}), que tem foco em eventos independentes e, em geral, culturais.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Situação Desejada}
+O objetivo do Konato é, primariamente, a criação de uma plataforma colaborativa para divulgação de eventos técnicos, acadêmicos ou científicos. É necessário que qualquer pessoa interessada em novas atividades educacionais possa descobrir, a partir do sistema, os congressos, conferências, ciclos ou reuniões que estejam ocorrendo em sua região.
+
+Na era da informação é inadmissível que eventos ainda contem com material impresso e recursos humanos para divulgação física de suas atividades. A Internet brasileira ainda não possui um canal centralizado para a reunião desses tipos de eventos. Se já existem sistemas eficientes para organização e venda de ingressos, faz-se necessária a criação de um sistema eficiente para otimizar o uso destes citados anteriormente: afinal, sem participantes suficientes não há evento.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Proposta Preliminar de Sistema}
-% Aqui talvez devêssemos explicar que o sistema deve ser um aplicativo móvel com interface administrativa web, e demonstrar o porque disso. 
+De acordo com as necessidades citadas acima, a forma mais eficiente de alcançar o mercado inicialmente é a partir da plataforma web. Portanto, o Konato será um sistema online, com as seguintes características principais:
+
+\begin{description}
+	\item[Busca avançada de eventos] a partir de palavras-chave, local ou temas de interesse;
+	\item[Detalhamento do evento] lista informações como os participantes, trabalhos / apresentações enviadas, temas, descrição, e links adicionais;
+	\item[Funcionalidades sociais] possibilidade de adicionar outra pessoa como contato, e ser informado de suas atividades na rede;
+	\item[Acompanhamento de novidades] possibilidade de ``seguir'' outras pessoas, organizações ou temas, e ser informado de suas atividades públicas ou novos eventos criados;
+	\item[Notificações inteligentes] os usuários que desejarem poderão optar por receber notificações em tempo real sobre eventos de interesse, a atividade de seus contatos, ou novidades sobre eventos dos quais participarão ou já participaram.
+\end{description}
+
+Apesar de estar fora do escopo deste TCC, temos planos futuros para que o projeto seja expandido para plataformas móveis. Primeiramente, a partir de uma versão cada vez mais amigável para dispositivos móveis e, posteriormente, com o lançamento de aplicativos dedicados a esse fim. Precisaremos otimizar o conteúdo do site para que ele fique o mais leve possível durante a conferência, de forma a minimizar o tempo gasto esperando o \emph{download} de um simples dado -- ação, por vezes, hercúlea, em se tratando dos sites comumente utilizados hoje em dia. As atividades iniciais para esta fase podem ser visualizadas na lista de tarefas do \emph{milestone} específico, em \mbox{\url{https://bitbucket.org/konato/web/issues?milestone=Mobile-friendly}}.
 
 % Falar em algum lugar sobre metodo de monetizacao. Explicar que a principio os organizadores irao pagar mensalmente pelo sistema, durante o periodo em que o evento estara publico no app; que ele pode pagar por modulos adicionais pra acrescentar funcionalidade (pois eventos diferentes podem ter necessidades diferentes, nao da pra fazer um pacotao), e talvez pensar em adicionar features premium pros congressistas (tem alguma que valha a pena? qual? e eles pagariam?)
 
