@@ -657,20 +657,44 @@ Tal pesquisa pode ser executada elaborando os materiais descritos na \autoref{se
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Os Sistemas Atuais}
-Para o entendimento mais aprofundado do mercado atual é necessário analisar as atividades exercidas pelos formatos atualmente utilizados para solução dos problemas que pretendemos resolver. Aqui será demonstrado o que foi encontrado sobre os sistemas atuais no que tange seu funcionamento e aspectos de mercado.
+Conforme citamos anteriormente (\autoref{sec:premissas}), uma das premissas que nos levou a desenvolver o sistema mesmo com pouca validação dos usuários é o fato de existir, ou já terem existido, outros sistemas com objetivos similares.
+Para o entendimento mais aprofundado do que será executado é necessário analisarmos como estas soluções funcionam ou funcionaram. Nesta seção demonstraremos, do ponto de vista técnico, o que foi encontrado sobre os outros sistemas.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bizzabo} \label{sec:sistemas:bizzabo}
-%todo descrever o sistema da principal concorrencia
+\section{Método tradicional de divulgação} \label{sec:sistemas:tradicional}
+O formato de divulgação usado atualmente pela grande maioria dos eventos de pequeno e médio porte consiste em material impresso, boca-a-boca, e divulgação em canais de massa online. A seguir, explicaremos os pontos positivos e negativos de cada um destes meios:
 
-\section{Aplicativos de eventos atuais} \label{sec:sistemas:apps_privados}
-%todo Falar que aparentemente só eventos de TI tem aplicativos, sobre a precariedade, sobre as informacoes fornecidas, citar exemplos, etc
+\subsection*{Material impresso}
+É uma forma relativamente barata -- após o custo de criação do material --, mas de distribuição complexa. Cartazes precisam ser afixados em áreas de movimento onde o público-alvo está presente, como corredores de instituições de ensino -- que, por esse mesmo efeito, são altamente disputados. Panfletos muitas vezes não chamam atenção e precisam ser distribuídos pessoalmente ou deixados em balcões onde interessados passam.  Estes impressos também dependem de mão-de-obra para que sejam efetivamente distribuídos, o que eleva o custo de recursos humanos da divulgação.
+Outros meios, como faixas, \emph{outdoors} e etc, tem alto custo de produção e precisam ser cuidadosamente planejados para que compensem estes custos.
 
-\section{Concorrência no mercado de Divulgação de Eventos} \label{sec:sistemas:divulgacao}
+Além dos meios utilizados para divulgação pré-evento, material impresso também é frequentemente utilizado durante a ocasião, para dar aos participantes uma forma de acesso prática à grade de programação ou outras informações sensíveis, como locais de refeição, nomes e informações de contato dos palestrantes e patrocinadores, etc.
+
+\subsection*{Boca-a-boca}
+Um meio eficiente de divulgação, mas que depende intrinsecamente do \emph{network effect}: o evento precisa ter um bom diferencial para que ``valha a pena'' para um participante a divulgação espontânea. Dentre estes diferenciais podemos destacar:
+\begin{itemize}
+	\item Diferenciação de outros eventos similares no ramo;
+	\item Estar num mercado ``necessitado'', seja por nunca ter havido um evento nesse ramo, ou por haver anos que não ocorre alguma atividade similar na área;
+	\item O próprio fator social ser um facilitador do evento, onde a pessoa se sente compelida a levar outros colegas para que o congresso seja mais proveitoso;
+	\item Haver vantagens para diferentes tipos de público, de forma que o participante considere válido indicar o evento para pessoas de perfil diferente do seu.
+\end{itemize}
+
+O efeito do boca-a-boca pode ser potencializado com o uso de mídias digitais, como veremos a seguir.
+
+\subsection*{Canais de massa online}
+Com o crescimento e popularização do acesso à Internet, ela tem prestado um papel cada vez mais importante na divulgação de informações sobre eventos. No entanto, sua maior vantagem -- a democratização do acesso -- também é o calcanhar de Aquiles para os organizadores de eventos: a falta de segmentação do público eleva os custos de divulgação, tanto em valores financeiros quanto em tempo. As opções mais comuns são:
+\begin{description}
+	\item[Perfil em rede social] Pode-se criar uma página sobre o evento em redes como Twitter ou Facebook. Estes canais por si só não trarão interessados, mas a divulgação do perfil pode ser feita a partir de outros perfis mais influentes, de publicações em grupos relacionados, de criação de conteúdo para fomentar a divulgação espontânea, ou mesmo a partir de divulgação por mídias impressas;
+	\item[Evento em rede social] Tem funcionamento similar ao perfil citado acima, mas possui um foco mais específico: esta página conterá de forma destacada o local, horários e possíveis participantes do evento, permitindo que as pessoas convidem outros interessados. É possível também levar o evento diretamente para o calendário digital do usuário, apesar das ferramentas atuais não destacarem essa funcionalidade. Atualmente o Twitter não possui este tipo de uso, somente o Facebook;
+	\item[Blog] Uma forma eficiente de criação de conteúdo, que pode trazer resultados a médio e longo prazo a partir do compartilhamento das informações disponibilizadas e localização destas em mecanismos de busca. Envolve mais trabalho do que os outros métodos, visto que é necessário sempre trazer conteúdo novo para que a ferramenta se mantenha eficiente, mas os resultados podem ser mais duradouros;
+	\item[Site] Um site específico para o evento pode auxiliar os interessados a descobrir mais informações sobre as atividades propostas, local ou datas. Dependendo do tipo de conferência, submissões de trabalhos ou artigos científicos também podem ser feitos pelo site, ou o processo de submissão pode ser divulgado ali. Este é um meio que facilita encontrar o congresso a partir de mecanismos de busca, por evidenciar a ``marca'' do evento, mas por outro lado é o método de mais alto custo, visto que envolve o trabalho de diversos profissionais especializados e exige manutenção frequente para que as informações não fiquem defasadas e confundam os participantes.
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sistemas online} \label{sec:sistemas:online}
 %todo colocar um brief aqui
 
-\subsection{EDH - Eventos da Hora}
-%todo analisar EDH
+\subsection{Upcoming.org}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Concorrência no mercado de Gerenciamento de Eventos} \label{sec:sistemas:gerenciamento}
@@ -708,27 +732,6 @@ Analisando o material disponível publicamente e a entrevista com a usuária cit
 
 Há a necessidade de entrevistar outros usuários e/ou organizadores de eventos clientes da Interevent a fim de coletar feedbacks positivos e de outros pontos de vista. No entanto, inicialmente a empresa é tida como concorrência distante visto que não objetivamos atuar na mesma área, e nas áreas em que poderíamos concorrer diretamente ela possui deficiências técnicas graves - como o hotsite, por exemplo.
 
-
-\subsection{iVento - Empresa da EJCM}
-%todo analisar ivento
-\subsection{Sig-Eventos}
-%todo analisar sig-eventos
-\subsection{Sigeventos UFRN}
-%todo analisar sigeventos UFRN
-\subsection{SGE - Sistema de Gest~ao de Eventos}
-%todo analisar SGE
-\subsection{GERE - Gerência de Eventos da UFBA}
-%todo analisar gere
-\subsection{Eventweb}
-%todo analisar eventweb
-\subsection{Akamido}
-%todo analisar akamido
-\subsection{Sistema Eventos}
-%todo analisar sistema eventos
-\subsection{TrendCongresso}
-%todo analisar trendcongresso
-\subsection{Meetup}
-%todo analisar meetup
 
 
 \section{Concorrência no mercado de Venda de Ingressos} \label{sec:sistemas:venda}
@@ -861,9 +864,9 @@ As \emph{features} são similares ao restante do mercado. Por ser uma empresa no
 No último trimestre de 2013, o primeiro ano da empresa, foi reportado um faturamento de R\$2,3 milhões. A partir dos contatos americanos do fundador, houve um aporte inicial de R\$2,5 milhões -- sendo parte vinda um fundo americano, estimado entre 1 e 2 milhões.\cite{ingresse-hypeness}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Outros Sistemas} \label{sec:sistemas:outros}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Motivações para o Novo Sistema}
 % falar sobre a vantagem de usar um aplicativo com dados offline num ambiente com wifi e 3g saturados
 
