@@ -556,30 +556,87 @@ Usaremos neste projeto uma versão modificada do quadro, fornecida no Workshop d
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%TODO: mesclar essa seção com a de sistemas atuais. tirar isso daqui e deixar toda a analise de concorrência naquela parte
 \section{Concorrência}
-Foi encontrada somente uma empresa que preste serviços diretamente relacionados ao espectro do mercado que pretendemos cobrir com nosso projeto: a Bizzabo. Além dela, não há sistemas similares no mercado nacional ou internacional. No entanto, há algumas empresas relacionadas à organização de eventos ou venda de ingressos que são dignas de nota. Em especial, a Sympla, EventBrite e Eventick são consideradas parcialmente concorrentes, pois há uma possibilidade de futuramente também vendermos entradas para os eventos indicados no aplicativo. Enquanto este não é nosso foco inicial, é um caminho natural a seguir no ramo, como atividade secundária.
+Foi encontrada somente uma empresa que preste serviços diretamente relacionados ao espectro do mercado que pretendemos cobrir com nosso projeto: o Lanyrd. Ainda assim, o projeto parece estar num estado letárgico desde sua compra pela EventBrite, em 2013 (mais informações na \autoref{sec:concorrencia:lanyrd}).
 
-\subsection{Bizzabo} \label{sec:concorrencia:bizzabo}
-%todo pesquisar e descrever a empresa. Indicar aqui a seção com detalhamento do produto, que fica em outra parte do documento
+Além deles, há alguns sistemas similares, mas com foco em outros mercados (\autoref{sec:concorrencia:outros-mercados}): Upcoming.org, focado em eventos artísticos e de nicho; Meetup, focado em encontros informais e sociais; All Events in City e outros, focados em eventos sociais em geral. Estes podem servir de exemplo e de fonte de ideias, mas não representam concorrência direta ao nosso projeto.
 
-\subsection{Organização de eventos e venda de ingressos} \label{sec:concorrencia:organizacao_venda}
-%todo descrever empresas adicionais do mercado de gerenciamento de eventos
+No mercado nacional não há concorrência real, visto que o único projeto similar existe somente em inglês -- fato tomado como negativo por alguns usuários dele entrevistados no Brasil. Dos sistemas listados, o único que possui versão em português -- Meetup -- foi citado em entrevistas ocasionais, mas com seu uso somente no campo de eventos mais intimistas e reduzidos (de 5 a 50 participantes).
 
-\subsubsection*{Interevent}
-Esta empresa foi indicada por uma usuária do ramo das Ciências Biológicas, quando consultada sobre a ideia geral deste projeto. É uma empresa carioca que, desde 2006, presta serviços completos de planejamento, organização, divulgação e administração de congressos. Aparentemente, não há nenhum serviço especificamente voltado para o público móvel, e a comunicação interna durante o evento se resume ao tradicional material impresso distribuído.
+Por fim, há outros tipos de sistemas no mercado de eventos, mas com outro propósito e que somente tangencia nossos objetivos: a venda de ingressos (\autoref{sec:concorrencia:venda}). Em especial, a Sympla, EventBrite e Eventick são dignos de nota, por serem os maiores \emph{players} no cenário nacional e internacional (nesse sub-grupo, o principal destaque é a EventBrite). A venda de entradas é considerada uma boa aposta no campo de monetização do projeto, mas por se tratar de um módulo com complexidades técnicas e burocráticas, pode ser alcançado inicialmente de forma mais simples a partir de parcerias com empresas como as citadas.
 
-\subsubsection*{Sympla}
-A Sympla é uma \emph{startup} mineira de venda online de ingressos e gestão de eventos, de quase 3 anos de mercado. Ela foi eleita pela revista Exame \emph{``uma das 8 startups mundiais para ficar de olho em 2015''}\cite{exame-8-startups}. Concorre no mercado nacional com empresas internacionais como Eventbrite e Eventick, mas possuindo vantagens competitivas, além do serviço localizado.
+\subsection{Lanyrd} \label{sec:concorrencia:lanyrd}
+Criado em 2010, o Lanyrd é um diretório de conferências. Um ano após o lançamento da startup londrina, eles receberam \$1,4 milhões em investimento inicial, após ter participado do famoso programa encubador de startups \emph{Y Combinator}\cite{lanyrd-ycombinator}. Dois anos depois, em setembro de 2013, desta entrada de capital, a empresa foi comprada pela gigante de venda de ingressos Eventbrite (\autoref{sec:concorrencia:venda}). Desde então, a atividade parece ter sido reduzida, e cessou completamente oito meses após a aquisição, em maio de 2014 -- data da última e única postagem feita no \emph{blog} da empresa após o anúncio de sua venda.
 
-\subsubsection*{Eventbrite}
-%todo descrever a empresa eventbrite
+O Lanyrd sempre teve foco majoritário no público de tecnologia e usuários do Twitter, promovendo a interação entre suas listas de contatos. Por alguns dos usuários entrevistados por nós, foi tido como um projeto promissor que infelizmente morreu na praia, visto que não obteve grande adoção no Brasil por causa da barreira do idioma.
 
-\subsubsection*{Eventick}
-%todo descrever a empresa eventick
+Um dos seus mentores após a participação no \emph{Y Combinator} foi Andy Baio, fundador original do Upcoming.org (\autoref{sec:concorrencia:outros-mercados}).
+
+\subsection{Sistemas com foco em outros mercados} \label{sec:concorrencia:outros-mercados}
+
+\subsubsection*{Upcoming.org}
+Originalmente lançado em 2003, o Upcoming era um calendário colaborativo de atividades urbanas, como concertos musicais, exposições de arte e conferências.\cite{upcoming-tnw} Aproximadamente dois anos depois a plataforma foi comprada pela Yahoo!. Em 2013 a gigante da Internet anunciou o fechamento de diversos projetos para corte de gastos, e o Upcoming foi um dos sistemas descontinuados.\cite{upcoming-fechado}
+
+O site utilizava tecnologias de vanguarda na época, como iCalendar, RSS e GeoRSS, além de ter uma API aberta para busca e cadastro de novos eventos. Suas funcionalidades sociais são similares às disponíveis hoje em dia no Facebook, mas de forma reduzida -- era possível criar relacionamentos entre perfis e indicar interesse e presença em eventos, por exemplo.
+
+Os eventos da plataforma eram principalmente advindos da contribuição dos próprios usuários, de forma colaborativa; no entanto, nos seus últimos anos cada vez mais eventos tinham origem comercial. A enorme maioria de atividades e usuários eram originários da América do Norte (em especial em São Francisco), principalmente entre fãs de música independente e pessoas da área de tecnologia. Apesar disso, havia usuários por todo o globo.\cite{upcoming-wikipedia}
+
+Após o fechamento do site, o Yahoo! entrou em contato com o fundador original do projeto, Andy Baio, oferecendo a revenda do domínio original. A transação foi efetivada e, alguns meses depois, ele retomou o projeto, lançando uma campanha de investimento social (no \emph{Kickstarter}) para que o sistema pudesse ser relançado. Originalmente com o prazo de 23 dias para finalizar a coleta financeira, o projeto alcançou o valor necessário em menos de 90 minutos\cite{upcoming-90-min}. Após o início do projeto, todas as atualizações lançadas na página são privadas para os investidores -- a última foi no final de Julho. Aparentemente, o sistema terá código aberto, mas o primeiro beta público, prometido para março, ainda não está no ar. Segundo comentários na página do projeto, o desenvolvimento foi paralisado temporariamente por causa de um evento anual que o desenvolvedor organiza\cite{upcoming-xoxo}.
 
 \subsubsection*{Meetup}
-%todo descrever a empresa meetup
+O Meetup é uma rede social que facilita encontros offline de grupos com interesses em comuns ao redor do mundo. Seu uso mais frequente é ajudar organizadores a criar grupos online e gerenciar datas para encontros, com pequenos fóruns para discussão de pautas e detalhes do evento. Os usuários podem encontrar grupos buscando por temas específicos e sua localização.
+
+Os eventos organizados dentro do Meetup tendem a ser eventos pequenos e locais, trazendo um ambiente mais intimista e local para a plataforma. Os temas de eventos vão desde assuntos variados em tecnologia e empreendedorismo a meditação, yoga, e encontros locais para falantes e aprendizes de outras línguas, esportistas, viajantes ou artistas. Após uma rápida avaliação nos grupos destacados na página inicial do projeto, foi possível identificar que a grande maioria dos encontros variam entre 5 e 50 participantes, mesmo em grupos com mais de 1.000 usuários inscritos.
+
+\subsubsection*{All Events in City}
+Este é um dos exemplos de projeto para busca de festas, concertos, exposições, shows, encontros de negócios e eventos sociais em geral, a partir de uma localidade. O objetivo do All Events in City é conectar organizadores a participantes e vender ingressos. De acordo com estatísticas próprias, até Setembro de 2015 eles já listaram mais de 45 milhões de eventos em 30 mil cidades no mundo todo\cite{alleventsincity-wikipedia}.
+
+Fundada na Índia, a empresa recebeu algumas premiações locais em 2012, mas não parece ter recebido grande cobertura da mídia fora da Ásia. O site possui diversos eventos cadastrados para Rio de Janeiro ou São Paulo, mas não parece ter muita tração no país.
+
+\subsection{Sistemas de organização de eventos e venda de ingressos} \label{sec:concorrencia:venda}
+
+\subsubsection*{Sympla}
+A Sympla é uma \emph{startup} mineira de venda online de ingressos e gestão de eventos, com quase 3 anos de mercado. Ela foi eleita pela revista Exame \emph{``uma das 8 startups mundiais para ficar de olho em 2015''}\cite{exame-8-startups}. Concorre no mercado nacional com empresas internacionais como Eventbrite e Eventick, mas possuindo vantagens competitivas, além do serviço localizado. Tais diferenças incluem relatórios em tempo real sobre o evento, integração entre vendas online, pontos de venda e vendas manuais, e integração com redes sociais
+
+No seu site, eles indicam serviços específicos para públicos específicos, como eventos religiosos, esportivos, entretenimento, gastronomia, workshops ou cursos; no entanto, não há segmentação real dos clientes, sendo esses serviços apenas sugestões de uso. No momento de escrita, o site possui 296 congressos/seminários, que totalizam 12,9\% dos eventos disponíveis.
+
+A Sympla indica que já realizou mais de 14 mil eventos em mais de 1.700 cidades, e já atingiu mais de 4 mil produtores. Há uma série de casos de sucesso publicados\cite{sympla-cases}, apesar de alguns ramos ainda não terem sido citados -- como eventos religiosos ou congressos e seminários (os dois últimos sendo uns de nossos principais focos):
+\begin{itemize}[itemsep=-1ex]
+	\item Diversos na área de entretenimento;
+	\item Eventos esportivos -- \emph{Quanta Sports} com corridas de rua, e \emph{Trilogy Sports} com esportes de aventura;
+	\item Cursos/workshops -- \emph{Vila de Produções};
+	\item Seminários -- \emph{TED}\footnotemark, no \emph{TEDxBH} (outro dos nossos focos);
+	\item Corporativos e de nicho -- como no mercado pecuário.
+\end{itemize}
+\footnotetext{Evento de palestras curtas e inovadoras, sobre tópicos diversos. É muito famoso e incentiva versões locais, já tendo ocorrido em diversas cidades do mundo.}
+
+\iffalse
+\paragraph{Receita}
+O método de receita da startup é baseado na porcentagem de 10\% do que for vendido em ingressos -- valor também usado para pagar taxas administrativas de cartões de crédito. Eventos gratuitos não são cobrados. A receita restante dos ingressos é repassada aos produtores em tempo real, através de pequenos depósitos, ou de uma vez só, no terceiro dia útil após o término do evento. Não há informação sobre vantagens e desvantagens dos dois métodos de recebimento.
+\fi
+
+\subsubsection*{Eventbrite}
+Fundada em 2006, a Eventbrite é uma das maiores empresa do mundo em venda de ingressos. Atualmente emprega mais de 500 funcionários ao redor do mundo. A empresa já recebeu mais de \$140 milhões em investimentos públicos entre 2011 e 2013, sem contar os investimentos iniciais não divulgados por companhias como Sequoia Capital, DAG Ventures e Tenaya Capital. \cite{eventbrite-wiki}
+
+O principal público-alvo da Eventbrite é o mercado de eventos de entretenimento de pequeno e médio porte. Recentemente eles têm tentado entrar no mercado de grande porte também, mas ainda reconhecem de forma clara que esta área pertence a empresas mais tradicionais, como a Ticketmaster: ``Se o topo da pirâmide é Lady Gaga no \emph{Madison Square Garden}, com certeza esse território é da Ticketmaster. Mas absolutamente todo o restante é da Eventbrite.'' -- tradução livre de fala de Julia Hartz, co-fundadora e presidente da Eventbrite, em matéria da Forbes\cite{eventbrite-lucro-forbes}. Apesar disso, eles já cobrem grandes festivais, como o \emph{Governor's Ball} de Nova Iorque de 2013.\cite{eventbrite-lucro-forbes}
+
+O foco principal de eventos deles são os de entretenimento em geral, como shows, apresentações musicais, teatrais e culturais em geral, e secundariamente inscrições para cursos e workshops avulsos, encontros de palestras, e etc. Também possuem apelo no mercado esportivo e outros menores. No entanto, eles não possuem nenhum chamariz específico para nenhuma destas áreas, sendo um sistema essencialmente genérico e focado na divulgação dos eventos e venda dos ingressos, funcionando de forma simplificada e fluida para os organizadores e participantes. O principal diferencial entre eles e seus grandes concorrentes é a simplicidade de criar um evento: não há necessidade de contato com agente de vendas, detalhes de cartão de crédito ou as burocracias comuns do meio; o cadastro do evento é feito de forma similar ao cadastro de um novo usuário num sistema comum.
+
+Não há distinção nos serviços fornecidos para diferentes tipos de eventos. É notável, por exemplo, a deficiência do sistema com relação a eventos como conferências, onde informações sobre alimentação, interesse em determinadas atividades e transportes também se fazem necessárias\cite{eventbrite-review}. No entanto, é possível buscar no site por categorias diversas -- como cursos, conferências, esportes, gastronomia, música, eventos sem fins lucrativos e de arrecadação de fundos, artes performáticas e até eventos políticos.
+
+Outra desvantagem é que as páginas dos eventos focam essencialmente na venda, contendo informações sobre a programação mas de forma secundária -- o que força os organizadores a manter seus próprios hotsites, quando o evento não é tão simples assim. Não há integração transparente: sempre haverá o logotipo laranja e chamativo da Eventbrite em algum lugar das páginas sob controle deles, os ingressos, e no uniforme dos \emph{staffs} no dia do evento. Esta foi a estratégia encontrada pela empresa para expandir seu mercado.
+
+A Eventbrite abriu seu escritório em São Paulo em outubro de 2015\cite{eventbrite-sp}. O lançamento ocorreu dois anos depois de entrar no mercado latino-americano comprando uma \emph{startup} clone, a Eventioz\cite{eventbrite-eventioz}. Esta startup ainda está ativa -- diferentemente do Lanyrd, comprado na mesma época -- e atende a Argentina, Chile, Colômbia, México e Peru. Para os outros 13 países atendidos há versões com domínios locais e traduzidas, quando necessário.
+
+\subsubsection*{Eventick}
+A Eventick é uma startup-clone de Pernambuco, que tenta replicar o sucesso americano em território nacional, trazendo o que empresas como a Eventbrite fizeram para os moldes do Brasil. A empresa foi iniciada em 2011, e o produto foi a público em 2012.\cite{eventick-startupi} Até o momento já venderam mais de 355 mil ingressos\cite{eventick-home}, e seu foco parece ser eventos musicais e entretenimento em geral.
+
+Em questão de funcionalidades, eles são muito similares aos concorrentes, mas mais simples -- vale lembrar que é uma startup em crescimento, e que provavelmente virão com novidades no futuro. Eles não oferecem serviços de checkin, impressão de ingressos,  não há foco em coleta de dados dos clientes, pesquisas pós-evento, relatórios de público ou financeiro. Por fim, também não há diferenciação entre os eventos ofertados na plataforma: o foco é em eventos de entretenimento.
+
+\subsubsection*{Doity}
+Outra startup brasileira baseada no Nordeste do país. No entanto, o foco da Doity é um pouco diferente: além de vender ingressos, eles têm um sistema completo para gerenciamento do evento, do começo ao fim. É possível fazer o controle de despesas e receitas, montagem da programação, cadastro de palestrantes, submissão e avaliação de trabalhos/artigos científicos, além de permitir aos congressistas se inscreverem em atividades com limite de participantes.\cite{doity-como-funciona}. Eles também oferecem funcionalidades para o dia do evento e o pós-evento, como credenciamento, gerenciamento de sorteios e emissão de certificados. Por fim, também é possível ter o hotsite ou blog do congresso funcionando dentro da plataforma deles.
+
+Devido à sua gama de funcionalidades diferenciada, entramos em contato com a equipe do Doity para que possamos unir as funcionalidades de gerenciamento deles à nossa plataforma. A resposta que obtivemos foi positiva, apesar da empresa ainda não possuir nenhum tipo de API para compartilhamento automatizado de informações -- o que nos permitiria divulgar a carteira de clientes deles. A companhia não aparenta ter um programa de afiliados claro, visto que as informações fornecidas foram de pouca clareza nesse sentido. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -669,7 +726,7 @@ Há inúmeras empresas no mercado de venda de ingressos por sistemas digitais. A
 \subsection{Sympla}
 
 \subsubsection*{Tecnologia e serviços oferecidos}
-O site é moderno e parecem antenados com as novidades do mercado, implementando tecnologias atuais e facilitando todo o processo de venda de ingressos e credenciamento de participantes. Eles dão suporte a diversos tipos de eventos, mas o mercado principal que conseguiram -- ou desejaram -- atingir foi o de eventos de entretenimento, como festas, shows, etc. No entanto, a empresa oferece suporte a um grande espectro de eventos, como congressos e seminários, cursos e workshops, eventos religiosos, corporativos, esportivos, gastronômicos e de entretenimento, encontros e networking, e eventos online também. Alguns dos recursos oferecidos pela Sympla a seus clientes são\cite{sympla-features}:
+Alguns dos recursos oferecidos pela Sympla a seus clientes são\cite{sympla-features}:
 \begin{itemize}[itemsep=-1ex]
 	\item Divisão de tarefas de gerenciamento com diversos usuários, com níveis de acesso;
 	\item Organização de uma rede de promoters;
@@ -683,20 +740,6 @@ O site é moderno e parecem antenados com as novidades do mercado, implementando
 	\item Também há um pacote especial de serviços que inclui staff de suporte aos clientes durante a venda, credenciamento no evento e destaque na divulgação nos canais da Sympla.
 \end{itemize}
 
-\subsubsection*{Mercados atingidos}
-A Sympla indica que já realizou mais de 14 mil eventos em mais de 1.700 cidades, e já atingiu mais de 4 mil produtores. Há uma série de casos de sucesso publicados\cite{sympla-cases}, apesar de alguns ramos ainda não terem sido citados -- como eventos religiosos ou congressos e seminários (os dois últimos sendo uns de nossos principais focos):
-\begin{itemize}[itemsep=-1ex]
-	\item Diversos na área de entretenimento;
-	\item Eventos esportivos -- \emph{Quanta Sports} com corridas de rua, e \emph{Trilogy Sports} com esportes de aventura;
-	\item Cursos/workshops -- \emph{Vila de Produções};
-	\item Seminários -- \emph{TED}\footnotemark, no \emph{TEDxBH} (outro dos nossos focos);
-	\item Corporativos e de nicho -- como no mercado pecuário.
-\end{itemize}
-\footnotetext{Evento de palestras curtas e inovadoras, sobre tópicos diversos. Bem famoso e possui versões mundo afora.}
-
-\subsubsection*{Receita}
-O método de receita da startup é baseado na porcentagem de 10\% do que for vendido em ingressos -- valor também usado para pagar taxas administrativas de cartões de crédito. Eventos gratuitos não são cobrados. A receita restante dos ingressos é repassada aos produtores em tempo real, através de pequenos depósitos, ou de uma vez só, no terceiro dia útil após o término do evento. Não há informação sobre vantagens e desvantagens dos dois métodos de recebimento.
-
 \subsubsection*{Vantagens e Desvantagens no mercado}
 A Sympla é uma empresa moderna e que está sendo acelerada na região de BH, um dos berços de startups do Brasil. Recebeu, segundo estimativas, ao menos dois aportes de fundos de investimento e investidores individuais, sendo o segundo de cerca de R\$ 2 milhões.\cite{sympla-aporte}
 
@@ -705,7 +748,7 @@ Seu ponto forte é a modernidade dos sistemas e a simplicidade dos serviços que
 No entanto, há pouco foco em distinção entre os tipos de eventos cobertos, oferecendo praticamente o mesmo pacote de serviços a todos eles. Eventos mais elaborados e específicos, como os do mercado técnico-científico podem ficar em desvantagem com um produto focado somente na venda dos ingressos e, parcialmente, na gestão financeira e na divulgação -- quando há muito mais por trás desse mercado. Neste ponto, a Interevent tem uma vantagem clara, pois oferece pacotes de serviços que cobrem todas as tarefas de organização de congressos, de uma ponta a outra.
 
 \subsection{Eventbrite}
-A empresa que iniciou o mercado de venda de ingressos digitais. Foi fundada ainda em 2006 em São Francisco, e atualmente emprega mais de 500 funcionários ao redor do mundo. A empresa já recebeu mais de \$140 milhões em investimentos públicos entre 2011 e 2013, sem contar os investimentos iniciais não divulgados por companhias como Sequoia Capital, DAG Ventures e Tenaya Capital. \cite{eventbrite-wiki}
+%todo: escrever algo útil sobre a eventbrite aqui
 
 \subsubsection*{Tecnologia e serviços oferecidos}
 A empresa possui como objetivo cobrir todos os aspectos do processo de vendas e credenciamento de participantes de um evento. Se por um lado, eles se focam somente nisso, por outro eles o fazem muito bem, sendo referência no mercado nesse sentido. Para tanto, eles oferecem a seguinte gama de serviços e funcionalidades:
@@ -722,21 +765,15 @@ A empresa possui como objetivo cobrir todos os aspectos do processo de vendas e 
 \end{itemize}
 
 \subsubsection*{Mercados atingidos}
-O principal público-alvo da Eventbrite é o mercado de eventos de entretenimento de pequeno e médio porte. Recentemente eles têm tentado entrar no mercado de grande porte também, mas ainda reconhecem de forma clara que esta área pertence a empresas tradicionais como a Ticketmaster: ``Se o topo da pirâmide é Lady Gaga no Madison Square Garden, com certeza esse território é da Ticketmaster. Mas absolutamente todo o restante é da Eventbrite.'' -- tradução livre de fala de Julia Hartz, co-fundadora e presidente da Eventbrite, em matéria da Forbes\cite{eventbrite-lucro-forbes}. Apesar disso, eles já cobrem grandes festivais, como o Governor's Ball de Nova Iorque de 2013.\cite{eventbrite-lucro-forbes}
-
-O foco principal de eventos deles são os de entretenimento em geral, como shows, apresentações musicais, teatrais e culturais em geral, e secundariamente inscrições para cursos e workshops avulsos, encontros de palestras, e etc. Também possuem apelo no mercado esportivo e outros menores. No entanto, eles não possuem nenhum chamariz específico para nenhuma destas áreas, sendo um sistema essencialmente genérico e focado na divulgação dos eventos e venda dos ingressos, funcionando de forma simplificada e fluida para os organizadores e participantes. O principal diferencial entre eles e seus grandes concorrentes é a simplicidade de criar um evento: não há necessidade de contato com agente de vendas, detalhes de cartão de crédito ou as burocracias comuns do meio; o cadastro do evento é feito de forma similar ao cadastro de um novo usuário num sistema comum.
 
 \subsubsection*{Receita}
 De acordo com o relatório anual de 2013 da empresa, foram vendidos 58 milhões de tickets, totalizando \$960 milhões, o que totaliza um mínimo de \$24 milhões em lucro de vendas, considerando a taxa de 2,5\% por ingresso vendido. Como a companhia não cobra por eventos gratuitos, não há como estimar a renda proveniente da taxa fixa de \$0,99 por ingresso já que não há divulgação da porcentagem desse tipo de evento no portfólio.\cite{eventbrite-lucro-tnw}. A empresa foi citada na Forbes com declarações altamente positivas sobre seu estado financeiro e futuro da empresa.\cite{eventbrite-lucro-forbes}.
 
 \subsubsection*{Vantagens e Desvantagens no mercado}
-No caso da Eventbrite, não há nenhuma distinção nos serviços fornecidos para diferentes tipos de eventos. É notável, por exemplo, a deficiência do sistema com relação a eventos como conferências, onde informações sobre alimentação, interesse em workshops, passagens aéreas e afins também se fazem necessárias\cite{eventbrite-review}. No entanto, é possível buscar no site por categorias diversas -- como cursos, conferências, esportes, gastronomia, música, eventos sem fins lucrativos e de arrecadação de fundos, artes performáticas e até eventos políticos.
-
-Outra desvantagem é que as páginas dos eventos focam essencialmente na venda, contendo informações sobre a programação mas de forma secundária -- o que força os organizadores a manter seus próprios hotsites, quando o evento não é simples demais. Aliás, não há integração transparente: sempre haverá o logotipo laranja e chamativo da Eventbrite em algum lugar das páginas sob controle deles, os ingressos, e no uniforme dos \emph{staffs} no dia do evento.
+No caso da Eventbrite, 
 
 Por fim, outro ponto menos relevante a ressaltar é que, para eventos de grande porte, as taxas cobradas passam a ficar um pouco salgadas, pois como o valor pago é proporcional ao valor do ingresso, quanto mais cara a entrada é, mais será pago.
 
-A maior vantagem é sua inserção no mercado internacional: a empresa é a líder do mercado americano, e despertou diversos clones mundo afora -- só nos EUA parecem ter mais de 170 clones, tanto genéricos como de nicho\cite{eventbrite-concorrencia}; alguns possuem funcionalidades ou precificação um pouco diferenciada\cite{eventbrite-concorrencia-quora}, mas ainda são considerados clones. Eles não possuem versão nacional ainda, mas se encarregaram de entrar no mercado latino-americano comprando uma startup-clone: a Eventioz -- que também atende Argentina, Chile, Colômbia, México e Peru. Para os outros 13 países atendidos há versões com domínios locais e traduzidas, quando necessário.
 
 \subsection{Eventioz - uma empresa Eventbrite}
 A Eventioz é uma startup clone da Eventbrite que nasceu na Argentina em 2008. Até 2011 eles já estavam operando no México, Chile, Colômbia e Peru, e chegaram ao Brasil em 2013. No final do mesmo ano, foram comprados pela Eventbrite, como forma desta empresa se expandir para o mercado latino.
@@ -754,9 +791,7 @@ Seu funcionamento e recursos são bem similares ao já oferecido pela Eventbrite
 \end{itemize}
 
 \subsection{Eventick}
-A Eventick é uma startup-clone de Pernambuco, que tenta replicar o sucesso americano em território nacional, trazendo o que empresas como a Eventbrite fizeram para os moldes do Brasil. A empresa foi iniciada em 2011, e o produto foi a público em 2012.\cite{eventick-startupi} Até o momento já venderam mais de 355 mil ingressos\cite{eventick-home}, e seu foco parece ser eventos musicais e entretenimento em geral.
-
-Em questão de funcionalidades a Eventick é muito similar aos concorrentes, mas mais simples -- vale lembrar que é uma startup em crescimento, e que provavelmente virão com novidades no futuro. Atualmente estas são as principais diferenças para o mercado atual:
+Atualmente estas são as principais diferenças de funcionalidades que a Eventick tem em relação ao mercado atual:
 \begin{itemize}[itemsep=-0.5ex]
 	\item[(+)] há a opção de criar um evento secreto: provavelmente ele só seria acessível a partir de um convite direto ou com a URL;
 	\item[(+)] ofertas típicas para o mercado brasileiro: opções de parcelamento do ingresso (e o recebimento não seria afetado) e pagamento via boleto bancário;
