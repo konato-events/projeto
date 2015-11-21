@@ -1013,9 +1013,9 @@ Apesar de estar fora do escopo deste TCC, temos planos futuros para que o projet
 \subsection{Requisitos funcionais do Projeto}
 
 %todo revisar esse texto e explicar a diferença de features entre o MVP e a plataforma final
-Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema. Elas não estão organizadas com algum critério específico, e nem todas serão implementadas no período deste projeto. No entanto, a lista serve como referência de consulta para as pesquisas com os potenciais usuários; auxiliará na identificação de quais \emph{features} são mais importantes, ou se alguma seria pouco relevante, por exemplo. Após esta fase, com base nos resultados, será possível aferir a prioridade de cada uma das funcionalidades.
+Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema. Elas não estão organizadas com algum critério específico, e nem todas serão implementadas no período de execução deste TCC. No entanto, a lista serve como referência de consulta para as pesquisas com os potenciais usuários; auxiliará na identificação de quais \emph{features} são mais importantes, ou se alguma seria pouco relevante, por exemplo. Após esta fase, com base nos resultados, será possível aferir a prioridade de cada uma das funcionalidades. Todas as tarefas relacionadas a estes requisitos têm \emph{issues} equivalentes no Bitbucket, disponíveis em \url{https://bitbucket.org/konato/web/issues}.
 
-Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica quais destes requisitos serão apresentados.
+Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica quais destes requisitos serão efetivamente apresentados.
 
 \textit{Nota: todas as notificações citadas nesta seção são passíveis de opt-out -- quando usuário explicitamente declara não estar interessado em mensagens de determinado assunto.}
 
@@ -1025,9 +1025,9 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 	\begin{description} %todo verificar como funciona para receber atualizações sobre os follows/unfollows do usuário
 		\item[e-mail convencional] preenchendo manualmente os dados do perfil profissional;
 		\item[Twitter] trazendo dados como nome, usuário, colegas, e pedindo permissão para posts sociais; %todo verificar se o twitter permite posts automáticos
-		\item[Facebook], trazendo dados pessoais, estudantis e profissionais (para sugerir seguir grupos universitários, de estudo, profissionais e tópicos relacionados), colegas, e pedindo permissão para \emph{posts} sociais; %todo verficar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
-		\item[LinkedIn], com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e \emph{login};
-		\item[Slideshare] \textit{(opcional)}, que pode trazer dados pessoais e integrar as apresentações do palestrante à plataforma; também pode notificar seus seguidores de sua entrada;
+		\item[Facebook] trazendo dados pessoais, estudantis e profissionais (para sugerir seguir grupos universitários, de estudo, profissionais e tópicos relacionados), colegas, e pedindo permissão para \emph{posts} sociais; %todo verficar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
+		\item[LinkedIn] com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e \emph{login};
+		\item[Slideshare] \textit{(opcional)} que pode trazer dados pessoais e integrar as apresentações do palestrante à plataforma; também pode notificar seus seguidores de sua entrada;
 		\item[Outras redes] Sistemas como Bitbucket, GitHub, Behance e outros podem também ser utilizados para autenticação, vistos que são redes profissionais de diferentes ramos.
 	\end{description}
 \item Utilizar as contas sociais para pedir que o usuário poste sobre seu novo cadastro na rede;
@@ -1036,7 +1036,9 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 		\item Currículo Lattes, ResearchGate: área acadêmica;
 		\item BitBucket, GitHub, StackOverflow: desenvolvimento de software;
 		\item Flickr, Behance, Deviant.Art: fotografia e design;
-		\item SlideShare, SpeakerDeck: palestrantes de modo geral.
+		\item SlideShare, SpeakerDeck: palestrantes de modo geral;
+		\item Facebook, Twitter, Google+: redes sociais em geral;
+		\item Inclusão de outros endereços gerais, de forma que o usuário possa incluir redes pouco conhecidas ou páginas pessoais.
 	\end{itemize}
 \end{itemize}
 
@@ -1074,10 +1076,18 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 
 \subsubsection*{Cadastro de eventos}
 \begin{itemize}
-	\item Usuários com dados de identificação pública verificada (como um CPF/CNPJ e e-mail) podem cadastrar novos eventos na plataforma;
+	\item Usuários com dados de identificação pública verificada (e-mail e \emph{captcha}\footnotemark respondido) podem cadastrar novos eventos na plataforma, com informações básicas como nome, local, data e palestrantes;
 	\item Para novos eventos, é necessário informar dados de referência que sejam críveis e passíveis de avaliação;
+	\item Organizadores devem poder ``tomar posse'' de um evento, ao submeter informações verificáveis;
+	\item Organizadores tem total permissão de edição no evento, podendo incluir dados de transporte, programação, materiais, entre outros;
+	\item Palestrantes cadastrados num evento por usuários comuns devem poder:
+		\begin{itemize}
+			\item se remover do evento, caso seja um engano;
+			\item adicionar a palestra que deram, e os materiais relacionados;
+		\end{itemize}
 	\item \textit{(opcional/futuro)} Configurar um subsistema automatizado para monitoramento de redes sociais (nomeadamente, o Twitter, que possui dados publicamente disponíveis) para identificação de novos eventos. Tais informações devem ser disponibilizadas para os administradores do sistema; a partir daí, eles podem efetuar o cadastro manual do evento na plataforma ou entrar em contato sugerindo o sistema.
 \end{itemize}
+\footnotetext{\emph{Captcha}: Campo utilizado em cadastros e outras operações sensíveis à ação de robôs, que impede preenchimento automatizado. É apresentado um valor aleatório e é necessário que o campo a seguir seja preenchido com o que foi pedido. A forma mais comum de \emph{captcha} é uma imagem distorcida contendo letras e números. Outros tipos são perguntas textuais que robôs não conseguem distinguir facilmente, como contas com números por extenso (``um mais vinte e quatro'') ou categorizações (``patos e pombos são [voadores/terrestres/aquáticos]'').}
 
 \subsubsection*{Programação do evento}
 \begin{itemize}
@@ -1178,7 +1188,53 @@ Pode ser interessante haver um tipo de serviço diferenciado onde algumas partes
 Outro uso para a API seria a criação de um aplicativo móvel, no futuro.
 
 \subsection{Requisitos funcionais do MVP - Escopo deste TCC} \label{sec:requisitos:mvp}
-%todo sumarizar aqui todas as funcionalidades citadas acima que serão implementadas a tempo
+\subsubsection*{Entrada na Plataforma}
+\begin{itemize}
+\item Deve ser possível se cadastrar no sistema a partir de:
+	\begin{description}
+		\item[e-mail convencional] preenchendo manualmente os dados do perfil profissional;
+		\item[Facebook] trazendo dados pessoais e profissionais;
+	\end{description}
+\item Sugerir a associação a outras contas sociais após o cadastro, para aumentar a quantidade de informação do perfil e fomentar a lista de contatos:
+	\begin{itemize}[itemsep=-1ex]
+		\item Currículo Lattes, ResearchGate: área acadêmica;
+		\item BitBucket, GitHub, StackOverflow: desenvolvimento de software;
+		\item Flickr, Behance, Deviant.Art: fotografia e design;
+		\item SlideShare, SpeakerDeck: palestrantes de modo geral;
+		\item Facebook, Twitter, Google+: redes sociais em geral;
+		\item Inclusão de outros endereços gerais, de forma que o usuário possa incluir redes pouco conhecidas ou páginas pessoais.
+	\end{itemize}
+\end{itemize}
+
+\subsubsection*{Descoberta de eventos}
+\begin{itemize}
+	\item Permitir busca manual de eventos, a partir de palavras-chave, mesmo não estando \textit{logado};
+	\item Notificar automaticamente o usuário, por e-mail, sobre novos eventos, baseado em seus interesses;
+	\item Permitir indicação de interesse no evento;
+\end{itemize}
+
+\subsubsection*{Cadastro de eventos}
+\begin{itemize}
+	\item Usuários com dados de identificação pública verificada (e-mail) podem cadastrar novos eventos na plataforma;
+\end{itemize}
+
+\subsubsection*{Programação do evento}
+\begin{itemize}
+	\item Deve ser possível visualizar os diversos \emph{time slots}, com informações como:
+		\begin{itemize}
+			\item descrição;
+			\item tópicos de interesse;
+			\item palestrante(s);
+			\item slides, quando disponíveis.
+		\end{itemize}
+	\item Listar todos os palestrantes e os detalhes dos mesmos, como informações de contato, mini-currículo, fotos e qual(is) slot(s) irá participar.
+\end{itemize}
+
+\subsubsection*{Informações gerais sobre o evento}
+\begin{itemize}
+	\item Localização do evento, com facilidade para identificar o trajeto via aplicativo de mapas;
+	\item Ingressos, com link reservado para site de venda dos mesmos;
+\end{itemize}
 
 \subsection{Requisitos não-funcionais} %todo preencher essa bagaça
 \begin{itemize}
