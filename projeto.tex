@@ -1007,47 +1007,53 @@ De acordo com as necessidades citadas acima, a forma mais eficiente de alcançar
 
 Apesar de estar fora do escopo deste TCC, temos planos futuros para que o projeto seja expandido para plataformas móveis. Primeiramente, a partir de uma versão cada vez mais amigável para dispositivos móveis e, posteriormente, com o lançamento de aplicativos dedicados a esse fim. Precisaremos otimizar o conteúdo do site para que ele fique o mais leve possível durante a conferência, de forma a minimizar o tempo gasto esperando o \emph{download} de um simples dado -- ação, por vezes, hercúlea, em se tratando dos sites comumente utilizados hoje em dia. As atividades iniciais para esta fase podem ser visualizadas na lista de tarefas do \emph{milestone} específico, em \mbox{\url{https://bitbucket.org/konato/web/issues?milestone=Mobile-friendly}}.
 
-% Falar em algum lugar sobre metodo de monetizacao. Explicar que a principio os organizadores irao pagar mensalmente pelo sistema, durante o periodo em que o evento estara publico no app; que ele pode pagar por modulos adicionais pra acrescentar funcionalidade (pois eventos diferentes podem ter necessidades diferentes, nao da pra fazer um pacotao), e talvez pensar em adicionar features premium pros congressistas (tem alguma que valha a pena? qual? e eles pagariam?)
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Requisitos do sistema}
-\label{sec:requisitos}
+\section{Requisitos do sistema} \label{sec:requisitos}
 
-
-\subsection{Requisitos funcionais do MVP}
+\subsection{Requisitos funcionais do Projeto}
 
 %todo revisar esse texto e explicar a diferença de features entre o MVP e a plataforma final
 Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema. Elas não estão organizadas com algum critério específico, e nem todas serão implementadas no período deste projeto. No entanto, a lista serve como referência de consulta para as pesquisas com os potenciais usuários; auxiliará na identificação de quais \emph{features} são mais importantes, ou se alguma seria pouco relevante, por exemplo. Após esta fase, com base nos resultados, será possível aferir a prioridade de cada uma das funcionalidades.
+
+Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica quais destes requisitos serão apresentados.
 
 \textit{Nota: todas as notificações citadas nesta seção são passíveis de opt-out -- quando usuário explicitamente declara não estar interessado em mensagens de determinado assunto.}
 
 \subsubsection*{Entrada na Plataforma}
 \begin{itemize}
-\item Deve ser possível cadastrar no sistema a partir de:
-	\begin{itemize} %todo verificar como funciona para receber atualizações sobre os follows/unfollows do usuário
-		\item Um \textbf{e-mail} convencional, preenchendo manualmente os dados do perfil profissional
-		\item \textbf{Twitter}, trazendo dados como nome, usuário, colegas, e pedindo permissão para posts sociais %todo verificar se o twitter permite posts automáticos
-		\item \textbf{Facebook}, trazendo dados pessoais, estudantis e profissionais (para sugerir seguir grupos universitários, de estudo, profissionais e tópicos relacionados), colegas, e pedindo permissão para \emph{posts} sociais %todo verficar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
-		\item \textbf{LinkedIn}, com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e \emph{login}.
-		\item \textbf{Slideshare} \textit{(opcional)}, que pode trazer dados pessoais e integrar as apresentações do palestrante à plataforma; também pode notificar seus seguidores de sua entrada.
+\item Deve ser possível se cadastrar no sistema a partir de:
+	\begin{description} %todo verificar como funciona para receber atualizações sobre os follows/unfollows do usuário
+		\item[e-mail convencional] preenchendo manualmente os dados do perfil profissional;
+		\item[Twitter] trazendo dados como nome, usuário, colegas, e pedindo permissão para posts sociais; %todo verificar se o twitter permite posts automáticos
+		\item[Facebook], trazendo dados pessoais, estudantis e profissionais (para sugerir seguir grupos universitários, de estudo, profissionais e tópicos relacionados), colegas, e pedindo permissão para \emph{posts} sociais; %todo verficar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
+		\item[LinkedIn], com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e \emph{login};
+		\item[Slideshare] \textit{(opcional)}, que pode trazer dados pessoais e integrar as apresentações do palestrante à plataforma; também pode notificar seus seguidores de sua entrada;
+		\item[Outras redes] Sistemas como Bitbucket, GitHub, Behance e outros podem também ser utilizados para autenticação, vistos que são redes profissionais de diferentes ramos.
+	\end{description}
+\item Utilizar as contas sociais para pedir que o usuário poste sobre seu novo cadastro na rede;
+\item Sugerir a associação a outras contas sociais após o cadastro, para aumentar a quantidade de informação do perfil e fomentar a lista de contatos:
+	\begin{itemize}[itemsep=-1ex]
+		\item Currículo Lattes, ResearchGate: área acadêmica;
+		\item BitBucket, GitHub, StackOverflow: desenvolvimento de software;
+		\item Flickr, Behance, Deviant.Art: fotografia e design;
+		\item SlideShare, SpeakerDeck: palestrantes de modo geral.
 	\end{itemize}
-\item Utilizar as contas sociais para pedir que o usuário poste sobre seu novo cadastro na rede
-\item Sugerir a associação a outras contas sociais após o cadastro, para aumentar a quantidade de informação do cadastro e fomentar a lista de colegas
 \end{itemize}
 
 \subsubsection*{Descoberta de eventos}
 \begin{itemize}
 	\item Permitir busca manual de eventos, a partir de palavras-chave, mesmo não estando \textit{logado};
 	\item As buscas devem ser filtráveis por localização: cidade atual, estado, país e região;
-	\item {opcional} Num dispositivo móvel (talvez no desktop também) o usuário deve poder permitir acesso à sua localização, para facilitar o sistema de busca e cadastro;
+	\item \emph{(opcional)} Num dispositivo móvel (talvez no desktop também) o usuário deve poder permitir acesso à sua localização, para facilitar o sistema de busca e cadastro;
 	\item Notificar o usuário automaticamente sobre novos eventos de interesse, baseados em:
 		\begin{itemize}
 			\item interesses do usuário;
+			\item outros contatos;
 			\item grupos de atividade (universidades ou organizações profissionais);
 		\end{itemize}
 	\item As notificações devem ocorrer somente para eventos de determinada configuração de interesse (inicialmente, todos os portes na cidade; médio/grande porte dentro do país; grande porte fora do país). Esta opção deve ser facilmente configurável e visível na notificação;
 	\item As notificações devem ocorrer primariamente por e-mail. Futuramente, também deve ser possível visualizar as sugestões de eventos dentro da plataforma e a partir de notificações móveis;
-	\item Permitir marcação de interesse no evento;
+	\item Permitir indicação de interesse no evento;
 	\item Sugerir posts em redes sociais sobre o interesse num evento;
 	\item Notificar o usuário de tempos em tempos sobre novos amigos que indicaram interesse num evento;
 	\item Permitir deixar de seguir pessoas em que há interesse em manter na rede de contatos mas não há necessidade em saber sobre os eventos de seu interesse;
@@ -1062,19 +1068,16 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 
 \subsubsection*{Pós-evento}
 \begin{itemize}
-	\item Conforme disponibilização pela organização, enviar para o usuário as estatísticas do evento, os dados dos palestrantes e onde encontrar os materiais disponibilizados;
+	\item Conforme disponibilizado pela organização, enviar para o usuário as estatísticas do evento, os dados dos palestrantes e onde encontrar os materiais disponibilizados;
 	\item Permitir aos organizadores enviar pesquisas de opinião para os usuários;
 \end{itemize}
 
 \subsubsection*{Cadastro de eventos}
 \begin{itemize}
 	\item Usuários com dados de identificação pública verificada (como um CPF/CNPJ e e-mail) podem cadastrar novos eventos na plataforma;
-	\item Para novos eventos, é necessário informar dados referentes que sejam críveis e passíveis de avaliação (verificar como é o processo de cadastro de eventos do Lanyrd);
+	\item Para novos eventos, é necessário informar dados de referência que sejam críveis e passíveis de avaliação;
 	\item \textit{(opcional/futuro)} Configurar um subsistema automatizado para monitoramento de redes sociais (nomeadamente, o Twitter, que possui dados publicamente disponíveis) para identificação de novos eventos. Tais informações devem ser disponibilizadas para os administradores do sistema; a partir daí, eles podem efetuar o cadastro manual do evento na plataforma ou entrar em contato sugerindo o sistema.
 \end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Requisitos funcionais da Plataforma como um todo}
 
 \subsubsection*{Programação do evento}
 \begin{itemize}
@@ -1088,7 +1091,6 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 			\item descrição;
 			\item tópicos de interesse;
 			\item palestrante(s);
-			\item subcategoria - como trilhas de palestras distintas;
 			\item localização, para os casos em que o evento possua mais de um ambiente;
 			\item slides, quando disponíveis.
 		\end{itemize}
@@ -1103,27 +1105,27 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 	\item Notificações sobre lançamento das grades ou modificações nas mesmas, lançamento de slides e vídeos das palestras, dentre outros;
 \end{itemize}
 
-\subsubsection*{Trabalhos, exposições e \emph{networking}}
-\begin{itemize}
-	\item Para os casos em que haja exposição de patrocinadores ou trabalhos, pode ser interessante setorizar o salão de exposições e permitir a localização daqueles pelo sistema:
-		\begin{itemize}
-			\item Os expositores e/ou projetos podem ser buscados por palavras-chave ou por tópicos;
-			\item Eles teriam um setor ou box específico do salão, e o usuário poderia facilmente localizá-lo a partir de um mapa no aplicativo ou nas entradas da área;
-		\end{itemize}
-	\item Auxiliar o processo de avaliação e premiação dos trabalhos apresentados:
-		\begin{enumerate}
-			\item Isso pode ser feito disponibilizando tablets aos avaliadores que não possuírem smartphones, ou não desejarem/puderem instalar o aplicativo;
-			\item Os avaliadores lançam as notas e comentários no aplicativo conforme vêem os trabalhos;
-			\item Os comentários podem ser vistos em tempo real pelos participantes do projeto avaliado;
-			\item As notas são contabilizadas também em tempo real pela organização e/ou congressistas.
-		\end{enumerate}
-	\item Facilitar a troca de contatos nos momentos de \emph{networking} (similar ao sistema da \emph{SocialTagg}\cite{socialtagg}):
-		\begin{itemize}
-			\item Exibir os dados dos congressistas presentes;
-			\item Permitir que contatos sejam favoritados e recebam anotações;
-			\item Possivelmente, permitir o download offline da base de congressistas, a partir de bases de distribuição \emph{Bluetooth} no local do evento (tecnologia conhecida como \emph{Bluetooth Marketing}).
-		\end{itemize}
-\end{itemize}
+%\subsubsection*{Trabalhos, exposições e \emph{networking}}
+%\begin{itemize}
+%	\item Para os casos em que haja exposição de patrocinadores ou trabalhos, pode ser interessante setorizar o salão de exposições e permitir a localização daqueles pelo sistema:
+%		\begin{itemize}
+%			\item Os expositores e/ou projetos podem ser buscados por palavras-chave ou por tópicos;
+%			\item Eles teriam um setor ou box específico do salão, e o usuário poderia facilmente localizá-lo a partir de um mapa no aplicativo ou nas entradas da área;
+%		\end{itemize}
+%	\item Auxiliar o processo de avaliação e premiação dos trabalhos apresentados:
+%		\begin{enumerate}
+%			\item Isso pode ser feito disponibilizando tablets aos avaliadores que não possuírem smartphones, ou não desejarem/puderem instalar o aplicativo;
+%			\item Os avaliadores lançam as notas e comentários no aplicativo conforme vêem os trabalhos;
+%			\item Os comentários podem ser vistos em tempo real pelos participantes do projeto avaliado;
+%			\item As notas são contabilizadas também em tempo real pela organização e/ou congressistas.
+%		\end{enumerate}
+%	\item Facilitar a troca de contatos nos momentos de \emph{networking} (similar ao sistema da \emph{SocialTagg}\cite{socialtagg}):
+%		\begin{itemize}
+%			\item Exibir os dados dos congressistas presentes;
+%			\item Permitir que contatos sejam favoritados e recebam anotações;
+%			\item Possivelmente, permitir o download offline da base de congressistas, a partir de bases de distribuição \emph{Bluetooth} no local do evento (tecnologia conhecida como \emph{Bluetooth Marketing}).
+%		\end{itemize}
+%\end{itemize}
 
 \subsubsection*{Informações gerais sobre o evento}
 \begin{itemize}
@@ -1132,19 +1134,19 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 			\item com facilidade para identificar o trajeto via aplicativo de mapas;
 			\item com indicações textuais sobre as linhas de transporte público próximas e trajetos comuns da rodoviária e aeroporto (o que pode ser útil em caso de falta de plano de dados para visualizar o trajeto ao vivo).
 		\end{itemize}
-	\item Indicação de locais nos arredores para:
-		\begin{itemize}
-			\item alimentação: uma possibilidade é integrar com o FourSquare para recomendações de lugares realmente próximos, e talvez adicionar comentários ou preferência dos organizadores sobre as opções;
-			\item pontos turísticos a visitar: similar à ideia acima;
-			\item hospedagem: novamente, similar às ideias acima, mas nesse caso integrando com o TripAdvisor;
-		\end{itemize}
+%	\item Indicação de locais nos arredores para:
+%		\begin{itemize}
+%			\item alimentação: uma possibilidade é integrar com o FourSquare para recomendações de lugares realmente próximos, e talvez adicionar comentários ou preferência dos organizadores sobre as opções;
+%			\item pontos turísticos a visitar: similar à ideia acima;
+%			\item hospedagem: novamente, similar às ideias acima, mas nesse caso integrando com o TripAdvisor;
+%		\end{itemize}
 	\item Ingressos:
 	\begin{itemize}
-		\item Informações a venda de ingressos e as datas de mudanças de lotes;
+		\item Informações da venda de ingressos e as datas de mudanças de lotes;
 		\item Informações detalhadas dos possíveis tipos de ingressos disponíveis;
 		\item Alertas sobre o início das vendas e a mudança de lotes -- avisar, por exemplo, quando faltarem determinados dias para a troca de lote.
 	\end{itemize}
-	\item Exibição de feed de notícias do evento. Os organizadores devem poder lançar notas e blocos de texto maiores, sobre os quais os usuários podem ser notificados -- útil para anunciar mudanças futuras na grade, criar material de agitação entre os congressistas ou divulgações do evento em geral. 
+%	\item Exibição de feed de notícias do evento. Os organizadores devem poder lançar notas e blocos de texto maiores, sobre os quais os usuários podem ser notificados -- útil para anunciar mudanças futuras na grade, criar material de agitação entre os congressistas ou divulgações do evento em geral. 
 	\item Talvez seja possível replicar a funcionalidade gerada por QR-Codes de Rede Wi-Fi e criar um link ou botão que leve o usuário a se conectar automaticamente às redes do evento, mesmo que elas possuam senha. Isso pode ser usado, inclusive, para criar redes específicas para os usuários do sistema. Veja a \autoref{fig:qr-wifi} como um exemplo.
 \end{itemize}
 
@@ -1156,28 +1158,33 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 \end{SCfigure}
 
 \subsubsection*{Divulgação de novos eventos}
-Os usuários poderão acompanhar os perfis de sociedades e associações científicas, de modo a serem notificados em primeira mão (possivelmente por email também) sobre novos eventos que estão sendo planejados - conforme eles são cadastrados na plataforma.
-Esta ideia possibilita a entrada de pequenas empresas, como aquelas que organizam ciclos de palestras periódicos -- o que, em torno, ajudaria na divulgação do aplicativo web ou móvel, nos casos em que ele seria necessário para o checkin no evento.
+Os usuários poderão acompanhar os perfis de sociedades e associações científicas, de modo a serem notificados em primeira mão sobre novos eventos que estão sendo planejados -- conforme eles são cadastrados na plataforma.
+Esta ideia possibilita a entrada de pequenas empresas, como aquelas que organizam ciclos de palestras periódicos -- o que, em torno, ajudaria na divulgação do projeto.
 
 Também é interessante disponibilizar uma integração com os eventos do Facebook, permitindo ao cliente criar um evento lá a partir da nossa plataforma. Detalhes de local e datas seriam atualizáveis automaticamente, e outras informações podem ser gerenciadas também pelo sistema -- como descrição, imagens e até mesmo novas postagens.
 
 \subsubsection*{Redução das burocracias comuns de eventos}
-\emph{Estes tópicos são principalmente secundários, pois já existem sistemas que cumprem estes papéis, pelo menos até certo nível, ou porque não encaixam muito no ambiente móvel.}
+\emph{Estes tópicos são principalmente secundários, pois já existem sistemas que cumprem estes papéis, pelo menos até certo nível, ou porque não encaixam muito no ambiente móvel. No entanto, podem servir como formas de monetização.}
 \begin{itemize}[itemsep=-0.5ex]
-	\item Distribuição de pesquisas de opinião pós-evento;
+%	\item Distribuição de pesquisas de opinião pós-evento;
 	\item Controlar o credenciamento de congressistas. Aqueles que possuírem o aplicativo podem participar de uma fila especial que consistiria da leitura de um código na tela do aparelho para identificação automática do mesmo;
 	\item Disponibilização de certificados de participação aos interessados, com informações sobre os trabalhos apresentados, por exemplo;
 	\item Organização de patrocinadores, empresas parceiras, despesas e contratos de serviços.
 \end{itemize}
 
 \subsubsection*{Liberação da API para uso dos organizadores}
-Pode ser interessante haver um tipo de serviço diferenciado onde algumas partes da API ficam disponíveis para os organizadores. Isso é útil para o caso de criarem um hotsite do evento, por exemplo. Dessa forma, a página pode se tornar mais dinâmica e integrada com o aplicativo, exibindo as mesmas notícias que são divulgadas no sistema, atualizando a grade de palestras de forma automática, e etc.
-Outra vertente da ideia é possuir um gerador de site automatizado, que conteria todos os dados sobre o evento, assim como o aplicativo. Mas nesse caso pecaríamos em personalização, num ambiente muito mais customizável e visual como a web.
+Pode ser interessante haver um tipo de serviço diferenciado onde algumas partes da API ficam disponíveis para os organizadores. Isso é útil quando o evento possui um site externo, por exemplo. Dessa forma, a página pode se tornar mais dinâmica e integrada com o Konato, exibindo as mesmas notícias que são divulgadas no sistema, atualizando a grade de palestras de forma automática, e etc.
+
+Outro uso para a API seria a criação de um aplicativo móvel, no futuro.
+
+\subsection{Requisitos funcionais do MVP - Escopo deste TCC} \label{sec:requisitos:mvp}
+%todo sumarizar aqui todas as funcionalidades citadas acima que serão implementadas a tempo
 
 \subsection{Requisitos não-funcionais} %todo preencher essa bagaça
 \begin{itemize}
 	\item 
 \end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tecnologias utilizadas} \label{sec:tecnologias}
