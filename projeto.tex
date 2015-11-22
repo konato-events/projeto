@@ -20,6 +20,7 @@
 \usepackage{framed} % http://pt.slideshare.net/linjaaho/how-to-make-boxed-text-with-latex
 \usepackage{indentfirst}
 \usepackage{microtype}
+\usepackage[final]{pdfpages}
 
 \hyphenation{Javelin}
 
@@ -309,17 +310,17 @@ Nesta seção do documento descreveremos muitos conceitos que são hipotéticos,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\emph{Mapa de Empatia} - \emph{Personas} de nossos clientes e usuários}
-O Mapa de Empatia\cite{mapa-de-empatia} é um diagrama simplificado que otimiza a identificação dos diferentes tipos de usuários e clientes. Seu principal conceito é a divisão de características comuns de seres humanos em diferentes blocos. Isto facilita a identificação de similaridades entre as pessoas que desejamos atender, e possibilita o desenvolvimento de um produto mais centrado no usuário. Tendo mais conhecimento sobre o tipo de pessoa que imaginamos resolver seu problema, podemos ir a campo encontrá-las e conversar sobre seus anseios e vontades, de forma que possamos entender exatamente como elas são e se o problema que identificamos existe de fato no mundo real.
+O Mapa de Empatia\cite{mapa-de-empatia} é um diagrama simplificado que otimiza a identificação dos diferentes tipos de usuários e clientes. Seu principal conceito é a divisão de características comuns de seres humanos em diferentes blocos. Isto facilita a identificação de similaridades entre as pessoas que desejamos atender e possibilita o desenvolvimento de um produto mais centrado no usuário. Tendo mais conhecimento sobre o tipo de cliente que pretendemos resolver seu problema, podemos ir a campo encontrá-lo e conversar sobre seus anseios e vontades, de forma que possamos entender exatamente como ele é e se o problema que identificamos existe de fato no mundo real.
 
-Será possível notar, o tempo todo, como o conceito da \emph{Lean Startup} tem sempre como foco principal o(s) cliente(s) final(is): o objetivo é gerar algo que seja desejável e onde possa-se ouvir ``gostei! quero comprar agora!'', evitando o problema recorrente de se ter uma ideia mas não ter clientes para ela.
+Será possível notar, o tempo todo, como o conceito da \emph{Lean Startup} tem sempre como foco principal o(s) cliente(s) final(is): o objetivo é gerar algo que seja desejável e onde possamos ouvir ``gostei! quero comprar agora!'', evitando o problema recorrente de se ter uma ideia mas não ter clientes para ela.
 
-A \emph{persona}\footnotemark que descrevemos no diagrama \ref{diag:empatia} é uma estudante jovem, insegura e pouco preparada para o mercado. Suas características representam a união de sentimentos que temos e já tivemos em nossas carreiras, bem como impressões que coletamos ao conversarmos com outros universitários. Durante estas conversas, identificamos os principais ``pontos de dor'' neste tipo de usuário, quando falamos sobre o tópico ``eventos'':
+A \emph{persona}\footnotemark{} que descrevemos no diagrama \ref{diag:empatia} é uma estudante jovem, insegura e pouco preparada para o mercado. Suas características representam a união de sentimentos que temos e já tivemos em nossas carreiras, bem como impressões que coletamos ao conversarmos com outros universitários. Durante estas conversas, identificamos os principais ``pontos de dor'' neste tipo de usuário, quando falamos sobre o tópico ``eventos'':
 \footnotetext{Personagem genérico com características em comum; a personificação de um grupo social}
 
 \begin{itemize}[itemsep=-1ex]
 	\item \iffalse\conf{}\fi a importância que os diversos eventos, dentro e fora da sua universidade, tem para sua formação extra-curricular;
 	\item \iffalse\conf{}\fi o incentivo que alguns professores dão para a participação em atividades práticas, de campo ou de integração;
-	\item \iffalse\conf{}\fi como algumas oportunidades foram perdidas por ineficiência de comunicação -- seja por terem perdido um anúncio em especial na instituição ou não terem contato com ``a pessoa certa'', que indicou determinado evento para um amigo mas não para ela, por exemplo.
+	\item \iffalse\conf{}\fi como algumas oportunidades foram perdidas por ineficiência de comunicação -- seja por terem perdido um anúncio em especial na instituição ou não terem contato com ``a pessoa certa'', indicando determinado evento para um amigo mas não para ela, por exemplo.
 \end{itemize}
 
 \begin{figure}[!h]
@@ -332,9 +333,9 @@ A \emph{persona}\footnotemark que descrevemos no diagrama \ref{diag:empatia} é 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\emph{Árvore de problemas} - Visualização das principais dores}
-De forma a entender melhor o outro lado do problema, a partir de um \emph{brainstorm} desenvolvemos outro diagrama, chamado de Árvore de Problemas. Ele é formado por um bloco central, que indica o problema básico que estamos investigando, e ramificações de causas e consequências do mesmo.\cite{arvore-de-problemas-portal-educacao}
+De forma a entender melhor o outro lado do problema, a partir de um \emph{brainstorm} desenvolvemos outro diagrama, chamado de Árvore de Problemas. Ele é formado por um bloco central que indica o problema básico que estamos investigando, e ramificações de causas e consequências do mesmo.\cite{arvore-de-problemas-portal-educacao}
 
-Muitas vezes o que nos é relatado é só a ``ponta do iceberg'', a parte mais superficial da questão. Para resolvê-la, no entanto, pode ser necessário ir mais a fundo de modo a evitar que o problema ocorra novamente. Com a Árvore, é possível entender de forma clara quais são as origens do \emph{pain point} do cliente.
+Muitas vezes o que nos é relatado é só a ``ponta do iceberg'', a parte mais superficial da questão. Para resolvê-la, no entanto, pode ser necessário ir mais a fundo de modo a evitar que o problema ocorra novamente. Com o uso deste diagrama é possível entender de forma clara quais são as origens do \emph{pain point} do cliente.
 
 O desenvolvimento da Árvore de Problemas é um exercício mental de abstração e pensamento fora da caixa, que nos força à introspecção enquanto tentamos desvendar os problemas que o cliente citou durante as entrevistas. Uma das técnicas para desenvolvê-la é a dos Cinco Porquês\cite{five-whys} (ou três\cite{three-whys}\cite{three-whys-semler}, dependendo do autor e do nível de especificação que desejamos), que visa se aprofundar numa questão inicial para chegar às suas raízes.
 
@@ -372,7 +373,7 @@ O desenvolvimento da Árvore de Problemas é um exercício mental de abstração
 	\label{diag:arvore}
 \end{figure}
 
-O problema que desenvolvemos no diagrama \ref{diag:arvore} é referente à dificuldade de divulgação de eventos abertos ao público além da própria organização -- aqui chamados de ``eventos externos'', em contraste com eventos internos da organização, em que todos os participantes recebem convites expressamente. Esta situação é causada pelo problema em alcançar o público-alvo e por usar de canais ineficientes. Por sua vez, ela leva a uma falha na proposta do evento, seja devido à frustração do palestrante ou do público, por dar a impressão de que o evento foi ``fraco''; a frustração do participante pode ser tomada como uma consequência à parte, visto que divulgação ineficiente, atrasada ou com informações desencontradas pode levá-lo a problemas de planejamento para participar das atividades.
+O problema que desenvolvemos no diagrama \ref{diag:arvore} é referente à dificuldade de divulgação de eventos abertos ao público além da própria organização -- aqui chamados de ``eventos externos'', em contraste com eventos internos da organização, em que todos os participantes recebem convites expressamente. Esta situação é causada pelo problema em alcançar o público-alvo e por usar de canais ineficientes. Por sua vez, essa dificuldade leva a uma falha na proposta do evento, seja devido à frustração do palestrante ou do público, por dar a impressão de que o evento foi ``fraco''. A frustração do participante pode ser tomada como uma consequência à parte, visto que divulgação ineficiente, atrasada ou com informações desencontradas pode levá-lo a problemas de planejamento para participar das atividades.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -387,11 +388,11 @@ O problema que desenvolvemos no diagrama \ref{diag:arvore} é referente à dific
 
 Segundo \citeauthor{manual-startup} (p.~83), frequentemente, em equipes e empresas novas, há confusão de informação e dificuldade de entendimento de qual é exatamente o modelo de negócios que será utilizado. Portanto, foi decidido usar o \emph{Lean Canvas} para ilustrar de forma rápida e eficiente os principais pontos deste projeto.
 
-Originalmente, Alex Osterwalder criou o \emph{Business Model Canvas}, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, e facilmente alterado e  corrigido. Posteriormente, Ash Maurya criou o \emph{Lean Canvas}, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (arriscadas) e mutáveis de uma startup.\cite{why-lean-canvas}
+Originalmente, Alex Osterwalder criou o \emph{Business Model Canvas}, buscando resumir todos os lados de uma empresa num quadro de nove caixas, de forma que todos eles pudessem ser confrontados de um jeito rápido e por qualquer pessoa da companhia, sendo facilmente alterado e corrigido. Posteriormente, Ash Maurya criou o \emph{Lean Canvas}, se baseando no original mas alterando algumas das caixas, objetivando focar nas partes mais importantes (arriscadas) e mutáveis de uma startup.\cite{why-lean-canvas}
 
 Ainda de acordo com \citeauthor{lean-canvas}, é importante criar uma versão do \emph{canvas} para cada grupo de clientes da companhia. No nosso caso, com um produto multifacetado, por um lado precisaremos servir e atrair os organizadores de eventos, que pagarão pelo serviço e desejam melhorar a comunicação com seus congressistas; por outro, os participantes precisam se sentir confortáveis dentro da plataforma e com vontade de saber mais sobre ela nas divulgações, interessados em utilizá-la, e vendo proveito no decorrer do uso. Essa dualidade reflete os dois lados do sistema, onde precisamos satisfazer tipos distintos de \emph{personas}, com necessidades e objetivos diferentes. Portanto, o sistema terá dois \emph{canvas} que evoluirão em sintonia. No entanto, para o escopo deste projeto, focaremos nossos esforços no usuário final; os motivos serão esclarecidos oportunamente. %todo: verificar se foram esclarecidos!
 
-Uma consequência da natureza mutante do \emph{canvas} é que ele dificilmente será ``gravado em pedra''; durante o trabalho na definição deste projeto, ideias novas surgirão e hipóteses serão criadas, aperfeiçoadas ou descartadas -- e a cada novo passo, os \emph{canvas} deverão ser atualizados. Nesta seção vamos exibir somente a versão atual do documento, e o histórico poderá ser conferido online, no endereço \mbox{\url{https://canvanizer.com/canvas/2MM3fHvw8Lo}}.
+Uma consequência da natureza mutante do \emph{canvas} é que ele dificilmente será ``gravado em pedra'. Durante o trabalho na definição deste projeto, ideias novas surgirão e hipóteses serão criadas, aperfeiçoadas ou descartadas, e, a cada novo passo, os \emph{canvas} deverão ser atualizados. Nesta seção vamos exibir somente a versão atual do documento, e o histórico poderá ser conferido online, no endereço \mbox{\url{https://canvanizer.com/canvas/2MM3fHvw8Lo}}.
 
 \iffalse
 Também descreveremos em síntese os blocos adicionais do \emph{Business Model Canvas}. Estes não são tão mutáveis, mas também são dignos de uma discussão inicial, por fazerem parte da criação da companhia.
@@ -401,13 +402,13 @@ Também descreveremos em síntese os blocos adicionais do \emph{Business Model C
 \label{sec:lean:mercado}
 Ao descrever o processo de \textit{Customer Discovery} (Descoberta do Consumidor) no livro Manual da Startup\cite{manual-startup}, \citeauthoronline{manual-startup} sugerem criar um resumo inicial sobre o tamanho do mercado antes de iniciar as sínteses de cada parte do Business Model Canvas.
 
-Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas: por um lado, estaremos atendendo os organizadores de eventos, que objetivam se comunicar com seus participantes; por outro, estaremos atendendo os próprios participantes, que desejam obter as informações que os organizadores disponibilizarão sobre os eventos que os interessam. Portanto, é importante notar que, apesar do mercado ser um só, há dois tipos distintos de consumidores a se considerar neste ramo.
+Inicialmente, precisamos considerar que o projeto é um sistema de duas saídas: por um lado, estaremos atendendo os organizadores de eventos que objetivam se comunicar com seus participantes; por outro, estaremos atendendo os próprios participantes que desejam obter as informações que os organizadores disponibilizarão sobre os eventos que os interessam. Portanto, é importante notar que, apesar do mercado ser um só, há dois tipos distintos de consumidores a se considerar neste ramo.
 
 \textbf{Para os fins deste documento, estaremos considerando como ``clientes'' os organizadores de eventos, e ``usuários'' os participantes (os consumidores finais do sistema).}
 
 Dito isso, nosso \underline{mercado disponível} é o segmento de eventos acadêmicos, científicos e técnicos.
 
-Desse grupo, o \underline{mercado disponível para negócios} é o grupo de usuários que possuam um smartphone, tablet ou computador com conexão à Internet, conforme a \autoref{sec:tecnologias}. Além disso, inicialmente focaremos nos países lusófonos e anglófonos, com versões do sistema em português e inglês. O mercado disponível de clientes é definido pelos mesmos requisitos de linguagem, mas o requisito técnico passa a ser o uso confortável de um computador com Internet, visto que no início as atividades de atualização de informações são mais práticas de serem executadas num dispositivo como esse, dada a quantidade de informações que precisarão ser inseridas e analisadas.
+Desse grupo, o \underline{mercado disponível para negócios} é o grupo de usuários que possuam um smartphone, tablet ou computador com conexão à Internet, conforme a \autoref{sec:tecnologias}. Além disso, inicialmente focaremos nos países lusófonos e anglófonos, com versões do sistema em português e inglês. O mercado disponível de clientes é definido pelos mesmos requisitos de linguagem, mas o requisito técnico passa a ser o uso confortável de um computador com Internet, visto que, no início, as atividades de atualização de informações são mais práticas de serem executadas num dispositivo como esse, dada a quantidade de informações que precisarão ser inseridas e analisadas.
 
 Por fim, nosso \underline{mercado-alvo} será o grupo de organizadores que sentem dificuldade em divulgar e espalhar informações sobre seus eventos, ou, ainda, que desejem melhorar a comunicação com seus participantes, melhorando a fidelização e aumentando a venda de ingressos. Há também o grupo de congressistas, cujo alvo principal será aqueles que já se sentiram frustrados pela falta de informações ou confusos quanto às atividades de um evento; que tem interesse em descobrir novos eventos ou explorar novos mercados; ou que se sentem curiosos por forma mais eficiente e instantânea (móvel) de obter detalhes sobre o evento, tanto antes do mesmo quanto no instante.
 
@@ -563,12 +564,12 @@ Além deles, há alguns sistemas similares, mas com foco em outros mercados (\au
 
 No mercado nacional não há concorrência real, visto que o único projeto similar existe somente em inglês -- fato tomado como negativo por alguns usuários dele entrevistados no Brasil. Dos sistemas listados, o único que possui versão em português -- Meetup -- foi citado em entrevistas ocasionais, mas com seu uso somente no campo de eventos mais intimistas e reduzidos (de 5 a 50 participantes).
 
-Por fim, há outros tipos de sistemas no mercado de eventos, mas com outro propósito e que somente tangencia nossos objetivos: a venda de ingressos (\autoref{sec:concorrencia:venda}). Em especial, a Sympla, EventBrite e Eventick são dignos de nota, por serem os maiores \emph{players} no cenário nacional e internacional (nesse sub-grupo, o principal destaque é a EventBrite). A venda de entradas é considerada uma boa aposta no campo de monetização do projeto, mas por se tratar de um módulo com complexidades técnicas e burocráticas, pode ser alcançado inicialmente de forma mais simples a partir de parcerias com empresas como as citadas.
+Por fim, há outros tipos de sistemas no mercado de eventos, mas com outro propósito e que somente tangencia nossos objetivos: a venda de ingressos (\autoref{sec:concorrencia:venda}). Em especial, a Sympla, EventBrite e Eventick são dignos de nota, por serem os maiores \emph{players} no cenário nacional e internacional (nesse sub-grupo, o principal destaque é a EventBrite). A venda de entradas é considerada uma boa aposta no campo de monetização do projeto, mas, por se tratar de um módulo com complexidades técnicas e burocráticas, pode ser alcançado inicialmente de forma mais simples a partir de parcerias com empresas como as citadas.
 
 \subsection{Lanyrd} \label{sec:concorrencia:lanyrd}
-Criado em 2010, o Lanyrd é um diretório de conferências. Um ano após o lançamento da startup londrina, eles receberam \$1,4 milhões em investimento inicial, após ter participado do famoso programa encubador de startups \emph{Y Combinator}\cite{lanyrd-ycombinator}. Dois anos depois, em setembro de 2013, desta entrada de capital, a empresa foi comprada pela gigante de venda de ingressos Eventbrite (\autoref{sec:concorrencia:venda}). Desde então, a atividade parece ter sido reduzida, e cessou completamente oito meses após a aquisição, em maio de 2014 -- data da última e única postagem feita no \emph{blog} da empresa após o anúncio de sua venda.
+Criado em 2010, o Lanyrd é um diretório de conferências. Um ano após o lançamento da startup londrina, eles receberam \$1,4 milhões em investimento inicial, após ter participado do famoso programa encubador de startups \emph{Y Combinator}\cite{lanyrd-ycombinator}. Dois anos depois desta entrada de capital, em setembro de 2013, a empresa foi comprada pela gigante de venda de ingressos Eventbrite (\autoref{sec:concorrencia:venda}). Desde então, a atividade parece ter sido reduzida, e cessou completamente oito meses após a aquisição, em maio de 2014 -- data da última e única postagem feita no \emph{blog} da empresa após o anúncio de sua venda.
 
-O Lanyrd sempre teve foco majoritário no público de tecnologia e usuários do Twitter, promovendo a interação entre suas listas de contatos. Por alguns dos usuários entrevistados por nós, foi tido como um projeto promissor que infelizmente morreu na praia, visto que não obteve grande adoção no Brasil por causa da barreira do idioma.
+O Lanyrd sempre teve foco majoritário no público de tecnologia e usuários do Twitter, promovendo a interação entre suas listas de contatos. Por alguns dos usuários entrevistados por nós, foi tido como ``um projeto promissor que infelizmente morreu na praia'', visto que não obteve grande adoção no Brasil por causa da barreira do idioma.
 
 Um dos seus mentores após a participação no \emph{Y Combinator} foi Andy Baio, fundador original do Upcoming.org (\autoref{sec:concorrencia:outros-mercados}).
 
@@ -577,16 +578,16 @@ Um dos seus mentores após a participação no \emph{Y Combinator} foi Andy Baio
 %todo avaliar também o EVENTFUL
 
 \subsubsection*{Upcoming.org}
-Originalmente lançado em 2003, o Upcoming era um calendário colaborativo de atividades urbanas, como concertos musicais, exposições de arte e conferências.\cite{upcoming-tnw} Aproximadamente dois anos depois a plataforma foi comprada pela Yahoo!. Em 2013 a gigante da Internet anunciou o fechamento de diversos projetos para corte de gastos, e o Upcoming foi um dos sistemas descontinuados.\cite{upcoming-fechado}
+Originalmente lançado em 2003, o Upcoming era um calendário colaborativo de atividades urbanas como concertos musicais, exposições de arte e conferências.\cite{upcoming-tnw} Aproximadamente dois anos depois a plataforma foi comprada pela Yahoo!. Em 2013 a gigante da Internet anunciou o fechamento de diversos projetos para corte de gastos, e o Upcoming foi um dos sistemas descontinuados.\cite{upcoming-fechado}
 
-O site utilizava tecnologias de vanguarda na época, como iCalendar, RSS e GeoRSS, além de ter uma API aberta para busca e cadastro de novos eventos. Suas funcionalidades sociais são similares às disponíveis hoje em dia no Facebook, mas de forma reduzida -- era possível criar relacionamentos entre perfis e indicar interesse e presença em eventos, por exemplo.
+O site utilizava tecnologias de vanguarda na época como iCalendar, RSS e GeoRSS, além de ter uma API aberta para busca e cadastro de novos eventos. Suas funcionalidades sociais são similares às disponíveis hoje em dia no Facebook, mas de forma reduzida -- era possível criar relacionamentos entre perfis e indicar interesse e presença em eventos, por exemplo.
 
-Os eventos da plataforma eram principalmente advindos da contribuição dos próprios usuários, de forma colaborativa; no entanto, nos seus últimos anos cada vez mais eventos tinham origem comercial. A enorme maioria de atividades e usuários eram originários da América do Norte (em especial em São Francisco), principalmente entre fãs de música independente e pessoas da área de tecnologia. Apesar disso, havia usuários por todo o globo.\cite{upcoming-wikipedia}
+Os eventos da plataforma eram principalmente advindos da contribuição dos próprios usuários, de forma colaborativa; no entanto, nos seus últimos anos, cada vez mais eventos tinham origem comercial. A enorme maioria de atividades e usuários eram originários da América do Norte (em especial em São Francisco), principalmente entre fãs de música independente e pessoas da área de tecnologia. Apesar disso, havia usuários por todo o globo.\cite{upcoming-wikipedia}
 
-Após o fechamento do site, o Yahoo! entrou em contato com o fundador original do projeto, Andy Baio, oferecendo a revenda do domínio original. A transação foi efetivada e, alguns meses depois, ele retomou o projeto, lançando uma campanha de investimento social (no \emph{Kickstarter}) para que o sistema pudesse ser relançado. Originalmente com o prazo de 23 dias para finalizar a coleta financeira, o projeto alcançou o valor necessário em menos de 90 minutos\cite{upcoming-90-min}. Após o início do projeto, todas as atualizações lançadas na página são privadas para os investidores -- a última foi no final de Julho. Aparentemente, o sistema terá código aberto, mas o primeiro beta público, prometido para março, ainda não está no ar. Segundo comentários na página do projeto, o desenvolvimento foi paralisado temporariamente por causa de um evento anual que o desenvolvedor organiza\cite{upcoming-xoxo}.
+Após o fechamento do site, o Yahoo! entrou em contato com o fundador original do projeto, Andy Baio, oferecendo a revenda do domínio original. A transação foi efetivada e, alguns meses depois, ele retomou o projeto, lançando uma campanha de investimento social (no \emph{Kickstarter}) para que o sistema pudesse ser relançado. Originalmente com o prazo de 23 dias para finalizar a coleta financeira, o projeto alcançou o valor necessário em menos de 90 minutos\cite{upcoming-90-min}. Após o início da execução, todas as atualizações lançadas na página passaram a ser privadas aos investidores -- a última foi no final de Julho de 2015. Aparentemente, o sistema terá código aberto, mas o primeiro beta público, prometido para março, ainda não está no ar. Segundo comentários na página do projeto, o desenvolvimento foi paralisado temporariamente por causa de um evento anual que o desenvolvedor organiza\cite{upcoming-xoxo}.
 
 \subsubsection*{Meetup}\label{sec:meetup}
-O Meetup é uma rede social que facilita encontros offline de grupos com interesses em comuns ao redor do mundo. Seu uso mais frequente é ajudar organizadores a criar grupos online e gerenciar datas para encontros, com pequenos fóruns para discussão de pautas e detalhes do evento. Os usuários podem encontrar grupos buscando por temas específicos e sua localização.
+O Meetup é uma rede social que facilita encontros offline de grupos com interesses em comuns ao redor do mundo. Seu uso mais frequente é ajudar organizadores a criar grupos online e gerenciar datas para encontros, incluindo pequenos fóruns para discussão de pautas e detalhes do evento. Os usuários podem encontrar grupos buscando por temas específicos e sua localização.
 
 Os eventos organizados dentro do Meetup tendem a ser eventos pequenos e locais, trazendo um ambiente mais intimista e local para a plataforma. Os temas de eventos vão desde assuntos variados em tecnologia e empreendedorismo a meditação, yoga, e encontros locais para falantes e aprendizes de outras línguas, esportistas, viajantes ou artistas. Após uma rápida avaliação nos grupos destacados na página inicial do projeto, foi possível identificar que a grande maioria dos encontros variam entre 5 e 50 participantes, mesmo em grupos com mais de 1.000 usuários inscritos.
 
@@ -598,7 +599,7 @@ Fundada na Índia, a empresa recebeu algumas premiações locais em 2012, mas n�
 \subsection{Sistemas de organização de eventos e venda de ingressos} \label{sec:concorrencia:venda}
 
 \subsubsection*{Sympla}
-A Sympla é uma \emph{startup} mineira de venda online de ingressos e gestão de eventos, com quase 3 anos de mercado. Ela foi eleita pela revista Exame \emph{``uma das 8 startups mundiais para ficar de olho em 2015''}\cite{exame-8-startups}. Concorre no mercado nacional com empresas internacionais como Eventbrite e Eventick, mas possuindo vantagens competitivas, além do serviço localizado. Tais diferenças incluem relatórios em tempo real sobre o evento, integração entre vendas online, pontos de venda e vendas manuais, e integração com redes sociais
+A Sympla é uma \emph{startup} mineira de venda online de ingressos e gestão de eventos com quase 3 anos de mercado. Ela foi eleita pela revista Exame \emph{``uma das 8 startups mundiais para ficar de olho em 2015''}\cite{exame-8-startups}. Concorre no mercado nacional com empresas internacionais como Eventbrite e Eventick, mas possuindo vantagens competitivas, além do serviço localizado. Tais diferenças incluem relatórios em tempo real sobre o evento, integração entre vendas online, pontos de venda e vendas manuais, e integração com redes sociais
 
 No seu site, eles indicam serviços específicos para públicos específicos, como eventos religiosos, esportivos, entretenimento, gastronomia, workshops ou cursos; no entanto, não há segmentação real dos clientes, sendo esses serviços apenas sugestões de uso. No momento de escrita, o site possui 296 congressos/seminários, que totalizam 12,9\% dos eventos disponíveis.
 
@@ -618,9 +619,9 @@ O método de receita da startup é baseado na porcentagem de 10\% do que for ven
 \fi
 
 \subsubsection*{Eventbrite}
-Fundada em 2006, a Eventbrite é uma das maiores empresa do mundo em venda de ingressos. Atualmente emprega mais de 500 funcionários ao redor do mundo. A empresa já recebeu mais de \$140 milhões em investimentos públicos entre 2011 e 2013, sem contar os investimentos iniciais não divulgados por companhias como Sequoia Capital, DAG Ventures e Tenaya Capital. \cite{eventbrite-wiki}
+Fundada em 2006, a Eventbrite é uma das maiores empresas do mundo em venda de ingressos. Atualmente emprega mais de 500 funcionários ao redor do mundo. A empresa já recebeu mais de \$140 milhões em investimentos públicos entre 2011 e 2013, sem contar os investimentos iniciais não divulgados por companhias como Sequoia Capital, DAG Ventures e Tenaya Capital. \cite{eventbrite-wiki}
 
-O principal público-alvo da Eventbrite é o mercado de eventos de entretenimento de pequeno e médio porte. Recentemente eles têm tentado entrar no mercado de grande porte também, mas ainda reconhecem de forma clara que esta área pertence a empresas mais tradicionais, como a Ticketmaster: ``Se o topo da pirâmide é Lady Gaga no \emph{Madison Square Garden}, com certeza esse território é da Ticketmaster. Mas absolutamente todo o restante é da Eventbrite.'' -- tradução livre de fala de Julia Hartz, co-fundadora e presidente da Eventbrite, em matéria da Forbes\cite{eventbrite-lucro-forbes}. Apesar disso, eles já cobrem grandes festivais, como o \emph{Governor's Ball} de Nova Iorque de 2013.\cite{eventbrite-lucro-forbes}
+O principal público-alvo da Eventbrite é o mercado de eventos de entretenimento de pequeno e médio porte. Recentemente eles têm tentado entrar no mercado de grande porte, mas ainda reconhecem de forma clara que esta área pertence a empresas mais tradicionais, como a Ticketmaster: ``Se o topo da pirâmide é Lady Gaga no \emph{Madison Square Garden}, com certeza esse território é da Ticketmaster. Mas absolutamente todo o restante é da Eventbrite.'' -- tradução livre de fala de Julia Hartz, co-fundadora e presidente da Eventbrite, em matéria da Forbes\cite{eventbrite-lucro-forbes}. Apesar disso, eles já cobrem grandes festivais, como o \emph{Governor's Ball} de Nova Iorque de 2013.\cite{eventbrite-lucro-forbes}
 
 O foco principal de eventos deles são os de entretenimento em geral, como shows, apresentações musicais, teatrais e culturais em geral, e secundariamente inscrições para cursos e workshops avulsos, encontros de palestras, e etc. Também possuem apelo no mercado esportivo e outros menores. No entanto, eles não possuem nenhum chamariz específico para nenhuma destas áreas, sendo um sistema essencialmente genérico e focado na divulgação dos eventos e venda dos ingressos, funcionando de forma simplificada e fluida para os organizadores e participantes. O principal diferencial entre eles e seus grandes concorrentes é a simplicidade de criar um evento: não há necessidade de contato com agente de vendas, detalhes de cartão de crédito ou as burocracias comuns do meio; o cadastro do evento é feito de forma similar ao cadastro de um novo usuário num sistema comum.
 
@@ -629,7 +630,7 @@ A Eventbrite abriu seu escritório em São Paulo em outubro de 2015\cite{eventbr
 \subsubsection*{Eventick}
 A Eventick é uma startup-clone de Pernambuco, que tenta replicar o sucesso americano em território nacional, trazendo o que empresas como a Eventbrite fizeram para os moldes do Brasil. A empresa foi iniciada em 2011, e o produto foi a público em 2012.\cite{eventick-startupi} Até o momento já venderam mais de 355 mil ingressos\cite{eventick-home}, e seu foco parece ser eventos musicais e entretenimento em geral.
 
-Em questão de funcionalidades, eles são muito similares aos concorrentes, mas mais simples -- vale lembrar que é uma startup em crescimento, e que provavelmente virão com novidades no futuro. Eles não oferecem serviços de checkin, impressão de ingressos,  não há foco em coleta de dados dos clientes, pesquisas pós-evento, relatórios de público ou financeiro. Por fim, também não há diferenciação entre os eventos ofertados na plataforma: o foco é em eventos de entretenimento.
+Em questão de funcionalidades eles são muito similares aos concorrentes, mas ainda mais simples -- vale lembrar que é uma startup em crescimento, e que provavelmente virão com novidades no futuro. Eles não oferecem serviços de checkin, impressão de ingressos,  não há foco em coleta de dados dos clientes, pesquisas pós-evento, relatórios de público ou financeiro. Por fim, também não há diferenciação entre os eventos ofertados na plataforma: o foco é em eventos de entretenimento.
 
 \subsubsection*{Doity}
 Outra startup brasileira baseada no Nordeste do país. No entanto, o foco da Doity é um pouco diferente: além de vender ingressos, eles têm um sistema completo para gerenciamento do evento, do começo ao fim. É possível fazer o controle de despesas e receitas, montagem da programação, cadastro de palestrantes, submissão e avaliação de trabalhos/artigos científicos, além de permitir aos congressistas se inscreverem em atividades com limite de participantes.\cite{doity-como-funciona}. Eles também oferecem funcionalidades para o dia do evento e o pós-evento, como credenciamento, gerenciamento de sorteios e emissão de certificados. Por fim, também é possível ter o hotsite ou blog do congresso funcionando dentro da plataforma deles.
@@ -851,7 +852,7 @@ A empresa possui como objetivo cobrir todos os aspectos do processo de vendas e 
 
 Por outro lado, não há distinção nos serviços fornecidos para diferentes tipos de eventos. É notável, por exemplo, a deficiência do sistema com relação a eventos como conferências, onde informações sobre alimentação, interesse em determinadas atividades e transportes também se fazem necessárias\cite{eventbrite-review}. No entanto, é possível buscar no site por categorias diversas -- como cursos, conferências, esportes, gastronomia, música, eventos sem fins lucrativos e de arrecadação de fundos, artes performáticas e até eventos políticos.
 
-Outra desvantagem é que as páginas dos eventos focam essencialmente na venda, contendo informações sobre a programação mas de forma secundária -- o que força os organizadores a manter seus próprios hotsites, quando o evento não é tão simples assim. Não há integração transparente: sempre haverá o logotipo laranja e chamativo da Eventbrite em algum lugar das páginas sob controle deles, os ingressos, e no uniforme dos \emph{staffs} no dia do evento. Esta foi a estratégia encontrada pela empresa para expandir seu mercado.
+Outra desvantagem é que as páginas dos eventos focam essencialmente na venda, contendo informações sobre a programação, mas de forma secundária -- o que força os organizadores a manter seus próprios hotsites, quando o evento não é tão simples assim. Não há integração transparente: sempre haverá o logotipo laranja e chamativo da Eventbrite em algum lugar das páginas sob controle deles, os ingressos, e no uniforme dos \emph{staffs} no dia do evento. Esta foi a estratégia encontrada pela empresa para expandir seu mercado.
 
 Por fim, outro ponto menos relevante a ressaltar é que, para eventos de grande porte, as taxas cobradas passam a ficar um pouco salgadas, pois como o valor pago é proporcional ao valor do ingresso, quanto mais cara a entrada é, mais será pago.
 
@@ -1051,27 +1052,27 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 		\begin{itemize}
 			\item interesses do usuário;
 			\item outros contatos;
-			\item grupos de atividade (universidades ou organizações profissionais);
+			\item grupos de atividade (universidades ou organizações profissionais).
 		\end{itemize}
 	\item As notificações devem ocorrer somente para eventos de determinada configuração de interesse (inicialmente, todos os portes na cidade; médio/grande porte dentro do país; grande porte fora do país). Esta opção deve ser facilmente configurável e visível na notificação;
 	\item As notificações devem ocorrer primariamente por e-mail. Futuramente, também deve ser possível visualizar as sugestões de eventos dentro da plataforma e a partir de notificações móveis;
 	\item Permitir indicação de interesse no evento;
 	\item Sugerir posts em redes sociais sobre o interesse num evento;
 	\item Notificar o usuário de tempos em tempos sobre novos amigos que indicaram interesse num evento;
-	\item Permitir deixar de seguir pessoas em que há interesse em manter na rede de contatos mas não há necessidade em saber sobre os eventos de seu interesse;
+	\item Permitir deixar de seguir pessoas em que há interesse em manter na rede de contatos mas não há necessidade em saber sobre os eventos de seu interesse.
 \end{itemize}
 
 \subsubsection*{Pré-evento}
 \begin{itemize}
 	\item Notificar o usuário quando o lote de ingressos do evento estiver para mudar;
 	\item Notificar o usuário uma semana antes do evento, com resumo e dados do local;
-	\item Notificar o usuário no dia anterior, com dados do local e da programação;
+	\item Notificar o usuário no dia anterior, com dados do local e da programação.
 \end{itemize}
 
 \subsubsection*{Pós-evento}
 \begin{itemize}
 	\item Conforme disponibilizado pela organização, enviar para o usuário as estatísticas do evento, os dados dos palestrantes e onde encontrar os materiais disponibilizados;
-	\item Permitir aos organizadores enviar pesquisas de opinião para os usuários;
+	\item Permitir aos organizadores enviar pesquisas de opinião para os usuários.
 \end{itemize}
 
 \subsubsection*{Cadastro de eventos}
@@ -1083,7 +1084,7 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 	\item Palestrantes cadastrados num evento por usuários comuns devem poder:
 		\begin{itemize}
 			\item se remover do evento, caso seja um engano;
-			\item adicionar a palestra que deram, e os materiais relacionados;
+			\item adicionar a palestra que deram, e os materiais relacionados.
 		\end{itemize}
 	\item \textit{(opcional/futuro)} Configurar um subsistema automatizado para monitoramento de redes sociais (nomeadamente, o Twitter, que possui dados publicamente disponíveis) para identificação de novos eventos. Tais informações devem ser disponibilizadas para os administradores do sistema; a partir daí, eles podem efetuar o cadastro manual do evento na plataforma ou entrar em contato sugerindo o sistema.
 \end{itemize}
@@ -1094,7 +1095,7 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 	\item Deve ser possível visualizar os diversos \emph{time slots}:
 		\begin{itemize}
 			\item Eles devem ser vistos, preferencialmente, categorizados (como keynotes e palestras, lightning talks, mesas-redondas, etc);
-			\item Também pode ser interessante haver uma visualização de grade, onde o usuário possa visualizar rapidamente os conflitos de horário dos slots;
+			\item Também pode ser interessante haver uma visualização de grade, onde o usuário possa visualizar rapidamente os conflitos de horário dos slots.
 		\end{itemize}
 	\item Informações detalhadas sobre os slots, como:
 		\begin{itemize}
@@ -1112,7 +1113,7 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 		\end{itemize}
 	\item Listar todos os palestrantes e os detalhes dos mesmos, como informações de contato, mini-currículo, fotos e qual(is) slot(s) irá participar;
 	\item Algumas destas informações, como subcategoria, palestrante e tópicos, podem ser utilizados para destacar ou filtrar a lista ou grade de slots;
-	\item Notificações sobre lançamento das grades ou modificações nas mesmas, lançamento de slides e vídeos das palestras, dentre outros;
+	\item Notificações sobre lançamento das grades ou modificações nas mesmas, lançamento de slides e vídeos das palestras, dentre outros.
 \end{itemize}
 
 %\subsubsection*{Trabalhos, exposições e \emph{networking}}
@@ -1193,7 +1194,7 @@ Outro uso para a API seria a criação de um aplicativo móvel, no futuro.
 \item Deve ser possível se cadastrar no sistema a partir de:
 	\begin{description}
 		\item[e-mail convencional] preenchendo manualmente os dados do perfil profissional;
-		\item[Facebook] trazendo dados pessoais e profissionais;
+		\item[Facebook] trazendo dados pessoais e profissionais.
 	\end{description}
 \item Sugerir a associação a outras contas sociais após o cadastro, para aumentar a quantidade de informação do perfil e fomentar a lista de contatos:
 	\begin{itemize}[itemsep=-1ex]
@@ -1233,13 +1234,44 @@ Outro uso para a API seria a criação de um aplicativo móvel, no futuro.
 \subsubsection*{Informações gerais sobre o evento}
 \begin{itemize}
 	\item Localização do evento, com facilidade para identificar o trajeto via aplicativo de mapas;
-	\item Ingressos, com link reservado para site de venda dos mesmos;
+	\item Ingressos, com link reservado para site de venda dos mesmos.
 \end{itemize}
 
-\subsection{Requisitos não-funcionais} %todo preencher essa bagaça
-\begin{itemize}
-	\item 
-\end{itemize}
+\subsection{Requisitos não-funcionais}
+
+\subsubsection*{Ponto de vista do Sistema / implementação}
+\begin{description}
+	\item[Portabilidade de tecnologias]
+		O projeto deverá ser facilmente instalável e executável em desktops, servidores e PaaS Unix;
+	\item[Linguagem de programação]
+		Para redução de custos e facilidade de manutenção, o projeto deverá ser criado sob uma linguagem de programação principal, que incorporará todas as principais atividades: serviço de HTML via HTTP, API HTTP, manutenção rotineira e tarefas automatizadas via \emph{CLI}\footnote{\emph{Command-line Interface}: interface de linha de comando, também conhecida como Terminal ou Console.} / \emph{Cron}\footnote{\emph{Cron}: utilitário do Unix para execução automatizada de tarefas em intervalos de tempo predefinidos.};
+	\item[Acessibilidade de dados]
+		A arquitetura do sistema deve permitir a implementação futura de APIs externas, de modo a facilitar a criação de aplicativos nativos para plataformas móveis ou acesso de terceiros;
+	\item[Facilidade para dados geo-localizados]
+		O sistema deve ser desenhado de forma que, à necessidade de dados geo-localizados, os pacotes adicionais sejam facilmente plugáveis, sem a necessidade de reestruturação da plataforma;
+	\item[Integração de dados de terceiros]
+		O banco de dados deverá ser desenhado de forma a permitir a entrada de dados irregulares, advindos de diversas APIs de redes sociais e profissionais;
+	\item[Confiabilidade das informações]
+		O sistema não pode permitir que usuários automatizados (ex. robôs, macros) adicionem informações.
+\end{description}
+
+\subsubsection*{Ponto de vista do Usuário / interface}
+\begin{description}
+	\item[Portabilidade de acesso]
+		É necessário que a plataforma seja acessível a partir de computadores ou dispositivos móveis, visto o objetivo de informar os participantes tanto antes ou depois do evento quanto durante o mesmo;
+	\item[Velocidade móvel]
+		O sistema deve ter um tempo de resposta otimizado quando executado em plataformas móveis;
+	\item[Internacionalização]
+		A interface do usuário deverá ser criada em Português, de forma a atingir o mercado nacional, e em Inglês, para poder atingir inicialmente o mercado internacional. O sistema deverá possibilitar a tradução de componentes estáticos de forma prática, com extração de \emph{strings} a partir da análise do código-fonte;
+	\item[Facilidade de uso]
+		A interface deve ser altamente simplificada e intuitiva, de modo que o usuário não necessite de instruções ou trabalho mental para identificar como proceder, de acordo com as principais necessidades de uso do sistema;
+	\item[\emph{Opt-out} de notificações]
+		Todas as notificações do sistema deverão ser passíveis de desligamento pelo usuário;
+	\item[Princípio de não-intrusão em comunicados]
+		A plataforma deverá ser desenhada para que as funcionalidades de notificação espontânea (partidas do sistema) não sejam demasiadamente constantes ou intrusivas para o usuário, de forma a não afastá-lo do projeto;
+	\item[Posse sobre informações de sua propriedade]
+		Numa plataforma colaborativa, faz-se necessário que os usuários ainda possuam controle e possam ``tomar posse'' de informações sobre si mesmos ou originárias de seu grupo, mesmo que tais dados não tenham sido inicialmente inseridos por ele.
+\end{description}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1321,9 +1353,9 @@ Por fim, foi decidido usar a paleta de cores a seguir, visto que o amarelo e o l
 %TODO: ATUALIZAR O DIAGRAMA DE TOPOLOGIA!!!!
 Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficiente e focado no que projetos como o nosso demandam. Portanto, é provável que todo o ecossistema por trás de nosso desenvolvimento seja baseado em seus serviços. A partir daí fica claro o motivo da simplicidade da topologia que vamos adotar, visto que a comunicação não terá intermediários. Ela ocorrerá dos desenvolvedores ao Parse, do Parse aos dispositivos, e deles aos clientes do produto: os responsáveis adicionarão lógica e estrutura, outros analisarão os dados coletados, e tais informações serão fornecidas de forma eficiente aos aparelhos conectados.
 
-\begin{figure}[h!]
+\begin{figure}
 \centering
-	\includegraphics[width=0.8\linewidth]{diagramas/topologia-parse.eps}
+	\includegraphics[width=0.8\linewidth]{diagramas/topologia-parse.png}
 	\caption{Diagrama de topologia simples, indicando o uso central dos serviços do Parse}
 \end{figure}
 
@@ -1331,15 +1363,21 @@ Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficient
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Análise do desenvolvimento do sistema}
 
+
+
+
+
+\subsection{Gráfico de Gantt}
+A seguir está representado o Gráfico de Gantt original do projeto. Ele foi organizado de forma a destacar as principais categorias de tarefas, para evidenciar as diferentes áreas de conhecimento e, possivelmente, subdividir as especialidades de forma mais ágil.
+
+\includepdf[pages={1,2,4,5},pagecommand={},angle=90,templatesize={0.8\linewidth}{15cm}]{./diagramas/gantt.pdf}
+
 \subsection{Diagramas de Atividade}
+
 
 \subsection{Protótipos de telas}
 
 \subsection{Casos de Uso}
-
-\subsubsection*{Usuário - participante}
-\subsubsection*{Cliente - organizador}
-\subsubsection*{Admin - moderador}
 
 \subsection{Diagramas de Classes}
 
