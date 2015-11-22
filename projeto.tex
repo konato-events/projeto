@@ -23,6 +23,7 @@
 \usepackage[final]{pdfpages}
 
 \hyphenation{Javelin}
+\hyphenation{webinars}
 
 %%%%%%%%%% Bibiografia
 \usepackage[num,overcite,abnt-full-initials=yes,abnt-repeated-author-omit=yes]{abntex2cite}
@@ -860,8 +861,6 @@ Por fim, outro ponto menos relevante a ressaltar é que, para eventos de grande 
 \subsection{Eventioz - uma empresa Eventbrite}
 A Eventioz é uma startup clone da Eventbrite, que nasceu na Argentina em 2008. Até 2011 eles já estavam operando no México, Chile, Colômbia e Peru, e chegaram ao Brasil em 2013. No final do mesmo ano, foram comprados pela Eventbrite, como forma desta empresa se expandir para o mercado latino.
 
-\emph{\textbf{Nota:} não confundir com a Eventials, empresa brasileira de transmissão de webinars.}
-
 Seu funcionamento e recursos são bem similares ao já oferecido pela Eventbrite -- a principal diferença sendo o fato de terem suporte local na América Latina, e versões localizadas do sistema (no entanto, o português em alguns pontos parece mal-traduzido do espanhol). No entanto, não é ainda o mesmo sistema, o que significa que a interface para um usuário do Eventbrite será diferente, e a lista de funcionalidades também pode mudar. Seguem aqui as principais diferenças:
 \begin{itemize}[itemsep=-0.5ex]
 	\item[(+)] parece permitir a criação de uma página mais elaborada do evento, com imagens, notícias dos palestrantes, agenda, e integração mais profunda com redes sociais;
@@ -871,6 +870,10 @@ Seu funcionamento e recursos são bem similares ao já oferecido pela Eventbrite
 	\item[(-)] não oferecem serviço de pessoal próprio no local do evento, ou venda na hora;
 	\item[(-)] a comissão é bem mais cara: ao invés dos 2,5\% + \$0,99, são cobrados 8\% e, no caso de ingressos inferiores a R\$50, a taxa é fixa de R\$4 por ingresso vendido.
 \end{itemize}
+
+\begin{framed}
+	\textbf{Nota:} não confundir com a Eventials, empresa nacional de transmissão de webinars.
+\end{framed}
 
 \subsection{Eventick}
 Outra startup clone da Eventbrite, de origem brasileira. Seu mercado e funcionalidades também são bem similares à empresa original.
@@ -1018,7 +1021,9 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 
 Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica quais destes requisitos serão efetivamente apresentados.
 
-\textit{Nota: todas as notificações citadas nesta seção são passíveis de opt-out -- quando usuário explicitamente declara não estar interessado em mensagens de determinado assunto.}
+\begin{framed}
+	\textbf{Nota:} todas as notificações citadas nesta seção são passíveis de opt-out -- quando usuário explicitamente declara não estar interessado em mensagens de determinado assunto.
+\end{framed}
 
 \subsubsection*{Entrada na Plataforma}
 \begin{itemize}
@@ -1282,47 +1287,147 @@ O objetivo do projeto é ter um passo veloz e portável, permitindo construção
 \subsection{Plataforma}
 Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no \textbf{BitBucket} (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório Git do projeto fica em {\url{http://bitbucket.org/konato/web}.
 
-Para facilitar a portabilidade do ambiente, utilizaremos contêineres do \textbf{Docker}\footnotemark. Ele dará maior liberdade de manuseio das configurações do ambiente, ao mesmo tempo que permite manter uma alta similaridade com as versões de homologação e produção, ao isolar o sistema de desktop do desenvolvedor de onde a aplicação é executada.\cite{docker-presentation} Foi criada uma conta no repositório oficial de imagens, para conter tanto a versão pura do Sistema Operacional com a linguagem e servidor HTTP (\texttt{konato/php7-beta}), quanto imagens do projeto de fácil instalação e utilização (\texttt{konato/project}): \url{https://hub.docker.com/r/konato/}.
-\footnotetext{Sistema que aproveita o conceito de contêineres \emph{UNIX} para isolar uma aplicação do ambiente em que ela é executada, permitindo alta eficiência e flexibilidade na troca de componentes -- sendo muito mais veloz que opções tradicionais de virtualização de máquinas. Também habilita o compartilhamento público ou privado das imagens geradas, bem como o versionamento das configurações.\cite{docker-presentation}}
+Para facilitar a portabilidade do ambiente, utilizaremos contêineres do \textbf{Docker}\footnotemark. Ele nos trará maior liberdade de manuseio das configurações do ambiente, ao mesmo tempo que permite manter uma alta similaridade com as versões de homologação e produção, ao isolar o sistema de desktop do desenvolvedor de onde a aplicação é executada.\cite{docker-presentation}
+
+Foi criada uma conta no repositório oficial de imagens, para conter tanto a versão pura do Sistema Operacional com a linguagem e servidor HTTP (\texttt{konato/php7-beta}), quanto imagens do projeto de fácil instalação e utilização (\texttt{konato/project}): \url{https://hub.docker.com/r/konato/}.
+
+\footnotetext{Sistema que aproveita o conceito de contêineres Unix para isolar uma aplicação do ambiente em que ela é executada, permitindo alta eficiência e flexibilidade na troca de componentes -- sendo muito mais veloz que as opções tradicionais de virtualização de máquinas. Também habilita o compartilhamento público ou privado das imagens geradas, bem como o versionamento das configurações.\cite{docker-presentation}}
 
 \subsubsection*{Homologação e produção}
-Ambos os ambientes serão hospedados no \textbf{Heroku}, um serviço de plataforma pronta para execução de sistemas (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando o sistema também é quase zero. Por fim, quando a aplicação crescer, é fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente -- permitindo inclusive escalonamento automático. %todo avaliar se o heroku tem mesmo isso
-O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem proibitivos durante o escalonamento inicial, é possível migrar a aplicação facilmente para outras plataformas, como os serviços de cloud da \textbf{Amazon} ou mesmo um \textbf{VPS} -- atividade facilitada devido à portabilidade do ambiente de desenvolvimento, descrita acima.
+Ambos os ambientes serão hospedados no \textbf{Heroku}, um serviço de plataforma pronta para execução de sistemas (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando a infraestrutura também é próximo de zero. Quando a aplicação crescer será fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente. Além do trabalho manual, também é possível configurar escalonamento automático, através de extensões que avaliam parâmetros como tempo de resposta e fila acessos\cite{heroku-hirefire}\cite{heroku-adept}.
 
-\begin{framed}
-	\textit{Nota:} Docker também é o tipo de tecnologia utilizada para isolar aplicações no ambiente do Heroku. A partir daí, foi lançada uma integração entre os dois, para simplificar o desenvolvimento de sistemas, utilizando os mesmo contêineres em desenvolvimento e produção.\cite{heroku-docker} No entanto, até o momento não há imagens para PHP no Docker Hub\cite{heroku-dockerhub}.
-\end{framed}
+O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem proibitivos durante o escalonamento inicial, é possível migrar a aplicação de forma simples para outras plataformas, como os serviços de cloud da \textbf{Amazon} ou mesmo um \textbf{VPS}\footnotemark comum -- atividade facilitada devido ao uso dos contêineres descritos acima.
 
-\subsection{Infraestrutura de Dados e armazenamento}
-Considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- foi decidido utilizar um sistema de armazenamento de dados baseado em API REST\footnote{Tipo de webservice que utiliza as funcionalidades do protocolo HTTP para simplificar sua implementação.}. Dentre as opções do mercado, a escolha inicial foi pelo \textbf{Parse} (às vezes também chamado de \emph{Parse.com}, pelo nome extremamente comum no idioma inglês), um sistema de Backend como Serviço (\textit{BaaS}) adquirido pelo Facebook\cite{facebook-buys-parse}. Ele fornece uma API robusta, com controle de acesso por usuários e execução de código customizado, sistema integrado de login social, armazenamento de arquivos e funcionalidades de notificações móveis.
+\footnotetext{\emph{VPS}: \emph{Virtual Private Server}, um servidor privado baseado em virtualização de máquinas, uma forma de obter total controle sobre um servidor mas ainda compartilhando o hardware real.}
 
-O Parse possui um plano gratuito que engloba até 30 requisições à API por segundo\cite{parse-plans}; caso esse volume seja estourado facilmente, podemos optar por migrar progressivamente os serviços para uma plataforma própria, baseada no \emph{Restler} -- uma biblioteca PHP de desenvolvimento de APIs RESTful\footnote{API que segue todos os princípios REST.} de uso muito simples. Outra opção de migração é usar o mesmo framework que será usado no backend, conforme será descrito abaixo. O maior ponto negativo da migração será a transferência de dados e a necessidade de monitoramento, para manter a base com performance similar. Por outro lado, a estrutura de dados do Parse prevê um formato NoSQL híbrido, que contém indicações claras de relacionamentos -- isso permitirá uma migração menos penosa para uma estrutura relacional formal, se for necessária. Já usaremos desde o começo o monitoramento do \textbf{NewRelic} para controlar a performance geral do sistema.
-
-Desejando aproveitar ao máximo o potencial do Parse, aliado à natureza estática do projeto, serão utilizados serviços de cache de forma a balancear requisições por novos dados e a utilização de informações já capturadas antes. Para tanto, inicialmente uniremos dois serviços de cache em memória disponíveis no Heroku, o \textbf{Memcached Cloud} e \textbf{Memcachier}. No futuro, necessitando de mais, poderemos escolher o serviço mais competitivo entre os dois. Também manteremos \emph{headers} de cache HTTP adequados, pra potencializar o tempo de carregamento para o usuário. Infelizmente, devido à própria natureza do Parse, não é possível controlar o cache das requisições feitas à sua API REST.
-
-Por fim, o Parse também fornece no pacote gratuito o uso de 20GB para armazenamento de arquivos e 2TB de transferência mensal\cite{parse-plans}. Este espaço será utilizado para guardar imagens referentes aos eventos e participantes. Há também o espaço de 20GB para o banco de dados propriamente dito.
+%com minipage, o framed não quebra página: http://tex.stackexchange.com/questions/89600/how-to-avoid-the-break-of-framed-shaded
+\begin{minipage}{\linewidth} 
+	\begin{framed}
+		\textbf{Nota:} Docker também é o tipo de tecnologia utilizada para isolar aplicações no ambiente do Heroku. A partir disso, foi lançada uma integração entre os dois, para simplificar o desenvolvimento de sistemas, utilizando os mesmo contêineres em desenvolvimento e produção.\cite{heroku-docker} No entanto, até o momento não há imagens para PHP no Docker~Hub\cite{heroku-dockerhub}\cite{heroku-docker-php}.
+		
+		\begin{citacao}
+			\textbf{@igorsantos07:} \emph{@heroku} há alguma estimativa para a liberação de imagens Docker de PHP? Estou iniciando uma nova aplicação local usando PHP7 no Docker, e gostaria de fazer o \emph{deploy} no Heroku depois.\\
+			\textbf{@dzuelke:} \emph{@igorsantos07 @heroku} Logo (não posso dar uma estimativa definitiva). PHP é um pouco difícil de fazer ``legal'' por causa das extensões [da linguagem].
+			
+			{\raggedright (\citetext{heroku-docker-php} Tradução nossa.)}
+		\end{citacao}
+	\end{framed}
+\end{minipage}
 
 \subsection{Backend}
-Considerando o estilo tradicional da aplicação -- que pode ser citada como um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JavaScript (também conhecidas como \emph{Single-page app / SPA}\cite{single-page-apps}), mas o tempo que seria gasto com o aprendizado desse tipo de tecnologia (que ainda está em processo de maturação no mercado) seria desnecessário, visto que a natureza do sistema não exige alto nível de interatividade.
+Considerando o estilo tradicional da aplicação -- que pode ser considerada um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JavaScript (também conhecidas como \emph{Single-page app / SPA}\cite{single-page-apps}), mas o tempo que seria gasto com o aprendizado desse tipo de tecnologia (que ainda está em processo de maturação no mercado) seria custoso, visto que a natureza do sistema não exige alto nível de interatividade. Em momento oportuno poderemos implementar conceitos de SPA em algumas páginas mais complexas, como a de Detalhes do Evento ou o Perfil do Usuário.
 
-O framework escolhido foi o Laravel, que tem se tornado um grande expoente das tecnologias modernas do PHP. Diferente dos outros (como Zend, Yii ou Symfony), que se mantém mais conservadores e presos ao seu formato original, o Laravel tem desenvolvimento ágil e acompanha as novidades da linguagem, permitindo um sistema mais robusto e leve -- as últimas funcionalidades do PHP são bem poderosas nesse sentido. Atualmente na versão 5, ele possui suporte a diversas tecnologias, como fila de tarefas, diferentes sistemas de armazenamento e \emph{cacheamento} de dados e arquivos, aplicações de linha de comando, autenticação e autorização de usuários, encriptação de informações, dentre outros.\cite{laravel}
+O framework escolhido foi o Laravel, que tem se tornado um grande expoente das tecnologias modernas do PHP. Diferentemente de outros (como Zend, Yii ou Symfony), que se mantêm mais conservadores e presos ao seu formato original, o Laravel tem desenvolvimento ágil e acompanha as novidades da linguagem, permitindo um sistema mais robusto e leve -- as últimas funcionalidades do PHP são bem poderosas nesse sentido. Atualmente na versão 5, ele possui suporte a diversas tecnologias, como fila de tarefas, diferentes sistemas de armazenamento e \emph{cacheamento} de dados e arquivos, aplicações de linha de comando, autenticação e autorização de usuários, encriptação de informações, dentre outros.\cite{laravel}
+
+\subsection{Infraestrutura de Dados e armazenamento}
+
+\subsubsection{Banco de Dados}
+Inicialmente, considerando a natureza portável da aplicação -- que nascerá na web, mas certamente precisará ser executada em dispositivos móveis, e talvez mesmo por terceiros -- foi considerado usar um serviço de terceiros para a criação de uma API REST\footnote{Tipo de webservice que utiliza as funcionalidades do protocolo HTTP para simplificar sua implementação.} de forma automática.
+
+No entanto, após analisar as outras tecnologias, percebemos que haveria uma necessidade maior de tempo para conclusão do projeto. Se por um lado não precisaríamos implementar o servidor da API, teríamos que criar a camada de dados da aplicação que consumiria tal API -- ainda não há integração pronta entre os frameworks disponíveis.
+
+Analisando as opções disponíveis e as outras tecnologias selecionadas, optamos pelo PostgreSQL em favor do MySQL -- o sistema de banco de dados mais popular para projetos abertos\cite{db-engines-ranking} -- pelos seguintes motivos:
+\begin{enumerate}
+	\item Desde a sua entrada na lista de produtos da Oracle, seu futuro tem sido conturbado. Desde 2008 o MySQL era da Sun e, alguns anos depois, esta foi comprada pela Oracle. No momento do anúncio de venda, o criador original do projeto criou um \emph{fork} chamado MariaDB\cite{mysql-fork} e, desde então, eles têm competido por popularidade;
+	\item O PostgreSQL possui maiores facilidades para utilização de cálculos espaciais e geo-localização. Mesmo sem utilizar sua extensão para dados geográficos (PostGIS) é possível utilizar certas extensões simples (\texttt{cube + earthdistance}) para calcular a distância entre pontos de forma eficiente e precisa o suficiente para as futuras necessidades do sistema\cite{postgre-earthdistance};
+	\item O PostgreSQL oferece maior variedade de tipos de dados, o que pode nos auxiliar a manter a integridade das informações gravadas;
+	\item O MySQL executa uma versão do padrão SQL-ANSI menos padronizada que o PostgreSQL.
+\end{enumerate}
+
+\subsubsection{Planejamento para a implementação futura de uma API}
+Mantém-se, ainda, a necessidade futura de uma API, para acesso de terceiros ou para a criação de uma aplicação móvel. Apesar de sugestões em torno de um projeto \emph{API-first}, decidimos adiar a criação da API devido ao tempo de conclusão deste TCC. No entanto, objetivando uma arquitetura \emph{future-proof}, é importante analisar desde já esta necessidade.
+
+Para a criação de uma API do zero, a melhor opção atualmente no mercado é o \textbf{Parse} (às vezes também chamado de \emph{Parse.com}, pelo nome extremamente comum no idioma inglês), um sistema de Backend como Serviço (\textit{BaaS}) adquirido pelo Facebook\cite{facebook-buys-parse}. Ele fornece uma API robusta, com controle de acesso por usuários e execução de código customizado, sistema integrado de login social, armazenamento de arquivos e funcionalidades de notificações móveis.
+
+No entanto, considerando o fato de que já teremos uma base de dados relacional, será necessário adaptar a infraestrutura corrente a uma API criada por conta própria. A partir das decisões anteriores, ficaremos com duas boas opções, que analisamos a seguir:
+\begin{description}
+	\item[Restler]
+		Uma biblioteca PHP \emph{standalone} que expõe métodos de classes genéricas como serviços RESTful\footnote{API que segue ao máximo os princípios do HTTP e REST}, a partir do conceito de reflexão da linguagem.
+		
+		\textbf{Vantagens}:
+		\begin{itemize}[itemsep=-1ex]
+			\item Implementação simplificada, clara e limpa, mas poderosa;
+			\item Possui recursos avançados para APIs, como autenticação OAuth, validação de dados a partir do PHPDoc\footnotemark{} / \emph{annotations}, annotations para definir o código correto de sucesso (no caso de recursos que devam responder 201/204 por exemplo), \emph{rate-limiting} e \emph{throttling}, dentre outros;
+				\footnotetext{PHPDoc: padrão escrita de \emph{docblocks} utilizado no PHP.}
+			\item Integração sem esforço para criação de documentação interativa com Swagger\footnotemark{}, a partir do PHPDoc de cada método;
+				\footnotetext{Swagger: biblioteca que cria, a partir de uma especificação JSON (que o Restler gera automaticamente), uma documentação simples de navegar, separada por \emph{resources} e verbos. Ela permite a avaliação interativa dos parâmetros e tipos de respostas, a partir de formulários de teste para cada \emph{request} possível na API.}
+			\item Devido ao baixo acoplamento do ORM do Laravel, será possível acessar os modelos de dados diretamente no Restler.
+		\end{itemize}
+		
+		\textbf{Desvantagens}:
+		\begin{itemize}[itemsep=-1ex]
+			\item É possível que alguns componentes utilizados no Laravel não possam ser ``importados'' para dentro do Restler, como classes de Cache, autenticação ou envio de e-mails. Eles terão que ser manualmente exportados ou re-implementados, utilizando bibliotecas diferentes e efetivamente duplicando código no projeto;
+			\item Outro grupo de dependências para controlar -- o que também pode ser considerado uma desvantagem, visto que a API pode ficar offline mas o site ainda funcionar, ou vice-versa.
+		\end{itemize}
+	
+	\item[\emph{Resource Controllers} do Laravel]
+		O próprio framework escolhido já fornece facilidades para criação de \emph{endpoints} RESTful, com um formato de \emph{Controller} específico para tal fim. No entanto, pouco é fornecido além da facilidade de roteamento e as próprias funcionalidades comuns do framework.
+		
+		\textbf{Vantagens}:
+		\begin{itemize}[itemsep=-1ex]
+			\item Integração simplificada com o sistema corrente, visto que será executado lado-a-lado com os \emph{Controllers} já criados;
+			\item Possibilidade de uso de todos os recursos já disponíveis para o projeto inicial e com as mesmas APIs, como Cache, autenticação ou envio de e-mails.
+		\end{itemize}
+			
+		\textbf{Desvantagens}:
+		\begin{itemize}[itemsep=-1ex]
+			\item Pode precisar de algum trabalho extra para configuração das rotas, visto que é interessante que a API seja servida de um path específico ou um subdomínio;
+			\item Necessidade de implementação de toda uma gama de funcionalidades que uma API necessita, como \emph{rate-limiting}, autenticação, e documentação. A melhor forma de lidar com isso pode ser utilizar o pacote citado a seguir, para evitar que o projeto vire uma ``colcha de retalhos'' ou precisemos ``reinventar a roda''.
+		\end{itemize}
+	
+	\item[Dingo API (pacote para o Laravel)]
+		Para compensar as lacunas deixadas pelos \emph{Resource Controllers}, foi criado um pacote de extensão para o framework, que implementa as necessidades mais comuns de uma API REST.
+	
+		\textbf{Vantagens}:
+		\begin{itemize}[itemsep=-1ex]
+			\item Integração simplificada com o sistema corrente, visto que será executado lado-a-lado com os emph{Controllers} já criados;
+			\item Possibilidade de uso de todos os recursos já disponíveis para o projeto inicial e com as mesmas APIs, como Cache, autenticação ou envio de e-mails;
+			\item Implementação de necessidades como autenticação, \emph{rate-limiting}, entre outros.
+		\end{itemize}
+				
+		\textbf{Desvantagens}:
+		\begin{itemize}[itemsep=-1ex]
+			\item O sistema de geração de documentação é complexo e pouco eficiente. Atualmente, o Dingo gera um arquivo de documentação genérico (\emph{API Blueprint}) que depende de projetos de terceiros para criação de interfaces de documentação. De acordo com uma pesquisa feita, notamos que há somente um gerador de documentação em HTML, que não é versátil ou interativo com o Swagger. Contatado sobre o último pacote, o mantenedor do Dingo não demonstrou interesse em implementar suporte\cite{dingo-swagger}. Outra opção seria utilizar o serviço pago Gelato para criação de um \emph{developer portal}.
+		\end{itemize}
+\end{description}
+
+Será importante, no momento de implementação da API, a análise destes pontos. Em especial, precisaremos pesar os possíveis problemas ocasionados pelo acoplamento de certos componentes ao núcleo do framework -- no caso de uso do Restler -- \emph{versus} o pouco poder que a documentação do Dingo poderá nos trazer. Vale ressaltar que uma documentação eficiente e flexível de API é um ponto crucial para a adoção da mesma por outros desenvolvedores, evitando frustração, pedidos de suporte, demora e ineficiência na implementação de clientes.
+
+\subsubsection{Cache e outras mídias de armazenamento}
+Devido ao fato do Heroku não possuir um sistema de arquivos permanente e ser um ambiente naturalmente escalável, precisamos pensar desde o início sobre o armazenamento de sessões de usuários e arquivos. Outra necessidade não coberta pela plataforma pura do Heroku é cache em memória, uma funcionalidade essencial para uma performance otimizada de um sistema caracterizado por dados pouco mutáveis.
+
+Atualmente, a plataforma de PHP7 no Heroku ainda não possui extensões de terceiros, visto que a linguagem está em fase final de desenvolvimento. Isso significa que não é possível acessar serviços clássicos como o Memcache, que é implementado no PHP a partir de uma extensão em C.
+
+Dada esta restrição, optamos por implementar o cache de informações e o armazenamento de sessões no \emph{Redis}, um banco de dados chave-valor de performance similar ou melhor que a da outra ferramenta, e que nos fornece ainda tipos de dados mais robustos e outras funcionalidades, como incremento rápido de contadores\cite{memcached-redis}. Tais extras podem ser interessantes para a administração de sessões, por exemplo. No futuro, havendo disponibilidade do Memcache para nossa plataforma, poderemos migrar o cache de informações estáticas para ele, por ser um tipo de armazenamento mais performático para operações simples com strings e, portanto, mais barato e escalável.
+
+Com o objetivo de simplificar o desenvolvimento inicial do projeto, optamos por limitar o armazenamento de arquivos externos a recursos já existentes na Internet. Assim, avatares e fotos de usuários serão importados diretamente de suas redes sociais; no caso de não haver uma imagem disponível (para usuários com cadastro convencional, por exemplo), será gerado um avatar aleatório, a partir do projeto Gravatar\footnotemark. Da mesma forma, para disponibilizar materiais para um evento, será requisitado ao usuário uma URL já existente, e seu \emph{link} será fornecido no nosso sistema.
+\footnotetext{\emph{Gravatar}: \emph{Globally Recognizable Avatar}. Um projeto do grupo do Wordpress que gera imagens abstratas ou divertidas, aleatoriamente, caso ele não tenha submetido uma imagem própria dentro do seu perfil no Gravatar. O e-mail do usuário é utilizado como \emph{seed}, garantindo que um mesmo e-mail sempre terá o mesmo avatar aleatório.}
+
+Numa versão futura, poderemos utilizar uma das bibliotecas integradas ao Laravel (o FlySystem\cite{laravel-flysystem}) para implementar o armazenamento de arquivos em serviços de cloud como o Amazon S3 ou Dropbox/Copy\cite{flysystem}. Por ser um dos \emph{providers} mais tradicionais e conhecidos do mercado, o S3 possui os preços mais competitivos para armazenamento tradicional, em comparação com grandes concorrentes como a Rackspace. No Brasil, o custo é de cerca de \$0,04 por GB de espaço, \$0,007 a cada mil requisições de armazenamento e \$0,0056 a cada 10 mil requisições de exibição. Estes preços podem ser reduzidos se o serviço for contratado em território americano, economizando entre 23 a 29\%, ou se alguns arquivos forem transferidos para o armazenamento de acesso ocasional do serviço -- que cobra menos pelo espaço, e mais pelo acesso. Além disso, há a oferta de um ano de gratuidade, incluindo mensalmente 5GB de espaço, 2 mil requisições de armazenamento e 20 mil requisições de exibição.\cite{s3-pricing}
+
+A outra opção pode ser utilizar serviços de backup, como o Copy. A maior vantagem é a facilidade de recuperação de arquivos, o que pode ser útil para fornecer aos nossos usuários a possibilidade de desfazer a remoção de um material que foi apagado por engano, por exemplo. Inicialmente o espaço disponível é de 15GB, e nos pacotes pagos varia entre 250GB por \$4.99 e 1TB por \$9.99 (com dois meses gratuitos para pagamentos anuais). No entanto, não há informação clara sobre o limite de requisições, simplesmente sendo informado que ``[Copy.com] pode limitar o número de chamadas aceitas pela API se acreditarmos que o número de chamadas à API do Copy pode impactar negativamente a API do Copy ou o serviço do Copy''\cite{copy-tos}. Tal afirmação não deve nos apresentar risco, visto que as atividades de armazenamento de fotos e arquivos serão ocasionais. Além disso, é necessário informar aos usuários que utilizamos o Copy como sistema de armazenamento em nuvem\cite{copy-tos} -- provavelmente uma menção nos termos de uso ou ``Sobre'' já seria suficiente.
+
 
 \subsubsection*{Envio de notificações}
-De acordo com o que foi indicado nos requisitos (\autoref{sec:requisitos}), uma funcionalidade importante do sistema será a parte de notificações sobre novos eventos. Tais notificações acontecerão durante o uso da plataforma pelo usuário, mas também serão utilizadas como meio de retenção do usuário, de forma a fazê-lo retornar com frequência às nossas páginas.
+De acordo com o que foi indicado nos requisitos (\autoref{sec:requisitos}), uma funcionalidade importante do sistema será a parte de notificações sobre novos eventos. Tais mensagens acontecerão durante o uso da plataforma pelo usuário, mas também serão utilizadas como meio de retenção do usuário, de forma a fazê-lo retornar com frequência às nossas páginas.
 
-Há duas formas principais de enviar novidades ao usuário de forma pró-ativa: via e-mail e notificações \emph{push}\footnote{Notificações recebidas no celular, a partir de um aplicativo instalado nele.}. Inicialmente, considerando a natureza web do projeto, trabalharemos somente com o envio de e-mails. Em breve, com o lançamento de um aplicativo móvel, será essencial flexibilizar estas notificações utilizando também os avisos no celular -- e o Parse oferece um milhão de notificações gratuitas mensalmente. Essa liberdade de escolha nos permitirá reduzir o volume de envios de e-mails, reduzindo os custos que podemos ter.
+Há duas formas principais de enviar novidades ao usuário de forma pró-ativa: via e-mail e notificações \emph{push}\footnote{Notificações recebidas no celular, a partir de um aplicativo instalado nele.}. Inicialmente, considerando a natureza web e desktop do projeto, trabalharemos somente com o envio de e-mails. Em breve, com o lançamento de uma interface totalmente móvel para a plataforma, poderemos utilizar funcionalidades de vanguarda do chamado ``HTML5'' para o envio de notificações \emph{push} a partir do browser de um dispositivo móvel. No futuro, esta funcionalidade também deverá ser replicada num aplicativo móvel.
 
-Outra opção seria o envio de SMS, que poderia ser feito ainda com o sistema somente web. No entanto, não há serviço gratuito para tal, e acreditamos que o engajamento inicial seria baixo, sem um aplicativo para suportar o uso pelo celular.
+%Outra opção seria o envio de SMS, que poderia ser feito ainda com o sistema somente web. No entanto, não há serviço gratuito para tal, e acreditamos que o engajamento inicial seria baixo, sem um aplicativo para suportar o uso pelo celular.
 
-Para controlar o envio de mensagens em lote -- que será útil para alertar um grupo grande de usuários sobre um novo evento cadastrado -- podemos utilizar um sistema de fila de trabalhos em segundo-plano (\emph{background jobs}). O Parse permite a utilização de um processo em segundo-plano, no qual poderemos enfileirar o envio dos e-mails e retirar a carga desta tarefa longa do nosso servidor web.
+%Para controlar o envio de mensagens em lote -- que será útil para alertar um grupo grande de usuários sobre um novo evento cadastrado -- podemos utilizar um sistema de fila de trabalhos em segundo-plano (\emph{background jobs}). O Parse permite a utilização de um processo em segundo-plano, no qual poderemos enfileirar o envio dos e-mails e retirar a carga desta tarefa longa do nosso servidor web.
+
+Por fim, será necessário o envio de e-mails pela plataforma, de modo a alertar os usuários de diversas atividades como: novos eventos de interesse, ações de seus contatos, novidades sobre os eventos que desejam participar, entre outros. Na \autoref{tab:mail} comparamos os principais fornecedores de serviço de e-mail disponíveis no Heroku, e que podemos integrar facilmente ao Laravel\cite{laravel-mail}.
 
 \begin{table}[h]
 	\caption[Comparação de preços para envio de e-mail no Heroku]{Comparação de preços para envio de e-mail no Heroku, selecionados por valor competitivo e ordenados por volume. Outros serviços não foram incluídos pelos preços acima da média ou requisitos técnicos fora do que propomos.}
 	\centering
 	\begin{tabular}{|l|r|c|c|}
-		\hline \textbf{Serviço}	& \textbf{Valor} & \textbf{Envios/mês} (x1000) & \textbf{Valor/1000} \\ 
-		\hline SendGrid/Mailgun	& \$    0,00 &     12 &     --- \\ 
-		\hline SendGrid			& \$    9,95 &     40 & \$ 0,25 \\ 
+		\hline \textbf{Serviço}	& \textbf{Valor} & \textbf{Envios/mês} (em milhares) & \textbf{Valor/1000 envios} \\ 
+		\hline Mailgun			& \$    0,00 &     12 &     --- \\ 
+% Sendgrid foi comentado por não possuir suporte no Laravel, a princípio
+%		\hline SendGrid/Mailgun	& \$    0,00 &     12 &     --- \\ 
+%		\hline SendGrid			& \$    9,95 &     40 & \$ 0,25 \\ 
 		\hline Mailgun			& \$   19,00 &     50 & \$ 0,38 \\ 
 		\hline Mandrill			& \$   29,98 &    100 & \$ 0,30 \\ 
 		\hline Mailgun			& \$   55,00 &    120 & \$ 0,46 \\ 
@@ -1333,13 +1438,14 @@ Para controlar o envio de mensagens em lote -- que será útil para alertar um g
 		\hline Mandrill			& \$  879,95 &  5.000 & \$ 0,18 \\ 
 		\hline Mandrill			& \$ 1499,95 & 10.000 & \$ 0,15 \\ 
 		\hline 
-	\end{tabular} 
+	\end{tabular}
+	\label{tab:mail}
 \end{table}
 
 \subsection{Frontend e design}
 Para definição de protótipos iniciais e experimentação de design antes do desenvolvimento, utilizaremos o \textbf{Moqups}; nossos materiais estão disponíveis em \url{https://moqups.com/igorsantos07/3jyAGeSX/}.
 
-Para a interface do sistema, utilizaremos tecnologias já tradicionais e estabelecidas no mercado de desenvolvimento web: \textbf{jQuery} -- para facilitar interações JavaScript -- e o \textbf{Semantic UI} -- otimizando o tempo gasto com inicialização do \emph{design}, com diversos componentes já prontos e de ótima qualidade visual.
+Para a interface do sistema, utilizaremos tecnologias já tradicionais e estabelecidas no mercado de desenvolvimento web: \textbf{jQuery} -- para facilitar interações JavaScript e operações \emph{AJAX} simples -- e o \textbf{Bootstrap} -- projeto originário do Twitter, que irá o tempo gasto com inicialização da interface gráfica, com diversos componentes já prontos e de ótima qualidade visual.
 
 Por fim, foi decidido usar a paleta de cores a seguir, visto que o amarelo e o laranja evocam sensações de energia, positivismo, criatividade e vitalidade: sentimentos interessantes para um congressista num ambiente de aprendizado, novas descobertas e novos contatos. Por outro lado, as cores complementares azuladas clamam por calma, segurança e confiabilidade, fatores importantes para um evento de sucesso. A paleta pode ser visualizada e manipulada online em \url{http://paletton.com/#uid=70v0u0ko6vwa2N5i9BF-AlOuSs6}.\cite{colors-marketo}\cite{colors-creative}
 
@@ -1362,10 +1468,6 @@ Conforme citado na \autoref{sec:tecnologias}, o \emph{Parse.com} é bem eficient
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Análise do desenvolvimento do sistema}
-
-
-
-
 
 \subsection{Gráfico de Gantt}
 A seguir está representado o Gráfico de Gantt original do projeto. Ele foi organizado de forma a destacar as principais categorias de tarefas, para evidenciar as diferentes áreas de conhecimento e, possivelmente, subdividir as especialidades de forma mais ágil.
