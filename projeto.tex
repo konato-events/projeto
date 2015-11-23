@@ -1510,7 +1510,358 @@ A seguir está representado o Gráfico de Gantt original do projeto. Ele foi org
 \subsection{Protótipos de telas}
 
 \subsection{Casos de Uso}
+\newcounter{UC}
+\newcommand\pad[1] {\expandafter\realpad\csname c@#1\endcsname}
+\newcommand\realpad[1] {%
+	\ifnum #1<10 0\fi%
+	\number#1%
+}
+\renewcommand{\theUC} {[UC-\pad{UC}]}
+\DeclareRobustCommand{\UC} {%
+	\refstepcounter{UC}%
+	\theUC%
+}
 
+Nos diagramas das Figuras \ref{diag:uc-nao-logado} e \ref{diag:uc-logado} estão representados os Casos de Uso do sistema. Eles foram divididos em dois, para evitar a sobreposição excessiva de linhas relacionadas ao Caso de Uso ``Fazer Login'': todos os Casos representados na \autoref{diag:uc-logado} dependem opcionalmente (\texttt{«requerem»}) de ``Fazer Login'', caso o usuário ainda não tenha se autenticado.
+
+\subsubsection{Os Atores}
+\begin{description}
+	\item[Participante] Ator primário / usuário. Descreve o usuário mais comum da plataforma, que deseja obter informações sobre eventos e manter contato social com outros participantes;
+	\item[Organizador] Ator primário / usuário. Um tipo específico de Participante que, além de possivelmente já ter participado de algum evento, participa da organização de ao menos um evento;
+	\item[Rede Social] Ator secundário. Sistema secundário com o qual nosso sistema se comunica, para obter dados de autenticação social de um Participante.
+	\item[Sistema Automatizado] Ator interno. Ele executa alguns casos de uso automáticos ou mecanizados em uma fila de tarefas. Por se tratar de um Ator interno do sistema, ele não aparece nos diagramas.
+\end{description}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%% CASOS DE USO DO USUÁRIO NÃO-LOGADO %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Descrição dos Casos de Uso de um Usuário não-logado}
+Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participante ou Organizador), visto que, sem a autenticação, não é possível diferenciá-los.
+
+\begin{figure}[!ht]
+\centering
+	\includegraphics[width=0.86\linewidth]{diagramas/uc-nao-logado.png}
+	\caption{Diagrama contendo todos os Casos de Uso para usuários logados ou não-logados}
+	\label{diag:uc-nao-logado}
+\end{figure}
+
+\subsubsubsection*{\UC{} Criar Perfil \label{uc:cadastro}}
+\emph{Este caso de uso é incluído no \ref{uc:cadastro-social}.}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica querer criar um novo perfil / se cadastrar;
+	\item O Sistema apresenta um formulário com campos; \label{ucp:preenche-form-cadastro}
+	\item O usuário preenche o formulário;
+	\item O usuário submete o formulário;
+	\item O Sistema valida os dados:
+		\\Caso haja dados inválidos, o Sistema envia o usuário de novo para o \autoref{ucp:preenche-form-cadastro}.
+		\\Caso os dados estejam corretos:
+			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+				\item O Sistema cria o perfil do usuário;
+				\item O Sistema inclui o \ref{uc:login} com as credenciais do novo usuário;
+				\item O Sistema envia o usuário para seu novo perfil.
+			\end{enumerate}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Criar Perfil a partir de Rede Social \label{uc:cadastro-social}}
+\emph{Este caso de uso estende o \ref{uc:login}.}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica querer criar um novo perfil a partir de uma Rede Social;
+	\item O Sistema indica as Redes Sociais disponíveis;
+	\item O usuário escolhe uma das Redes;
+	\item O Sistema inclui o \ref{uc:requisitar-perfil-social};
+	\item O Sistema recebe as credenciais sociais do usuário;
+	\item O Sistema pede ao usuário os dados restantes, incluindo \ref{uc:cadastro} com parte das informações já preenchidas a partir do que foi obtido da Rede Social;
+		\\Em caso de sucesso, o Sistema inclui o \ref{uc:vincular-rede}.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Editar perfil \label{uc:editar-perfil}}
+\begin{enumerate}[itemsep=-1ex]
+	\item O usuário indica querer editar seu perfil;
+	\item O Sistema exibe um formulário com os dados do usuário preenchidos; \label{ucp:preenche-form-edit}
+	\item Caso o usuário decida incluir uma Rede Social, o Sistema estende com \ref{uc:vincular-rede};
+	\item O usuário faz as alterações necessárias;
+	\item O usuário submete o formulário;
+	\item O Sistema valida os dados:
+		\\Caso haja dados inválidos, o Sistema envia o usuário de novo para o \autoref{ucp:preenche-form-edit};
+		\\Caso os dados estejam corretos:
+			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+				\item O Sistema altera o perfil do usuário com os dados recebidos;
+				\item O Sistema envia o usuário para seu perfil atualizado.
+			\end{enumerate}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Vincular Rede Social \label{uc:vincular-rede}}
+\emph{Este caso de uso é incluído no \ref{uc:cadastro-social} e estende o \ref{uc:editar-perfil}.}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item Caso o Sistema ainda não possua credenciais de um perfil social, ele estende com o \ref{uc:requisitar-perfil-social};
+	\item O Sistema recebe credenciais públicas de um perfil social;
+	\item O Sistema vincula o usuário ao perfil social.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Requisitar acesso ao perfil social \label{uc:requisitar-perfil-social}}
+\emph{Este Caso de Uso é incluído no \ref{uc:cadastro-social}, e estende o \ref{uc:vincular-rede} e \ref{uc:login}.}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O Sistema requisita a associação à Rede Social;
+		\\Caso o usuário não esteja autenticado na Rede Social:
+			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+				\item A Rede Social solicita seu login ao usuário;
+				\item O usuário fornece seu login;
+				\item A Rede Social autentica o usuário.
+			\end{enumerate}
+		Caso o usuário não tenha associado o Sistema ao seu perfil social antes:
+			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+				\item A Rede Social pergunta se o usuário deseja associar seu perfil ao Sistema;
+				\item O usuário confirma a associação;
+			\end{enumerate}
+	\item A Rede Social envia o usuário de volta ao Sistema, incluindo no retorno as credenciais públicas de seu perfil social;
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Buscar evento}
+\begin{enumerate}[itemsep=-1ex]
+	\item O usuário indica querer buscar um evento;
+	\item O Sistema exibe um formulário de busca;
+	\item O usuário preenche o formulário com os dados relevantes;
+	\item O usuário submete o formulário;
+	\item O Sistema exibe uma lista de eventos relacionados aos dados inseridos;
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Visualizar evento \label{uc:ver-evento}}
+\begin{enumerate}[itemsep=-1ex]
+	\item O usuário requisita os dados de um evento;
+	\item O Sistema exibe:
+		\begin{itemize}[itemsep=-1ex,topsep=-1ex]
+			\item os dados do evento;
+			\item o mapa e a localização do evento de forma compacta, incluindo o \ref{uc:ver-mapa};
+			\item a programação do evento de forma compacta, incluindo o \ref{uc:ver-programacao}.
+		\end{itemize}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Visualizar mapa / localização do evento \label{uc:ver-mapa}}
+\emph{Este Caso de Uso é incluído no \ref{uc:ver-evento}.}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário requisita a localização de um evento;
+	\item O Sistema exibe:
+		\begin{itemize}[itemsep=-1ex,topsep=-1ex]
+			\item os dados de localização do evento;
+			\item um mapa indicando o local do evento.
+		\end{itemize}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Visualizar programação do evento \label{uc:ver-programacao}}
+\emph{Este Caso de Uso é incluído no \ref{uc:ver-evento}.}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário requisita a programação de um evento;
+	\item O Sistema exibe a grade de atividades do evento.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Visitar venda de ingressos}
+\begin{enumerate}[itemsep=-1ex]
+	\item O usuário requisita a programação de um evento;
+	\item O Sistema exibe a grade de atividades do evento.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Ver tema}
+\begin{enumerate}[itemsep=-1ex]
+	\item O usuário requisita os detalhes de um tema;
+	\item O Sistema exibe os dados relacionados ao tema indicado.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Fazer Logout \label{uc:logout}}
+\emph{Este Caso de Uso requer uma ocorrência prévia do \ref{uc:login}.}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário requisita ser deslogado;
+	\item O Sistema esquece as credenciais do usuário;
+	\item O Sistema envia o usuário para a \emph{página principal}.
+\end{enumerate}
+
+% manter este caso de uso sempre como o último dessa subsubseção, por ser requerido globalmente pela próxima subsubseção!
+\subsubsubsection*{\UC{} Fazer Login \label{uc:login}}
+\emph{Este Caso de Uso é incluído no \ref{uc:cadastro}, é um requerimento para Logout (\ref{uc:logout}), e estende todos os Casos de Uso posteriores (\ref{sec:uc-logado}).}
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário requisita ser logado;
+	\item O Sistema armazena a página de onde o usuário fez a requisição; \label{ucp:requisitou-login}
+	\item O Sistema exibe um formulário de credenciais com opções de redes sociais: \label{ucp:preenche-login}
+		\\Caso o usuário decida utilizar o formulário:
+			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+				\item O usuário preenche o formulário;
+				\item O usuário submete o formulário;
+				\item O Sistema valida os dados. Caso haja dados inválidos, o Sistema envia o usuário de novo para o \autoref{ucp:preenche-login}.
+			\end{enumerate}
+		Caso o usuário decida utilizar uma Rede Social:
+			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+				\item O usuário indica qual Rede Social deseja;
+				\item O Sistema estende com o \ref{uc:requisitar-perfil-social};
+				\item O Sistema recebe as credenciais da Rede Social:
+					\\Caso não haja usuário correspondente, o Sistema estende com \ref{uc:cadastro-social};
+				\item O Sistema identifica o usuário correspondente;
+			\end{enumerate}
+	\item O Sistema autentica o usuário identificado;
+	\item O Sistema envia o usuário para a página armazenada no \autoref{ucp:requisitou-login}.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% CASOS DE USO DO USUÁRIO LOGADO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Descrição dos Casos de Uso de um Usuário logado} \label{sec:uc-logado}
+\textbf{Importante:} Todos estes Casos de Uso obedecem a seguinte regra: caso o usuário não esteja autenticado, o Sistema estende com o \ref{uc:login}.
+
+\begin{figure}[!ht]
+\centering
+	\includegraphics[width=1\linewidth]{diagramas/uc-logado.png}
+	\caption{Diagrama contendo os Casos de Uso possíveis somente para usuários logados}
+	\label{diag:uc-logado}
+\end{figure}
+
+\subsubsubsection*{\UC{} Indicar-se como palestrante em evento \label{uc:indicar-palestrante}}
+\textbf{Ator:} Participante.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica ser / ter sido palestrante em um determinado evento;
+	\item O Sistema inclui o \ref{uc:submeter-palestra}, indicando o usuário como palestrante.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Submeter palestra \label{uc:submeter-palestra}}
+\emph{Este Caso de Uso é incluído no \ref{uc:indicar-palestrante} e \ref{uc:submeter-programacao}.}
+
+\textbf{Ator:} Participante.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O Sistema exibe um formulário perguntando os detalhes da palestra; \label{ucp:preenche-form-palestra}
+	\item O usuário preenche o formulário;
+	\item O usuário submete o formulário;
+	\item O Sistema valida os dados:
+		\\Caso haja dados inválidos, o Sistema envia o usuário de novo para o \autoref{ucp:preenche-form-palestra};
+		\\Caso os dados estejam corretos:
+			\begin{enumerate}
+				\item O Sistema associa a palestra ao evento;
+				\item O Sistema inclui o \ref{uc:marcar-palestrante}, enviando o palestrante indicado na inclusão desde Caso de Uso;
+				\item Caso o usuário deseje, o Sistema permite adicionar materiais à palestra estendendo com o \ref{uc:submeter-material}.
+			\end{enumerate}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Indicar participação em evento \label{uc:indicar-participacao}}
+\emph{Este Caso de Uso estende o \ref{uc:submeter-evento}.}
+
+\textbf{Ator:} Participante.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica ser / ter sido participante em um determinado evento;
+	\item O Sistema associa o usuário ao evento como participante;
+	\item O Sistema inclui o \ref{uc:indicar-interesse}.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Indicar interesse em evento \label{uc:indicar-interesse}}
+\emph{Este Caso de Uso é incluído no \ref{uc:indicar-participacao}, e sua ocorrência é um requisito para notificar usuários interessados no \ref{uc:notificar}.}
+
+\textbf{Ator:} Participante.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica estar interessado em novidades sobre um determinado evento;
+	\item O Sistema associa o usuário ao evento como interessado.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Submeter novo evento / Editar evento existente \label{uc:submeter-evento}}
+\emph{Este Caso de Uso é incluído em \ref{uc:submeter-evento-organizador}.}
+
+\textbf{Ator:} Participante.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica desejar submeter um novo evento, ou editar um evento já existente;
+	\item O Sistema exibe um formulário em branco, ou com dados já preenchidos sobre o evento existente; \label{ucp:preenche-form-submeter}
+	\item O usuário preenche o formulário;
+	\item O usuário submete o formulário;
+	\item O Sistema valida os dados:
+		\\Caso haja dados inválidos, o Sistema envia o usuário de novo para o \autoref{ucp:preenche-form-submeter};
+		\\Caso os dados estejam corretos:
+			\begin{enumerate}
+				\item O Sistema cria o novo evento, ou atualiza o evento existente;
+				\item O Sistema pergunta se o usuário participou do evento. Caso afirmativo, o Sistema estende com o \ref{uc:indicar-participacao};
+				\item O Sistema inclui o \ref{uc:notificar}.
+			\end{enumerate}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Notificar usuários \label{uc:notificar}}
+\emph{Este Caso de Uso é incluído em \ref{uc:submeter-evento} e \ref{uc:sugerir-exclusao}, e requer a existência de algum usuário interessado (\ref{uc:indicar-interesse}) para emitir este tipo de notificação.}
+
+\textbf{Ator:} Sistema automatizado.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O Sistema identifica todos os usuários interessados em um determinado evento ou temas relacionados a ele;
+	\item O Sistema envia notificações os usuários identificados.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Sugerir exclusão de evento \label{uc:sugerir-exclusao}}
+\emph{Este Caso de Uso é realizado pelo Organizador em \ref{uc:excluir}.}
+
+\textbf{Ator:} Participante.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário requisita que um evento seja excluído;
+	\item O Sistema marca o evento indicado como passível de exclusão;
+	\item O Sistema notifica o(s) organizador(es) do evento, incluindo o \ref{uc:notificar}.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Submeter novo evento completo / Editar evento existente completo \label{uc:submeter-evento-organizador}}
+\textbf{Ator:} Organizador.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica desejar submeter um novo evento, ou editar um evento já existente;
+	\item O Sistema inclui o \ref{uc:submeter-evento};
+	\item Caso o usuário deseje, ele também poderá submeter:
+		\begin{itemize}[itemsep=-1ex,topsep=-1ex]
+			\item Materiais: o Sistema estenderá com o \ref{uc:submeter-material} quantas vezes for necessário;
+			\item Palestrantes: o Sistema estenderá com o \ref{uc:submeter-palestrante} quantas vezes for necessário;
+			\item A programação: o Sistema estenderá com o \ref{uc:submeter-programacao}.
+		\end{itemize}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Submeter material \label{uc:submeter-material}}
+\emph{Este Caso de Uso estende o \ref{uc:submeter-palestra} e o \ref{uc:submeter-evento-organizador}.}
+
+\textbf{Ator:} Organizador.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O Sistema recebe um determinado evento ou palestra para adicionar um material;
+	\item O Sistema pede ao usuário o arquivo do material;
+	\item O usuário indica um arquivo;
+	\item O Sistema adiciona o arquivo como material no evento ou palestra.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Submeter palestrante \label{uc:submeter-palestrante}}
+\emph{Este Caso de Uso estende o \ref{uc:submeter-evento-organizador}.}
+
+\textbf{Ator:} Organizador.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O Sistema recebe um determinado evento para adicionar um palestrante;
+	\item O Sistema pergunta ao usuário qual é o palestrante a adicionar;
+	\item O usuário indica outro usuário como palestrante;
+	\item O Sistema adiciona o usuário como palestrante no evento;
+	\item O Sistema inclui o \ref{uc:marcar-palestrante}.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Submeter programação \label{uc:submeter-programacao}}
+\emph{Este Caso de Uso estende o \ref{uc:submeter-evento-organizador}.}
+
+\textbf{Ator:} Organizador.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O Sistema recebe um determinado evento para adicionar a programação;
+	\item Quantas vezes for necessário:
+		\begin{enumerate}
+			\item O Sistema pergunta qual usuário foi palestrante;
+			\item O usuário indica outro usuário como palestrante;
+			\item O Sistema inclui o \ref{uc:submeter-palestra}, enviando o palestrante indicado.
+		\end{enumerate}
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Marcar usuário como palestrante \label{uc:marcar-palestrante}}
+\emph{Este Caso de Uso é incluído no \ref{uc:submeter-palestra} e no \ref{uc:submeter-palestrante}.}
+
+\textbf{Ator:} Sistema Automatizado.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O Sistema recebe um usuário e um evento;
+	\item O Sistema marca o usuário como palestrante.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Excluir evento \label{uc:excluir}}
+\emph{Este Caso de Uso realiza a sugestão de exclusão do \ref{uc:sugerir-exclusao}.}
+
+\textbf{Ator:} Organizador.
+\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
+	\item O usuário indica um evento para ser excluído (de uma lista de sugestões ou por acesso direto);
+	\item O Sistema pergunta se o usuário tem certeza desta ação destrutiva;
+		\\Em caso afirmativo, o Sistema apaga o evento.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Modelo Conceitual de Dados}
 Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no projeto. Observações importantes:
 \begin{itemize}
@@ -1530,7 +1881,7 @@ Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no proje
 		\begin{itemize}
 			\item Todas as chaves auto-incrementáveis são do tipo \texttt{SERIAL}, um \emph{alias} do PostgreSQL que cria um campo \texttt{INT} ligado a um índice incrementável. Portanto, todas as chaves estrangeiras são do tipo \texttt{INT};
 			\item Todos os campos textuais que não tem limites rígidos de tamanho são do tipo \texttt{TEXT}, visto que no PostgreSQL não há ganho real de performance ou espaço ao utilizar os tipos \texttt{CHAR} ou \texttt{VARCHAR}. Para casos em que é necessário um limite de tamanho, o \texttt{VARCHAR} deve ser utilizado, visto que há perda de performance e espaço com o uso do \texttt{CHAR}\cite{postgre-text-performance};
-			\item Para campos que receberão valores booleanos, o tipo \texttt{BOOL} deve ser usado em favor de \emph{SMALLINT} -- vale lembrar que \texttt{TINYINT} é uma extensão do SQL-ANSI usada em outros SGBDs;
+			\item Para campos que receberão valores booleanos, o tipo \texttt{BOOL} deve ser usado em favor de \texttt{SMALLINT} -- vale lembrar que \texttt{TINYINT} é uma extensão do SQL-ANSI usada em outros SGBDs;
 			\item Para campos que recebem uma lista de opções de valores, é preferido que estes valores sejam armazenados em uma tabela separada. Em casos excepcionais, um campo \texttt{SMALLINT} deve ser utilizado em conjunto com constantes declaradas no \emph{Model};
 			\item Valores temporais gerados automaticamente pelo framework (como os campos \texttt{created\_at/updated\_at}) são armazenados como \texttt{TIMESTAMP}, pois não há necessidade de conversão de fuso-horário visto que sempre serão fornecidos em formato de \emph{timestamp Unix}. Outros campos devem ser do tipo \texttt{TIMESTAMPTZ}, para que possam aceitar tanto uma \emph{timestamp Unix} ou uma \emph{string} de data-hora com fuso-horário ou diferença de fuso\cite{postgre-timezone-storage}.
 		\end{itemize}
