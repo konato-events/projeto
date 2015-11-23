@@ -11,6 +11,7 @@
 \usepackage{pifont}
 \usepackage[usenames,dvipsnames,svgnames]{xcolor}
 \usepackage{graphicx}
+\usepackage[section]{placeins} % Allows for the new command \FloatBarrier, that forces the queue of floats to be cleared. The [section] changes the use of \section to always run \FloatBarrier before.
 \usepackage{sidecap}
 \usepackage[all,defaultlines=2]{nowidow}
 \usepackage[multiple]{footmisc}
@@ -89,7 +90,7 @@
 \chapter*{Prefácio}
 \section*{Definições usadas neste documento}
 Para fins de comunicação, as seguintes palavras e seus atores serão tomadas como sinônimas, exceto quando especificado o contrário -- na \autoref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
-\begin{itemize}
+\begin{itemize}[itemsep=-1ex]
 	\item Evento / participante
 	\item Conferência / conferencista
 	\item Congresso / congressista
@@ -196,8 +197,8 @@ Por fim, para organizar o fluxo de código, será utilizado o \emph{GitFlow}\cit
 
 \begin{figure}[!hb]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagens/gitflow.png}
-	\caption{Exemplo de como \emph{GitFlow} funciona, exibindo os diversos \emph{branches} da metodologia.}
+	\includegraphics[width=0.8\linewidth]{imagens/gitflow-horizontal.png}
+	\caption{Exemplo do \emph{GitFlow} funciona, exibindo os diversos \emph{branches} da metodologia.}
 \end{figure}
 
 
@@ -305,13 +306,21 @@ Os eventos descritos acima, por vezes, são compostos por diferentes atividades.
 
 \section{A modelagem de negócios da Lean Startup} \label{sec:modelagem-negocios}
 
-Nesta seção do documento descreveremos muitos conceitos que são hipotéticos, relacionados a um projeto ainda em fase de concretização de ideias. Todos estes conceitos precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.\\
+Nesta seção do documento descreveremos muitos conceitos que são hipotéticos, relacionados a um projeto ainda em fase de concretização de ideias. Todos estes conceitos precisam ser confirmados por meio de entrevistas com os usuários ou pesquisas de mercado.
 %Para facilitar a identificação, usaremos um marcador de Hipótese \hip{} ou de Confirmação \conf{} no início de cada afirmação relevante: o primeiro para aquelas que não foram testadas, e o segundo para as quais já verificamos serem procedentes -- aqueles que foram invalidados não estão incluídos aqui.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{\emph{Mapa de Empatia} - \emph{Personas} de nossos clientes e usuários}
-O Mapa de Empatia\cite{mapa-de-empatia} é um diagrama simplificado que otimiza a identificação dos diferentes tipos de usuários e clientes. Seu principal conceito é a divisão de características comuns de seres humanos em diferentes blocos. Isto facilita a identificação de similaridades entre as pessoas que desejamos atender e possibilita o desenvolvimento de um produto mais centrado no usuário. Tendo mais conhecimento sobre o tipo de cliente que pretendemos resolver seu problema, podemos ir a campo encontrá-lo e conversar sobre seus anseios e vontades, de forma que possamos entender exatamente como ele é e se o problema que identificamos existe de fato no mundo real.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/mapa-de-empatia.png}
+	\caption{Mapa de Empatia de estudante. 1/jul/2015}
+	\label{diag:empatia}
+\end{figure}
+
+O Mapa de Empatia\cite{mapa-de-empatia} é um diagrama simplificado que otimiza a identificação dos diferentes tipos de usuários e clientes. Seu principal conceito é a divisão de características comuns de seres humanos em diferentes blocos. Isto facilita a identificação de similaridades entre as pessoas que desejamos atender e possibilita o desenvolvimento de um produto mais centrado no usuário. Tendo mais conhecimento sobre o tipo de cliente que pretendemos resolver seu problema, podemos ir a campo encontrá-lo e conversar sobre seus anseios e vontades, de forma que possamos entender exatamente como ele é e se o problema que identificamos existe de fato no mundo real.\\
 
 Será possível notar, o tempo todo, como o conceito da \emph{Lean Startup} tem sempre como foco principal o(s) cliente(s) final(is): o objetivo é gerar algo que seja desejável e onde possamos ouvir ``gostei! quero comprar agora!'', evitando o problema recorrente de se ter uma ideia mas não ter clientes para ela.
 
@@ -323,13 +332,6 @@ A \emph{persona}\footnotemark{} que descrevemos no diagrama \ref{diag:empatia} �
 	\item \iffalse\conf{}\fi o incentivo que alguns professores dão para a participação em atividades práticas, de campo ou de integração;
 	\item \iffalse\conf{}\fi como algumas oportunidades foram perdidas por ineficiência de comunicação -- seja por terem perdido um anúncio em especial na instituição ou não terem contato com ``a pessoa certa'', indicando determinado evento para um amigo mas não para ela, por exemplo.
 \end{itemize}
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=1\linewidth]{diagramas/mapa-de-empatia.png}
-	\caption{Mapa de Empatia de estudante. 1/jul/2015}
-	\label{diag:empatia}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -351,7 +353,7 @@ O desenvolvimento da Árvore de Problemas é um exercício mental de abstração
 		
 	Repetir ``por que'' cinco vezes, dessa forma, pode nos ajudar a desencavar a raiz do problema e corrigi-lo. Se este procedimento não fosse tomado, alguém poderia simplesmente ter trocado o fusível ou o eixo da bomba. Nesse caso, o problema aconteceria novamente em alguns meses. O sistema de produção da Toyota foi construído a partir da prática e evolução deste método científico. Ao perguntar e responder o porquê cinco vezes, nós podemos chegar à real causa do problema, que muitas vezes está escondida embaixo de sintomas mais óbvios.
 	
-	{\raggedright (\citetext{five-whys} Tradução nossa.)}
+	{\raggedright (\citetext{five-whys} Tradução própria.)}
 \end{citacao}
 
 \begin{citacao}
@@ -363,7 +365,7 @@ O desenvolvimento da Árvore de Problemas é um exercício mental de abstração
 	
 	Isso não vem naturalmente. Pessoas estão condicionadas a evitar perguntar demais. Primeiro, isso pode soar rude. Segundo, pode ser perigoso, implicando que somos ignorantes ou desinformados. Terceiro, significa que tudo que nós pensamos que sabemos pode se tornar incorreto ou incompleto. [...] Isso significa colocar de lado todas as respostas rotineiras e pacificadoras [\emph{rote and pat answers}] [...], aquele estado da mente onde as ideias se tornaram tão endurecidas que elas não tem mais uso nenhum. [...] E uma empresa precisa ser flexível o suficiente para ouvir estas respostas. Esses hábitos são a chave para a longevidade, crescimento, e lucro.
 	
-	{\raggedright (\citetext{three-whys-semler} Tradução nossa.)}
+	{\raggedright (\citetext{three-whys-semler} Tradução própria.)}
 \end{citacao}
 
 
@@ -541,7 +543,7 @@ Considerando que uma startup é baseada em hipóteses não testadas, é necessá
 	
 	\emph{Tudo que você faz durante [essa fase] é centrado em torno de testar hipóteses.}
 	
-	{\raggedright (\citetext{lean-customer-development} Cap. 1. Grifo do autor, tradução nossa.)}
+	{\raggedright (\citetext{lean-customer-development} Cap. 1. Grifo do autor, tradução própria.)}
 \end{citacao}
 
 Tendo isso em mente, decidimos usar o \emph{Experiment Board} (criado por uma empresa chamada \citeauthoronline{experiment-board-javelin}) para definir as hipóteses relevantes do nosso produto, e a melhor forma de testá-las. Muitas hipóteses são indicadas na descrição do Lean Canvas, posteriormente, mas aquelas descritas nesta seção são de cunho mais amplo, cobrindo um espectro mais diverso do projeto. Nosso objetivo é indicar as hipóteses gerais do sistema de uma forma que seja fácil de testar -- pois na maior parte das vezes, as ideias são tão grandes que é necessário fragmentá-las para torná-las testáveis\cite{experiment-board-post}.
@@ -740,7 +742,7 @@ Boa parte do público do site se localizava na América do Norte, devido à barr
 \begin{citacao}
 	A enorme maioria de usuários e eventos estavam localizados na América do Norte, particularmente entre fãs de música independente, tecnólogos da web, e na região da Baía de São Francisco. No entanto, usuários do Upcoming podiam ser encontrados em qualquer lugar do globo, muitas vezes submetendo informações na sua língua local. [O site] era plenamente capaz de armazenar e buscar informações em outras línguas, apesar de só possuir uma interface em inglês americano.
 	
-	{\raggedright (\citetext{upcoming-archive} Tradução nossa.)}
+	{\raggedright (\citetext{upcoming-archive} Tradução própria.)}
 \end{citacao}
 
 \subsection{Meetup} \label{sec:concorrencia:meetup:tec}
@@ -872,6 +874,7 @@ Seu funcionamento e recursos são bem similares ao já oferecido pela Eventbrite
 \end{itemize}
 
 \begin{framed}
+	\centering
 	\textbf{Nota:} não confundir com a Eventials, empresa nacional de transmissão de \emph{webinars}.
 \end{framed}
 
@@ -1022,6 +1025,7 @@ Segue aqui uma lista não-exaustiva das funcionalidades pensadas para o sistema.
 Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica quais destes requisitos serão efetivamente apresentados.
 
 \begin{framed}
+	\noindent{}
 	\textbf{Nota:} todas as notificações citadas nesta seção são passíveis de opt-out -- quando usuário explicitamente declara não estar interessado em mensagens de determinado assunto.
 \end{framed}
 
@@ -1029,7 +1033,7 @@ Para o escopo deste TCC, a seção seguinte (\ref{sec:requisitos:mvp}) indica qu
 \begin{itemize}
 \item Deve ser possível se cadastrar no sistema a partir de:
 	\begin{description} %todo verificar como funciona para receber atualizações sobre os follows/unfollows do usuário
-		\item[e-mail convencional] preenchendo manualmente os dados do perfil profissional;
+		\item[E-mail convencional] preenchendo manualmente os dados do perfil profissional;
 		\item[Twitter] trazendo dados como nome, usuário, colegas, e pedindo permissão para posts sociais; %todo verificar se o Twitter permite posts automáticos
 		\item[Facebook] trazendo dados pessoais, estudantis e profissionais (para sugerir seguir grupos universitários, de estudo, profissionais e tópicos relacionados), colegas, e pedindo permissão para \emph{posts} sociais; %todo verificar se seria melhor pedir a permissão de posts somente quando o usuário se inscrever para um evento e pudermos compartilhar isso (ou talvez poderíamos compartilhar o cadastramento na plataforma desde já)
 		\item[LinkedIn] com os mesmos benefícios do Facebook. Este deve ser o perfil com maior destaque durante os procedimentos de cadastro e \emph{login};
@@ -1198,7 +1202,7 @@ Outro uso para a API seria a criação de um aplicativo móvel, no futuro.
 \begin{itemize}
 \item Deve ser possível se cadastrar no sistema a partir de:
 	\begin{description}
-		\item[e-mail convencional] preenchendo manualmente os dados do perfil profissional;
+		\item[E-mail convencional] preenchendo manualmente os dados do perfil profissional;
 		\item[Facebook] trazendo dados pessoais e profissionais.
 	\end{description}
 \item Sugerir a associação a outras contas sociais após o cadastro, para aumentar a quantidade de informação do perfil e fomentar a lista de contatos:
@@ -1282,7 +1286,7 @@ Outro uso para a API seria a criação de um aplicativo móvel, no futuro.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tecnologias utilizadas} \label{sec:tecnologias}
 
-O objetivo do projeto é ter um passo veloz e portável, permitindo construção rápida e instalação em qualquer plataforma de desenvolvimento. Para tanto, as seguintes tecnologias foram selecionadas:
+O objetivo deste projeto é ter um passo veloz e construir uma aplicação portável, permitindo construção rápida e instalação em qualquer plataforma de desenvolvimento. Para tanto, as seguintes tecnologias foram selecionadas:
 
 \subsection{Plataforma}
 Para alta portabilidade do ambiente de desenvolvimento, o código será aberto e ficará armazenado no \textbf{BitBucket} (assim como este documento), de modo que qualquer pessoa poderá analisar o sistema, contribuir com funcionalidades ou correções, e enviar relatórios de \textit{bugs}. O repositório Git do projeto fica em {\url{http://bitbucket.org/konato/web}.
@@ -1294,7 +1298,7 @@ Foi criada uma conta no repositório oficial de imagens, para conter tanto a ver
 \footnotetext{Sistema que aproveita o conceito de contêineres Unix para isolar uma aplicação do ambiente em que ela é executada, permitindo alta eficiência e flexibilidade na troca de componentes -- sendo muito mais veloz que as opções tradicionais de virtualização de máquinas. Também habilita o compartilhamento público ou privado das imagens geradas, bem como o versionamento das configurações.\cite{docker-presentation}}
 
 \subsubsection*{Homologação e produção}
-Ambos os ambientes serão hospedados no \textbf{Heroku}, um serviço de plataforma pronta para execução de sistemas (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando a infraestrutura também é próximo de zero. Quando a aplicação crescer será fácil escalar o parque de máquinas, tanto verticalmente quanto horizontalmente. Além do trabalho manual, também é possível configurar escalonamento automático, através de extensões que avaliam parâmetros como tempo de resposta e fila acessos\cite{heroku-hirefire}\cite{heroku-adept}.
+Ambos os ambientes serão hospedados no \textbf{Heroku}, um serviço de plataforma pronta para execução de sistemas (\textit{PaaS, Platform as a Service}). Ele permite atualização da aplicação com \textit{zero downtime}, e o tempo gasto configurando a infraestrutura também é próximo de zero. O Heroku também nos habilita a escalar o parque de máquinas, tanto verticalmente quanto horizontalmente, quando a aplicação necessitar. A escalabilidade é configurável tanto manualmente quanto de forma automatizada, através de extensões que avaliam parâmetros como tempo de resposta e fila de acessos\cite{heroku-hirefire}\cite{heroku-adept}.
 
 O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem proibitivos durante o escalonamento inicial, é possível migrar a aplicação de forma simples para outras plataformas, como os serviços de cloud da \textbf{Amazon} ou mesmo um \textbf{VPS}\footnotemark comum -- atividade facilitada devido ao uso dos contêineres descritos acima.
 
@@ -1309,20 +1313,21 @@ O Heroku possui um pacote inicial gratuito; no entanto, se os custos ficarem pro
 			\textbf{@igorsantos07:} \emph{@heroku} há alguma estimativa para a liberação de imagens Docker de PHP? Estou iniciando uma nova aplicação local usando PHP7 no Docker, e gostaria de fazer o \emph{deploy} no Heroku depois.\\
 			\textbf{@dzuelke:} \emph{@igorsantos07 @heroku} Logo (não posso dar uma estimativa definitiva). PHP é um pouco difícil de fazer ``legal'' por causa das extensões [da linguagem].
 			
-			{\raggedright (\citetext{heroku-docker-php} Tradução nossa.)}
+			{\raggedright (\citetext{heroku-docker-php} Tradução própria.)}
 		\end{citacao}
 	\end{framed}
 \end{minipage}
 
-Na ponta dos nossos serviços, teremos configurado um CDN e Cache HTTP, servido pela CloudFlare. Eles nos fornecem:
+\vspace{0.5cm}
+Na ponta dos nossos serviços, teremos configurado um CDN e um Cache HTTP, servidos pela CloudFlare. Eles nos fornecem:
 \begin{itemize}
 	\item configuração simplificada e poderosa do DNS da aplicação, com atualização instantânea;
 	\item funcionalidades de segurança contra \emph{bots}, \emph{spammers}, ataques de negação de serviço, entre outros;
-	\item \emph{cache} e replicação global do resultado das requisições mais frequentes, garantindo tempo de entrega reduzido para usuários internacionalmente e redução na carga em nossos servidores de aplicação.
+	\item \emph{cache} e replicação global do resultado das requisições mais frequentes, garantindo tempo de entrega reduzido internacionalmente e diminuição na carga em nossos servidores de aplicação.
 \end{itemize}
 
 \subsection{Backend}
-Considerando o estilo tradicional da aplicação -- que pode ser considerada um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JavaScript (também conhecidas como \emph{Single-page app / SPA}\cite{single-page-apps}), mas o tempo que seria gasto com o aprendizado desse tipo de tecnologia (que ainda está em processo de maturação no mercado) seria custoso, visto que a natureza do sistema não exige alto nível de interatividade. Em momento oportuno poderemos implementar conceitos de SPA em algumas páginas mais complexas, como a de Detalhes do Evento ou o Perfil do Usuário.
+Considerando o estilo tradicional da aplicação -- que pode ser considerada um diretório de busca e rede social -- e a experiência do autor, foi decidido utilizar PHP como linguagem principal de desenvolvimento. A outra opção cogitada foi criar uma aplicação JavaScript (também conhecidas como \emph{Single-page app / SPA}\cite{single-page-apps}), mas o tempo que seria gasto com o aprendizado desse tipo de tecnologia (que ainda está em processo de maturação no mercado) seria custoso, visto que a natureza do sistema não exige alto nível de interatividade. Foi decidido, então, que em momento oportuno poderemos implementar conceitos de SPA em algumas páginas mais complexas, como a de ``Detalhes do Evento'' (\autoref{prot:event}) ou o ``Perfil do Usuário'' (\autoref{prot:profile}).
 
 O framework escolhido foi o Laravel, que tem se tornado um grande expoente das tecnologias modernas do PHP. Diferentemente de outros (como Zend, Yii ou Symfony), que se mantêm mais conservadores e presos ao seu formato original, o Laravel tem desenvolvimento ágil e acompanha as novidades da linguagem, permitindo um sistema mais robusto e leve -- as últimas funcionalidades do PHP são bem poderosas nesse sentido. Atualmente na versão 5, ele possui suporte a diversas tecnologias, como fila de tarefas, diferentes sistemas de armazenamento e \emph{cacheamento} de dados e arquivos, aplicações de linha de comando, autenticação e autorização de usuários, encriptação de informações, dentre outros.\cite{laravel}
 
@@ -1335,7 +1340,7 @@ No entanto, após analisar as outras tecnologias, percebemos que haveria uma nec
 
 Analisando as opções disponíveis e as outras tecnologias selecionadas, optamos pelo PostgreSQL em favor do MySQL -- o sistema de banco de dados mais popular para projetos abertos\cite{db-engines-ranking} -- pelos seguintes motivos:
 \begin{enumerate}
-	\item Desde a sua entrada na lista de produtos da Oracle, seu futuro tem sido conturbado. Desde 2008 o MySQL era da Sun e, alguns anos depois, esta foi comprada pela Oracle. No momento do anúncio de venda, o criador original do projeto criou um \emph{fork} chamado MariaDB\cite{mysql-fork} e, desde então, eles têm competido por popularidade;
+	\item Desde a sua entrada na lista de produtos da Oracle, o MySQL tem tido um futuro incerto. Desde 2008 o MySQL era da Sun e, alguns anos depois, esta foi comprada pela Oracle. No momento do anúncio de venda, o criador original do projeto criou um \emph{fork} chamado MariaDB\cite{mysql-fork} e, desde então, eles têm competido por popularidade;
 	\item O PostgreSQL possui maiores facilidades para utilização de cálculos espaciais e geo-localização. Mesmo sem utilizar sua extensão para dados geográficos (PostGIS) é possível utilizar certas extensões simples (\texttt{cube + earthdistance}) para calcular a distância entre pontos de forma eficiente e precisa o suficiente para as futuras necessidades do sistema\cite{postgre-earthdistance};
 	\item O PostgreSQL oferece maior variedade de tipos de dados, o que pode nos auxiliar a manter a integridade das informações gravadas;
 	\item O MySQL executa uma versão do padrão SQL-ANSI menos padronizada que o PostgreSQL.
@@ -1360,13 +1365,13 @@ No entanto, considerando o fato de que já teremos uma base de dados relacional,
 				\footnotetext{PHPDoc: padrão escrita de \emph{docblocks} utilizado no PHP.}
 			\item Integração sem esforço para criação de documentação interativa com Swagger\footnotemark{}, a partir do PHPDoc de cada método;
 				\footnotetext{Swagger: biblioteca que cria, a partir de uma especificação JSON (que o Restler gera automaticamente), uma documentação simples de navegar, separada por \emph{resources} e verbos. Ela permite a avaliação interativa dos parâmetros e tipos de respostas, a partir de formulários de teste para cada \emph{request} possível na API.}
-			\item Devido ao baixo acoplamento do ORM do Laravel, será possível acessar os modelos de dados diretamente no Restler.
+			\item Devido ao baixo acoplamento do ORM do Laravel, seria possível acessar os modelos de dados diretamente no Restler.
 		\end{itemize}
 		
 		\textbf{Desvantagens}:
 		\begin{itemize}[itemsep=-1ex]
 			\item É possível que alguns componentes utilizados no Laravel não possam ser ``importados'' para dentro do Restler, como classes de Cache, autenticação ou envio de e-mails. Eles terão que ser manualmente exportados ou re-implementados, utilizando bibliotecas diferentes e efetivamente duplicando código no projeto;
-			\item Outro grupo de dependências para controlar -- o que também pode ser considerado uma desvantagem, visto que a API pode ficar offline mas o site ainda funcionar, ou vice-versa.
+			\item Outro grupo de dependências para controlar -- o que também pode ser considerado uma vantagem, visto que a API pode ficar offline mas o site ainda funcionar, ou vice-versa.
 		\end{itemize}
 	
 	\item[\emph{Resource Controllers} do Laravel]
@@ -1380,8 +1385,8 @@ No entanto, considerando o fato de que já teremos uma base de dados relacional,
 			
 		\textbf{Desvantagens}:
 		\begin{itemize}[itemsep=-1ex]
-			\item Pode precisar de algum trabalho extra para configuração das rotas, visto que é interessante que a API seja servida de um path específico ou um subdomínio;
-			\item Necessidade de implementação de toda uma gama de funcionalidades que uma API necessita, como \emph{rate-limiting}, autenticação, e documentação. A melhor forma de lidar com isso pode ser utilizar o pacote citado a seguir, para evitar que o projeto vire uma ``colcha de retalhos'' ou precisemos ``reinventar a roda''.
+			\item Pode ser necessário algum trabalho extra para configuração das rotas, visto que é interessante que a API seja servida de um path específico ou um subdomínio;
+			\item Necessidade de implementação de toda uma gama de funcionalidades que uma API necessita, como \emph{rate-limiting}, autenticação, e documentação. A melhor forma de lidar com isso pode ser utilizar o pacote citado a seguir, evitando que o projeto acumule uma lista muito grande de dependências desconectadas, ou mesmo que tempo seja perdido reescrevendo ferramentas comuns.
 		\end{itemize}
 	
 	\item[Dingo API (pacote para o Laravel)]
@@ -1414,7 +1419,7 @@ Com o objetivo de simplificar o desenvolvimento inicial do projeto, optamos por 
 
 Numa versão futura, poderemos utilizar uma das bibliotecas integradas ao Laravel (o FlySystem\cite{laravel-flysystem}) para implementar o armazenamento de arquivos em serviços de cloud como o Amazon S3 ou Dropbox/Copy\cite{flysystem}. Por ser um dos \emph{providers} mais tradicionais e conhecidos do mercado, o S3 possui os preços mais competitivos para armazenamento tradicional, em comparação com grandes concorrentes como a Rackspace. No Brasil, o custo é de cerca de \$0,04 por GB de espaço, \$0,007 a cada mil requisições de armazenamento e \$0,0056 a cada 10 mil requisições de exibição. Estes preços podem ser reduzidos se o serviço for contratado em território americano, economizando entre 23 a 29\%, ou se alguns arquivos forem transferidos para o armazenamento de acesso ocasional do serviço -- que cobra menos pelo espaço, e mais pelo acesso. Além disso, há a oferta de um ano de gratuidade, incluindo mensalmente 5GB de espaço, 2 mil requisições de armazenamento e 20 mil requisições de exibição.\cite{s3-pricing}
 
-A outra opção pode ser utilizar serviços de backup, como o Copy. A maior vantagem é a facilidade de recuperação de arquivos, o que pode ser útil para fornecer aos nossos usuários a possibilidade de desfazer a remoção de um material que foi apagado por engano, por exemplo. Inicialmente o espaço disponível é de 15GB, e nos pacotes pagos varia entre 250GB por \$4.99 e 1TB por \$9.99 (com dois meses gratuitos para pagamentos anuais). No entanto, não há informação clara sobre o limite de requisições, simplesmente sendo informado que ``[Copy.com] pode limitar o número de chamadas aceitas pela API se acreditarmos que o número de chamadas à API do Copy pode impactar negativamente a API do Copy ou o serviço do Copy''\cite{copy-tos}. Tal afirmação não deve nos apresentar risco, visto que as atividades de armazenamento de fotos e arquivos serão ocasionais. Além disso, é necessário informar aos usuários que utilizamos o Copy como sistema de armazenamento em nuvem\cite{copy-tos} -- provavelmente uma menção nos termos de uso ou ``Sobre'' já seria suficiente.
+A outra opção pode ser utilizar serviços de backup, como o Copy. A maior vantagem é a facilidade de recuperação de arquivos, o que pode ser útil para fornecer aos nossos usuários a possibilidade de desfazer a remoção de um material que foi apagado por engano, por exemplo. Inicialmente o espaço disponível é de 15GB, e nos pacotes pagos varia entre 250GB por \$4.99 e 1TB por \$9.99 (com dois meses gratuitos para pagamentos anuais). No entanto, não há informação clara sobre o limite de requisições, simplesmente sendo informado que ``[Copy.com] pode limitar o número de chamadas aceitas pela API se acreditarmos que o número de chamadas à API do Copy pode impactar negativamente a API do Copy ou o serviço do Copy''\cite{copy-tos}; acreditamos, por outro lado, que este aviso não deve nos apresentar risco, visto que as atividades de armazenamento de fotos e arquivos serão ocasionais. Por fim, seria necessário informar aos usuários que utilizamos o Copy como sistema de armazenamento em nuvem\cite{copy-tos} -- o que poderia ser solucionado com uma menção nos termos de uso ou no ``Sobre''.
 
 
 \subsubsection*{Envio de notificações}
@@ -1508,8 +1513,94 @@ A seguir está representado o Gráfico de Gantt original do projeto. Ele foi org
 %\subsection{Diagramas de Atividade}
 
 \subsection{Protótipos de telas}
+Como citado anteriormente, os protótipos de telas do sistema foram criados no Moqups, uma ferramenta online que permite prototipação interativa e com elementos avançados, mas ainda assim com uma interface de baixa-fidelidade. Esta última característica permite a usuários e outras pessoas opinarem com mais liberdade, mesmo que tragam críticas negativas, focando mais na ideia e na interação do que em elementos puramente gráficos e pouco relevantes para esta fase de testes.\cite{low-fidelity-se}\cite{low-fidelity}
 
-\subsection{Casos de Uso}
+Os protótipos interativos podem ser avaliados em \url{https://moqups.com/igorsantos07/3jyAGeSX/}. Caso não seja possível identificar o que é interativo na página, basta clicar em qualquer ponto vazio dentro dela: o Moqups indicará temporariamente todos os elementos que podem ser clicados.
+
+\subsubsection{Protótipos estáticos}
+Para fins de documentação, as versões estáticas dos protótipos das telas são exibidos nas páginas a seguir. As legendas incluem um texto descritivo do protótipo e, quando necessário, indica quais interações são previstas na tela. Quando houver um Caso de Uso (vistos na \autoref{sec:ucs}) relacionado à tela ou à interação, o seu código do Caso de Uso também será indicado.
+
+Os principais Casos de Uso foram prototipados. Não há versões para todas as telas por limitações de uso da ferramenta; portanto, telas pouco otimizáveis, como formulários, foram omitidas desta fase de testes.
+
+\begin{figure}
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-0_Home.jpg}
+	\caption[Página Inicial]{Página Inicial. Demonstra as principais propostas de valor do projeto, possui um \emph{call to action}\footnotemark{} para cadastro (\ref{uc:cadastro} \ref{uc:cadastro-social}) e, no futuro, incluirá estatísticas de popularidade do projeto.}
+	\label{prot:home}
+\end{figure}
+\footnotetext{\emph{Call to Action}: também conhecido como CTA, é um termo de marketing usado para indicar botões, links ou mesmo frases avulsas que sugestionam o usuário a tomar uma ação específica -- por exemplo, fazer uma compra, efetuar um cadastro, etc.}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-1_Search.jpg}
+	\caption[Resultados de Busca]{\ref{uc:buscar-evento} Resultados de Busca. Exibe a listagem de eventos resultantes de uma busca, e uma barra lateral de filtros diversos, para especializar os resultados da busca.}
+	\label{prot:search}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-3_Theme_details.jpg}
+	\caption[Detalhes de um Tema]{\ref{uc:ver-tema} Detalhes de Tema. Exibe a listagem de eventos pertencentes a um Tema, e uma barra lateral permitindo algumas filtragens desta listagem. No outro lado há um botão para indicar interesse no tema, um \emph{heatmap} indicando a popularidade do tema num mapa, e uma lista de palestrantes relevantes no tema.}
+	\label{prot:list-themes}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-4_Event_details.jpg}
+	\caption[Detalhes de um Evento]{\ref{uc:ver-evento} Detalhes de um Evento. Exibe várias informações relacionadas a um Evento: dados gerais como nome, data, e localização (\ref{uc:ver-mapa}); estatísticas de participantes, conteúdo e materiais submetidos; lista de palestrantes, de materiais submetidos e temas relacionados ao evento; quadro com a programação de atividades (\ref{uc:ver-programacao}). Possui, na barra lateral, opções para indicar participação (\ref{uc:indicar-participacao}) ou interesse (\ref{uc:indicar-interesse}) do usuário no evento, além de levá-lo para a página de compra de entradas (\ref{uc:ingressos}) ou de reivindicação da organização do evento. Abaixo do header do evento, ainda, há abas de navegação per edição, que permitem visitar as páginas do mesmo evento mas ocorrido em outros períodos.}
+	\label{prot:event}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-6-0_Profile.jpg}
+	\caption[Perfil de Usuário]{\ref{uc:ver-perfil} Perfil de Usuário. Esta página indica todos os detalhes de um usuário, como: foto, nome, localização, descrição e perfis externos. Também associa informações da plataforma, como seus temas de interesse, eventos dos quais já participou / palestrou / organizou, e algumas estatísticas. Caso o perfil visualizado seja o do próprio usuário, haverá também um botão que o leva para a tela de edição (\ref{uc:editar-perfil}).}
+	\label{prot:profile}
+\end{figure}
+
+\FloatBarrier
+\subsubsection{Protótipos estáticos de telas futuras}
+Algumas telas foram prototipadas desde o início mas, durante outras fases da análise, foi percebido que estas pertenceriam a uma fase posterior do desenvolvimento. Por este motivo, tais telas foram separadas aqui, para servir de referência das próximas fases e dar um conceito maior de continuidade às telas descritas anteriormente.
+
+\begin{figure}[h]
+\vspace{1cm}
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-2_Listing_by_places.jpg}
+	\caption[Listagem de Lugares]{Listagem de Lugares. Esta tela poderá ser implementada quando o projeto possuir um banco de dados bem preenchido. Ela lista os lugares nos quais já houveram eventos cobertos pela plataforma, e permite o usuário listar os eventos filtrando por continente, país ou cidade.}
+	\label{prot:list-places}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-5-0_Speakers_list.jpg}
+	\caption[Lista de Palestrantes]{Lista de Palestrantes. Exibe a listagem de palestrantes mais populares na plataforma, no caso do usuário não estar logado; se ele estiver logado, exibe os palestrantes mais populares de acordo com seus temas de interesse. Há uma listagem lateral com temas relacionados aos palestrantes exibidos, para uma navegação encadeada.}
+	\label{prot:list-speakers}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-5-1_Speakers_in_theme.jpg}
+	\caption[Lista de Palestrantes num Tema]{Lista de Palestrantes num Tema. Similar à \ref{prot:list-speakers}, mas a listagem aqui possui maior destaque, exibindo mais informações sobre cada palestrante -- visto que não é mais necessário subdividi-los por temas.}
+	\label{prot:list-speakers-theme}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-6-2_Notification_preferences.jpg}
+	\caption[Configuração de Notificações]{Configuração de Notificações. Aqui o usuário logado pode desabilitar notificações sobre determinados temas ou eventos pré-selecionados, bem como alterar o alcance das notificações habilitadas -- se ele deseja ser notificado, por exemplo, sobre eventos de determinado tema a nível regional, nacional ou global. Na barra lateral será possível selecionar diversos temas e alterar o alcance de todos de uma vez. Além disso, também ficam ali as opções de exportação da sua participação em eventos e atividades para um serviço de calendário externo.}
+	\label{prot:list-notification-prefs}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/prototipos/1-6-3_Notifications.jpg}
+	\caption[Lista de Notificações]{Lista de Notificações. Nesta tela são exibidos dois componentes principais: a listagem completa de notificações que o usuário já recebeu, incluindo uma imagem relacionada e texto explicativo; e o \emph{drop-down} de notificações que é ativado a partir de um botão no menu superior, que fica ativo sempre que o usuário está logado. Quando houver alguma notificação que ainda não foi vista, tal botão deverá ser destacado.}
+	\label{prot:list-notifications}
+\end{figure}
+
+
+\FloatBarrier
+\subsection{Casos de Uso} \label{sec:ucs}
 \newcounter{UC}
 \newcommand\pad[1] {\expandafter\realpad\csname c@#1\endcsname}
 \newcommand\realpad[1] {%
@@ -1534,8 +1625,8 @@ Nos diagramas das Figuras \ref{diag:uc-nao-logado} e \ref{diag:uc-logado} estão
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%% CASOS DE USO DO USUÁRIO NÃO-LOGADO %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Descrição dos Casos de Uso de um Usuário não-logado}
-Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participante ou Organizador), visto que, sem a autenticação, não é possível diferenciá-los.
+\subsubsection{Descrição dos Casos de Uso de um Usuário não-logado ou sobre seu perfil}
+Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participante ou Organizador), visto que, sem a autenticação, não é possível diferenciá-los. Além disso, também incluem tarefas relacionadas ao perfil do usuário.
 
 \begin{figure}[!ht]
 \centering
@@ -1556,8 +1647,7 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 		\\Caso os dados estejam corretos:
 			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
 				\item O Sistema cria o perfil do usuário;
-				\item O Sistema inclui o \ref{uc:login} com as credenciais do novo usuário;
-				\item O Sistema envia o usuário para seu novo perfil.
+				\item O Sistema inclui o \ref{uc:login} com as credenciais do novo usuário.
 			\end{enumerate}
 \end{enumerate}
 
@@ -1571,6 +1661,12 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 	\item O Sistema recebe as credenciais sociais do usuário;
 	\item O Sistema pede ao usuário os dados restantes, incluindo \ref{uc:cadastro} com parte das informações já preenchidas a partir do que foi obtido da Rede Social;
 		\\Em caso de sucesso, o Sistema inclui o \ref{uc:vincular-rede}.
+\end{enumerate}
+
+\subsubsubsection*{\UC{} Ver perfil de usuário \label{uc:ver-perfil}}
+\begin{enumerate}[itemsep=-1ex]
+	\item O usuário indica querer visualizar o perfil de algum usuário (incluindo o dele mesmo);
+	\item O Sistema lista todos os dados sobre o usuário indicado.
 \end{enumerate}
 
 \subsubsubsection*{\UC{} Editar perfil \label{uc:editar-perfil}}
@@ -1615,7 +1711,7 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 	\item A Rede Social envia o usuário de volta ao Sistema, incluindo no retorno as credenciais públicas de seu perfil social;
 \end{enumerate}
 
-\subsubsubsection*{\UC{} Buscar evento}
+\subsubsubsection*{\UC{} Buscar evento \label{uc:buscar-evento}}
 \begin{enumerate}[itemsep=-1ex]
 	\item O usuário indica querer buscar um evento;
 	\item O Sistema exibe um formulário de busca;
@@ -1653,13 +1749,13 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 	\item O Sistema exibe a grade de atividades do evento.
 \end{enumerate}
 
-\subsubsubsection*{\UC{} Visitar venda de ingressos}
+\subsubsubsection*{\UC{} Visitar venda de ingressos \label{uc:ingressos}}
 \begin{enumerate}[itemsep=-1ex]
 	\item O usuário requisita a programação de um evento;
 	\item O Sistema exibe a grade de atividades do evento.
 \end{enumerate}
 
-\subsubsubsection*{\UC{} Ver tema}
+\subsubsubsection*{\UC{} Ver tema \label{uc:ver-tema}}
 \begin{enumerate}[itemsep=-1ex]
 	\item O usuário requisita os detalhes de um tema;
 	\item O Sistema exibe os dados relacionados ao tema indicado.
@@ -1678,7 +1774,7 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 \emph{Este Caso de Uso é incluído no \ref{uc:cadastro}, é um requerimento para Logout (\ref{uc:logout}), e estende todos os Casos de Uso posteriores (\ref{sec:uc-logado}).}
 \begin{enumerate}[itemsep=-1ex,topsep=-1ex]
 	\item O usuário requisita ser logado;
-	\item O Sistema armazena a página de onde o usuário fez a requisição; \label{ucp:requisitou-login}
+	\item O Sistema armazena a página de onde o usuário fez a requisição, se houver; \label{ucp:requisitou-login}
 	\item O Sistema exibe um formulário de credenciais com opções de redes sociais: \label{ucp:preenche-login}
 		\\Caso o usuário decida utilizar o formulário:
 			\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
@@ -1696,6 +1792,7 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 			\end{enumerate}
 	\item O Sistema autentica o usuário identificado;
 	\item O Sistema envia o usuário para a página armazenada no \autoref{ucp:requisitou-login}.
+		\\Caso o usuário tenha vindo de um processo de cadastro ou nenhuma página tenha sido armazenada, o Sistema o envia para seu perfil, estendendo com o \ref{uc:ver-perfil}.
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1894,9 +1991,14 @@ Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no proje
 	\label{diag:mer}
 \end{figure}
 
+\FloatBarrier
 \subsection{Modelo Conceitual de Classes}
 
 %\subsection{Diagramas de Estado} % vai ser necessário?
+% Possibilidades:
+% - estados do usuário: comum, participante, palestrante, organizador
+% - estados de um claim: recebido, em análise, aceito, recusado
+% - estados de um pedido de remoção: recebido, aceito, recusado
 
 %\subsection{Diagramas de Sequência} % vai ser necessário?
 
