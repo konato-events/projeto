@@ -1502,20 +1502,52 @@ Há também planos de implementar integração com sistemas de \emph{feedback} d
 \subsection{Gráfico de Gantt}
 A seguir está representado o Gráfico de Gantt original do projeto. Ele foi organizado de forma a destacar as principais categorias de tarefas, para evidenciar as diferentes áreas de conhecimento e, possivelmente, subdividir as especialidades de forma mais ágil.
 
+%todo avaliar possibilidade de transformar isso num apêndice, visto que não dá pra legendar e ele nem encaixa bem no fluxo do documento
 \includepdf[pages={1,2,4,5},pagecommand={},angle=90,templatesize={0.8\linewidth}{15cm}]{./diagramas/gantt.pdf}
 
-\subsection{Diagramas de Atividade}
-
+%\subsection{Diagramas de Atividade}
 
 \subsection{Protótipos de telas}
 
 \subsection{Casos de Uso}
 
-\subsection{Diagramas de Classes}
+\subsection{Modelo Conceitual de Dados}
+Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no projeto. Observações importantes:
+\begin{itemize}
+	\item Alguns relacionamentos longos foram desenhados no modo \emph{split}, para evitar poluição gráfica. O destino de tais relacionamentos é de fácil identificação, visto que os pontos de ligação ficam sempre conectados às chaves primárias ou estrangeiras, e seus nomes indicam a quais tabelas estão conectadas;
+	\item Entidades fracas que não possuem campos adicionais, como as tabelas \texttt{following\_user}, \texttt{event\_staff}, entre outras, foram mantidas ``fechadas'' no diagrama para otimização do espaço disponível. Tais tabelas contêm somente as chaves estrangeiras de seus relacionamentos, todas sendo utilizadas como a chave primária. A única exceção à regra é \texttt{following\_theme} que, por possuir um relacionamento com uma tabela que necessita de uma ligação \emph{split}, foi deixada aberta para que os relacionamentos não gerassem ambiguidade;
+	\item Além das entidades fracas, outro tipo de tabela foi deixada fechada no diagrama intencionalmente: tabelas de tipos. Todas elas possuem a mesma estrutura: \texttt{id} e \texttt{name}, e são utilizadas para facilitar a manutenção e filtragem de tipos comuns de objetos;
+	\item As tabelas foram agrupadas por cores, aproximando seus principais usos. Dessa forma, vermelho foi usado para tabelas relacionadas a eventos, verde para usuários, azul para redes sociais, amarelo para notificações, laranja para os materiais e ciano para dados de localização/internacionalização. As entidades fracas foram mantidas em cinza.
+	\item O padrão utilizado de nomenclatura foi o que mais favorece o uso do ORM utilizado dentro do Laravel. Ainda assim, é um padrão comum e de fácil entendimento:
+		\begin{itemize}
+			\item Todos os nomes de tabelas e campos são minúsculos e em \texttt{snake\_case};
+			\item Todas as entidades fortes são nomeadas no plural (visto que contêm uma lista de valores, e não um único valor, fazendo \emph{queries} que são mais legíveis);
+			\item Todas as entidades fortes terão uma única chave primária auto-incrementável, chamada \texttt{id};
+			\item As chaves estrangeiras têm o formato de \texttt{<tabela\_singular>\_id}, visto que referenciam um único objeto da outra tabela. O nome da tabela pode ser modificado caso ofereça maior clareza (por exemplo, em casos de várias entidades fracas similares ou auto-relacionamentos);
+			\item Entidades fracas são nomeadas no formato \texttt{tabela1\_tabela2}, utilizando a versão singular das tabelas e ordenando-as em ordem alfabética. Caso necessário, o nome da entidade pode ser alterado nos mesmos moldes das chaves estrangeiras, acima.
+		\end{itemize}
+	\item Os seguintes padrões de dados foram utilizados:
+		\begin{itemize}
+			\item Todas as chaves auto-incrementáveis são do tipo \texttt{SERIAL}, um \emph{alias} do PostgreSQL que cria um campo \texttt{INT} ligado a um índice incrementável. Portanto, todas as chaves estrangeiras são do tipo \texttt{INT};
+			\item Todos os campos textuais que não tem limites rígidos de tamanho são do tipo \texttt{TEXT}, visto que no PostgreSQL não há ganho real de performance ou espaço ao utilizar os tipos \texttt{CHAR} ou \texttt{VARCHAR}. Para casos em que é necessário um limite de tamanho, o \texttt{VARCHAR} deve ser utilizado, visto que há perda de performance e espaço com o uso do \texttt{CHAR}\cite{postgre-text-performance};
+			\item Para campos que receberão valores booleanos, o tipo \texttt{BOOL} deve ser usado em favor de \emph{SMALLINT} -- vale lembrar que \texttt{TINYINT} é uma extensão do SQL-ANSI usada em outros SGBDs;
+			\item Para campos que recebem uma lista de opções de valores, é preferido que estes valores sejam armazenados em uma tabela separada. Em casos excepcionais, um campo \texttt{SMALLINT} deve ser utilizado em conjunto com constantes declaradas no \emph{Model};
+			\item Valores temporais gerados automaticamente pelo framework (como os campos \texttt{created\_at/updated\_at}) são armazenados como \texttt{TIMESTAMP}, pois não há necessidade de conversão de fuso-horário visto que sempre serão fornecidos em formato de \emph{timestamp Unix}. Outros campos devem ser do tipo \texttt{TIMESTAMPTZ}, para que possam aceitar tanto uma \emph{timestamp Unix} ou uma \emph{string} de data-hora com fuso-horário ou diferença de fuso\cite{postgre-timezone-storage}.
+		\end{itemize}
+\end{itemize}
 
-\subsection{Diagramas de Estado} % vai ser necessário?
+\begin{figure}
+\centering
+	\includegraphics[width=1\linewidth]{diagramas/modelo-dados.png}
+	\caption{Modelo Entidade-Relacionamento para o banco de dados PostgreSQL}
+	\label{diag:mer}
+\end{figure}
 
-\subsection{Diagramas de Sequência} % vai ser necessário?
+\subsection{Modelo Conceitual de Classes}
+
+%\subsection{Diagramas de Estado} % vai ser necessário?
+
+%\subsection{Diagramas de Sequência} % vai ser necessário?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
