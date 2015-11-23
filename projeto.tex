@@ -12,6 +12,8 @@
 \usepackage[usenames,dvipsnames,svgnames]{xcolor}
 \usepackage{graphicx}
 \usepackage[section]{placeins} % Allows for the new command \FloatBarrier, that forces the queue of floats to be cleared. The [section] changes the use of \section to always run \FloatBarrier before.
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
 \usepackage{sidecap}
 \usepackage[all,defaultlines=2]{nowidow}
 \usepackage[multiple]{footmisc}
@@ -43,6 +45,8 @@
 %%%%%%%%%% Comandos novos
 \newcommand{\hip}{{\color{BlueViolet}\framebox[1.1\width]{HIP}}}
 \newcommand{\conf}{{\color{OliveGreen}\framebox[1.1\width]{CNF}}}
+\newcommand{\adiado}{{\color{Bittersweet}\framebox[1.1\width]{ADIADO}}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% META-DADOS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \titulo{Konato} % pra adicionar «guillemets» mais legais no título, use $\ll$ e $\gg$
@@ -1969,7 +1973,7 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Modelo Conceitual de Dados}
+\subsection{Modelo Conceitual de Dados} \label{sec:mer}
 Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no projeto. Observações importantes:
 \begin{itemize}
 	\item Alguns relacionamentos longos foram desenhados no modo \emph{split}, para evitar poluição gráfica. O destino de tais relacionamentos é de fácil identificação, visto que os pontos de ligação ficam sempre conectados às chaves primárias ou estrangeiras, e seus nomes indicam a quais tabelas estão conectadas;
@@ -2002,7 +2006,16 @@ Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no proje
 \end{figure}
 
 \FloatBarrier
-\subsection{Modelo Conceitual de Classes}
+\subsection{Modelo Conceitual de Classes} \label{sec:classes}
+Um dos objetivos de utilizar um Framework é ocultar a implementação de diversos Padrões de Projeto, ao mesmo tempo que aproveitamos as suas vantagens. Tais funcionalidades foram implementadas por outros desenvolvedores, que disponibilizaram sua API pública para uso de outros projetos, de modo que possamos ``nos apoiar em ombros de gigantes''.
+
+Considerando isso, não há necessidade de re-diagramar todas as classes do Laravel. Optamos, portanto, por adicionar ao Diagrama de Classes somente aqueles objetos customizados e que adicionam características ao framework. Os modelos do ORM também não serão diagramados em sua totalidade, visto que são fiéis ao Modelo de Dados na \autoref{sec:mer}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/classes.png}
+	\caption{Diagrama de Classes simplificado}
+\end{figure}
 
 %\subsection{Diagramas de Estado} % vai ser necessário?
 % Possibilidades:
@@ -2020,6 +2033,9 @@ Os Manuais de Operação e do Usuário foram incluídos como apêndices deste do
 
 \subsection{Manual de Operação}
 Este é o \autoref{apend:operacao}. As instruções originais de operação do sistema estão contidas em arquivos \texttt{README.md} no repositório, nas pastas em que instruções forem necessárias -- o padrão para projetos open-source, visto que mantém as instruções gerais junto com o código-fonte. O Manual de Operação formal é baseado neste mesmo arquivo.
+
+\subsection{Manual do Usuário}
+Este é o \autoref{apend:usuario}. O Manual do Usuário foi transformado numa lista de \emph{Frequently Asked Questions}, de modo a exemplificar as Centrais de Ajuda muito comuns nas aplicações web -- que respondem perguntas comuns que os usuários podem ter, ao invés de indicar o passo-a-passo de cada operação do sistema.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \postextual
@@ -2198,7 +2214,9 @@ Com o comando seguinte o projeto estará disponível na porta \texttt{81} da má
 
 \begin{otherlanguage}{english}
 
-\textbf{GNU Gettext} (\url{http://br2.php.net/manual/en/intro.gettext.php}) is a standard for internationalization (i18n) of code projects. There's a \texttt{.po} file that contains all our translation strings, and it should be compiled into a \texttt{.mo} binary. The project is configured with gettext to read from the files stored in this folder. To use a translated string in a page, use the (standard) \texttt{\_()} function (\url{http://br2.php.net/manual/en/function.gettext.php}). We have also created some shortcuts for other commonly used functions, like those for pluralization or replacements: \texttt{\_\_()}, \texttt{\_r()} and \texttt{\_\_r()}; take a look at the \texttt{resources/views/helpers.php} to get a feel of them.
+\textbf{GNU Gettext} (\url{http://br2.php.net/manual/en/intro.gettext.php}) is a standard for internationalization (i18n) of code projects. There's a \texttt{.po} file that contains all our translation strings, and it should be compiled into a \texttt{.mo} binary. The project is configured with gettext to read from the files stored in this folder.
+
+To use a translated string in a page, use the (standard) \texttt{\_()} function (\url{http://br2.php.net/manual/en/function.gettext.php}). We have also created some shortcuts for other commonly used functions, like those for pluralization or replacements: \texttt{\_\_()}, \texttt{\_r()} and \texttt{\_\_r()}; take a look at the \texttt{resources/views/helpers.php} to get a feel of them.
 
 For more details on how GNU Gettext works, take a look at this great tutorial by LingoHub: \url{https://lingohub.com/blogs/2013/07/php-internationalization-with-gettext-tutorial/}. And no, currently we don't use \texttt{.pot} files - we prefer to keep a clean environment \emph{ha-ha}. 
 
@@ -2223,7 +2241,187 @@ There are two methods in \texttt{app/Providers/AppServiceProvider.php} that does
 \end{otherlanguage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Manual do Usuário} \label{apend:usuario}
+\chapter{Manual do Usuário - FAQs} \label{apend:usuario}
+\renewcommand{\subsectionautorefname}{FAQ}
+
+\begin{framed}
+	\noindent
+	\textbf{Nota:} O Manual do Usuário foi organizado num formato de ``Perguntas Mais Frequentes''. Tal decisão foi tomada para que este conteúdo possa, posteriormente, ser aproveitado para uma seção de ``Ajuda'' ou ``\emph{Knowledge Base}'' do sistema de suporte.
+	
+	As entradas do índice foram reduzidas para facilitar a legibilidade. Aqui, no entanto, usamos as perguntas tal-qual elas aparecem em sistemas de FAQ comuns e voltados para o usuário: representando o pensamento de uma pessoa confusa, gerando \emph{rapport}, se aproximando da sua visão e auxiliando o usuário da melhor forma possível. Alguns exemplos de ``Centrais de Ajuda'' nas quais nos baseamos são:
+	\begin{itemize}[itemsep=-1ex,topsep=-1ex]
+		\item Organizze: \url{https://ajuda.organizze.com.br/pessoal};
+		\item Facebook: \url{https://www.facebook.com/about/basics/};
+		\item WhatsApp: \url{https://www.whatsapp.com/faq/};
+		\item Twitter: \url{https://support.twitter.com/};
+		\item Out Of Milk: \url{http://support.outofmilk.com/hc/en-us}.
+	\end{itemize}
+\end{framed}
+
+\begin{framed}
+	\noindent
+	\textbf{Atenção:} nem todas as entradas do FAQ representam funcionalidades já disponíveis na aplicação. Estas perguntas foram organizadas de forma a manter um corpo coeso de conhecimento sobre o sistema. As entradas que tiveram sua implementação adiada por causa do escopo do TCC foram sinalizadas com um \adiado.
+\end{framed}
+
+\section{Eventos} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Como eu busco um evento?} \label{faq:busca}
+\begin{enumerate}[itemsep=-1ex]
+	\item Na página inicial, digite uma palavra-chave, algum tema de seu interesse ou o nome do evento;
+	\item Logo logo será carregada a lista de resultados;
+	\item Se o evento já existe na nossa base de dados, ele deve estar ali! Se não, você pode adicioná-lo (\autoref{faq:submeter}).
+\end{enumerate}
+
+\begin{figure}[h!]
+	\vspace{-20pt}
+	\centering \includegraphics[width=0.8\linewidth]{imagens/faq/busca.jpg}
+\end{figure}
+
+\subsection[É possível ver as edições anteriores do evento?]{Este evento é recente, mas quero ver detalhes da edição do ano passado. É possível?} \label{faq:edicoes}
+\adiado{} Sim, é possível ver o histórico de edições de um evento no Konato.
+\begin{enumerate}[itemsep=-1ex]
+	\item Acesse a página do evento;
+	\item Logo abaixo do bloco onde está o nome, endereço, e etc, estarão algumas ``abinhas'' com os meses ou anos das últimas edições do evento;
+	\item Clicando em uma delas você será levado para os detalhes daquela edição;
+	\item Caso não apareça nenhuma aba abaixo daquele bloco, significa que ainda não temos outras edições do evento no Konato :( Se você souber detalhes, você pode adicioná-las (\autoref{faq:submeter}).
+\end{enumerate}
+
+\subsection[Como adiciono um novo evento?]{Eu fui a um evento mas não encontrei no Konato. Como adiciono?} \label{faq:submeter}
+Oba! Obrigado por ajudar a comunidade do Konato a crescer. Para adicionar um novo evento à nossa base é só fazer o seguinte:
+\begin{enumerate}[itemsep=-1ex]
+	\item Primeiro, você precisa estar logado. Se você ainda não tiver uma conta, dê uma olhadinha no \autoref{faq:cadastrar} para ver como funciona;
+	\item Clique no botão [+ Novo Evento], na parte de cima do site;
+	\item Vai aparecer um formulário com algumas informações que você precisa preencher, como:
+		\begin{itemize}[itemsep=-1ex]
+			\item Nome do Evento;
+			\item Quando foi que ele aconteceu;
+			\item Alguns temas relacionados ao evento;
+			\item E, se você tiver (vai ajudar muito a gente!), o site do evento, perfil do Twitter, hashtag usada pelo pessoal, entre outros.
+		\end{itemize}
+	\item Depois de preencher é só enviar pra gente. Logo logo o evento vai aparecer -- e você já vai sair como o primeiro a participar do evento!
+\end{enumerate}
+
+\subsection[Como faço para reivindicar um evento que já adicionaram?]{Eu organizei um evento e ele já existe no Konato, mas não fui eu quem colocou. Como faço para adicionar mais informações?} \label{faq:reivindicar}
+\adiado{} O Konato é uma comunidade aberta de informações sobre eventos. Dessa forma, é possível que qualquer pessoa cadastrada possa ter nos mostrado o seu evento. Não se preocupe! Em poucos passos você pode nos mostrar que você participou da equipe organizadora daquelas atividades. É assim:
+\begin{enumerate}[itemsep=-1ex]
+	\item Encontre o evento relacionado. Pode ser pela Busca (\autoref{faq:busca}) ou mesmo com um link direto, que você já tenha guardado ou recebido de alguém;
+	\item No canto da direita, lá embaixo, tem um botão chamado ``Eu ajudei a organizar este evento''. Clique nele;
+	\item Agora a gente vai lhe pedir alguns dados, para garantirmos a segurança do seu evento -- você não quer que seja fácil pra outras pessoas dizerem que organizaram o \emph{seu} evento, né?
+	\item Nos diga o máximo de informações que possam associá-lo ao evento. Essas aqui são bons exemplos:
+		\begin{itemize}[itemsep=-1ex]
+			\item um endereço de e-mail institucional;
+			\item uma cópia de e-mail da época que lhe identifique como organizador;
+			\item uma página relacionada ao evento que mostre que você participou dele;
+			\item uma página do seu currículo ou similar, demonstrando suas atividades na organização;
+			\item qualquer outra coisa que lhe soar relevante e lhe ligue ao evento.
+		\end{itemize}
+	\item Em breve nós vamos avaliar seu pedido. Assim que tivermos uma resposta, você vai ser avisado por e-mail!
+\end{enumerate}
+
+\subsection[Diferença entre participação e interesse no evento]{Qual a diferença entre ``ter participado'' e ``ter interesse'' em um evento?} \label{faq:participar}
+Quando você marca que deseja participar de um evento, você passa a receber notificações sobre as novidades que surgem: a grade de programação, se algum contato seu também demonstrou interesse no evento, etc. A gente também vai te avisar quando os materiais e slides forem liberados, no final do evento.\\
+Além disso, você vai receber lembretes especiais nas vésperas do evento pra não perder nada por lá!\\
+E, caso o evento seja pago e você ainda não tiver comprado o ingresso, a gente vai lhe avisar pra que não deixe de comprar antes do próximo lote. Ninguém precisa pagar mais caro em evento bom, né?
+
+Se o evento já aconteceu ou ainda vai acontecer, você passa a fazer parte do grupo seleto de pessoas que participou! Isso auxilia os organizadores a entender melhor o público que eles tem e planejar o melhor evento pra vocês.
+
+Demonstrar interesse no evento também é importante! Além de ajudar a organização, você também passa a receber as principais notificações, como o lançamento da grade e a liberação de materiais após o evento.
+
+\subsection{Estou indo para o evento agora. Como o Konato pode me ajudar?} \label{faq:hoje}
+\adiado{} Muito fácil: só acessar a página do evento no seu celular. Se você fizer isso antes de sair de casa, quando acessar lá de novo você não vai depender (muito) da sua conexão de dados ou do Wi-fi. Vai ser bem rápido para descobrir em qual salão é \emph{aquela} palestra que você precisava assistir :)
+
+
+\section{Meu perfil} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Quais as vantagens de criar um cadastro?} \label{faq:vantagens}
+
+Muitas! Olha só:
+\begin{itemize}[itemsep=-1ex]
+	\item Você pode entrar em contato com diversos outros participantes e palestrantes através da plataforma;
+	\item Fica mais fácil de rever os eventos que você já foi: todos eles podem ser guardados na sua lista;
+	\item Ouviu falar de um novo evento que vai acontecer em breve? Você pode ser avisado quando a gente tiver novidades sobre a programação, os palestrantes ou os slides. Legal né?
+	\item E se você não ouviu falar em nenhum ainda, não se preocupe: nos diga alguns temas que você tem afinidade e, quando aparecer algo interessante, nós te avisaremos!
+\end{itemize}
+
+\begin{figure}[h!]
+	\centering \includegraphics[width=0.6\linewidth]{imagens/faq/perfil.jpg}
+	\caption{O Perfil de um usuário feliz}
+\end{figure}
+
+\subsection{Ok, e como eu posso me cadastrar?} \label{faq:cadastrar}
+\begin{figure}[h!]
+	\vspace{-50pt}
+	\includegraphics[width=0.3\linewidth,right]{imagens/faq/cadastrar.jpg}
+	\vspace{-20pt}
+\end{figure}
+\begin{itemize}[itemsep=-0.8ex]
+	\item Lá em cima, no canto da direita, tem um botão chamado [Cadastrar]. Se você clicar ali, a gente vai te mostrar como é bem fácil pra você passar a fazer parte da comunidade;
+	\item Se você já tiver uma conta em um dos sites que listamos na página seguinte, você pode usá-la pra gente agilizar o processo. Daí é só você nos dar permissão e nos dizer um usuário;
+	\item Se preferir ir pelo método mais tradicional, não tem problema: é só nos dizer seu nome, e-mail, um usuário que lhe identifique, e uma senha;
+	\item Pronto! Se você preencheu tudo corretamente, a gente já vai te mostrar como ficou seu perfil.
+\end{itemize}
+
+\begin{itemize}[itemsep=-0.8ex]
+	\item Se quiser alterar ou adicionar alguma informação no seu perfil, é só clicar no botão [Editar meu perfil], que fica do lado oposto da sua foto;
+	\item Lá você vai poder trocar sua foto, adicionar outros links e redes sociais, e até mesmo configurar seus alertas (\autoref{faq:configuracoes} ou integrar com algum programa de calendário que você já use (\autoref{faq:calendarios}).
+\end{itemize}
+
+\subsection{E se eu já tenho uma conta, como entro novamente na plataforma?}
+É só clicar no botão lá de cima, escrito [Login]. Daí você indica uma Rede Social sua, ou digita o usuário e senha... E pronto :)
+\begin{figure}[h!]
+	\centering \includegraphics[width=0.4\linewidth]{imagens/faq/login.jpg}
+	\vspace{-20pt}
+\end{figure}
+
+\subsection[Como adiciono novos contatos?]{Tenho alguns amigos que também usam o Konato. Como faço para colocá-los na minha lista?} \label{faq:contatos}
+\adiado{} Você já encontrou o perfil do seu amigo? Se não encontrou ainda e ele nem te passou o endereço, você pode procurá-lo pelo nome, e-mail ou usuário no campo de busca no topo da tela.
+
+Já encontrou? Então agora é só clicar no botão [Adicionar contato]. Ele vai ser avisado e, quando aceitar, você já vai poder achá-lo facilmente pela sua Lista de Contatos. Além do mais, quando ele se interessar por algum evento que tenha gostosos similares com você, a gente também vai te avisar :)
+
+Se você tiver interesse nas atividades de um palestrante, mas não tiver intimidade para adicioná-lo como um contato, você pode optar por ``Acompanhar suas atividades''. Assim, você fica sabendo dos eventos que ele vai palestrar e algumas outras informações públicas, sem precisar que ele te aceite -- tipo o Twitter, sabe?
+
+
+%\begin{wrapfigure}[4]{R}[10pt]{0.4\textwidth}
+%	\vspace{-40pt}
+%	\includegraphics[width=0.37\textwidth]{imagens/faq/notifs.jpg}
+%\end{wrapfigure}
+
+\subsection[Como revejo as notificações que já recebi?]{Apaguei alguns e-mails do Konato por engano. É possível rever as notificações que recebi?} \label{faq:notificacoes}
+\adiado{} Para ver as últimas notificações você pode clicar no botão do [Sino]  no canto da direita, em cima. Ali vão aparecer os avisos mais recentes que te mandamos. Agora, se quiser ver a lista completa das notificações, com todos os detalhes, no final daquela listinha tem um link escrito ``Ver todas''.
+
+
+\subsection[Como ``desassino'' temas?]{Não tenho mais interesse em alguns temas que ``assinei'' no passado. Como posso retirá-los do meu perfil?} \label{faq:configuracoes}
+\adiado{} Caso você queira remover algum tema do seu perfil você pode fazer o seguinte:
+\begin{enumerate}[itemsep=-1ex]
+	\item Vá até o seu perfil;
+	\item Na lista lateral de temas, passe o mouse em cima do tema que deseja remover por um ou dois segundos. Um (X) vai aparecer em cima dele;
+	\item Clicando nesse botão, o tema vai ser removido da sua lista de interesses.
+\end{enumerate}
+
+\adiado{} Mas se você quiser só parar de ser notificado sobre determinado tema, mas ainda quiser demonstrar que tem interesse, funciona assim:
+\begin{enumerate}[itemsep=-1ex]
+	\item No seu perfil, clique no botão [Editar];
+	\item Lá, vá em [Minhas preferências de Temas];
+	\item Vai aparecer uma listagem com todos os temas que você segue, e as configurações de alertas pra cara um deles;
+	\item A partir daí, é só localizar o tema que você deseja alterar e mudar a opção de alertas;
+	\item Pronto! O tema ainda aparece no seu perfil mas não vamos te avisar mais sobre as novidades dele.
+\end{enumerate}
+
+\subsection[É possível integrar com minha agenda/calendário?]{Eu uso o Outlook / Google Calendar / iCal para me organizar. O que você pode fazer por mim?} \label{faq:calendarios}
+
+
+\begin{wrapfigure}[4]{R}{0.24\textwidth}
+	\vspace{40pt}
+	\includegraphics[width=0.2\textwidth]{imagens/faq/export.jpg}
+\end{wrapfigure}
+
+\adiado{} É muito fácil fazer a integração das suas atividades no Konato com o seu calendário do dia-a-dia:
+\begin{enumerate}[itemsep=-1ex]
+	\item A partir do seu perfil, vá em [Editar], no canto direito;
+	\item Na lateral direita da tela, mais pra baixo, tem uma lista com os Provedores de Calendários que nós damos suporte;
+	\item Se você clicar no tipo de Calendário que você usa, vão aparecer instruções detalhadas sobre como configurar cada um deles.
+\end{enumerate}
+
+Com a integração configurada logo vão aparecer no seu calendário os eventos que você vai participar e as atividades que você tem interesse em assistir. Achou prático? Então mostra pros seus amigos! Aposto que eles vão gostar também :)
+
 
 \bibliography{projeto}
 
