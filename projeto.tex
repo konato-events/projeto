@@ -1505,10 +1505,7 @@ Há também planos de implementar integração com sistemas de \emph{feedback} d
 \section{Análise do desenvolvimento do sistema}
 
 \subsection{Gráfico de Gantt}
-A seguir está representado o Gráfico de Gantt original do projeto. Ele foi organizado de forma a destacar as principais categorias de tarefas, para evidenciar as diferentes áreas de conhecimento e, possivelmente, subdividir as especialidades de forma mais ágil.
-
-%todo avaliar possibilidade de transformar isso num apêndice, visto que não dá pra legendar e ele nem encaixa bem no fluxo do documento
-\includepdf[pages={1,2,4,5},pagecommand={},angle=90,templatesize={0.8\linewidth}{15cm}]{./diagramas/gantt.pdf}
+O Gráfico de Gantt original do projeto foi incluído neste documento como o \autoref{apend:gantt}. Ele foi organizado de forma a destacar as principais categorias de tarefas, para evidenciar as diferentes áreas de conhecimento e, possivelmente, subdividir as especialidades de forma mais ágil.
 
 %\subsection{Diagramas de Atividade}
 
@@ -1518,13 +1515,13 @@ Como citado anteriormente, os protótipos de telas do sistema foram criados no M
 Os protótipos interativos podem ser avaliados em \url{https://moqups.com/igorsantos07/3jyAGeSX/}. Caso não seja possível identificar o que é interativo na página, basta clicar em qualquer ponto vazio dentro dela: o Moqups indicará temporariamente todos os elementos que podem ser clicados.
 
 \subsubsection{Protótipos estáticos}
-Para fins de documentação, as versões estáticas dos protótipos das telas são exibidos nas páginas a seguir. As legendas incluem um texto descritivo do protótipo e, quando necessário, indica quais interações são previstas na tela. Quando houver um Caso de Uso (vistos na \autoref{sec:ucs}) relacionado à tela ou à interação, o seu código do Caso de Uso também será indicado.
+Para fins de documentação, as versões estáticas dos protótipos das telas são exibidos nas páginas a seguir. As legendas incluem um texto descritivo do protótipo e, quando necessário, indica quais interações são previstas na tela. Quando houver um Caso de Uso (apresentados na \autoref{sec:ucs}) relacionado à tela ou à interação, o seu código do Caso de Uso também será indicado.
 
 Os principais Casos de Uso foram prototipados. Não há versões para todas as telas por limitações de uso da ferramenta; portanto, telas pouco otimizáveis, como formulários, foram omitidas desta fase de testes.
 
-\begin{figure}
+\begin{figure}[hb]
 \centering
-	\includegraphics[width=1\linewidth]{imagens/prototipos/1-0_Home.jpg}
+	\includegraphics[width=0.85\linewidth]{imagens/prototipos/1-0_Home.jpg}
 	\caption[Página Inicial]{Página Inicial. Demonstra as principais propostas de valor do projeto, possui um \emph{call to action}\footnotemark{} para cadastro (\ref{uc:cadastro} \ref{uc:cadastro-social}) e, no futuro, incluirá estatísticas de popularidade do projeto.}
 	\label{prot:home}
 \end{figure}
@@ -2004,7 +2001,91 @@ Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no proje
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Manuais}
+Os Manuais de Operação e do Usuário foram incluídos como apêndices deste documento.
+
+\subsection{Manual de Operação}
+Este é o \autoref{apend:operacao}. As instruções originais de operação do sistema estão contidas em arquivos \texttt{README.md} no repositório, nas pastas em que instruções forem necessárias -- o padrão para projetos open-source, visto que mantém as instruções gerais junto com o código-fonte. O Manual de Operação formal é baseado neste mesmo arquivo.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \postextual
+
+\apendices
+
+\chapter{Gráfico de Gantt} \label{apend:gantt}
+%todo avaliar forma de manter o título do apêndice junto com a primeira página
+\includepdf[pages={1,2,4,5},pagecommand={},angle=90,templatesize={0.8\linewidth}{15cm}]{./diagramas/gantt.pdf}
+
+\chapter{Manual de Operação} \label{apend:operacao}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Instruções Gerais (\emph{README.md})}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Utilização do Docker (\emph{docker/README.md})}
+
+Docker (\url{http://www.docker.com}) é uma plataforma para isolamento do ambiente de desenvolvimento, de forma mais leve que a virtualização tradicional. Para detalhes, visite o site ou dê uma olhada nessa apresentação:
+\begin{description}
+	\item[Slides] \url{https://denibertovic.com/talks/supercharge-development-env-using-docker}
+	\item[Vídeo] \url{https://youtu.be/-l9xH1X_rvg}
+\end{description}
+
+\subsection{Configurando o ambiente de desenvolvimento}
+\begin{enumerate}
+	\item Instale o Docker (\url{http://docs.docker.com/linux/step_one/}):\\ \texttt{wget -qO- https://get.docker.com/ | sh} 
+	\item Baixe a imagem: \texttt{docker pull konato/php7-beta}.
+\end{enumerate}
+
+\subsubsection{\emph{Helper script}}
+Foi criado, na raiz do projeto, um script que facilita o uso rotineiro do Docker. O script cobre ações como: iniciar o container, executar comandos arbitrários, abrir o \texttt{psql} ou o \texttt{bash}, e executar comandos do \texttt{Artisan}. Antes de usar, no entanto, é necessário definir uma variável de ambiente \texttt{CONTAINER} com o nome dele, usando por exemplo \texttt{export CONTAINER=trusting\_einstein}. Para mais detalhes, verifique \texttt{./dock -{}-help}.
+
+\subsubsection{Uso comum}
+
+\subsubsubsection*{Criar um container a partir da imagem}
+É possível fazer o \emph{bind} de uma pasta local com uma pasta do container, de modo que as alterações de arquivos no \emph{filesystem} da sua máquina se reflitam diretamente no container. Para isso, se usa a opção \texttt{-v}. Para fazer um \emph{bind} similar com as portas locais e do container, a opção é \texttt{-p}. Exemplo:
+\begin{verbatim}
+docker run -d \ # roda o container em background (detach/daemon)
+    -v <<raiz local>>:/var/www \ # bind nas pastas (use `pwd`,
+       não um path relativo!)
+    -p <<porta local>>:80 \ # server roda na porta 80 por default
+    -t konato/project:dev # nome da imagem
+\end{verbatim}
+    
+\subsubsubsection*{Usar o container novamente}
+\begin{enumerate}[itemsep=-1ex]
+	\item localizá-lo em \texttt{docker ps -a};
+	\item se não estiver ligado, ligar com \texttt{docker start <<id/name>>}.
+\end{enumerate}
+
+\subsubsubsection*{Entrar no shell (com o container ligado)}
+\texttt{docker exec -it <<id/name>> /bin/bash}
+
+\subsubsubsection*{Atualizando a imagem}
+\begin{enumerate}[itemsep=-1ex]
+	\item Editar o Dockerfile: \url{https://docs.docker.com/reference/builder/};
+	\item \texttt{docker build -{}-tag=konato/php7-beta -{}-file=php7-beta.dockerfile};
+	\item \texttt{docker push konato/php7-beta}.
+\end{enumerate}
+\textbf{Nota:} Caso crie-se uma imagem com uma configuração diferenciada mas que não substitua a anterior, é importante indicar uma tag específica, como \texttt{konato/php7-beta:apache}.
+
+\subsection{Imagem de testes e produção}
+Além da imagem pura com o PHP7 + Nginx (\texttt{konato/php7-beta}), há também uma imagem pré-configurada para executar o projeto: \texttt{konato/project}. Seu Dockerfile é o \texttt{project.dockerfile}.
+
+\subsubsection{Atualização / rebuild}
+Atualmente, para ter a versão mais atualizada do projeto dentro da imagem, é necessário fazer o re-build: \texttt{docker build -{}-tag=konato/project:latest -{}-file=project.dockerfile .}
+    
+\subsubsection{Executar}
+Com o comando seguinte o projeto estará disponível na porta \texttt{81} da máquina local: \texttt{docker run -d -p 81:80 konato/project}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Instruções para i18n (\emph{resources/locales/README.md})}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Manual do Usuário} \label{apend:usuario}
+
 \bibliography{projeto}
 
 \end{document}
