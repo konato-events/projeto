@@ -113,6 +113,19 @@ Durante todo o tempo de execução deste TCC, seguindo as normas desta institui�
 A documentação desse projeto foi construída em \LaTeX, uma linguagem de marcação voltada para documentos científicos e técnicos. O histórico de versões deste foi armazenado no Git, no endereço \url{https://bitbucket.org/congresso-app/projeto/}.
 
 Esta decisão foi tomada pela habilidade que uma linguagem de texto puro possui para suportar versionamento complexo, e mesclagem de versões concomitantes entre dispositivos diferentes. Além disso, outro fator essencial do \LaTeX{} é a disponibilização de um pacote de formatação pré-configurado, nas normas da ABNT, o abn\TeX{}2\cite{abntex2}\cite{abntex2-slides}. Este pacote configura o compilador automaticamente com os requisitos das normas da Associação Brasileira de Normas Técnicas, permitindo ao autor redigir o documento pensando exclusivamente em seu conteúdo e estrutura hierárquica, sem perder o foco ou tempo com a reformatação recorrente do que já foi escrito.
+
+\section*{Idiomas utilizados no projeto}
+Como boa prática em mercados de TI estrangeiros (ao inglês), todo o código-fonte e a maior parte dos documentos auxiliares que o acompanha são escritos no idioma inglês. Tal comportamento é interessante pois auxilia a manter a mente numa linha de raciocínio única, ao invés de ficar trocando entre português e inglês -- visto que as palavras-chave e comandos da programação sempre estão neste último idioma.
+
+Salvas algumas raras exceções, o inglês foi utilizado em:
+\begin{itemize}
+	\item variáveis e comentários do código;
+	\item commits do Git;
+	\item lista de tarefas do Bitbucket;
+	\item documentação auxiliar no repositório;
+	\item textos da página e strings de tradução, como língua-raiz. Este comportamento é importante também por facilitar a entrada de tradutores para outros idiomas -- é muito mais fácil encontrar pessoas que falem inglês como segunda-língua.
+\end{itemize}
+
 \end{KeepFromToc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2019,9 +2032,103 @@ Este é o \autoref{apend:operacao}. As instruções originais de operação do s
 
 \chapter{Manual de Operação} \label{apend:operacao}
 
+\begin{framed}
+	\noindent
+	\textbf{Nota:} conforme indicado no Prefácio, parte da documentação do repositório encontra-se originalmente em inglês.
+\end{framed}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Instruções Gerais (\emph{README.md})}
 
+\begin{otherlanguage}{english}
+\subsection{Installation}
+\begin{enumerate}[itemsep=-1ex]
+	\item Clone the project. You've probably already done it now, or at least know how to do if you're reading this file.
+	\item Make sure those folders have write access by the server:
+		\begin{itemize}[itemsep=-1ex,topsep=-1ex]
+			\item \texttt{storage/logs};
+			\item \texttt{bootstrap/cache}.
+		\end{itemize}
+	\item Create an environment file for you: `cp .env.example .env`
+	\item Insert cool keys into it, for cool crpytography operations: `./artisan key:generate`
+	\item Install all dependencies (wait, you have Composer and NPM, right? (You don't? See the next section for instructions):
+		\begin{itemize}[itemsep=-1ex,topsep=-1ex]
+			\item \texttt{composer install}
+			\item \texttt{npm install --global gulp} (not obligatory, but will help you with some commands)
+			\item \texttt{npm install}
+		\end{itemize}
+\end{enumerate}
+
+\subsubsection{Package managers}
+Seriously? You don't have those nice Composer/NPM guys there? Ok, keep reading:
+
+\subsubsubsection*{Composer}
+This will install Composer globaly, and you can call it through \texttt{composer}; no need for \texttt{.phar} or local installations, yey!
+
+\begin{verbatim}
+$ curl -sS https://getcomposer.org/installer \
+  | sudo php -- --filename=composer \
+  --install-dir=/usr/local/bin`
+\end{verbatim}
+
+\subsubsubsection*{Node/io.js + NPM}
+To make matters easier, you should preferably install those using the Node Version Manager. If you prefer not, go to: \url{https://iojs.org} or \url{https://nodejs.org}.
+
+Down to the rabbit hole! You should check the latest NVM release (from here: \url{https://github.com/creationix/nvm/releases/latest}) to use the version number in the first command:
+
+\begin{verbatim}
+$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.26.1/install.sh \
+    | sudo NVM_DIR=/usr/local/nvm bash
+$ nvm install iojs # installs io.js. You can use `nvm ls-remote` to see other
+    packages and versions
+$ nvm alias default iojs # sets io.js as the default version
+$ nvm use iojs # enables io.js right now, without restarting the shell
+\end{verbatim}
+
+\subsubsection{Assets management}
+Laravel comes pre-packed with Elixir (\url{http://laravel.com/docs/5.1/elixir}), an easier way to run Gulp tasks. \emph{No, it's not the Brazilian, easier version of Erlang (\url{https://en.wikipedia.org/wiki/Elixir_(programming_language)}).}
+
+\begin{itemize}
+	\item You'll be mainly working with the \texttt{gulpfile.js} from the root dir. Elixir functions are baked there;
+	\item To compile once, run \texttt{gulp} from the root dir;
+	\item To compile for production usage, run \texttt{gulp --production};
+	\item To keep compiling while you develop, use \texttt{gulp watch}.
+\end{itemize}
+
+\subsubsection{Database}
+We use PostgreSQL here - as it's prepackaged in Heroku and has cool geolocation features if we need them later. You need to create a user and a database, and then import the basic structure, as follows:
+
+\begin{verbatim}
+$ sudo su - postgres
+postgres $ createuser -DPRS konato # will ask for a password; use "konato" too
+postgres $ createdb -O konato konato
+postgres $ psql -h 127.0.0.1 -WU konato konato -f database/create.sql
+\end{verbatim}
+To access the PostgreSQL database inside the docker container, use \texttt{./dock psql} (that will run something like \texttt{docker exec -it «container\_name» psql -h 127.0.0.1 -WU konato konato}).
+
+\subsection{Deploying to production}
+We needed to make some tweaks to the original project to have it running smoothly inside Heroku.
+
+\subsubsection{Environment variables}
+Laravel uses \texttt{.env} to manage environment variables. Sadly, it seems there's no easy way to have a production \texttt{.env} file, since we don't have access to the production machines and what's deployed is exactly the same codebase. However, Heroku provides a way to configure env vars as well. And they override Laravel ones. Great! The command is \texttt{heroku config:set VAR=value}. This can be used to alter other variables, and I guess this can be changed in the Heroku Dashboard as well.
+
+Current list of custom variables we had to setup to have the application working:
+
+\begin{itemize}[itemsep=-1ex]
+	\item \texttt{APP\_ENV=prod}
+	\item \texttt{APP\_DEBUG=false}
+	\item \texttt{APP\_KEY=secretDuh}
+	\item \texttt{FACEBOOK\_ID=secretDuh}
+	\item \texttt{FACEBOOK\_SECRET=secretDuh}
+\end{itemize}
+
+\subsubsection{Logging}
+Inside Heroku, logs must be sent to \texttt{stdout}/\texttt{stderr}. Inside Laravel 5, this is done by configuring logs to go to \emph{errorlog}. Using the above mentioned env var, we defined the production environment to log to \emph{errorlog}, and other instances to keep logging in a \emph{single} file. PaperTrail is a Heroku addon that enables us to see the log stream, live -- it can be accessed from the Heroku Dashboard as well.
+
+\subsubsection{Additional deployment procedures}
+To make matters easier, there's a helper script in the root folder called \texttt{deploy}. It's scheduled to run in Composer every time a new \texttt{composer install} command is issued (that happens every new Heroku deploy) -- but rest assured, it won't complicate your development life: it verifies the environment before compressing and caching files ;)
+
+\end{otherlanguage}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2080,8 +2187,40 @@ Atualmente, para ter a versão mais atualizada do projeto dentro da imagem, é n
 \subsubsection{Executar}
 Com o comando seguinte o projeto estará disponível na porta \texttt{81} da máquina local: \texttt{docker run -d -p 81:80 konato/project}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Instruções para i18n (\emph{resources/locales/README.md})}
+\section{Instruções para i18n e l10n (\emph{resources/locales/README.md})}
+
+\begin{framed}
+	\noindent
+	\textbf{Nota:} i18n e l10n significam, respectivamente, \emph{internationalization} e \emph{localization}. São abreviaturas comumente usadas para simplificar a escrita destas palavras.
+\end{framed}
+
+\begin{otherlanguage}{english}
+
+\textbf{GNU Gettext} (\url{http://br2.php.net/manual/en/intro.gettext.php}) is a standard for internationalization (i18n) of code projects. There's a \texttt{.po} file that contains all our translation strings, and it should be compiled into a \texttt{.mo} binary. The project is configured with gettext to read from the files stored in this folder. To use a translated string in a page, use the (standard) \texttt{\_()} function (\url{http://br2.php.net/manual/en/function.gettext.php}). We have also created some shortcuts for other commonly used functions, like those for pluralization or replacements: \texttt{\_\_()}, \texttt{\_r()} and \texttt{\_\_r()}; take a look at the \texttt{resources/views/helpers.php} to get a feel of them.
+
+For more details on how GNU Gettext works, take a look at this great tutorial by LingoHub: \url{https://lingohub.com/blogs/2013/07/php-internationalization-with-gettext-tutorial/}. And no, currently we don't use \texttt{.pot} files - we prefer to keep a clean environment \emph{ha-ha}. 
+
+\subsection{How to use the translation files}
+We use Poedit to work with the \texttt{.po} file. You can find it in Ubuntu's repositories or download an installable for Mac/Windows or a tarball from their site: \url{https://poedit.net}.
+
+\begin{enumerate}
+	\item Run Poedit and open the \texttt{.po} file for your desired language. Our files are stored in \texttt{/web/resources/locales/«language»/LC\_MESSAGES}.
+	\item You can select any translation to change it. Saving the file will recompile it.
+	\item Whenever you change your source files, you should open the translation again and hit Refresh. It will review the source codes and update strings accordingly - changing strings and marking as fuzzy, removing old or adding new ones as needed.
+	\item Issues will appear on the top of the list (unless \texttt{View > Not translated entries first} is unchecked. Check it!):
+		\begin{itemize}
+			\item Fuzzy translations are golden-coloured. They should be verified, fixed if needed, and then marked as fine.
+			\item Some strings may contain errors -- red ones. Fix them. Those are discovered when you ask Poedit to Validate your file, or when you try to save it.
+			\item If there's something without a translation, do it!
+   		\end{itemize}
+\end{enumerate}
+
+\subsection{How is Gettext being configured}
+There are two methods in \texttt{app/Providers/AppServiceProvider.php} that does the hard job. One discovers the user's language (\texttt{defineLocale()}), and the second actually configures the locale settings.
+
+\end{otherlanguage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Manual do Usuário} \label{apend:usuario}
