@@ -81,17 +81,36 @@
 \frenchspacing % remove o espaço extra entre frases
 
 \imprimircapa
-\imprimirfolhaderosto
+\imprimirfolhaderosto*
 
-%todo: avaliar necessidade; verificar uso dos comandos abaixo na doc do abnTeX2 e no exemplo que estão no cabeçalho comentado
-%\begin{fichacatalografica} \end{fichacatalografica}
-%\begin{folhadeaprovacao} \end{folhadeaprovacao} ou \includepdf{aprovacao_final.pdf}
-%\begin{resumo} \end{resumo}
+%\begin{fichacatalografica}
+%	\includepdf{inc/ficha_catalografica.pdf}
+%\end{fichacatalografica}
 
-\begin{KeepFromToc}
-\tableofcontents
+%\begin{folhadeaprovacao}
+%	\includepdf{inc/aprovacao.pdf}
+%\end{folhadeaprovacao}
+
+\begin{resumo}
+	Este projeto tem como objetivo o planejamento e posterior confecção de um sistema online para descoberta e divulgação de eventos, nos âmbitos técnico, científico e acadêmico. A ideia foi concebida após observar a dificuldade que novos profissionais e universitários possuem de acompanhar o mercado e descobrir congressos na sua área. A metodologia \emph{Lean Startup} foi adotada para o desenvolvimento do negócio, de forma que tivesse agilidade desde o começo e sustentação a longo prazo. Ao final do desenvolvimento, um sistema básico foi entregue, que permite aos usuários criar eventos, se inscrever para serem notificados sobre novos cadastros, e consultar informações diversas sobre seus congressos de interesse. O uso de tecnologias como Docker e Heroku permitiu ao sistema ser facilmente portável e isolável.
+	
+	\vspace{\onelineskip}
+	\textbf{Palavras-chave}: web. desenvolvimento web. sistema web. sistema de busca. rede social. evento universitário. evento acadêmico. congresso. evento. Git. Docker. Heroku. PHP. PostgreSQL. Twitter Bootstrap. notificação. startup. lean startup. canvas. business model canvas. lean canvas. mapa de empatia. árvore de problemas. MVP.
+\end{resumo}
+
+\begin{otherlanguage}{english}
+	\begin{resumo}[Abstract]
+		The main objective of this project is planning and later development of an online system focused on discovery and marketing of technical, scientific and academic events. The idea was conceived after observation of how hard it is for new professionals and university students to follow up with the market tendencies and discover congresses in their own area of expertise. The \emph{Lean Startup} methodology was adopted for the business development, so it could be agile since the beginning and could have a good foundation in the long run. In the end, a basic system was delivered, allowing the users to create events, subscribe to new information, and verify various data on their congresses of interest. The use of technologies such as Docker and Heroku allowed the system to be easily portable and isolable.
+		
+		\vspace{\onelineskip}
+		\textbf{Keywords}: web. web development. web system. search system. social network. university event. academic event. congress. event. Git. Docker. Heroku. PHP. PostgreSQL. Twitter Bootstrap. notification. startup. lean startup. canvas. business model canvas. lean canvas. empathy map. problems tree. MVP.
+	\end{resumo}
+\end{otherlanguage}
+
+\tableofcontents*
 
 \chapter*{Prefácio}
+\addcontentsline{toc}{chapter}{Prefácio}
 \section*{Definições usadas neste documento}
 Para fins de comunicação, as seguintes palavras e seus atores serão tomadas como sinônimas, exceto quando especificado o contrário -- na \autoref{sec:eventos} explicaremos os conceitos envolvidos mais a fundo:
 \begin{itemize}[itemsep=-1ex]
@@ -105,7 +124,7 @@ Para fins de comunicação, as seguintes palavras e seus atores serão tomadas c
 \section*{Breve histórico do projeto}
 Desde a concepção da ideia, o objetivo desde projeto era ir além da apresentação acadêmica, lançando o sistema no mercado, para uso geral. Com isso, mesmo solitária, a ideia tomou a forma de uma startup, e foi posta à prova por inúmeras conversas e questionamentos com diversos amigos e novos colegas, encontrados a partir de eventos de networking.
 
-Durante um destes eventos, conheci duas pessoas que vieram a integrar a equipe: Eduardo Godinho (graduando em Administração de Empresas pela UNIRIO) e Letícia Oliveira (graduanda em Administração de Empresas pela UERJ). Ambos contribuíram com algumas ideias e questões conceituais. No entanto, com o decorrer do tempo, tomei outros rumos e me separei da equipe inicial. Algumas ideias vindas daquele grupo foram mescladas ao projeto original. A principal contribuição foi a definição do escopo, que foi baseado no MVP\footnotemark daquela startup.
+Durante um destes eventos, conheci duas pessoas que vieram a integrar a equipe: Eduardo Godinho (graduando em Administração de Empresas pela UNIRIO) e Letícia Oliveira (graduanda em Administração de Empresas pela UERJ). Ambos contribuíram com algumas ideias e questões conceituais. No entanto, com o decorrer do tempo, tomei outros rumos e me separei da equipe inicial. Algumas ideias vindas daquele grupo foram mescladas ao projeto original. A principal contribuição foi a definição do escopo, que foi baseado no MVP\footnotemark{} daquela startup.
 
 Dados estes fatos, faz-se necessário esclarecer que em algumas partes deste documento ocorre o uso da primeira pessoa do singular, visto que certas decisões e atitudes foram tomadas por vontade única do autor do projeto, não sendo correto conferir a estas o tom de impessoalidade ou atribuir à ``voz de grupo''. Grande parte do documento, no entanto, foi baseada em referências diversas e aglutina opiniões de mercado e do público e, portanto, se refere à pessoa do plural.
 
@@ -127,13 +146,14 @@ Salvas algumas raras exceções, o inglês foi utilizado em:
 	\item commits do Git;
 	\item lista de tarefas do Bitbucket;
 	\item documentação auxiliar no repositório;
-	\item textos da página e strings de tradução, como língua-raiz. Este comportamento é importante também por facilitar a entrada de tradutores para outros idiomas -- é muito mais fácil encontrar pessoas que falem inglês como segunda-língua.
+	\item textos da página e strings de tradução, como língua de base. Este comportamento é importante também por facilitar a entrada de tradutores para outros idiomas -- é muito mais fácil encontrar pessoas que falem inglês como segunda-língua.
 \end{itemize}
-
-\end{KeepFromToc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textual
+
+\chapter*{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
 
 \chapter{Proposta do Projeto de TCC}
 
