@@ -152,13 +152,11 @@ Salvas algumas raras exceções, o inglês foi utilizado em:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textual
 
-\chapter*{Introdução}
-\addcontentsline{toc}{chapter}{Introdução}
+\chapter{Introdução}
 
-\chapter{Proposta do Projeto de TCC}
+\section{Fundamentos do projeto}
 
-\section{Motivação}
-
+\subsection{A motivação}
 É notável a dificuldade que congressistas muitas vezes enfrentam para obter informações atualizadas sobre as conferências das quais participarão ou estão participando naquele momento. Outras tantas vezes, eles não ficam sabendo sobre novos eventos das suas áreas de interesse. Tais fatos foram notados por experiência própria e durante entrevistas informais com o público alvo.
 
 Por exemplo, muitas vezes são entregues panfletos ou cartões com a programação, mas esse tipo de objeto frequentemente é perdido ou danificado no decorrer do dia. Além disso, podem ocorrer alterações de última hora, o que torna a grade distribuída alvo de rabiscos e anotações. Invariavelmente, \emph{slots} de programação indefinida (comum em mesas-redondas ou \emph{lightning talks}\footnotemark) levam o conferencista a se deslocar até a atividade para descobrir se valerá a pena assistir ou não. Percebemos também que, por vezes, há informações desencontradas sobre o evento, como conflitos entre os dados no Facebook, na página da organização, no site e no material impresso.
@@ -166,9 +164,35 @@ Por exemplo, muitas vezes são entregues panfletos ou cartões com a programaç�
 Para eventos de menor porte, o departamento que mais sofre é o de marketing; com seu orçamento reduzido, muitas vezes a divulgação impressa é curta e cobre somente regiões de grande apelo -- como corredores de alto fluxo nas grandes instituições de ensino (áreas disputadas por muitos outros cartazes e filipetas). O material impresso dificilmente carrega detalhes sobre o evento, obrigando o usuário a buscar mais informações na internet, por exemplo. Além disso, eles também tendem a ficar defasados facilmente, caso alguma alteração na programação ocorra. Por fim, a divulgação tradicional também depende de recursos humanos para fazê-la, que são sempre muito escassos.\\
 Já a divulgação online tende a ser pouco eficiente e, portanto, é muitas vezes colocada em segundo plano, ou sub-utilizada: é difícil atingir mercados de nicho sem publicidade direcionada -- e, normalmente, bem paga.
 
-\section{O Projeto}
+\subsection{Metodologias}
+Fugindo da análise tradicional de negócios, optamos por desenhar o \emph{business} do projeto se baseando nos conceitos de \emph{Lean Startup}, trazidos por \citeauthor{manual-startup}\cite{whats-startup}, \citeauthor{lean-startup}\cite{five-whys}, \citeauthor{lean-canvas} dentre outros. O objetivo é trazer uma base escalável e sólida para o projeto, e ao mesmo tempo permitir um passo ágil e eficiente. Seguindo a mesma linha de raciocínio, o projeto será desenvolvido com pequenas iterações, respeitando datas de entrega e avaliando cada novo estado do sistema com o cliente, de forma a manter o ciclo de \emph{feedback} curto. Seguindo este fluxo, caso haja necessidade de alterações, as perdas serão minimizadas. A descrição completa das metodologias pode ser vista na \autoref{sec:metodo}, e a modelagem do negócio, na \autoref{sec:modelagem-negocios}.
 
-Partindo destas premissas, o objetivo deste projeto é criar uma plataforma digital que permita aos usuários descobrir novos eventos -- a partir de áreas de interesse --- e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; contato e descoberta de outros participantes e interessados. Este sistema necessitaria de um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
+Na origem, o sistema era algo bem maior, e para este TCC decidimos trazer algo próximo ao MVP da ideia original. Este é outro conceito trazido da \emph{Lean Startup}, onde se decide a lista de funcionalidades a implementar a partir do quão urgente é a necessidade do cliente por cada uma delas, e se escolhe somente as mais essenciais, capazes de resolver o problema básico.
+
+Para organizar as fases de problematização e \emph{design} do negócio, escolhemos usar os diagramas de Mapa de Empatia (\autoref{sec:mapa-empatia}), Árvore de Problemas (\autoref{sec:arvore-problemas}), \emph{Lean Canvas} (\autoref{sec:lean-canvas}), e \emph{Experiment Board} (\autoref{sec:experiment-board}). Cada um desses foca no desenvolvimento metódico de uma parte importante da solução, respectivamente: o cliente em si, os problemas que ele enfrenta, os métodos de solução e desenvolvimento do negócio, e as hipóteses que precisam ser testadas para verificar a viabilidade e eficiência do negócio.
+
+\subsection{Tecnologias}
+Conforme descrito na \autoref{sec:tecnologias}, por conta da experiência do autor, foi decidido iniciar o projeto no ambiente web. Outra vantagem é a agilidade nas iterações: o fluxo entre desenvolvimento e \emph{deploy} é bem curto, o que facilita obter \emph{feedback} inicial de clientes em potencial. A própria natureza do projeto nos permite iniciar no ambiente online sem perda de público, visto que as atividades que serão desempenhadas no sistema envolvem pesquisa, leitura e comparação de conteúdos. Tais atividades se tornam naturalmente mais confortáveis se desempenhadas a partir de um computador tradicional, ou tablet.
+
+No entanto, o estado atual das tecnologias web nos permite desenvolver um sistema acessível também por dispositivos móveis, a partir do browser. No futuro, poderemos implementar funcionalidades que permitirão a plataforma interagir cada vez mais com o usuário, ainda sem a necessidade de implementar um aplicativo móvel completo.\cite{bitbucket-mobile-milestone}
+
+\section{Estado da Arte}
+Há um sistema de foco similar no mercado atualmente: o \textbf{Lanyrd}. Dentre as similaridades, destacam-se a busca por eventos, notificação baseada em temas e localização de interesse, funcionalidades básicas de rede social, e detalhes diversos sobre os eventos listados na plataforma. No entanto, o sistema foi abandonado após ter sido comprado pela gigante de ingressos Eventbrite, em 2014.\cite{lanyrd-abandonado} Desde então, não houve mais atualizações: o sistema carece de mais funcionalidades sociais, uma interface mais moderna, e internacionalização -- pontos apontados em entrevistas com clientes em potencial. As principais desvantagens de mercado são relacionadas ao nicho no qual o Lanyrd sempre foi mais presente: os mercados de TI anglófonos. O projeto tem muito pouca participação em mercados de outros idiomas ou de outras áreas de conhecimento, o que abre espaço para um sistema mais amplo e acolhedor, como o nosso.
+
+Detalhes sobre a empresa e seu produto podem ser vistos nas subseções \ref{sec:concorrencia:lanyrd} e \ref{sec:concorrencia:lanyrd:tec}.
+
+
+\begin{figure}[hb]
+	\centering
+	\includegraphics[width=1\linewidth]{imagens/lanyrd}
+	\caption[Demonstração da interface do Lanyrd]{Exibição da tela de busca do Lanyrd, demonstrando a falta de relevância geográfica dos resultados, a interface defasada e confusa, e a inexistência de outros idiomas.}
+	\label{fig:lanyrd}
+\end{figure}
+
+\chapter{Proposta do Projeto de TCC}
+
+\section{Conceito do sistema}
+Partindo das premissas que motivaram o projeto, nosso objetivo é criar uma plataforma digital que permita aos usuários descobrir novos eventos -- a partir de áreas de interesse --- e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; contato e descoberta de outros participantes e interessados. Este sistema necessitaria de um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
 
 %features retiradas do projeto inicial, quando da definição do MVP: notificações sobre a grade de programação; envio de perguntas aos palestrantes; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Foram adicionados: features sociais.
 
@@ -213,7 +237,7 @@ Os componentes pensados são indicados na \autoref{tab:nomes}, e as sugestões p
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Método de Trabalho}
+\section{Método de Trabalho} \label{sec:metodo}
 O objetivo principal deste projeto é produzir um sistema de mercado, confiável e que possa ser usado por congressistas e organizadores de eventos para melhoria da comunicação entre estes atores. Para que haja sucesso, é essencial ter um procedimento sólido para o entendimento do projeto e do que deve ser feito, e uma metodologia eficiente de desenvolvimento da ideia e do projeto em si.
 
 \subsection{Metodologia de análise e avaliação das premissas do projeto}
@@ -348,7 +372,7 @@ Nesta seção do documento descreveremos muitos conceitos que são hipotéticos,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\emph{Mapa de Empatia} - \emph{Personas} de nossos clientes e usuários}
+\subsection{\emph{Mapa de Empatia} - \emph{Personas} de nossos clientes e usuários} \label{sec:mapa-empatia}
 
 \begin{figure}[!h]
 	\centering
@@ -372,7 +396,7 @@ A \emph{persona}\footnotemark{} que descrevemos no diagrama \ref{diag:empatia} �
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\emph{Árvore de problemas} - Visualização das principais dores}
+\subsection{\emph{Árvore de problemas} - Visualização das principais dores} \label{sec:arvore-problemas}
 De forma a entender melhor o outro lado do problema, a partir de um \emph{brainstorm} desenvolvemos outro diagrama, chamado de Árvore de Problemas. Ele é formado por um bloco central que indica o problema básico que estamos investigando, e ramificações de causas e consequências do mesmo.\cite{arvore-de-problemas-portal-educacao}
 
 Muitas vezes o que nos é relatado é só a ``ponta do iceberg'', a parte mais superficial da questão. Para resolvê-la, no entanto, pode ser necessário ir mais a fundo de modo a evitar que o problema ocorra novamente. Com o uso deste diagrama é possível entender de forma clara quais são as origens do \emph{pain point} do cliente.
@@ -417,7 +441,7 @@ O problema que desenvolvemos no diagrama \ref{diag:arvore} é referente à dific
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{\emph{Lean Canvas} - Um modelo de negócios iterável}
+\subsection{\emph{Lean Canvas} - Um modelo de negócios iterável} \label{sec:lean-canvas}
 
 \begin{figure}[!bp]
 	\centering
@@ -570,7 +594,7 @@ Dito isso, podemos identificar que um \emph{early adopter} típico do nosso prod
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{\emph{Experiment Board} - Hipóteses a serem avaliadas}
+\subsection{\emph{Experiment Board} - Hipóteses a serem avaliadas} \label{sec:experiment-board}
 Considerando que uma startup é baseada em hipóteses não testadas, é necessário que tenhamos um roteiro e uma forma padronizada de seleção e listagem de hipóteses. Estas, posteriormente, devem ser verificadas ou refutadas a partir de experimentos diversos, como pesquisas, entrevistas, ou análises.
 
 \begin{citacao}
@@ -734,7 +758,7 @@ Conforme descrito na introdução deste capítulo, faz-se necessário analisar o
 Vale notar que alguns dos projetos descritos aqui também já foram citados na \autoref{sec:empresa:concorrencia}. No entanto, o foco daquela seção era descrever as grandes empresas do mercado, enquanto aqui teremos uma visão mais técnica dos sistemas que mais se destacam em seus campos, por características tecnológicas e funcionalidades.
 
 \subsection{Lanyrd} \label{sec:concorrencia:lanyrd:tec}
-Uma startup de origem londrina, e um dos sistemas de maior sucesso no mercado de TI para divulgação de conferências. Após a compra pela Eventbrite em 2013, parece ter entrado num estado letárgico de desenvolvimento, visto que a última postagem no blog da empresa data do início de 2014 e, antes disso, setembro de 2013 -- anunciando a venda. Informações mais detalhadas sobre a empresa podem ser verificadas na \autoref{sec:concorrencia:lanyrd}.
+Uma startup de origem londrina, e um dos sistemas de maior sucesso no mercado de TI para divulgação de conferências. Após a compra pela Eventbrite em 2013, entrou num estado letárgico de desenvolvimento, visto que a última postagem no blog da empresa data do início de 2014 e, antes disso, setembro de 2013 -- anunciando a venda. Em contato com o fundador, a paralização no desenvolvimento foi confirmada.\cite{lanyrd-abandonado} Informações mais detalhadas sobre a empresa podem ser verificadas na \autoref{sec:concorrencia:lanyrd}.
 
 \subsubsection*{Tecnologia e serviços oferecidos}
 \begin{itemize}[itemsep=-1ex]
