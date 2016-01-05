@@ -169,7 +169,7 @@ Fugindo da análise tradicional de negócios, optamos por desenhar o \emph{busin
 
 Na origem, o sistema era algo bem maior, e para este TCC decidimos trazer algo próximo ao MVP da ideia original. Este é outro conceito trazido da \emph{Lean Startup}, onde se decide a lista de funcionalidades a implementar a partir do quão urgente é a necessidade do cliente por cada uma delas, e se escolhe somente as mais essenciais, capazes de resolver o problema básico.
 
-Para organizar as fases de problematização e \emph{design} do negócio, escolhemos usar os diagramas de Mapa de Empatia (\autoref{sec:mapa-empatia}), Árvore de Problemas (\autoref{sec:arvore-problemas}), \emph{Lean Canvas} (\autoref{sec:lean-canvas}), e \emph{Experiment Board} (\autoref{sec:experiment-board}). Cada um desses foca no desenvolvimento metódico de uma parte importante da solução, respectivamente: o cliente em si, os problemas que ele enfrenta, os métodos de solução e desenvolvimento do negócio, e as hipóteses que precisam ser testadas para verificar a viabilidade e eficiência do negócio.
+Para organizar as fases de problematização e \emph{design} do negócio, escolhemos usar os diagramas de Mapa de Empatia (\autoref{sec:mapa-empatia}), Árvore de Problemas (\autoref{sec:arvore-problemas}) e \emph{Lean Canvas} (\autoref{sec:lean-canvas}). Cada um desses foca no desenvolvimento metódico de uma parte importante da solução, respectivamente: o cliente em si, os problemas que ele enfrenta, e os métodos de solução e desenvolvimento do negócio.
 
 \subsection{Tecnologias}
 Conforme descrito na \autoref{sec:tecnologias}, por conta da experiência do autor, foi decidido iniciar o projeto no ambiente web. Outra vantagem é a agilidade nas iterações: o fluxo entre desenvolvimento e \emph{deploy} é bem curto, o que facilita obter \emph{feedback} inicial de clientes em potencial. A própria natureza do projeto nos permite iniciar no ambiente online sem perda de público, visto que as atividades que serão desempenhadas no sistema envolvem pesquisa, leitura e comparação de conteúdos. Tais atividades se tornam naturalmente mais confortáveis se desempenhadas a partir de um computador tradicional, ou tablet.
@@ -177,7 +177,7 @@ Conforme descrito na \autoref{sec:tecnologias}, por conta da experiência do aut
 No entanto, o estado atual das tecnologias web nos permite desenvolver um sistema acessível também por dispositivos móveis, a partir do browser. No futuro, poderemos implementar funcionalidades que permitirão a plataforma interagir cada vez mais com o usuário, ainda sem a necessidade de implementar um aplicativo móvel completo.\cite{bitbucket-mobile-milestone}
 
 \section{Estado da Arte}
-Há um sistema de foco similar no mercado atualmente: o \textbf{Lanyrd}. Dentre as similaridades, destacam-se a busca por eventos, notificação baseada em temas e localização de interesse, funcionalidades básicas de rede social, e detalhes diversos sobre os eventos listados na plataforma. No entanto, o sistema foi abandonado após ter sido comprado pela gigante de ingressos Eventbrite, em 2014.\cite{lanyrd-abandonado} Desde então, não houve mais atualizações: o sistema carece de mais funcionalidades sociais, uma interface mais moderna, e internacionalização -- pontos apontados em entrevistas com clientes em potencial. As principais desvantagens de mercado são relacionadas ao nicho no qual o Lanyrd sempre foi mais presente: os mercados de TI anglófonos. O projeto tem muito pouca participação em mercados de outros idiomas ou de outras áreas de conhecimento, o que abre espaço para um sistema mais amplo e acolhedor, como o nosso.
+Há um sistema de foco similar no mercado atualmente: o \textbf{Lanyrd}. Dentre as similaridades, destacam-se a busca por eventos, notificação baseada em temas e localização de interesse, funcionalidades básicas de rede social, e detalhes diversos sobre os eventos listados na plataforma. No entanto, o sistema foi abandonado após ter sido comprado pela gigante de ingressos Eventbrite, em 2014.\cite{lanyrd-abandonado} Desde então, não ocorreram mais atualizações: o sistema carece de mais funcionalidades sociais, uma interface mais moderna, e internacionalização -- pontos apontados em entrevistas com clientes em potencial. As principais desvantagens de mercado são relacionadas ao nicho no qual o Lanyrd sempre foi mais presente: os mercados de TI anglófonos. O projeto tem muito pouca participação em mercados de outros idiomas ou de outras áreas de conhecimento, o que abre espaço para um sistema mais amplo e acolhedor, como o nosso.
 
 Detalhes sobre a empresa e seu produto podem ser vistos nas subseções \ref{sec:concorrencia:lanyrd} e \ref{sec:concorrencia:lanyrd:tec}.
 
@@ -191,15 +191,23 @@ Detalhes sobre a empresa e seu produto podem ser vistos nas subseções \ref{sec
 
 \chapter{Proposta do Projeto de TCC}
 
-\section{Conceito do sistema}
+\section{Conceito geral}
 Partindo das premissas que motivaram o projeto, nosso objetivo é criar uma plataforma digital que permita aos usuários descobrir novos eventos -- a partir de áreas de interesse --- e obter as informações referentes ao evento do qual participam, em tempo real, ou que desejam participar no futuro. Informações como: grade de programação, atualizações e mudanças da mesma; dados de contato dos palestrantes; detalhes sobre o processo e valores das inscrições; localização e como chegar ao local; contato e descoberta de outros participantes e interessados. Este sistema necessitaria de um backend facilmente acessível, onde os organizadores poderiam inserir tais informações tanto no escritório quanto durante a realização do evento, por dispositivos móveis.
+
+\subsection{Principais objetivos do sistema}
+\begin{itemize}
+	\item Permitir aos usuários encontrar novos eventos de seu interesse, sejam eles congressos, conferências ou simples palestras;
+	\item Facilitar a interação entre profissionais da mesma área;
+	\item Levar aos usuários novas informações sobre os eventos de seu interesse;
+	\item Armazenar histórico dos congressos que participaram da plataforma, permitindo consultar as edições passadas, bem como materiais, a programação e participações.
+\end{itemize}
 
 %features retiradas do projeto inicial, quando da definição do MVP: notificações sobre a grade de programação; envio de perguntas aos palestrantes; comércio e atrações da região; notícias e novidades sobre a conferência em geral. Foram adicionados: features sociais.
 
 \footnotetext{Série de palestras de curta duração (5 a 10min), em geral organizadas pelos próprios congressistas.\cite{lightning-talk}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{A escolha do nome}
+\section{A escolha do nome}
 
 A decisão do nome de um novo projeto pode ser um processo tedioso e demorado. Foram gastas algumas horas em reuniões, e pouco resultado se obteve. Numa segunda fase, para otimizar o trabalho, foi decidido utilizar as opções que estavam disponíveis de nomes e afixos e trabalhar com outros idiomas. No final daquele dia seria escolhido um nome entre as opções apresentadas, e o assunto seria arquivado provisoriamente. No futuro, com um produto sólido, poderíamos voltar aqui e rever com mais substância um nome mais representativo.
 
@@ -225,7 +233,7 @@ Os componentes pensados são indicados na \autoref{tab:nomes}, e as sugestões p
 	\label{tab:nomes}
 \end{table}
 
-\subsubsection*{Sugestões já pensadas}
+\subsection*{Sugestões já pensadas}
 \begin{description}
 	\item[BitConf, Dataconf, QuickConf, HandyConf, TheConf] referências a conferências podem ter boa sonoridade, mas focar o nome do produto num só tipo de mercado pode ser prejudicial para o entendimento do produto.
 	\item[The Event, Click Event, Link Event, EvenTime] pode ser muito genérico; outras referências a Event podem ficar muito similares aos nomes das concorrências (Eventick, Eventbrite ou InEvent, por exemplo). A última opção ainda pode soar como \emph{even time}, fugindo da proposta do projeto.
@@ -381,7 +389,7 @@ Nesta seção do documento descreveremos muitos conceitos que são hipotéticos,
 	\label{diag:empatia}
 \end{figure}
 
-O Mapa de Empatia\cite{mapa-de-empatia} é um diagrama simplificado que otimiza a identificação dos diferentes tipos de usuários e clientes. Seu principal conceito é a divisão de características comuns de seres humanos em diferentes blocos. Isto facilita a identificação de similaridades entre as pessoas que desejamos atender e possibilita o desenvolvimento de um produto mais centrado no usuário. Tendo mais conhecimento sobre o tipo de cliente que pretendemos resolver seu problema, podemos ir a campo encontrá-lo e conversar sobre seus anseios e vontades, de forma que possamos entender exatamente como ele é e se o problema que identificamos existe de fato no mundo real.\\
+O Mapa de Empatia\cite{mapa-de-empatia} é um diagrama simplificado que otimiza a identificação dos diferentes tipos de usuários e clientes. Seu principal conceito é a divisão de características comuns de seres humanos em diferentes blocos. Isto facilita a identificação de similaridades entre as pessoas que desejamos atender e possibilita o desenvolvimento de um produto mais centrado no usuário. Tendo mais conhecimento sobre o tipo de cliente que pretendemos resolver seu problema, podemos ir a campo encontrá-lo e conversar sobre seus anseios e vontades, de forma que possamos entender exatamente como ele é e se o problema que identificamos existe de fato no mundo real.
 
 Será possível notar, o tempo todo, como o conceito da \emph{Lean Startup} tem sempre como foco principal o(s) cliente(s) final(is): o objetivo é gerar algo que seja desejável e onde possamos ouvir ``gostei! quero comprar agora!'', evitando o problema recorrente de se ter uma ideia mas não ter clientes para ela.
 
@@ -594,7 +602,7 @@ Dito isso, podemos identificar que um \emph{early adopter} típico do nosso prod
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{\emph{Experiment Board} - Hipóteses a serem avaliadas} \label{sec:experiment-board}
+\subsection{\emph{Experiment Board} - Hipóteses a serem avaliadas}
 Considerando que uma startup é baseada em hipóteses não testadas, é necessário que tenhamos um roteiro e uma forma padronizada de seleção e listagem de hipóteses. Estas, posteriormente, devem ser verificadas ou refutadas a partir de experimentos diversos, como pesquisas, entrevistas, ou análises.
 
 \begin{citacao}
