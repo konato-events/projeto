@@ -267,9 +267,56 @@ Por fim, para organizar o fluxo de código, será utilizado o \emph{GitFlow}\cit
 \begin{figure}[!hb]
 	\centering
 	\includegraphics[width=0.8\linewidth]{imagens/gitflow-horizontal.png}
-	\caption{Exemplo do \emph{GitFlow} funciona, exibindo os diversos \emph{branches} da metodologia.}
+	\caption{Exemplo de como o \emph{GitFlow} funciona, exibindo os diversos \emph{branches} da metodologia.}
 \end{figure}
 
+\section{Planejamento do desenvolvimento}
+
+O Gráfico de Gantt original do projeto foi incluído neste documento como o \autoref{apend:gantt}. Ele foi organizado de forma a destacar as principais categorias de tarefas, evidenciando diferentes áreas de conhecimento, possibilitando dividir esforços de forma mais ágil.
+
+As principais tarefas a serem executadas no decorrer do projeto são descritas a seguir.
+
+\subsection{Preparação e Infraestrutura}
+	\begin{description}
+		\item[Definição do feature-set]
+			A partir dos dados coletados no planejamento prévio do TCC, deve-se definir quais funcionalidades são cruciais para os usuários e quais serão implementadas em \emph{releases} futuros;
+		\item[Estudo e criação de imagens do Docker]
+			Por ser uma tecnologia nova mas importante para o futuro do projeto, deve-se estudar o uso do Docker, e criar as imagens necessárias para o início do projeto. Também vamos aproveitar esta fase para descrever o uso da ferramenta, documentação útil para o Manual de Operação;
+		\item[Criar scripts de instalação e deploy]
+			Para otimizar o trabalho necessário para iniciar o sistema, é essencial termos um script de instalação simplificado, que pode auxiliar novos desenvolvedores. Considerando que o ambiente de produção será muito similar ao de desenvolvimento, pequenas adaptações seriam necessárias para que o mesmo fosse usado em produção.
+	\end{description}
+	
+\subsection{\emph{Design} e interfaces}
+	\begin{description}
+		\item[Criação de \emph{mockups}]
+			Precisaremos, para fins de planejamento das interfaces e documentação, de protótipos de todas as telas do sistema, bem como das suas interações;
+		\item[Definição do \emph{layout}-base]
+			A partir dos mockups e das decisões de design, poderemos implementar o layout básico do sistema, criando o CSS e exemplos de uso.
+	\end{description}
+	
+\subsection{Desenvolvimento}
+	\begin{description}
+		\item[Implementação de todas as telas com dados falsos]
+			Para implementar a ideia de interface gerada na etapa anterior, devemos levar em consideração os protótipos e o \emph{layout}-base a partir de dados falsos, de modo a preencher as áreas de conteúdos com informações que possam ser interpretadas da forma correta e possam apontar possíveis problemas nos conceitos de interação do usuário;
+		\item[Implementação da camada de dados real]
+			Após a validação, para finalizar a implementação do sistema, devemos remover os dados falsos e implementar ligações com o banco de dados. Nessa fase também serão implementados os formulários de dados.
+	\end{description}
+	
+	\subsubsection*{Telas para implementação dos passos acima}
+		\begin{itemize}[itemsep=-1ex]
+			\item Página inicial, com descrições da ferramenta e \emph{call to action} para cadastro ou busca;
+			\item Resultados da busca;
+			\item Listagem de lugares;
+			\item Detalhes de tema;
+			\item Listagem de palestrantes;
+			\item Perfil do participante, de palestrante e de amigo;
+			\item Detalhes do evento;
+			\item Lista das edições anteriores;
+			\item Opções de notificação sobre temas;
+			\item Tela de notificações;
+			\item Lista persistente das notificações;
+			\item \emph{Dashboard} do usuário.
+		\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{A Empresa e o Negócio}
@@ -1572,9 +1619,6 @@ Há também planos de implementar integração com sistemas de \emph{feedback} d
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Análise do desenvolvimento do sistema}
-
-\subsection{Gráfico de Gantt}
-O Gráfico de Gantt original do projeto foi incluído neste documento como o \autoref{apend:gantt}. Ele foi organizado de forma a destacar as principais categorias de tarefas, para evidenciar as diferentes áreas de conhecimento e, possivelmente, subdividir as especialidades de forma mais ágil.
 
 %\subsection{Diagramas de Atividade}
 
