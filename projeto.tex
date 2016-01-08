@@ -1398,6 +1398,61 @@ Outro uso para a API seria a criação de um aplicativo móvel, no futuro.
 		Numa plataforma colaborativa, faz-se necessário que os usuários ainda possuam controle e possam ``tomar posse'' de informações sobre si mesmos ou originárias de seu grupo, mesmo que tais dados não tenham sido inicialmente inseridos por ele.
 \end{description}
 
+\subsection{Requisitos físicos}
+Os custos estimados abaixo são variáveis de acordo com o crescimento da plataforma. Todos os recursos têm versões de uso completamente livre mas com baixa capacidade.
+
+\subsubsection*{Requisitos de Hardware}
+Seguem aqui os requisitos mínimos para execução do sistema. Vale citar que, por ser um sistema facilmente escalável, pode ser necessário mover para servidores com mais memória e poder de processamento conforme o número de usuários simultâneos aumenta. Também é possível usar sistemas de auto-escalabilidade no Heroku.
+
+\paragraph*{Ambiente na nuvem}
+\begin{description}
+	\item[Heroku] mínimo: 1 \emph{free web dyno}; ideal: 1$\sim$5 \emph{web hobby dynos}, \textbf{\$7$\sim$35/mês}. O \emph{dyno} grátis tem a mesma performance, mas precisa ficar 4h sem uso a cada 24h;
+	\item[Similares] outros sistemas de plataforma em nuvem também podem ser utilizados, como PagodaBox, desde que obedeçam aos requisitos de software, indicados a seguir. Para efetuar a troca, será necessário revisar os processos de deploy e de configuração dos servidores HTTP e PHP.
+\end{description}
+
+\paragraph*{Ambiente privado/virtualizado}
+Caso o sistema seja levado para um servidor privado, estes são os requisitos mínimos de funcionamento. Tais requisitos, num ambiente veloz como a DigitalOcean, custam a partir de \textbf{\$5/mês}.
+\begin{itemize}
+	\item \textbf{UNIX}: preferencialmente, Ubuntu ou \emph{debian-based};
+	\item \textbf{128MB RAM};
+	\item \textbf{CPU 1 núcleo};
+	\item \textbf{200MB de espaço em disco}: para o sistema, fora o espaço necessário para instalação dos softwares auxiliares.
+\end{itemize}
+
+\paragraph*{Domínio}
+Um domínio \emph{.com} comum custa a partir de \textbf{R\$16/ano}; se desejarmos um domínio mais específico, como o \emph{kona.to}, este custaria a partir de \textbf{\$50/ano}.
+
+\subsubsection*{Requisitos de Software}
+\paragraph*{Software embutido no Heroku (custos também inclusos):}
+\begin{itemize}
+	\item \textbf{Docker e SO}: plataforma de execução;
+	\item \textbf{Nginx}: servidor HTTP;
+	\item \textbf{PHP 7}: servidor de aplicação;
+	\item \textbf{Node.js}: compilação de \emph{assets}.
+\end{itemize}
+
+\paragraph*{Software servido por parceiros do Heroku:}
+\begin{itemize}
+	\item \textbf{PostgreSQL do Heroku}: banco de dados; \textbf{\$9$\sim$50/mês};
+	\item \textbf{Redis Cloud}: cache de sessão e usuários; \textbf{\$10$\sim$25};
+	\item \textbf{Memcached}: cache de dados; \textbf{\$24$\sim$45};
+	\item \textbf{Mailgun / Mandrill}: serviço de envio de e-mails; \textbf{\$19$\sim$180}.
+\end{itemize}
+
+Os custos totais em Hardware e Software iniciam gratuitos, e podem chegar até cerca de \textbf{\$340/mês}.
+
+\subsubsection*{Recursos humanos}
+Para o desenvolvimento desde projeto como TCC, foi necessário somente o autor, que executou os papéis de Designer, Desenvolvedor e Negócios. Além deste, como papel secundário, houve a participação de diversos mentores passageiros, que deram dicas e sugestões para o andamento da plataforma.
+
+A longo prazo, uma equipe ideal para a plataforma seria composta assim:
+\begin{itemize}
+	\item \textbf{\emph{Customer success} / Suporte ao usuário}: 2x R\$2.500;
+	\item \textbf{Designer / desenvolvedor front-end}: 1x R\$4.500;
+	\item \textbf{Desenvolvedor back-end}: 1x R\$4.500.
+\end{itemize}
+
+Os total em pessoal pode chegar até \textbf{R\$19.000/mês}, além dos custos trabalhistas.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tecnologias utilizadas} \label{sec:tecnologias}
