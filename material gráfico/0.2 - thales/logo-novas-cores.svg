@@ -10,12 +10,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="143.83858"
-   height="141.72923"
+   width="150"
+   height="150"
    id="svg3421"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="logo.svg"
+   sodipodi:docname="logo-novas-cores-nome.svg"
    inkscape:export-filename="/home/igoru/dev/congresso/projeto/material gráfico/0.2 - thales/logo.png"
    inkscape:export-xdpi="324.88"
    inkscape:export-ydpi="324.88">
@@ -80,6 +80,15 @@
        id="linearGradient3605"
        xlink:href="#id0-5"
        inkscape:collect="always" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#id0-5"
+       id="linearGradient3029"
+       gradientUnits="userSpaceOnUse"
+       x1="3583.6001"
+       y1="3118.8701"
+       x2="3583.6001"
+       y2="5637.9399" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -89,7 +98,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="3.959798"
-     inkscape:cx="83.479229"
+     inkscape:cx="49.891657"
      inkscape:cy="82.411137"
      inkscape:document-units="px"
      inkscape:current-layer="g236"
@@ -119,177 +128,56 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-1107.59,-1047.1255)">
+     transform="translate(-1107.59,-1038.8547)">
     <g
        transform="matrix(0.03543307,0,0,0.03543307,1052.5349,937.60977)"
        style="fill-rule:evenodd"
        id="g236">
-      <path
-         style="fill:#7791d2;fill-opacity:1;stroke:none"
-         inkscape:connector-curvature="0"
-         id="path240"
-         d="m 3390,4843 c 90,-127 139,-259 67,-404 -59,-119 -188,-72 -299,-94 -205,-40 -68,-292 -52,-404 19,-134 -24,-281 -114,-388 -13,-16 -89,7 -74,26 96,115 132,278 101,419 -24,108 -92,217 -18,320 54,75 160,67 245,66 108,-2 148,89 166,171 22,102 -37,208 -95,291 -17,24 62,14 73,-3 z"
-         class="fil10" />
-      <path
-         style="fill:#7791d2;stroke:none;stroke-width:7.61999988999999989;fill-opacity:1"
-         inkscape:connector-curvature="0"
-         id="path242"
-         d="m 3366,4835 c 14,-171 -100,-375 -311,-274 -168,81 -178,-103 -210,-200 -33,-100 -130,-189 -232,-233 -18,-8 -92,19 -65,30 114,49 199,150 228,260 18,64 27,167 110,193 71,22 135,5 198,-27 168,-86 210,182 203,270 -1,14 77,5 79,-19 z"
-         class="fil10 str0" />
-      <path
-         style="fill:#7791d2;fill-opacity:1;stroke:none"
-         inkscape:connector-curvature="0"
-         id="path244"
-         d="m 3711,4659 c -80,0 -145,59 -145,132 0,73 65,132 145,132 80,0 145,-59 145,-132 0,-73 -65,-132 -145,-132 z m 0,301 c -103,0 -186,-76 -186,-169 0,-93 83,-169 186,-169 103,0 186,76 186,169 0,93 -83,169 -186,169 z"
-         class="fil10" />
-      <path
-         style="fill:#7791d2;fill-opacity:1;stroke:none"
-         inkscape:connector-curvature="0"
-         id="path246"
-         d="m 3635,4314 c -38,0 -69,28 -69,62 0,35 31,62 69,62 37,0 68,-27 68,-62 0,-34 -31,-62 -68,-62 z m 0,162 c -61,0 -110,-45 -110,-100 0,-55 49,-100 110,-100 60,0 109,45 109,100 0,55 -49,100 -109,100 z"
-         class="fil10" />
-      <path
-         style="fill:#3758a9;fill-opacity:1"
-         inkscape:connector-curvature="0"
-         id="path248"
-         d="m 3329,4940 c -37,0 -68,27 -68,62 l 0,535 c 0,35 31,62 68,62 38,0 69,-27 69,-62 l 0,-535 c 0,-35 -31,-62 -69,-62 z m 0,697 c -60,0 -109,-45 -109,-100 l 0,-535 c 0,-55 49,-100 109,-100 61,0 110,45 110,100 l 0,535 c 0,55 -49,100 -110,100 z"
-         class="fil11" />
-      <path
-         style="fill:#7791d2;fill-opacity:1;stroke:none"
-         inkscape:connector-curvature="0"
-         id="path250"
-         d="m 3546,5029 c -28,0 -50,21 -50,45 0,25 22,46 50,46 27,0 49,-21 49,-46 0,-24 -22,-45 -49,-45 z m 0,109 c -39,0 -71,-28 -71,-64 0,-35 32,-63 71,-63 38,0 70,28 70,63 0,36 -32,64 -70,64 z"
-         class="fil10" />
-      <path
-         class="fil12"
-         d="m 5033,4153 c -116,-310 -413,-530 -761,-530 -81,0 -158,11 -231,33 -199,-322 -553,-537 -958,-537 -613,0 -1112,494 -1125,1108 -225,131 -376,375 -376,655 0,417 336,755 751,755 l 712,1 0,-252 -713,-1 c -275,0 -500,-225 -500,-503 0,-239 165,-439 387,-491 -8,-45 -11,-92 -11,-139 0,-487 392,-881 875,-881 396,0 730,264 839,626 96,-77 217,-123 350,-123 289,0 528,221 559,504 l 4,0 c 275,0 500,225 500,504 0,277 -224,503 -500,503 l -1199,0 c -1,86 0,156 1,252 l 1197,0 c 415,0 751,-339 751,-755 0,-349 -234,-642 -552,-729 z"
-         id="path252"
-         style="fill:url(#linearGradient3605)"
-         inkscape:connector-curvature="0" />
-      <text
-         x="2249.0642"
-         y="6598.3115"
-         class="fil9 fnt5"
-         id="text254"
-         style="font-size:908.08001708999995572px;font-weight:300;fill:#133079;fill-rule:evenodd;font-family:Bebas Neue Light;fill-opacity:1;">THE</text>
-      <text
-         x="3496.062"
-         y="6598.3115"
-         class="fil9 fnt7"
-         id="text258"
-         style="font-size:908.08001708999995572px;font-weight:bold;fill:#133079;fill-rule:evenodd;font-family:Bebas Neue Bold;fill-opacity:1;">CONF</text>
       <g
-         style="fill-rule:evenodd;fill:#133079;fill-opacity:1;"
-         transform="matrix(0.95696083,0,0,1,-5460.9362,1758.514)"
-         id="g260">
-        <text
-           x="7400"
-           y="5250"
-           class="fil9 fnt8"
-           id="text262"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">e</text>
-        <text
-           x="7620"
-           y="5250"
-           class="fil9 fnt8"
-           id="text264"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">v</text>
-        <text
-           x="7886"
-           y="5250"
-           class="fil9 fnt8"
-           id="text266"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">e</text>
-        <text
-           x="8106"
-           y="5250"
-           class="fil9 fnt8"
-           id="text268"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">n</text>
-        <text
-           x="8341"
-           y="5250"
-           class="fil9 fnt8"
-           id="text270"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">t</text>
-        <text
-           x="8571"
-           y="5250"
-           class="fil9 fnt8"
-           id="text272"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">o</text>
-        <text
-           x="8805"
-           y="5250"
-           class="fil9 fnt8"
-           id="text274"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">s i</text>
-        <text
-           x="9223"
-           y="5250"
-           class="fil9 fnt8"
-           id="text276"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">n</text>
-        <text
-           x="9458"
-           y="5250"
-           class="fil9 fnt8"
-           id="text278"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">t</text>
-        <text
-           x="9688"
-           y="5250"
-           class="fil9 fnt8"
-           id="text280"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">e</text>
-        <text
-           x="9908"
-           y="5250"
-           class="fil9 fnt8"
-           id="text282"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">l</text>
-        <text
-           x="10122"
-           y="5250"
-           class="fil9 fnt8"
-           id="text284"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">i</text>
-        <text
-           x="10232"
-           y="5250"
-           class="fil9 fnt8"
-           id="text286"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">g</text>
-        <text
-           x="10463"
-           y="5250"
-           class="fil9 fnt8"
-           id="text288"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">e</text>
-        <text
-           x="10683"
-           y="5250"
-           class="fil9 fnt8"
-           id="text290"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">n</text>
-        <text
-           x="10918"
-           y="5250"
-           class="fil9 fnt8"
-           id="text292"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">t</text>
-        <text
-           x="11148"
-           y="5250"
-           class="fil9 fnt8"
-           id="text294"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">e</text>
-        <text
-           x="11368"
-           y="5250"
-           class="fil9 fnt8"
-           id="text296"
-           style="font-size:454.01998900999996067px;font-weight:300;fill:#133079;font-family:Bebas Neue Light;fill-opacity:1">s</text>
+         id="g3020"
+         transform="translate(86.944023,595.5237)">
+        <path
+           class="fil10"
+           d="m 3390,4843 c 90,-127 139,-259 67,-404 -59,-119 -188,-72 -299,-94 -205,-40 -68,-292 -52,-404 19,-134 -24,-281 -114,-388 -13,-16 -89,7 -74,26 96,115 132,278 101,419 -24,108 -92,217 -18,320 54,75 160,67 245,66 108,-2 148,89 166,171 22,102 -37,208 -95,291 -17,24 62,14 73,-3 z"
+           id="path240"
+           inkscape:connector-curvature="0"
+           style="fill:#7791d2;fill-opacity:1;stroke:none" />
+        <path
+           class="fil10 str0"
+           d="m 3366,4835 c 14,-171 -100,-375 -311,-274 -168,81 -178,-103 -210,-200 -33,-100 -130,-189 -232,-233 -18,-8 -92,19 -65,30 114,49 199,150 228,260 18,64 27,167 110,193 71,22 135,5 198,-27 168,-86 210,182 203,270 -1,14 77,5 79,-19 z"
+           id="path242"
+           inkscape:connector-curvature="0"
+           style="fill:#7791d2;fill-opacity:1;stroke:none" />
+        <path
+           class="fil10"
+           d="m 3711,4659 c -80,0 -145,59 -145,132 0,73 65,132 145,132 80,0 145,-59 145,-132 0,-73 -65,-132 -145,-132 z m 0,301 c -103,0 -186,-76 -186,-169 0,-93 83,-169 186,-169 103,0 186,76 186,169 0,93 -83,169 -186,169 z"
+           id="path244"
+           inkscape:connector-curvature="0"
+           style="fill:#7791d2;fill-opacity:1;stroke:none" />
+        <path
+           class="fil10"
+           d="m 3635,4314 c -38,0 -69,28 -69,62 0,35 31,62 69,62 37,0 68,-27 68,-62 0,-34 -31,-62 -68,-62 z m 0,162 c -61,0 -110,-45 -110,-100 0,-55 49,-100 110,-100 60,0 109,45 109,100 0,55 -49,100 -109,100 z"
+           id="path246"
+           inkscape:connector-curvature="0"
+           style="fill:#7791d2;fill-opacity:1;stroke:none" />
+        <path
+           class="fil11"
+           d="m 3329,4940 c -37,0 -68,27 -68,62 l 0,535 c 0,35 31,62 68,62 38,0 69,-27 69,-62 l 0,-535 c 0,-35 -31,-62 -69,-62 z m 0,697 c -60,0 -109,-45 -109,-100 l 0,-535 c 0,-55 49,-100 109,-100 61,0 110,45 110,100 l 0,535 c 0,55 -49,100 -110,100 z"
+           id="path248"
+           inkscape:connector-curvature="0"
+           style="fill:#3758a9;fill-opacity:1" />
+        <path
+           class="fil10"
+           d="m 3546,5029 c -28,0 -50,21 -50,45 0,25 22,46 50,46 27,0 49,-21 49,-46 0,-24 -22,-45 -49,-45 z m 0,109 c -39,0 -71,-28 -71,-64 0,-35 32,-63 71,-63 38,0 70,28 70,63 0,36 -32,64 -70,64 z"
+           id="path250"
+           inkscape:connector-curvature="0"
+           style="fill:#7791d2;fill-opacity:1;stroke:none" />
+        <path
+           inkscape:connector-curvature="0"
+           style="fill:url(#linearGradient3029)"
+           id="path252"
+           d="m 5033,4153 c -116,-310 -413,-530 -761,-530 -81,0 -158,11 -231,33 -199,-322 -553,-537 -958,-537 -613,0 -1112,494 -1125,1108 -225,131 -376,375 -376,655 0,417 336,755 751,755 l 712,1 0,-252 -713,-1 c -275,0 -500,-225 -500,-503 0,-239 165,-439 387,-491 -8,-45 -11,-92 -11,-139 0,-487 392,-881 875,-881 396,0 730,264 839,626 96,-77 217,-123 350,-123 289,0 528,221 559,504 l 4,0 c 275,0 500,225 500,504 0,277 -224,503 -500,503 l -1199,0 c -1,86 0,156 1,252 l 1197,0 c 415,0 751,-339 751,-755 0,-349 -234,-642 -552,-729 z"
+           class="fil12" />
       </g>
     </g>
   </g>

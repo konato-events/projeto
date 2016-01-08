@@ -2168,13 +2168,41 @@ Considerando isso, não há necessidade de re-diagramar todas as classes do Lara
 	\caption{Diagrama de Classes simplificado}
 \end{figure}
 
-%\subsection{Diagramas de Estado} % vai ser necessário?
-% Possibilidades:
-% - estados do usuário: comum, participante, palestrante, organizador
-% - estados de um claim: recebido, em análise, aceito, recusado
-% - estados de um pedido de remoção: recebido, aceito, recusado
+\subsection{Diagramas de Atividade}
 
-%\subsection{Diagramas de Sequência} % vai ser necessário?
+\subsubsection*{Criação de novo evento - \autoref{diag:act_event_new}}
+Após preencher as informações iniciais do evento, o usuário é convidado a inserir mais dados, caso os possua e julgue necessário. Ele também pode requisitar a posse do evento, caso faça parte da organização do mesmo.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/comuns/act_event_new.png}
+	\caption{Diagrama de Atividade do processo de cadastro de um novo evento.}
+	\label{diag:act_event_new}
+\end{figure}
+
+\subsubsection*{Edição de evento - \autoref{diag:act_event_edit}}
+Para editar o evento, é importante saber se o usuário é organizador ou não; se não for e já houver alguém indicado como organizador do evento, ele só poderá enviar sugestões de alterações. Caso contrário, a edição é livre.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/comuns/act_event_edit.png}
+	\caption{Diagrama de Atividade do processo de edição de um evento.}
+		\label{diag:act_event_edit}
+\end{figure}
+
+\subsection{Diagramas de Estado}
+
+\subsubsection*{Requerimento de posse de evento - \autoref{diag:stm_claim}}
+Quando um evento é adicionado à plataforma por um usuário comum, é possível que o organizador decida tomar posse do mesmo posteriormente. Neste caso, ele abre um requerimento no sistema, enviando informações que indiquem sua participação na organização do evento.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{diagramas/comuns/stm_claim.png}
+	\caption{Diagrama de Estados de um Requerimento de posse de evento.}
+	\label{diag:stm_claim}
+\end{figure}
+
+\subsection{Diagramas de Sequência}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
