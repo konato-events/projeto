@@ -24,6 +24,7 @@
 \usepackage{indentfirst}
 \usepackage{microtype}
 \usepackage[final]{pdfpages}
+\usepackage[paper=A4,pagesize]{typearea}
 
 \hyphenation{Javelin}
 \hyphenation{webinars}
@@ -2158,22 +2159,18 @@ Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no proje
 
 \FloatBarrier
 \subsection{Modelo Conceitual de Classes} \label{sec:classes}
-Um dos objetivos de utilizar um Framework é ocultar a implementação de diversos Padrões de Projeto, ao mesmo tempo que aproveitamos as suas vantagens. Tais funcionalidades foram implementadas por outros desenvolvedores, que disponibilizaram sua API pública para uso de outros projetos, de modo que possamos ``nos apoiar em ombros de gigantes''.
+Um dos objetivos ao usar um \emph{framework} é ocultar a implementação de diversos Padrões de Projeto, ao mesmo tempo que aproveitamos suas vantagens. Tais funções foram implementadas por outros desenvolvedores, que disponibilizaram uma API pública para uso em outros projetos, para que possamos ``nos apoiar em ombros de gigantes''.
 
-Considerando isso, não há necessidade de re-diagramar todas as classes do Laravel. Optamos, portanto, por adicionar ao Diagrama de Classes somente aqueles objetos customizados e que adicionam características ao framework. Os modelos do ORM também não serão diagramados em sua totalidade, visto que são fiéis ao Modelo de Dados na \autoref{sec:mer}.
+Considerando isso, não re-diagramamos todas as classes do Laravel. Optamos, portanto, por adicionar ao Diagrama de Classes somente aqueles objetos customizados e que adicionam características ao framework. Os modelos do ORM também não serão diagramados em sua totalidade, visto que são fiéis ao Modelo de Dados na \autoref{sec:mer}.
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=1\linewidth]{diagramas/classes.png}
-	\caption{Diagrama de Classes simplificado}
-\end{figure}
+Este diagrama, devido ao seu tamanho, foi incluído como o \autoref{apend:classes}
 
 \subsection{Diagramas de Atividade}
 
 \subsubsection*{Criação de novo evento - \autoref{diag:act_event_new}}
 Após preencher as informações iniciais do evento, o usuário é convidado a inserir mais dados, caso os possua e julgue necessário. Ele também pode requisitar a posse do evento, caso faça parte da organização do mesmo.
 
-\begin{figure}[h!]
+\begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{diagramas/comuns/act_event_new.png}
 	\caption{Diagrama de Atividade do processo de cadastro de um novo evento.}
@@ -2182,7 +2179,7 @@ Após preencher as informações iniciais do evento, o usuário é convidado a i
 
 \subsubsection*{Edição de evento - \autoref{diag:act_event_edit}}
 Para editar o evento, é importante saber se o usuário é organizador ou não; se não for e já houver alguém indicado como organizador do evento, ele só poderá enviar sugestões de alterações. Caso contrário, a edição é livre.
-\begin{figure}[h!]
+\begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{diagramas/comuns/act_event_edit.png}
 	\caption{Diagrama de Atividade do processo de edição de um evento.}
@@ -2194,7 +2191,7 @@ Para editar o evento, é importante saber se o usuário é organizador ou não; 
 \subsubsection*{Requerimento de posse de evento - \autoref{diag:stm_claim}}
 Quando um evento é adicionado à plataforma por um usuário comum, é possível que o organizador decida tomar posse do mesmo posteriormente. Neste caso, ele abre um requerimento no sistema, enviando informações que indiquem sua participação na organização do evento.
 
-\begin{figure}[h!]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.8\linewidth]{diagramas/comuns/stm_claim.png}
 	\caption{Diagrama de Estados de um Requerimento de posse de evento.}
@@ -2202,7 +2199,8 @@ Quando um evento é adicionado à plataforma por um usuário comum, é possível
 \end{figure}
 
 \subsection{Diagramas de Sequência}
-
+\subsubsection*{Edição de evento - \autoref{diag:sd_event_edit}}
+Este diagrama, devido ao seu tamanho, foi incluído como o \autoref{apend:sd_event_edit}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2224,6 +2222,26 @@ Este é o \autoref{apend:usuario}. O Manual do Usuário foi transformado numa li
 \chapter{Gráfico de Gantt} \label{apend:gantt}
 %todo avaliar forma de manter o título do apêndice junto com a primeira página
 \includepdf[pages={1,2,4,5},pagecommand={},angle=90,templatesize={0.8\linewidth}{15cm}]{./diagramas/gantt.pdf}
+
+\clearpage \KOMAoptions{paper=A3,pagesize} \recalctypearea
+
+	\chapter{Diagrama de Classes} \label{apend:classes}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1\linewidth]{diagramas/classes.png}
+		\caption{Diagrama de Classes simplificado}
+	\end{figure}
+
+	\clearpage
+	\chapter{Diagrama de Sequência - Edição de evento} \label{apend:sd_event_edit}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.85\linewidth]{diagramas/comuns/sd_event_edit.png}
+		\caption{Diagrama de Sequência indicando ações que ocorrem durante a edição de um evento.}
+		\label{diag:sd_event_edit}
+	\end{figure}
+	
+\clearpage \KOMAoptions{paper=A4,pagesize} \recalctypearea
 
 \chapter{Manual de Operação} \label{apend:operacao}
 
