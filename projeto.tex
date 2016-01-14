@@ -24,7 +24,6 @@
 \usepackage{indentfirst}
 \usepackage{microtype}
 \usepackage[final]{pdfpages}
-\usepackage[paper=A4,pagesize]{typearea}
 
 \hyphenation{Javelin}
 \hyphenation{webinars}
@@ -2223,26 +2222,21 @@ Este é o \autoref{apend:usuario}. O Manual do Usuário foi transformado numa li
 %todo avaliar forma de manter o título do apêndice junto com a primeira página
 \includepdf[pages={1,2,4,5},pagecommand={},angle=90,templatesize={0.8\linewidth}{15cm}]{./diagramas/gantt.pdf}
 
-\clearpage \KOMAoptions{paper=A3,pagesize} \recalctypearea
+\chapter{Diagrama de Classes} \label{apend:classes}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/classes.png}
+	\caption{Diagrama de Classes simplificado}
+\end{figure}
 
-	\chapter{Diagrama de Classes} \label{apend:classes}
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=1\linewidth]{diagramas/classes.png}
-		\caption{Diagrama de Classes simplificado}
-	\end{figure}
-
-	\clearpage
-	\chapter{Diagrama de Sequência - Edição de evento} \label{apend:sd_event_edit}
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=0.7\linewidth]{diagramas/comuns/sd_event_edit.png}
-		\caption{Diagrama de Sequência indicando ações que ocorrem durante a edição de um evento.}
-		\label{diag:sd_event_edit}
-	\end{figure}
+\chapter{Diagrama de Sequência - Edição de evento} \label{apend:sd_event_edit}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{diagramas/comuns/sd_event_edit.png}
+	\caption{Diagrama de Sequência indicando ações que ocorrem durante a edição de um evento.}
+	\label{diag:sd_event_edit}
+\end{figure}
 	
-\clearpage \KOMAoptions{paper=A4,pagesize} \recalctypearea
-
 \chapter{Manual de Operação} \label{apend:operacao}
 
 \begin{framed}
