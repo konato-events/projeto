@@ -176,7 +176,7 @@ Conforme descrito na \autoref{sec:tecnologias}, por conta da experiência do aut
 
 No entanto, o estado atual das tecnologias web nos permite desenvolver um sistema acessível também por dispositivos móveis, a partir do browser. No futuro, poderemos implementar funcionalidades que permitirão a plataforma interagir cada vez mais com o usuário, ainda sem a necessidade de implementar um aplicativo móvel completo.\cite{bitbucket-mobile-milestone}
 
-\section{Estado da Arte}
+\section{Estado da Arte} \label{sec:estado_arte}
 Há um sistema de foco similar no mercado atualmente: o \textbf{Lanyrd}. Dentre as similaridades, destacam-se a busca por eventos, notificação baseada em temas e localização de interesse, funcionalidades básicas de rede social, e detalhes diversos sobre os eventos listados na plataforma. No entanto, o sistema foi abandonado após ter sido comprado pela gigante de ingressos Eventbrite, em 2014.\cite{lanyrd-abandonado} Desde então, não ocorreram mais atualizações: o sistema carece de mais funcionalidades sociais, uma interface mais moderna, e internacionalização -- pontos apontados em entrevistas com clientes em potencial. As principais desvantagens de mercado são relacionadas ao nicho no qual o Lanyrd sempre foi mais presente: os mercados de TI anglófonos. O projeto tem muito pouca participação em mercados de outros idiomas ou de outras áreas de conhecimento, o que abre espaço para um sistema mais amplo e acolhedor, como o nosso.
 
 Detalhes sobre a empresa e seu produto podem ser vistos nas subseções \ref{sec:concorrencia:lanyrd} e \ref{sec:concorrencia:lanyrd:tec}.
@@ -2204,6 +2204,28 @@ Este diagrama, devido ao seu tamanho, foi incluído como o \autoref{apend:sd_eve
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Resultados pretendidos}
+Descrevemos aqui os principais resultados colaterais do projeto. Os pontos em que podemos fazer melhor que o Estado da Arte, e os projetos pro futuro: tanto na questão da sua viabilidade atual como a sustentabilidade a médio e longo prazo, como um sistema pleno.
+
+\subsection{Inovações do projeto}
+Conforme citamos nas análises sobre o Lanyrd (\ref{sec:estado_arte} ``Estado da Arte'', em \ref{sec:concorrencia:lanyrd} e \ref{sec:concorrencia:lanyrd:tec}), o projeto tem um conceito muito similar ao nosso, mas foi congelado. Partindo desta premissa, podemos dizer que nossas maiores inovações serão simplesmente continuar os passos naturais que aquele projeto tomaria. Citamos a seguir as principais melhorias trazidas:
+
+\begin{description}
+	\item[Integrações sociais] O projeto trará integrações com diversas redes sociais para facilitar a inscrição e encontrar contatos já existentes. Além disso, também traz os perfis externos do usuário diretamente em seu perfil, como o Lanyrd também já faz;
+	
+	\item[Internacionalização] Um dos pontos nos quais o Lanyrd mais peca, principalmente para nós brasileiros e o restante da comunidade internacional, é a falta de interface em outros idiomas. O nosso sistema nasceu desde o primeiro dia com suporte a português e inglês, e é possível conectar sistemas de tradução colaborativa sem muitos esforços, para expandir o suporte a novas linguagens;
+	
+	\item[Interface mais limpa] Outro tópico que levantava exclamações negativas quando citávamos em entrevistas era a interface. O visual do Lanyrd é muito pesado, em relação ao excesso de textos e partes sublinhadas. Tomamos cuidado especial para manter uma interface mais fluida e bem distribuída;
+	
+	\item[Notificações mais inteligentes] Atualmente as recomendações de eventos do Lanyrd são um pouco imprecisas e não levam em conta o círculo social do usuário. Dando a possibilidade do usuário configurar os tópicos de interesse a partir de regiões/alcance geográfico, e trazendo também informações de seus contatos, pretendemos levar a ele dados de melhor qualidade e menos poluição. A possibilidade de notificá-lo no celular também é algo importante nos dias atuais;
+	
+	\item[Atualização de bibliotecas \emph{open-source}] Além dos quesitos funcionais, o sistema trouxe a oportunidade de contribuir para projetos de código aberto, como o \emph{framework} Laravel e a biblioteca de mapeamento de dados Ardent. O último, em especial, é um projeto mantido pelo próprio autor e de largo uso na comunidade Laravel, sendo utilizado como principal substituto/adicional aos recursos de banco de dados já existentes no \emph{framework}.
+\end{description}
+
+\subsection{Viabilidade e Sustentabilidade econômica}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{Manuais}
 Os Manuais de Operação e do Usuário foram incluídos como apêndices deste documento.
 
@@ -2211,7 +2233,7 @@ Os Manuais de Operação e do Usuário foram incluídos como apêndices deste do
 Este é o \autoref{apend:operacao}. As instruções originais de operação do sistema estão contidas em arquivos \texttt{README.md} no repositório, nas pastas em que instruções forem necessárias -- o padrão para projetos open-source, visto que mantém as instruções gerais junto com o código-fonte. O Manual de Operação formal é baseado neste mesmo arquivo.
 
 \subsection{Manual do Usuário}
-Este é o \autoref{apend:usuario}. O Manual do Usuário foi transformado numa lista de \emph{Frequently Asked Questions}, de modo a exemplificar as Centrais de Ajuda muito comuns nas aplicações web -- que respondem perguntas comuns que os usuários podem ter, ao invés de indicar o passo-a-passo de cada operação do sistema.
+Este é o \autoref{apend:usuario}. O Manual do Usuário foi transformado numa lista de \emph{Frequently Asked Questions (FAQ)}, de modo a exemplificar as Centrais de Ajuda muito comuns nas aplicações web -- que respondem perguntas comuns que os usuários podem ter, ao invés de indicar o passo-a-passo de cada operação do sistema.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \postextual
