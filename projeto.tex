@@ -13,6 +13,7 @@
 \usepackage{graphicx}
 \usepackage[section]{placeins} % Allows for the new command \FloatBarrier, that forces the queue of floats to be cleared. The [section] changes the use of \section to always run \FloatBarrier before.
 \usepackage[export]{adjustbox}
+\usepackage{rotating}
 \usepackage{wrapfig}
 \usepackage{sidecap}
 \usepackage[all,defaultlines=2]{nowidow}
@@ -83,9 +84,9 @@
 \imprimircapa
 \imprimirfolhaderosto*
 
-%\begin{fichacatalografica}
-%	\includepdf{inc/ficha_catalografica.pdf}
-%\end{fichacatalografica}
+\begin{fichacatalografica}
+	\includepdf{ficha-cat.pdf}
+\end{fichacatalografica}
 
 %\begin{folhadeaprovacao}
 %	\includepdf{inc/aprovacao.pdf}
@@ -1724,7 +1725,7 @@ Os principais Casos de Uso foram prototipados. Não há versões para todas as t
 \end{figure}
 
 \FloatBarrier
-\subsubsection{Protótipos estáticos de telas futuras}
+\subsubsection{Protótipos estáticos das telas futuras}
 Algumas telas foram prototipadas desde o início mas, durante outras fases da análise, foi percebido que estas pertenceriam a uma fase posterior do desenvolvimento. Por este motivo, tais telas foram separadas aqui, para servir de referência das próximas fases e dar um conceito maior de continuidade às telas descritas anteriormente.
 
 \begin{figure}[h]
@@ -1763,6 +1764,51 @@ Algumas telas foram prototipadas desde o início mas, durante outras fases da an
 	\label{prot:list-notifications}
 \end{figure}
 
+\FloatBarrier
+\subsubsection{Estado final das telas do sistema}
+Aqui demonstraremos como as telas do projeto foram implementadas, de acordo com a versão final do sistema, imediatamente antes da entrega deste documento. Devemos observar que, atualmente, ainda não é possível fazer o \emph{upload} de imagens para representar os eventos; no lugar, estão sendo utilizados, provisoriamente, avatares geométricos únicos.
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/screenshots/search.jpg}
+	\caption[Busca de eventos]{Tela de busca de eventos. Referente à \autoref{prot:search}.}
+	\label{screen:search}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/screenshots/home-mobile.jpg}
+	\caption[Página inicial, versão móvel]{Tela inicial do sistema, simulada para exibir como ela aparece em dispositivos móveis, como celulares. À esquerda, vemos a tela pura, e à direita, o menu aberto. Referente à \autoref{prot:home}.}
+	\label{screen:home}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/screenshots/event-details.jpg}
+	\caption[Detalhes do evento]{Página que exibe todos os detalhes do evento, com endereço, data e hora, programação, e outros. Referente à \autoref{prot:event}.}
+	\label{screen:event-details}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=0.8\linewidth]{imagens/screenshots/event-edit.png}
+	\caption[Edição das informações básicas do evento]{Formulário de edição do evento, que cobre as principais informações. Outros dados são tratados em outras partes da tela, como a programação, palestrantes, temas e materiais.}
+	\label{screen:event-edit}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/screenshots/user-details.png}
+	\caption[Perfil do usuário]{Página que exibe o perfil de um usuário, com suas redes sociais, foto, dados pessoais e informações de uso da plataforma. Referente à \autoref{prot:profile}.}
+	\label{screen:user-details}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=1\linewidth]{imagens/screenshots/user-edit.jpg}
+	\caption[Edição de perfil]{Formulário de edição de perfil do usuário, que já permite editar informações básicas e a foto de exibição.}
+	\label{screen:user-edit}
+\end{figure}
 
 \FloatBarrier
 \subsection{Casos de Uso} \label{sec:ucs}
@@ -2097,7 +2143,7 @@ Os Casos de Uso a seguir têm como atores qualquer tipo de usuário (Participant
 \begin{enumerate}[itemsep=-1ex,topsep=-1ex]
 	\item O Sistema recebe um determinado evento para adicionar a programação;
 	\item Quantas vezes for necessário:
-		\begin{enumerate}
+		\begin{enumerate}[itemsep=-1ex,topsep=-1ex]
 			\item O Sistema pergunta qual usuário foi palestrante;
 			\item O usuário indica outro usuário como palestrante;
 			\item O Sistema inclui o \ref{uc:submeter-palestra}, enviando o palestrante indicado.
@@ -2157,22 +2203,34 @@ Na \autoref{diag:mer} descrevemos o modelo de dados que será utilizado no proje
 \end{figure}
 
 \FloatBarrier
-\subsection{Modelo Conceitual de Classes - \autoref{diag:classes}} \label{sec:classes}
-Um dos objetivos ao usar um \emph{framework} é ocultar a implementação de diversos Padrões de Projeto, ao mesmo tempo que aproveitamos suas vantagens. Tais funções foram implementadas por outros desenvolvedores, que disponibilizaram uma API pública para uso em outros projetos, para que possamos ``nos apoiar em ombros de gigantes''.
+\subsection{Modelo Conceitual de Classes} \label{sec:classes}
+Levando isto em conta os benefícios de reaproveitamento de código no uso de um \emph{framework} como o Laravel, não re-diagramamos todas as classes que não fazem parte diretamente das Regras do Negócio. Optamos, portanto, por representar de forma simplificada as estruturas de terceiros que utilizamos diretamente. Na \autoref{diag:classes-models} estão representados os \emph{models} e suas estruturas de suporte; na \autoref{diag:classes-http} ficam os \emph{controllers} e classes associadas.
 
-Considerando isso, não re-diagramamos todas as classes do Laravel. Optamos, portanto, por adicionar ao Diagrama de Classes somente aqueles objetos customizados e que adicionam características ao framework. Os modelos do ORM também não serão diagramados em sua totalidade, visto que são fiéis ao Modelo de Dados na \autoref{sec:mer}.
+Considerações adicionais:
+\begin{itemize}[itemsep=-1ex,topsep=-1ex]
+	\item os modelos do ORM são similares ao Modelo de Dados da \autoref{sec:mer};
+	\item algumas das propriedades indicadas como públicas, nos \emph{Models}, são acessadas a partir de métodos mágicos, que são reconhecíveis pelo padrão usado no ORM do Laravel: \texttt{get<<Nome>>Attribute()} e \texttt{set<<Nome>>Attribute()};
+	\item além de interfaces, uma outra estrutura especial do PHP foi utilizada no projeto: os \emph{traits}. Eles permitem composição de comportamento, além da herança tradicional, permitindo maior aproveitamento horizontal, sem repetição de código. Eles são representados pelo estereótipo \texttt{<<trait>>}, e tem cor acinzentada.
+\end{itemize}
 
-\begin{figure}[p!]  %%%%%%%%%%%%%%%%%%%%%%%%%%%% ESTE DIAGRAMA VAI COMO A3!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{diagramas/classes.png}
-	\caption{Diagrama de Classes simplificado}
-	\label{diag:classes}
+	\includegraphics[width=0.7\linewidth]{diagramas/classes/models.png}
+	\caption{Diagrama dos \emph{Models} classes relacionadas}
+	\label{diag:classes-models}
 \end{figure}
+
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=1\linewidth]{diagramas/classes/http.png}
+	\caption{Diagrama dos \emph{Controllers} e classes relacionadas}
+	\label{diag:classes-http}
+\end{sidewaysfigure}
 
 \subsection{Diagramas de Atividade}
 
 \subsubsection*{Criação de novo evento - \autoref{diag:act_event_new}}
-Após preencher as informações iniciais do evento, o usuário é convidado a inserir mais dados, caso os possua e julgue necessário. Ele também pode requisitar a posse do evento, caso faça parte da organização do mesmo.
+Após preencher informações iniciais do evento, sugerimos ao usuário inserir mais dados, caso possua. Ele também pode requisitar posse do evento, se fizer parte da organização.
 
 \begin{figure}
 	\centering
@@ -2187,7 +2245,7 @@ Para editar o evento, é importante saber se o usuário é organizador ou não; 
 	\centering
 	\includegraphics[width=1\linewidth]{diagramas/comuns/act_event_edit.png}
 	\caption{Diagrama de Atividade do processo de edição de um evento.}
-		\label{diag:act_event_edit}
+	\label{diag:act_event_edit}
 \end{figure}
 
 \subsection{Diagramas de Estado}
@@ -2209,7 +2267,7 @@ Quando um evento é adicionado à plataforma por um usuário comum, é possível
 \begin{figure}[p!] %%%%%%%%%%%%%%%%%%%%%%%%%%%% ESTE DIAGRAMA VAI COMO A3!! %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\centering
 	\includegraphics[width=0.9\linewidth]{diagramas/comuns/sd_event_edit.png}
-	\caption{Diagrama de Sequência indicando ações que ocorrem durante a edição de um evento.}
+	\caption{Diagrama de Sequência indicando as ações durante a edição de um evento.}
 	\label{diag:sd_event_edit}
 \end{figure}
 
@@ -2231,10 +2289,18 @@ Conforme citamos nas análises sobre o Lanyrd (\ref{sec:estado_arte} ``Estado da
 	
 	\item[Notificações mais inteligentes] Atualmente as recomendações de eventos do Lanyrd são um pouco imprecisas e não levam em conta o círculo social do usuário. Dando a possibilidade do usuário configurar os tópicos de interesse a partir de regiões/alcance geográfico, e trazendo também informações de seus contatos, pretendemos levar a ele dados de melhor qualidade e menos poluição. A possibilidade de notificá-lo no celular também é algo importante nos dias atuais;
 	
-	\item[Atualização de bibliotecas \emph{open-source}] Além dos quesitos funcionais, o sistema trouxe a oportunidade de contribuir para projetos de código aberto, como o \emph{framework} Laravel e a biblioteca de mapeamento de dados Ardent. O último, em especial, é um projeto mantido pelo próprio autor e de largo uso na comunidade Laravel, sendo utilizado como principal substituto/adicional aos recursos de banco de dados já existentes no \emph{framework}.
+	\item[Atualização de bibliotecas \emph{open-source}] Além dos quesitos funcionais, o sistema trouxe a oportunidade de contribuir para projetos de código aberto, como o \emph{framework} Laravel e a biblioteca de mapeamento de objetos relacionais Ardent. O último, em especial, é um projeto mantido pelo próprio autor e de largo uso na comunidade Laravel, sendo utilizado como principal substituto/adicional aos recursos de banco de dados já existentes no \emph{framework}.
 \end{description}
 
 \subsection{Viabilidade e Sustentabilidade econômica}
+O projeto, conforme entregue ao final do processo deste TCC, estará em pleno funcionamento e pronto para utilização da população em geral. De acordo com o que foi discutido na modelagem do negócio (\autoref{sec:modelagem-negocios}), é esperado que o sistema agrade os usuários finais e seja de utilidade instantânea, mediante certa divulgação, mesmo que baseada no boca-a-boca.
+
+Os custos de manutenção iniciais são nulos ou bem baixos, e acreditamos que parte da tarefa de marketing será desempenhada pelos próprios usuários. A médio prazo, com o sucesso da plataforma e o aumento crescente de usuários, os custos passarão a ser mais relevantes, assunto que deve ser abordado com cuidado para não causar prejuízos aos mantenedores. Por fim, o custo de desenvolvimento também é baixo, visto que, após a entrega do sistema, ele será tomado como um projeto maduro e de código aberto pela comunidade. A expectativa é de que, assim, ele não precisará de um grande esforço de desenvolvimento para se manter em funcionamento -- apenas para adicionar novas funcionalidades, por exemplo --, e receberá contribuições ocasionais da comunidade de desenvolvedores, incluindo relatórios de problemas, correções e, eventualmente até mesmo funcionalidades menores.
+
+Com o aumento de usuários, por outro lado, será possível por em prática um dos planos de monetização do projeto: a geração de estatísticas e percepções sobre o público interessado e dados em geral sobre o público-alvo dos eventos. Tais informações podem ser apresentadas de forma agradável e eficiente aos organizadores de eventos, que em troca irão pagar uma taxa fixa para ter acesso a tais dados. Esta estratégia vai a favor de uma corrente cada vez mais crescente de monetização de dados\cite{data-monetization-wiki}\cite{data-monetization}\cite{data-service-wiki}. Inicialmente podemos oferecer dados simples, como cruzar os tópicos marcados pelos usuários e disponibilizar pesquisas individuais para o público interessado, e a longo prazo podemos pensar em estratégias mais profundas como \emph{big data} -- análise diversificada de grandes massas de dados, que poderemos gerar a partir dos acessos e formas de utilização da nossa plataforma pelos usuários. Com a monetização em prática, podemos aumentar a dedicação ao projeto, contratar uma equipe exclusiva e dar novo gás ao andamento do mesmo.
+
+Outras estratégias de monetização mais simples incluem a criação de pacotes pagos para organizadores, fornecendo ferramentas extras como acesso ao envio de mensagens por e-mail aos interessados no evento, envio de pesquisas pré e pós-evento, dentre outros. Todas as formas de monetização citadas precisam ainda ser avaliadas e testadas a partir das metodologias citadas (\autoref{sec:modelagem-negocios}), no Lean Canvas e Experiment Board.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
